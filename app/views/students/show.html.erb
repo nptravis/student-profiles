@@ -1,13 +1,13 @@
 <h1><%= @student.lastfirst %></h1>
-<ol>
-	<% @student.standards.each do |standard| %>
-	 <li><%= link_to standard.standardname, standard_path(standard) %></li>
-	 	<ul>
-		 <% standard.grades.each do |grade| %>
-		 <% if grade.student_id == @student.id %>
-		 		<li><%= grade.grade %></li>
-		 	<% end %>
-		 <% end %>
-		</ul>
-	<% end %>
-</ol>
+<!-- <div id="chart_div"></div> -->
+<h3>Standards grouped by score:</h3>
+
+<%= bar_chart @data_array %>
+
+
+<%#= bar_chart [
+  {name: "Series A", data: "7"},
+  {name: "Series B", data: "6"}
+  ] %>
+
+<%#= pie_chart({"Football" => 10, "Basketball" => 5}) %>
