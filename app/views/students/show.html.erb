@@ -1,0 +1,13 @@
+<h1><%= @student.lastfirst %></h1>
+<ol>
+	<% @student.standards.each do |standard| %>
+	 <li><%= link_to standard.standardname, standard_path(standard) %></li>
+	 	<ul>
+		 <% standard.grades.each do |grade| %>
+		 <% if grade.student_id == @student.id %>
+		 		<li><%= grade.grade %></li>
+		 	<% end %>
+		 <% end %>
+		</ul>
+	<% end %>
+</ol>
