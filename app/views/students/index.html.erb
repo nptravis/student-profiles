@@ -1,6 +1,6 @@
 <h1>All Students</h1>
 <h3>Counts by grade: </h3>
-<%= bar_chart @students1.group(:gradelevel).count %>
+<%= pie_chart @students1.group(:gradelevel).count %>
 <ol>
 	<% @students.each do |student| %>
 	<li><%= link_to student.lastfirst, student_path(student)%></li>

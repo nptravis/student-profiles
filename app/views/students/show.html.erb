@@ -1,13 +1,46 @@
 <h1><%= @student.lastfirst %></h1>
 <!-- <div id="chart_div"></div> -->
-<h3>Standards grouped by score:</h3>
+<h3>Standards Average Scores:</h3>
 
-<%= bar_chart @data_array %>
+<%= bar_chart @data_hash, id: "users-chart", width: "600px", height: "800px", xtitle: "Percentage", ytitle: "Standards" %>
 
+<canvas id="myChart" style="float:right;"></canvas>
+<script>
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+        labels: ["Responsibility", "Engagement", "Reflection", "Respect"],
+        datasets: [{
+            label: 'Habits of Mind',
+            data: <%=@hom_array%>,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+	    scale: {
+	    	ticks: {
+	    		beginAtZero: true,
+	    		max: 100
+	    		}
+	    }
+		}
 
-<%#= bar_chart [
-  {name: "Series A", data: "7"},
-  {name: "Series B", data: "6"}
-  ] %>
-
-<%#= pie_chart({"Football" => 10, "Basketball" => 5}) %>
+});
+</script>
