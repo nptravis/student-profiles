@@ -1,11 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-file = File.read('data/data.json')
+
+# ///////// Simple data
+file = File.read('data/all-standards.json')
 data_hash = JSON.parse(file)
 data_hash["items"].each do |set|
 	
@@ -17,9 +12,9 @@ data_hash["items"].each do |set|
 	end
 	
 	if !standard
-		standard = Standard.create(dcid: set["standardid"], standardname: set["name"])
+		standard = Standard.create(dcid: set["standardid"], standardname: set["name"], identifier: set["identifier"])
 	end
 	
-	Grade.create(standard_id: standard.id, student_id: student.id, grade: set["standardgrade"], percent: set["standardpercent"])
+	Grade.create(standard_id: standard.id, student_id: student.id, grade: set["calculatedgrade"], store_code: set["storecode"], created_by: set["whocreated"])
 	
 end

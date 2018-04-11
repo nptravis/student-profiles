@@ -1,46 +1,16 @@
 <h1><%= @student.lastfirst %></h1>
+<%= content_tag :div, class: "student_list", id: "studentshow", data: {student: @data_hash} do %>
+<%end%>
 <!-- <div id="chart_div"></div> -->
-<h3>Standards Average Scores:</h3>
+<canvas id="barChart"></canvas>
+<canvas id="radarChart"></canvas>
 
-<%= bar_chart @data_hash, id: "users-chart", width: "600px", height: "800px", xtitle: "Percentage", ytitle: "Standards" %>
+<h3>Final Standards for year 17-18:</h3>
+<ol>
+	<% @student.grades.group(:standard_id).each do |grade| %>
+		<li><%= grade.standard.identifier %> - <%= grade.standard.standardname %> - <%= grade.grade %></li>
+	<% end %>
+</ol>
 
-<canvas id="myChart" style="float:right;"></canvas>
-<script>
-var ctx = document.getElementById("myChart");
-var myChart = new Chart(ctx, {
-    type: 'radar',
-    data: {
-        labels: ["Responsibility", "Engagement", "Reflection", "Respect"],
-        datasets: [{
-            label: 'Habits of Mind',
-            data: <%=@hom_array%>,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-	    scale: {
-	    	ticks: {
-	    		beginAtZero: true,
-	    		max: 100
-	    		}
-	    }
-		}
 
-});
-</script>
+
