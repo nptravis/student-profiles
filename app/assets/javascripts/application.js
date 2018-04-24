@@ -12,9 +12,8 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require google-charts.js
-//= require radar-charts.js
+
 //= require bar-charts.js
 
 
-//= require chartkick
+

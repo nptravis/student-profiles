@@ -1,0 +1,17 @@
+.all-graph-container {
+	display: flex;
+	width:100%;
+}
+.class-graphs-container {
+	width: 40%;
+	float: left;
+	margin: 5px;
+	padding: 10px;
+	border: 1px pink solid;
+}
+
+canvas {
+	/*padding: 5px;*/
+	position: relative;
+	/*border: 1px red solid;*/
+}
