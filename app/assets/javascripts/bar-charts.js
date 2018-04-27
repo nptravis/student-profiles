@@ -57,7 +57,17 @@ for(var i = 1; i < data_hash.length; i++){
     });
 
 // /////// Radar Chart //////////////////////////
-
+    var notations = {
+        0:"ND",
+        0.5:"",
+        1:"B",
+        1.5:"",
+        2:"P",
+        2.5:"",
+        3:"M",
+        3.5:"",
+        4:"E"
+    }
     var ctx = document.getElementById("radarChart" + i).getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'radar',
@@ -87,7 +97,10 @@ for(var i = 1; i < data_hash.length; i++){
             scale: {
                 ticks: {
                     beginAtZero:true,
-                    max: 4
+                    max: 4,
+                    userCallback: function (value, index, values) {
+                        return notations[value];
+                    }
                 }
             }
 

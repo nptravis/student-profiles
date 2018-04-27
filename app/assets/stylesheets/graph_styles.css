@@ -1,17 +1,19 @@
 .all-graph-container {
-	display: flex;
-	width:100%;
+	width: 100%;
+	background-color: grey;
 }
 .class-graphs-container {
-	width: 40%;
 	float: left;
-	margin: 5px;
-	padding: 10px;
+	max-width: 500px;
+	min-width: 200px;
 	border: 1px pink solid;
+	overflow: scroll-bar;
+	padding-bottom: 5px;
 }
 
+.well {
+
+}
 canvas {
-	/*padding: 5px;*/
-	position: relative;
-	/*border: 1px red solid;*/
+	padding: 2px 5px 5px 5px;
 }
