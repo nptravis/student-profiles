@@ -1,0 +1,5 @@
+1. how to get ruby methods to render in header before the main yeilds to the application
+
+2. Where to place the script files
+
+3. No partialneded for _index.html.erb in students

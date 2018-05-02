@@ -1,0 +1,7 @@
+<%= render partial: 'layouts/header', locals: {user: @user} %>
+
+<% if flash[:message].present? %>
+  <%= flash[:message] %>
+<% end %>
+
+<%= render 'login_form' %>

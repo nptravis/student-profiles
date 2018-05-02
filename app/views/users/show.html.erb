@@ -1,0 +1,5 @@
+<%= render partial: 'layouts/header', locals: {current_user: @current_user} %>
+
+<h1>Welcome <%= @current_user.username %></h1>
+
+<%= render partial: 'students/index', locals: {students: @students} %>

@@ -1,3 +1,6 @@
+<%= render partial: 'layouts/header', locals: {current_user: @user} %>
+
+
 <div class="main-container container">
 <h1><%= @student.lastfirst %> - <%= @student.student_number %> - Grade <%= @student.gradelevel %></h1>
 <%= content_tag :div, class: "student_list", id: "studentshow", data: {student: @s1_data_hash} do %>

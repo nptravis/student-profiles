@@ -1,0 +1,69 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+h1 {
+	color: coral;
+	text-align: center;
+}
+
+h2 {
+	color: coral;
+	text-align: center;
+}
+
+header {
+	top: 0;
+	background-color: #555;
+}
+
+.flex-container {
+	display: flex;
+	justify-content: space-between;
+	
+}
+
+.logo {
+	max-width: 25%;
+	color: coral;
+	margin-left: 10px;
+}
+
+header a:hover {
+	text-decoration: none;
+	color: red;
+}
+
+header a {
+	text-decoration: none;
+	color: coral;
+}
+
+a:hover {
+	color: red;
+}
+
+.logo h1:hover {
+	color: red;
+}
+.logo h1 {
+	color: coral;
+}
+.session-links {
+	max-width: 50%;
+	margin-right: 20px;
+}
+.session-links ul {
+	list-style-type: none;
+	text-align: center; 
+}
+.session-links ul li {
+	text-decoration-color: coral;
+	display: inline;
+	padding: 5px;
+}
+
+form {
+	text-align: center;
+}
