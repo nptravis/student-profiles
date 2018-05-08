@@ -68,3 +68,7 @@ data/
 # Text Files #
 ######################
 .txt
+
+# Secrets Files #
+######################
+secrets.yml

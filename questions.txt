@@ -3,3 +3,9 @@
 2. Where to place the script files
 
 3. No partialneded for _index.html.erb in students
+
+4. secrets.yml
+
+5. access privlages via google signin
+
+6. Devise

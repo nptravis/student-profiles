@@ -1,17 +1,13 @@
 class UsersController < ApplicationController
-
+	before_action :authentication_required, only: [:index, :show]
+	
 	def new
 		@user = User.new
 	end
 
 
 	def show
-		if logged_in?
-			@current_user = current_user
-			@students = Student.all.sort_by &:lastfirst
-		else
-			redirect_to login_path
-		end
+		@students = Student.all.sort_by &:lastfirst
 	end
 
 	def create

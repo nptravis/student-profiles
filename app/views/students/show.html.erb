@@ -1,4 +1,4 @@
-<%= render partial: 'layouts/header', locals: {current_user: @user} %>
+<%= render partial: 'layouts/header' %>
 
 
 <div class="main-container container">
@@ -17,13 +17,7 @@
 
 <% end %>
 
+<canvas id="map-chart"></canvas>
 
-<!-- <h3>Final Standards for year 17-18:</h3>
-<ol>
-	<%# @student.grades.group(:standard_id).each do |grade| %>
-		<li><%#= grade.course.course_name %> - <%#= grade.standard.identifier %> - <%#= grade.standard.standardname %> - <%#= grade.grade %></li>
-	<%# end %>
-</ol>
- -->
 
 </div>
