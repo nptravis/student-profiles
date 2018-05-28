@@ -1,6 +1,7 @@
-<%= render partial: 'layouts/header' %>
+
 
 <% if flash[:message].present? %>
   <%= flash[:message] %>
 <% end %>
+<%#= render 'session/signup_form' %>
 <%= render 'session/signup_form' %>

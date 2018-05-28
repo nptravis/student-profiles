@@ -1,0 +1,15 @@
+<h1>Sign Up</h1>
+
+<%= form_for @user do |f| %>
+	<%=f.fields_for @student do |b| %>
+	<%= b.label :lastfirst %>
+	<%= b.text_field :lastfirst %>
+
+	<%= b.label :gradelevel %>
+	<%= b.text_field :gradelevel %>
+
+	<% end %>
+
+	<%= f.submit "Sign Up"%>
+<% end %>
+<!--  -->

@@ -1,4 +1,8 @@
-<%= render partial: 'layouts/header' %>
+<% content_for :title do %>
+	User Show Page
+<% end %>
+
+
 
 <h1>Welcome <%= @current_user.username %></h1>
 

@@ -3,11 +3,15 @@ class UsersController < ApplicationController
 	
 	def new
 		@user = User.new
+		@student = Student.new
 	end
 
 
 	def show
 		@students = Student.all.sort_by &:lastfirst
+	end
+
+	def index
 	end
 
 	def create
@@ -16,7 +20,7 @@ class UsersController < ApplicationController
 			login(@user)
 			redirect_to user_path(@user)
 		else
-			redirect_to new_user_path
+			render 'new'
 		end
 	end
 

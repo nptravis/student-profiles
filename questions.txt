@@ -9,3 +9,11 @@
 5. access privlages via google signin
 
 6. Devise
+
+7. Figaro, Dotenv
+
+8. Is bootstrap still a thing?
+
+9. What to put into partials, what not to?
+
+10. How to get ruby varibles into javascript files (AJAX the only way?)

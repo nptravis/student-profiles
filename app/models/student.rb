@@ -2,6 +2,7 @@ class Student < ActiveRecord::Base
 	has_many :grades
 	has_many :standards, through: :grades
 	has_many :courses, through: :grades
+	validates :lastfirst, :dcid, :student_number, :gradelevel, presence: true
 
 	def uniq_courses
 		self.courses.uniq

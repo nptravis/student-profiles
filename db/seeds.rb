@@ -35,15 +35,5 @@ data_hash["items"].each do |set|
 
 		grade.save
 	end
-
-	if grade.nil?
-		puts "Error, nil grade"
-	elsif standard.nil?
-		puts "Error, nil standard"
-	elsif student.nil?
-		puts "Error, nil student"
-	elsif course.nil?
-		puts "Error, nil course"
-	end
 	
 end
