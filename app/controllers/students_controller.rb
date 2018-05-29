@@ -10,6 +10,7 @@ class StudentsController < ApplicationController
 	end
 
 	def show
+		@comment = Comment.new
 		@student = Student.find(params[:id])
 		@s1_data_hash = [
 			{studentname: @student.lastfirst},
@@ -22,6 +23,10 @@ class StudentsController < ApplicationController
 				homs: @student.homs_per_course(course).sort.to_h
 			}
 		end
+	end
+
+	def new
+		@student = Student.new
 	end
 
 

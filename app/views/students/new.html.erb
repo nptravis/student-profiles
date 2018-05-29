@@ -1,0 +1,26 @@
+<h1>Create a New Student</h1>
+<div>
+<%= form_for @student do |f|%>
+	<p>
+	<%= f.label "Name" %>
+	<%= f.text_field :lastfirst, placeholder: "Last, First (nickname)" %>
+	</p>
+	
+	<p>
+	<%= f.label :student_number %>
+	<%= f.text_field :student_number %>
+	</p>
+
+	<p>
+	<%= f.label :gradelevel %>
+	<%= f.text_field :gradelevel %>
+	</p>
+	
+	<%= f.submit "Create Student" %>
+
+<% end %>
+
+</div>
+
+
+<!-- validates :lastfirst, :student_number, :gradelevel, presence: true -->

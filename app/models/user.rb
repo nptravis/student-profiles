@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+	has_many :comments
+	has_many :students, through: :comments
 	has_secure_password
 	validates :username, length: {in: 6..20}
 	validates :password, length: {in: 6..20}

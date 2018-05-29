@@ -1,0 +1,21 @@
+<h1>Comments for <%= link_to @student.lastfirst, student_path(@student) %></h1>
+
+<div class="student_comments container">
+	<% if @student.comments.any? %>
+		<% @student.comments.each do |comment| %>
+		<div class="row">
+			<p><%= comment.content %> - <%= comment.user.username %></p>
+		</div>
+		<% end %>
+	<% end %>
+
+
+	<%= form_tag student_comments_path do %>
+		
+		<%= label_tag "Post a comment" %>
+	  <%= text_area_tag 'comment[content]' %>
+	 
+	  <%= submit_tag "Post" %>
+	<% end %>
+</div>
+
