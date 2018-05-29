@@ -11,11 +11,23 @@
 
 
 	<%= form_tag student_comments_path do %>
-		
+
 		<%= label_tag "Post a comment" %>
 	  <%= text_area_tag 'comment[content]' %>
-	 
+
 	  <%= submit_tag "Post" %>
+	<% end %>
+	
+	<% if @comment %>
+		<% if @comment.errors.present? %>
+			<div class="error_explanation">
+				<ul>
+					<% @comment.errors.full_messages.each do |message| %>
+						<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
 	<% end %>
 </div>
 

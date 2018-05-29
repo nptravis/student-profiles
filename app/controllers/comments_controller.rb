@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	before_action :authentication_required
 	before_action :set_student, only: [:index, :create]
 
 	def index
