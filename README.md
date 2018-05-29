@@ -1,25 +1,7 @@
-# README
+# Student Profiles
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is software meant to partner with a PowerSchool database. It provides some nice data visualizations, and comment functionality for school administrators to quickly and easily review student progress. I custom built this for a school, but can be modified to work with any school that uses a database to store student information. 
 
-Things you may want to cover:
+If you are interested in using this software for your school feel free to contact me for a consultation of how to set it all up.
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# student-profiles
