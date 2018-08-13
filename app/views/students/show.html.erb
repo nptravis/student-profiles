@@ -8,6 +8,7 @@
 
 		<!-- data visualizations -->
 		<div class="graphs-container col">
+			<%= link_to "Enter Grades", new_student_grade_path(@student) %>
 			<% @s1_data_hash.each.with_index(1) do |course, i| %>
 				<div class="class-graph col">
 					<div class="row well"><canvas id="barChart<%= i %>"></canvas></div>
@@ -15,8 +16,6 @@
 				</div>
 			<% end %>
 		</div>
-
-	
 
 		<!-- <canvas id="map-chart"></canvas> -->
 		

@@ -15,7 +15,6 @@ class StudentsController < ApplicationController
 		@s1_data_hash = [
 			{studentname: @student.lastfirst},
 		]
-		
 		@student.uniq_courses.each do |course|
 			@s1_data_hash << {
 				course_name: course.full_name,
@@ -26,8 +25,8 @@ class StudentsController < ApplicationController
 	end
 
 	def create
-		@student = Student.new(student_params)
-		
+		@student = Student.create(student_params)
+		redirect_to student_path(@student)
 	end
 
 	def new
@@ -37,6 +36,6 @@ class StudentsController < ApplicationController
 
 
 	def student_params
-   	params.require(:student).permit(:search)
+   	params.require(:student).permit(:search, :lastfirst, :student_number, :gradelevel)
   end
 end

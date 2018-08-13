@@ -1,0 +1,30 @@
+<h2>Enter Grades for <%= @student.lastfirst %></h2>
+
+<div class="flex-container">
+	
+	<%= form_for @grade, url: student_grades_path(@student) do |f| %>
+	
+	<%= f.label "Courses" %>
+	<%= f.select :course_id, options_from_collection_for_select(@courses, "id", "course_name") %>
+
+	<%= f.label "Standards" %>
+	<%= f.select :standard_id, options_from_collection_for_select(@standards, "id", "standardname") %>
+	
+	<%= f.label "E" %>
+	<%= f.radio_button :grade, "4" %>
+	<%= f.label "P" %>
+	<%= f.radio_button :grade, "3" %>
+	<%= f.label "M" %>
+	<%= f.radio_button :grade, "2" %>
+	<%= f.label "B" %>
+	<%= f.radio_button :grade, "1" %>
+
+	<%= f.label :semester %>
+	S1<%= f.radio_button :semester, "S1" %>
+	S2<%= f.radio_button :semester, "S2" %>
+	
+	<%= f.submit "Submit Grades" %>
+	<% end %>
+
+</div>
+
