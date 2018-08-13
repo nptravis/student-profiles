@@ -33,7 +33,10 @@
 			<% if @student.comments.any? %>
 				<% @student.comments.each do |comment| %>
 				<div class="row">
-					<p><%= comment.content %> - <%= comment.user.username %><%= button_to "X", student_comment_path(@student, comment), :method => "delete", :class => "destroy"%></%></p><%= link_to "Edit Comment", student_comment_path(@student,comment) %>
+					<p><%= comment.content %> - <%= comment.user.username %></p>
+					<% if current_user.id == comment.user_id %>
+					<%= button_to "X", student_comment_path(@student, comment), :method => "delete", :class => "destroy"%><%= link_to "Edit Comment", student_comment_path(@student,comment) %>
+					<% end %>
 				</div>
 				<% end %>
 			<% end %>

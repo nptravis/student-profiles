@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 	def create
 		@comment = Comment.new(comment_params)
 		@comment.student = @student
-		@comment.user = current_user
+		@comment.user_id = current_user.id
 
 		if @comment.save
 			redirect_to student_path(@student)
@@ -19,9 +19,13 @@ class CommentsController < ApplicationController
 
 	def update
 		@comment = Comment.find(params[:id])
-		@comment.content = comment_params["content"]
-		@comment.save
-		redirect_to student_path(params[:student_id])
+		if @comment.user_id == current_user.id
+			@comment.content = comment_params["content"]
+			@comment.save
+			redirect_to student_path(params[:student_id])
+		else
+			redirect_to student_path(params[:student_id])
+		end
 	end
 
 	def destroy

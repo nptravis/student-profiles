@@ -1,4 +1,6 @@
 class GradesController < ApplicationController
+	before_action :authentication_required
+	
 	def new
 		@student = Student.find(params["student_id"])
 		@standards = Standard.all.sort_by &:standardname
@@ -8,7 +10,6 @@ class GradesController < ApplicationController
 
 	def create
 		@grade = Grade.create(grade_params)
-		binding.pry
 		@student = Student.find(params[:student_id])
 		@grade.student_id = @student.id
 		@grade.save

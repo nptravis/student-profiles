@@ -1,6 +1,9 @@
 <h2>Edit Comment</h2>
-
-<%= form_for @comment, url: {action: "update"} do |f| %>
-	<%=f.text_field :content %>
-	<%= f.submit %>
+<% if @comment.user_id == current_user.id %>
+	<%= form_for @comment, url: {action: "update"} do |f| %>
+		<%=f.text_field :content %>
+		<%= f.submit %>
+	<% end %>
+<% else %>
+	<p>This is not your comment to edit.</p>
 <% end %>
