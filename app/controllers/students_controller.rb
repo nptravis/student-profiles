@@ -25,6 +25,11 @@ class StudentsController < ApplicationController
 		end
 	end
 
+	def create
+		@student = Student.new(student_params)
+		
+	end
+
 	def new
 		@student = Student.new
 	end

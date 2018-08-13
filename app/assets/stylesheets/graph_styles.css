@@ -2,8 +2,7 @@
 	width: 100%;
 	background-color: grey;
 }
-.class-graphs-container {
-	float: left;
+.class-graph {
 	max-width: 500px;
 	min-width: 200px;
 	border: 1px pink solid;

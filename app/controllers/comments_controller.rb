@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 	before_action :authentication_required
-	before_action :set_student, only: [:index, :create]
+	before_action :set_student, only: [:index, :show, :create]
 
 	def index
 	end
@@ -11,10 +11,28 @@ class CommentsController < ApplicationController
 		@comment.user = current_user
 
 		if @comment.save
-			redirect_to student_comments_path(@student)
+			redirect_to student_path(@student)
 		else
 			render 'index'
 		end
+	end
+
+	def update
+		@comment = Comment.find(params[:id])
+		@comment.content = comment_params["content"]
+		@comment.save
+		redirect_to student_path(params[:student_id])
+	end
+
+	def destroy
+		@comment = Comment.find(params[:id])
+		@comment.destroy
+		redirect_to student_path(params[:student_id])
+	end
+
+	def show
+		@comment = Comment.find(params[:id])
+
 	end
 
 	private

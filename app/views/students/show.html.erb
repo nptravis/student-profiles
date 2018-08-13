@@ -1,23 +1,46 @@
 
 <div class="main-container container">
-<h1><%= @student.lastfirst %> - <%= @student.student_number %> - Grade <%= @student.gradelevel %> </h1>
+	<h1><%= @student.lastfirst %> - <%= @student.student_number %> - Grade <%= @student.gradelevel %> </h1>
+	<h2>Semester 1 for school year 17-18 </h2>
 
-<button class="comments_button"><%= link_to "Add Comments", student_comments_path(@student) %></button>
+	<!-- <button class="comments_button"><%#= link_to "Add Comments", student_comments_path(#@student) %></button> -->
+<div class="flex-container">
 
+		<!-- data visualizations -->
+		<div class="graphs-container col">
+			<% @s1_data_hash.each.with_index(1) do |course, i| %>
+				<div class="class-graph col">
+					<div class="row well"><canvas id="barChart<%= i %>"></canvas></div>
+					<div class="row well"><canvas id="radarChart<%= i %>"></canvas></div>
+				</div>
+			<% end %>
+		</div>
+
+	
+
+		<!-- <canvas id="map-chart"></canvas> -->
+		
+
+		<!-- Comments form and comment stream -->
+		<div class="comments" id="comments">
+			<%= form_tag student_comments_path(@student) do %>
+
+				<%= label_tag "Post a comment" %>
+			  <%= text_area_tag 'comment[content]' %>
+
+			  <%= submit_tag "Post" %>
+			<% end %>
+
+			<% if @student.comments.any? %>
+				<% @student.comments.each do |comment| %>
+				<div class="row">
+					<p><%= comment.content %> - <%= comment.user.username %><%= button_to "X", student_comment_path(@student, comment), :method => "delete", :class => "destroy"%></%></p><%= link_to "Edit Comment", student_comment_path(@student,comment) %>
+				</div>
+				<% end %>
+			<% end %>
+		</div>
+
+	</div>
+</div>
 <%= content_tag :div, class: "student_list", id: "studentshow", data: {student: @s1_data_hash} do %>
 <%end%>
-<h2>Semester 1 for school year 17-18 </h2>
-
-<% @s1_data_hash.each.with_index(1) do |course, i| %>
-
-	<div class="class-graphs-container col">
-		<div class="row well"><canvas id="barChart<%= i %>"></canvas></div>
-		<div class="row well"><canvas id="radarChart<%= i %>"></canvas></div>
-	</div>
-
-<% end %>
-
-<canvas id="map-chart"></canvas>
-
-
-</div>

@@ -1,0 +1,6 @@
+<h2>Edit Comment</h2>
+
+<%= form_for @comment, url: {action: "update"} do |f| %>
+	<%=f.text_field :content %>
+	<%= f.submit %>
+<% end %>

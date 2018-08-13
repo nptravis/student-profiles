@@ -22,5 +22,18 @@ div.student_comments {
 }
 
 button.comments_button {
-	float: right;
+	// float: right;
 }
+
+div.comments {
+	flex-grow: 0;
+}
+
+div.flex-container {
+	display: flex;
+}
+
+div.graphs-container {
+	flex-grow: 2;
+}
+
