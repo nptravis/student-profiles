@@ -9,4 +9,8 @@ class Course < ActiveRecord::Base
 		self.course_name + " - " + self.course_number
 	end
 
+	def self.all_courses
+		order(:course_name)
+	end
+
 end

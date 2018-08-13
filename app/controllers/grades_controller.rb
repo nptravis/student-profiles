@@ -1,6 +1,6 @@
 class GradesController < ApplicationController
 	before_action :authentication_required
-	
+
 	def new
 		@student = Student.find(params["student_id"])
 		@standards = Standard.all.sort_by &:standardname
