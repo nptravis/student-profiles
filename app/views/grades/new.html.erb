@@ -8,7 +8,7 @@
 	<%= f.select :course_id, options_from_collection_for_select(@courses, "id", "course_name") %>
 
 	<%= f.label "Standards" %>
-	<%= f.select :standard_id, options_from_collection_for_select(@standards, "id", "standardname") %>
+	<%= f.select :standard_id, options_from_collection_for_select(@standards, "id", "standard_name") %>
 	
 	<%= f.label "E" %>
 	<%= f.radio_button :grade, "4" %>

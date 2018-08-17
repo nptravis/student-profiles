@@ -8,7 +8,7 @@
         <ul>
 
         <% if current_user.present? %>
-          <li>Welcome <%= current_user.username %> <img src=<%= current_user.image_url %> height="42" width="42" ></li>         
+          <li>Welcome <%= current_user.username %> <img src=<%= current_user.image_url %> height="42" width="42" class="profile-image"></li>         
           <li><%= link_to "Logout", logout_path %></li>
         <% else %>          
           <li><%= link_to "Login", login_path %></li>

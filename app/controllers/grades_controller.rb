@@ -3,7 +3,7 @@ class GradesController < ApplicationController
 
 	def new
 		@student = Student.find(params["student_id"])
-		@standards = Standard.all.sort_by &:standardname
+		@standards = Standard.all.sort_by &:standard_name
 		@courses = Course.all.sort_by &:course_name
 		@grade = Grade.new
 	end
