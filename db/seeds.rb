@@ -12,7 +12,7 @@ data_hash["items"].each do |set|
 	
 	
 	standard = Standard.find_or_create_by(
-		standardname: set["name"], 
+		standard_name: set["name"], 
 		identifier: set["identifier"])
 
 	course = Course.find_or_create_by(
