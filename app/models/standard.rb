@@ -8,9 +8,5 @@ class Standard < ActiveRecord::Base
 		!!self.standardname.match(/\bRespect\b|\bResponsibility\b|\bEngagement\b|\bReflection\b/)
 	end
 
-	# def hom?
-	# 	!!self.standardname.match(/\bRespect\b|\bResponsibility\b|\bEngagement\b|\bReflection\b/)
-	# end
-
 end
 
