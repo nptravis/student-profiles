@@ -1,31 +1,33 @@
 
 <div class="main-container container">
 	<h1><%= @student.lastfirst %> - <%= @student.student_number %> - Grade <%= @student.gradelevel %> </h1>
-	<h2>Semester 1 for school year 17-18 </h2>
 
-	<!-- <button class="comments_button"><%#= link_to "Add Comments", student_comments_path(#@student) %></button> -->
 <div class="flex-container">
 
 		<!-- data visualizations -->
-		<div class="graphs-container col">
+		<div class="graphs-container clearfix">
 			<%= link_to "Enter Grades", new_student_grade_path(@student) %>
-			<% @s1_data_hash.each.with_index(1) do |course, i| %>
-				<div class="class-graph col">
-					<div class="row well"><canvas id="barChart<%= i %>"></canvas></div>
-					<div class="row well"><canvas id="radarChart<%= i %>"></canvas></div>
-				</div>
-			<% end %>
+			<div class="graph-grid row">
+				<% @s1_data_hash.each.with_index(1) do |course, i| %>
+					<% if course.present? %>
+						<div class="class-graph col">
+							<div class=""><canvas id="barChart<%= i %>"></canvas></div>
+							<div class=""><canvas id="radarChart<%= i %>"></canvas></div>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
 		</div>
 
 		<!-- <canvas id="map-chart"></canvas> -->
 		
 
 		<!-- Comments form and comment stream -->
-		<div class="comments" id="comments">
+		<div class="comments col" id="comments">
 			<%= form_tag student_comments_path(@student) do %>
 
-				<%= label_tag "Post a comment" %>
-			  <%= text_area_tag 'comment[content]' %>
+				<%= label_tag "Post a comment" %> <br>
+			  <%= text_area_tag 'comment[content]' %> <br>
 
 			  <%= submit_tag "Post" %>
 			<% end %>

@@ -1,18 +1,17 @@
-.all-graph-container {
-	width: 100%;
-	background-color: grey;
-}
-.class-graph {
-	max-width: 500px;
-	min-width: 200px;
-	border: 1px pink solid;
-	overflow: scroll-bar;
-	padding-bottom: 5px;
-}
-
 .well {
 
 }
 canvas {
 	padding: 2px 5px 5px 5px;
+}
+div.graphs-container {
+	margin: 0px 10px 0px 10px;
+}
+.class-graph {
+	max-width: 400px;
+	min-width: 300px;
+	min-height: 300px;
+	border: 1px pink solid;
+	overflow: scroll-bar;
+	padding-bottom: 5px;
 }
