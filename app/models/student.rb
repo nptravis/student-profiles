@@ -31,7 +31,7 @@ class Student < ActiveRecord::Base
 		arr = {}
 		self.grades_per_course(course).each do |grade|
 			if grade.standard.hom?
-				arr[grade.standard.standardname] = grade.grade
+				arr[grade.standard.standard_name] = grade.grade
 			end
 		end
 		arr
@@ -41,7 +41,7 @@ class Student < ActiveRecord::Base
 		arr = {}
 		self.grades_per_course(course).each do |grade|
 			if !grade.standard.hom?
-				arr[grade.standard.standardname] = grade.grade
+				arr[grade.standard.standard_name] = grade.grade
 			end
 		end
 		arr
