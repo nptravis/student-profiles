@@ -12,14 +12,16 @@ class StudentsController < ApplicationController
 	def show
 		@comment = Comment.new
 		@student = Student.find(params[:id])
-		@s1_data_hash = [
+		@data_hash = [
 			{studentname: @student.lastfirst},
 		]
 		@student.uniq_courses.each do |course|
-			@s1_data_hash << {
+			@data_hash << {
 				course_name: course.full_name,
-				standards: @student.standards_per_course(course).sort.to_h,
-				homs: @student.homs_per_course(course).sort.to_h
+				s1_standards: @student.standards_per_semester_per_course("S1",course).sort.to_h,
+				s2_standards: @student.standards_per_semester_per_course("S2",course).sort.to_h,
+				s1_homs: @student.homs_per_semester_per_course("S1", course).sort.to_h,
+				s2_homs: @student.homs_per_semester_per_course("S2", course).sort.to_h,
 			}
 		end
 	end

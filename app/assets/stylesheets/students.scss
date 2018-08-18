@@ -21,10 +21,23 @@ div.student_comments {
 	text-align: center;
 }
 
-
 div#comments {
 	input:last-child {
 		width: 165px;
+	}
+}
+
+div.comment-content {
+	border-radius: 25px;
+	margin: 5px 5px 5px 5px;
+	border: 1px red solid;
+	background-color: #FFE0E6;
+
+	a {
+		margin-left: 20px;
+	}
+	p {
+		padding: 3px;
 	}
 }
 

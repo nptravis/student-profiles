@@ -8,7 +8,7 @@
 		<div class="graphs-container clearfix">
 			<%= link_to "Enter Grades", new_student_grade_path(@student) %>
 			<div class="graph-grid row">
-				<% @s1_data_hash.each.with_index(1) do |course, i| %>
+				<% @data_hash.each.with_index(1) do |course, i| %>
 					<% if course.present? %>
 						<div class="class-graph col">
 							<div class=""><canvas id="barChart<%= i %>"></canvas></div>
@@ -23,7 +23,7 @@
 		
 
 		<!-- Comments form and comment stream -->
-		<div class="comments col" id="comments">
+		<div class="comments col clearfix" id="comments">
 			<%= form_tag student_comments_path(@student) do %>
 
 				<%= label_tag "Post a comment" %> <br>
@@ -32,13 +32,16 @@
 			  <%= submit_tag "Post" %>
 			<% end %>
 
+
 			<% if @student.comments.any? %>
-				<% @student.comments.each do |comment| %>
-				<div class="row">
-					<p><%= comment.content %> - <%= comment.user.username %></p>
+				<% @student.comments.reverse.each do |comment| %>
+				<div class="comment-content row clearfix">
+					
 					<% if current_user.id == comment.user_id %>
-					<%= button_to "X", student_comment_path(@student, comment), :method => "delete", :class => "destroy"%><%= link_to "Edit Comment", student_comment_path(@student,comment) %>
+					<%= link_to "<i class=\"fas fa-trash-alt\"></i>".html_safe, student_comment_path(@student, comment), :method => "delete", :class => "destroy" %>
+					<%= link_to "<i class=\"fas fa-pencil-alt\"></i>".html_safe, student_comment_path(@student,comment, :class =>"") %>
 					<% end %>
+					<p><%= comment.content %> - <small><strong><%= comment.user.username %></strong></small></p>
 				</div>
 				<% end %>
 			<% end %>
@@ -46,5 +49,5 @@
 
 	</div>
 </div>
-<%= content_tag :div, class: "student_list", id: "studentshow", data: {student: @s1_data_hash} do %>
+<%= content_tag :div, class: "student_list", id: "studentshow", data: {student: @data_hash} do %>
 <%end%>

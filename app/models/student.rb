@@ -23,13 +23,13 @@ class Student < ActiveRecord::Base
 		self.grades.where("semester = ?", semester)
 	end
 
-	def grades_per_course(course)
-		self.grades_per_semester("S1").where("course_id = ?", course.id)
+	def grades_per_semester_per_course(semester, course)
+		self.grades_per_semester(semester).where("course_id = ?", course.id)
 	end
 
-	def homs_per_course(course)
+	def homs_per_semester_per_course(semester, course)
 		arr = {}
-		self.grades_per_course(course).each do |grade|
+		self.grades_per_semester_per_course(semester, course).each do |grade|
 			if grade.standard.hom?
 				arr[grade.standard.standard_name] = grade.grade
 			end
@@ -37,9 +37,9 @@ class Student < ActiveRecord::Base
 		arr
 	end
 
-	def standards_per_course(course)
+	def standards_per_semester_per_course(semester, course)
 		arr = {}
-		self.grades_per_course(course).each do |grade|
+		self.grades_per_semester_per_course(semester, course).each do |grade|
 			if !grade.standard.hom?
 				arr[grade.standard.standard_name] = grade.grade
 			end
