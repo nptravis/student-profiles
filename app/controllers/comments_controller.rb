@@ -11,7 +11,8 @@ class CommentsController < ApplicationController
 		@comment.user_id = current_user.id
 
 		if @comment.save
-			redirect_to student_path(@student)
+			# render json: CommentSerializer.new.serialize(@comment)
+			redirect_to students_path(params[:student_id])
 		else
 			render 'index'
 		end
