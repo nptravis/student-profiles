@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180817053638) do
+ActiveRecord::Schema.define(version: 20180829050321) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(version: 20180817053638) do
     t.string "semester"
   end
 
+  create_table "schedule_data", force: :cascade do |t|
+    t.string "expression"
+    t.integer "student_id"
+    t.integer "course_id"
+  end
+
   create_table "standards", force: :cascade do |t|
     t.string "standard_name"
     t.string "identifier"
@@ -49,6 +55,7 @@ ActiveRecord::Schema.define(version: 20180817053638) do
     t.string "password_digest"
     t.string "email"
     t.string "image_url"
+    t.boolean "admin", default: false
   end
 
 end
