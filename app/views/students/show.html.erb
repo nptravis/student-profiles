@@ -36,40 +36,37 @@
 			<% if @student.comments.any? %>
 				<% @student.comments.reverse.each do |comment| %>
 				<div class="comment-content row clearfix">
-					
-					<% if current_user.id == comment.user_id %>
-					<%= link_to "<i class=\"fas fa-trash-alt\"></i>".html_safe, student_comment_path(@student, comment), :method => "delete", :class => "destroy" %>
-					<%= link_to "<i class=\"fas fa-pencil-alt\"></i>".html_safe, student_comment_path(@student,comment, :class =>"") %>
-					<% end %>
-					<p class="commentContent"><%= comment.content %> - <small class="commentUsername"><strong><%= comment.user.username %></strong></small></p>
+					<%= render partial: 'comments', :locals => { :comment => comment } %>
 				</div>
 				<% end %>
 			<% end %>
 		</div>
-
 	</div>
 </div>
 <%= content_tag :div, class: "student_list", id: "studentshow", data: {student: @data_hash} do %>
 <%end%>
 
-<!-- <script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8">
   $(function () {
     $('form').submit(function(event) {
       //prevent form from submitting the default way
-      event.preventDefault();
-      console.log("The form has been grabbed.");
- 
-      var values = $(this).serialize();
- 
-      var posting = $.post('/comments', values);
- 
-      posting.done(function(data) {
-        var product = data;
-        $("#productTitle").text(product["name"]);
-        $("#productBody").text(product["description"]);
-        $("#productPrice").text(product["price"]);
+      // event.preventDefault();
+      let $form = $(this);
+
+      $.ajax({
+      	type: $form.attr('method'),
+      	url: $form.attr('action'),
+      	data: $form.serialize(),
+      	success: function(data){
+      		console.log("form sent!")
+      	}
+      }).done(function(data){
+      	console.log(data)
+      	$("#comment-" + data.id).html(data.content)
       });
+
+      return false;
+
     });
   });
 </script>
- -->
