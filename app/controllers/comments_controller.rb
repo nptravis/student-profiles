@@ -10,8 +10,8 @@ class CommentsController < ApplicationController
 		@comment.student = @student
 		@comment.user_id = current_user.id
 		if @comment.save
-			redirect_to student_path(@student)
-			# render json: @comment, status: 201
+			# redirect_to student_path(@student)
+			render json: @comment, status: 201
 		else
 			render 'index'
 		end
