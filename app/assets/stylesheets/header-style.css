@@ -8,7 +8,7 @@ h2 {
 	text-align: center;
 }
 
-div.header {
+div.header-container {
 	top: 0;
 	width: 100%;
 	background-color: #555;
@@ -17,7 +17,7 @@ div.header {
 }
 
 
-.logo {
+div.logo {
 	max-width: 25%;
 	color: coral;
 	margin-left: 10px;
@@ -43,15 +43,15 @@ a:hover {
 .logo h1 {
 	color: coral;
 }
-.session-links {
+div.session-links {
 	max-width: 50%;
 	margin-right: 20px;
 }
-.session-links ul {
+div.session-links ul {
 	list-style-type: none;
 	text-align: center; 
 }
-.session-links ul li {
+div.session-links ul li {
 	text-decoration-color: coral;
 	display: inline;
 	padding: 5px;

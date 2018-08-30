@@ -17,11 +17,11 @@
 
   <body>
     <%= render partial: 'layouts/header' %>
-    <%= render partial: 'layouts/sidebar' %>
     <div class="main-container">
-      
-       <%= yield %>
- 
+      <%= render partial: 'layouts/sidebar' %>
+      <div class="content-container">
+         <%= yield %>
+      </div>
     </div>
    
   </body>
