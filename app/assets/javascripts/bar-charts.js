@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function(){
 var data_hash = $('#studentshow').data('student');
-
+if (data_hash){
 // ////// Iterate through course names to make charts
 for(var i = 1; i < data_hash.length; i++){
 
@@ -113,6 +113,7 @@ for(var i = 1; i < data_hash.length; i++){
     });
 
 
+    }
 }
 
 });

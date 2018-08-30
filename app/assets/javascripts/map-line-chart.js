@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function(){
+    if (document.getElementById('map-chart')) {
 var ctx = document.getElementById('map-chart').getContext('2d');
 var chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -44,5 +45,5 @@ var chart = new Chart(ctx, {
         }
     }
 });
-
+}
 });

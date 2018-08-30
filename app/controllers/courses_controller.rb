@@ -17,6 +17,9 @@ class CoursesController < ApplicationController
 
 	def show
 		@course = Course.find(params[:id])
+		@students = @course.students
+		@grades = @students.grades
+		render json: @course
 	end
 
 end

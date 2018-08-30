@@ -14,24 +14,39 @@
 
 <script type="text/javascript">
 	$('#sidebar-courses').on("click", function(event){
-		let $event = $(this);
+
+		let userId = $(this).attr("data-userid");
 		// console.log($event.attr("data-userid"))
-		$.get('/users/' + $event.attr("data-userid") + '/courses', function(response){
-			console.log("REquest Sent");
+		$.get('/users/' + userId + '/courses', function(response){
+			console.log("Request Sent");
 		}).done(function(data){
-			console.log(data)
 			let html = '';
 			data.forEach(function(course){
 				html += `<div id=course-${course.id} class="courseDiv">` +
-				`<h3><a href='/users/${$event.attr("data-userid")}/courses/${course.id}'>` + course.course_name + "</a></h3>" +
+				`<h3><a href='/users/${userId}/courses/${course.id}'>` + course.course_name + "</a></h3>" +
 				"<h4>" + course.course_number + "</h4>" +
-				"<p> Section: " + course.section + "</p>" +
+				"<p>Section: " + course.section + "</p>" +
+				`<button id='class-roster-${course.id}'>See Students</button>` + 
+				"<div class='roster'></div>" +
 				"</div>";
-			})
+			});
 			$('#user-courses').html(html);
-		})
+		}).done(function(data){
+			// let html = "<ol>";
+			data.forEach(function(course){
+				console.log("COUrse ids:", course.id);
+				$(`#course-roster-${course.id}`).on('click', function(event){
+					$.get(`/users/${userId}/courses/${course.id}`, function(response){
+							console.log("Second Request Sent");
+					}).done(function(data){
+						console.log(data);
+						// html += 
+						// $(".roster").html()
+					});
+				});
+			});
+			
+		});
 
-	});
-
-
+});
 </script>

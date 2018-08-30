@@ -28,8 +28,8 @@ div#user-courses {
 div.courseDiv {
 	flex: 0 1 auto;
 	width: 150px;
-	height: 150px;
-	margin: 4px 4px 4px 4px;
+	min-height: 200px;
+	margin: 4px 4px 4px 10px;
 	border: 1px red solid;
 	background-color: #FFE0E6;
 }
