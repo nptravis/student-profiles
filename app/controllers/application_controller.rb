@@ -9,6 +9,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def admin_auth_required
+    if !@current_user.admin
+     puts "ADMIN!!!!!!!!!!!!!!!!"
+      flash[:message] = "Must be admin in to do that"
+      redirect_to user_path(@current_user)
+    end
+  end
+
   def login(user)
   	session[:user_id] = user.id
   end

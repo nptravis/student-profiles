@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-	before_action :authentication_required
+	before_action :authentication_required, :admin_auth_required
 
 	def index
 		if params[:student]

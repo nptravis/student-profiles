@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   resources :standards, only: [:index, :show]
 
 
-  root 'users#show'
+  root 'session#index'
 end

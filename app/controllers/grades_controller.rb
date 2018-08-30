@@ -1,5 +1,5 @@
 class GradesController < ApplicationController
-	before_action :authentication_required
+	before_action :authentication_required, :admin_auth_required
 
 	def new
 		@student = Student.find(params["student_id"])

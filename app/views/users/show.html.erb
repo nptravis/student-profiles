@@ -2,8 +2,11 @@
 	User Show Page
 <% end %>
 
+<% if flash[:message].present? %>
+  <%= flash[:message] %>
+<% end %>
+
 
 
 <h1>Welcome <%= @current_user.username %></h1>
 
-<%= render partial: 'students/index', locals: {students: @students} %>

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authentication_required, only: [:index, :show]
+	before_action :admin_auth_required, only: [:create]
 	
 	def new
 		@user = User.new
@@ -8,7 +9,6 @@ class UsersController < ApplicationController
 
 
 	def show
-		@students = Student.all.sort_by &:lastfirst
 	end
 
 	def index
