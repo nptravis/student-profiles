@@ -12,12 +12,12 @@ class Student < ActiveRecord::Base
 	end
 
 	def self.search(word)
-  	if word.present?
-  		self.all.where('lastfirst LIKE ?', "%#{word}%")
-  	else
-  		self.all
-  	end
-  end
+	  	if word.present?
+	  		self.all.where('lastfirst LIKE ?', "%#{word}%")
+	  	else
+	  		self.all
+	  	end
+	 end
 
 	def grades_per_semester(semester)
 		self.grades.where("semester = ?", semester)

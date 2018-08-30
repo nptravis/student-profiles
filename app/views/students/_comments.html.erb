@@ -1,0 +1,6 @@
+	<% if current_user.id == comment.user_id %>
+		<%= link_to "<i class=\"fas fa-trash-alt\"></i>".html_safe, student_comment_path(@student, comment), :method => "delete", :class => "destroy" %>
+		<%= link_to "<i class=\"fas fa-pencil-alt\"></i>".html_safe, student_comment_path(@student,comment, :class =>"") %>
+	<% end %>
+
+<p class="commentContent"><%= comment.content %> - <small class="commentUsername"><strong><%= comment.user.username %></strong></small></p>

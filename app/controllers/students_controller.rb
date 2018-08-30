@@ -3,10 +3,10 @@ class StudentsController < ApplicationController
 
 	def index
 		if params[:student]
-     @students = Student.search(student_params[:search]).sort_by &:lastfirst
-    else
-     @students = Student.all.sort_by &:lastfirst
-    end
+	     @students = Student.search(student_params[:search]).sort_by &:lastfirst
+	    else
+	     @students = Student.all.sort_by &:lastfirst
+	    end
 	end
 
 	def show

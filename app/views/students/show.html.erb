@@ -20,18 +20,16 @@
 		</div>
 
 		<!-- <canvas id="map-chart"></canvas> -->
-		
 
 		<!-- Comments form and comment stream -->
+
+
 		<div class="comments col clearfix" id="comments">
 			<%= form_tag student_comments_path(@student) do %>
-
 				<%= label_tag "Post a comment" %> <br>
-			  <%= text_area_tag 'comment[content]' %> <br>
-
-			  <%= submit_tag "Post" %>
-			<% end %>
-
+			  	<%= text_area_tag 'comment[content]' %> <br>
+			  	<%= submit_tag "Post" %>
+			<% end %>  
 
 			<% if @student.comments.any? %>
 				<% @student.comments.reverse.each do |comment| %>
@@ -45,28 +43,3 @@
 </div>
 <%= content_tag :div, class: "student_list", id: "studentshow", data: {student: @data_hash} do %>
 <%end%>
-
-<script type="text/javascript" charset="utf-8">
-  $(function () {
-    $('form').submit(function(event) {
-      //prevent form from submitting the default way
-      // event.preventDefault();
-      let $form = $(this);
-
-      $.ajax({
-      	type: $form.attr('method'),
-      	url: $form.attr('action'),
-      	data: $form.serialize(),
-      	success: function(data){
-      		console.log("form sent!")
-      	}
-      }).done(function(data){
-      	console.log(data)
-      	$("#comment-" + data.id).html(data.content)
-      });
-
-      return false;
-
-    });
-  });
-</script>
