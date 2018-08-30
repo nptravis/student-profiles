@@ -1,19 +1,21 @@
 <div class="sidebar container">
-	<% if current_user.admin %>
-		<div class="sidebarNav">
-			<button><a href="/students">Index</a></button>
-			<button><a href="#">Profile</a></button>
-			<button><a href="#">Schedule</a></button>
-			<button><a href="#">Comments</a></button>
-		</div>
-	<% else %>
-		<div class="sidebarNav">
-			<button><a href="/students">Your Student Index</a></button>
-			<button><a href="#">Your Profile</a></button>
-			<button><a href="#">Your Courses</a></button>
-			<button><a href="#">Your Schedule</a></button>
-		</div>
+	<% if current_user.present? %>
+		<% if current_user.admin %>
+			<div class="sidebarNav">
+				<button><a href="/students">Index</a></button>
+				<button><a href="#">Profile</a></button>
+				<button><a href="#">Schedule</a></button>
+				<button><a href="#">Comments</a></button>
+			</div>
+		<% else %>
+			<div class="sidebarNav">
+				<button><a href="/students">Your Student Index</a></button>
+				<button><a href="#">Your Profile</a></button>
+				<button><a href="#">Your Courses</a></button>
+				<button><a href="#">Your Schedule</a></button>
+			</div>
 
+		<% end %>
 	<% end %>
 	
 

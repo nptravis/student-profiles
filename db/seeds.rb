@@ -19,7 +19,7 @@ data_hash["items"].each do |set|
 		course_name: set["course_name"], 
 		course_number: set["course_number"],
 		section: set["section_number"],
-		teacher: set["lastfirst_1"])
+		teacher_email: set["email_addr"])
 
 	if student.save && standard.save && course.save
 
