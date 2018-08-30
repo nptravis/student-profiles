@@ -8,10 +8,11 @@ Rails.application.routes.draw do
   get '/logout', to: 'session#destroy'
 
   get '/auth/google_oauth2/callback', to: 'session#create'
-  get '/courses', to: 'courses#index'
 
 
-  resources :users
+  resources :users do
+    resources :courses
+  end
   resources :students do 
   	resources :comments
     resources :grades

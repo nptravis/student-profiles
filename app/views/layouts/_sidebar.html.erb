@@ -11,7 +11,7 @@
 			<div class="sidebarNav">
 				<button><a href="/students">Your Student Index</a></button>
 				<button><a href="#">Your Profile</a></button>
-				<button><a href="#">Your Courses</a></button>
+				<button><%= link_to 'Your Courses', user_courses_path(current_user)%></button>
 				<button><a href="#">Your Schedule</a></button>
 			</div>
 

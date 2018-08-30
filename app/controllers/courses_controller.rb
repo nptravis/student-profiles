@@ -1,15 +1,12 @@
 class CoursesController < ApplicationController
 	before_action :authentication_required
-	before_action :admin_auth_required, only: [:index]
 	
 	def index
-		@courses = Course.all_courses
-	end
-
-	def teacher_index
-		@courses = Course.all.where('teacher LIKE ?', "%#{current_user.username}%")
+		if current_user.admin
+			@courses = Course.all_courses
+		else
+			@courses = Course.where('teacher_email = ?', current_user.email)
+		end
 	end
 
 end
-
-self.all.where('lastfirst LIKE ?', "%#{word}%")

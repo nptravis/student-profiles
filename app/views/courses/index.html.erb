@@ -1,5 +1,10 @@
 <ul>
-<% for i in @courses do %>
-	<li><%= i.course_name %></li>
+<% for course in @courses do %>
+	<div id="course-<%=course.id%>" class="courseInfo">
+		<h2><%= link_to course.course_name, user_course_path(current_user, course)%> - <%=course.course_number%></h2>
+		<h4>Section: <%=course.section%></h4>
+	</div>
+	
 <% end %>
 </ul>
+
