@@ -1,0 +1,9 @@
+<h1><%=@course.course_name%></h1>
+
+<h2>Students</h2>
+<ol>
+<% @course.students.uniq.each do |student|%>
+	<li><%= link_to student.lastfirst, student_path(student)%></li>
+<% end %>
+</ol>
+

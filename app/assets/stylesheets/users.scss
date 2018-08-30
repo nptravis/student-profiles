@@ -12,7 +12,22 @@ div.error_explanation ul li {
 }
 
 img.profile-image {
-	border-radius: 50%;
+	border-radius: 75%;
 	margin-top: 2px;
 	margin-bottom: 0px;
+}
+
+div#user-courses {
+	display: flex;
+	justify-content: space-evenly;
+	flex-direction: row;
+	width: 75%;
+
+}
+
+div.courseDiv {
+	width: 150px;
+	height: 150px;
+	border: 1px red solid;
+	background-color: #FFE0E6;
 }

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :courses
   end
+  
   resources :students do 
   	resources :comments
     resources :grades

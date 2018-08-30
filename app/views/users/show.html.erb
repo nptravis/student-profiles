@@ -10,3 +10,28 @@
 
 <h1>Welcome <%= @current_user.username %></h1>
 
+<div id="user-courses"></div>
+
+<script type="text/javascript">
+	$('#sidebar-courses').on("click", function(event){
+		let $event = $(this);
+		// console.log($event.attr("data-userid"))
+		$.get('/users/' + $event.attr("data-userid") + '/courses', function(response){
+			console.log("REquest Sent");
+		}).done(function(data){
+			console.log(data)
+			let html = '';
+			data.forEach(function(course){
+				html += `<div id=course-${course.id} class="courseDiv">` +
+				`<h3><a href='/users/${$event.attr("data-userid")}/courses/${course.id}'>` + course.course_name + "</a></h3>" +
+				"<h4>" + course.course_number + "</h4>" +
+				"<p> Section: " + course.section + "</p>" +
+				"</div>";
+			})
+			$('#user-courses').html(html);
+		})
+
+	});
+
+
+</script>

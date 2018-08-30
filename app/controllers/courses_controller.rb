@@ -7,6 +7,16 @@ class CoursesController < ApplicationController
 		else
 			@courses = Course.where('teacher_email = ?', current_user.email)
 		end
+
+		render json: @courses.to_json
+		# respond_to do |format|
+		# 	format.json {render json: @courses}
+		# 	format.html
+		# end
+	end
+
+	def show
+		@course = Course.find(params[:id])
 	end
 
 end

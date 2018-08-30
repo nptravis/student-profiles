@@ -10,8 +10,8 @@
 		<% else %>
 			<div class="sidebarNav">
 				<button><a href="/students">Your Student Index</a></button>
-				<button><a href="#">Your Profile</a></button>
-				<button><%= link_to 'Your Courses', user_courses_path(current_user)%></button>
+				<button id="sidebar-profile"><%= link_to "Profile", user_path(current_user) %></button>
+				<button id="sidebar-courses" data-userid=<%= current_user.id%>>Your Courses</button>
 				<button><a href="#">Your Schedule</a></button>
 			</div>
 
