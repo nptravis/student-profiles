@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :teachers
+  resources :sections
   get '/login', to: 'session#new'
 
   get '/signup', to: 'users#new'

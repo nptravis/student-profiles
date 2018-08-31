@@ -1,7 +1,7 @@
 class Standard < ActiveRecord::Base
 	has_many :grades
-	has_many :students, through: :grades
-	has_many :courses, through: :grades
+	has_many :course_standards
+	has_many :standards, through: :course_standards
 	validates :standard_name, :identifier, presence: true
 
 	def hom?

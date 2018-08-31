@@ -17,9 +17,8 @@ class CoursesController < ApplicationController
 
 	def show
 		@course = Course.find(params[:id])
-		@students = @course.students
-		@grades = @students.grades
-		render json: @course
+		@students = @course.students.uniq
+		render json: @course.to_json(:include => :students)
 	end
 
 end

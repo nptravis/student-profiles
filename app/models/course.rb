@@ -1,8 +1,10 @@
 class Course < ActiveRecord::Base
-	has_many :grades
-	has_many :students, through: :grades
-	has_many :standards, through: :grades
-	validates :course_name, :course_number, :section, :teacher_email, presence: true
+	
+	has_many :sections
+	has_many :students, through: :sections
+	has_many :course_standards
+	has_many :standards, through: :course_standards
+	validates :course_name, :course_number, presence: true
 
 	def full_name
 		self.course_name + " - " + self.course_number
