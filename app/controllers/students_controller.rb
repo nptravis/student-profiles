@@ -15,14 +15,16 @@ class StudentsController < ApplicationController
 		@data_hash = [
 			{studentname: @student.lastfirst},
 		]
-		@student.sections.each do |section|
-			@data_hash << {
-				course_name: section.course_name,
-				s1_standards: @student.standards_per_semester_per_section("S1",section).sort.to_h,
-				s2_standards: @student.standards_per_semester_per_section("S2",section).sort.to_h,
-				s1_homs: @student.homs_per_semester_per_section("S1", section).sort.to_h,
-				s2_homs: @student.homs_per_semester_per_section("S2", section).sort.to_h,
+
+		@student.courses.uniq.each do |course|
+			course_hash = {
+				course_name: course.course_name
 			}
+			course_hash[:s1_standards] = @student.standards_per_course_per_semester(course, "S1")
+			course_hash[:s2_standards] = @student.standards_per_course_per_semester(course, "S2")
+			course_hash[:s1_homs] = @student.homs_per_course_per_semester(course, "S1")
+			course_hash[:s2_homs] = @student.homs_per_course_per_semester(course, "S2")
+			@data_hash << course_hash
 		end
 	end
 

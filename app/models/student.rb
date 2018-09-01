@@ -23,24 +23,37 @@ class Student < ActiveRecord::Base
 		self.grades.where("semester = ? AND section_id = ?", semester, section.id);
 	end
 
-	def homs_per_semester_per_section(semester, section)
-		arr = {}
-		self.grades_per_semester_per_section(semester, section).each do |grade|
-			if grade.standard.hom?
-				arr[grade.standard.standard_name] = grade.grade
-			end
-		end
-		arr
+  def grades_per_course_per_semester(course, semester)
+  	section = self.sections.where("semester = ? AND course_id = ?", semester, course.id)[0] 
+  	if section
+  		section.grades.where("student_id = ?", self.id)
+  	end
 	end
 
-	def standards_per_semester_per_section(semester, section)
-		arr = {}
-		self.grades_per_semester_per_section(semester, section).each do |grade|
-			if !grade.standard.hom?
-				arr[grade.standard.standard_name] = grade.grade
+	def homs_per_course_per_semester(course, semester)
+		temp_hash = {}
+		grades = self.grades_per_course_per_semester(course, semester)
+		if grades
+			grades.each do |grade|
+				if grade.standard.hom?
+					temp_hash[grade.standard.standard_name] = grade.grade
+				end
 			end
 		end
-		arr
+		temp_hash.sort.to_h
+	end
+
+	def standards_per_course_per_semester(course, semester)
+		temp_hash = {}
+		grades = self.grades_per_course_per_semester(course, semester)
+		if grades
+			grades.each do |grade|
+				if !grade.standard.hom?
+					temp_hash[grade.standard.standard_name] = grade.grade
+				end
+			end
+		end
+		temp_hash.sort.to_h
 	end
 
 end
