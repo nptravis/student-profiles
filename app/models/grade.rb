@@ -1,6 +1,7 @@
 class Grade < ActiveRecord::Base
 	belongs_to :standard
 	belongs_to :student
-	validates :standard_id, :student_id, :grade, presence: true
-
+	belongs_to :section
+	validates :standard_id, :section_id, :student_id, :grade, :semester, presence: true
+	
 end

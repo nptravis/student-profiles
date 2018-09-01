@@ -28,9 +28,9 @@ div.sidebar-container {
 	flex: 0 0 10%;
 	height: 100%;
 	min-width: 100px;
-  z-index: 1;
-  overflow-x: hidden;
-  background-color: #555;
+	z-index: 1;
+	overflow-x: hidden;
+	background-color: #555;
 
 }
 
@@ -43,7 +43,7 @@ div.sidebarNav {
 
 }
 
-div.sidebar a {
+div.sidebar-container a {
 	text-decoration: none;
 	margin-left: 0px;
 	color: coral;

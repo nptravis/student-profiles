@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180831061035) do
+ActiveRecord::Schema.define(version: 20180831095034) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20180831061035) do
     t.integer "student_id"
     t.integer "standard_id"
     t.string "grade"
+    t.string "semester"
+    t.integer "section_id"
   end
 
   create_table "schedule_data", force: :cascade do |t|

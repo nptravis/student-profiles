@@ -57,7 +57,9 @@ data_hash["items"].each do |set|
 		grade = Grade.new(
 			standard_id: standard.id, 
 			student_id: student.id, 
-			grade: set["standardgrade"] 
+			section_id: section.id,
+			grade: set["standardgrade"] ,
+			semester: set["storecode"]
 			)
 
 		case grade.grade
