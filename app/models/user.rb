@@ -12,4 +12,5 @@ class User < ApplicationRecord
 			user.image_url = auth_hash["info"]["image"]
 		end
 	end
+
 end

@@ -17,7 +17,7 @@ img.profile-image {
 	margin-bottom: 0px;
 }
 
-div#user-courses {
+div#user-sections {
 	display: flex;
 	justify-content: flex-start;
 	flex-direction: row;
@@ -25,11 +25,16 @@ div#user-courses {
 
 }
 
-div.courseDiv {
+div.sectionDiv {
 	flex: 0 1 auto;
 	width: 150px;
 	min-height: 200px;
 	margin: 4px 4px 4px 10px;
 	border: 1px red solid;
 	background-color: #FFE0E6;
+}
+
+canvas.student-chart {
+	max-width: 200px;
+	max-height: 200px;
 }

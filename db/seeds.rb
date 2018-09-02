@@ -21,8 +21,7 @@ data_hash["items"].each do |set|
 
 	teacher = Teacher.find_or_initialize_by(
 		email: set["email_addr"],
-		name: set["lastfirst_1"]
-		)
+		username: set["lastfirst_1"])
 
 	if student.save && standard.save && course.save && teacher.save
 

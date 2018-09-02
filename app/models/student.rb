@@ -18,6 +18,10 @@ class Student < ActiveRecord::Base
 	  	end
 	end
 
+	def grades_per_section(section)
+		self.grades.where("section_id = ?", section.id)
+	end
+
 	# YESSSSSS!!!!!!SSSSSSS!!!!!!!! I think this is it.
 	def grades_per_semester_per_section(semester, section)
 		self.grades.where("semester = ? AND section_id = ?", semester, section.id);

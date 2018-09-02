@@ -11,9 +11,15 @@ Rails.application.routes.draw do
 
   get '/auth/google_oauth2/callback', to: 'session#create'
 
+  get '/sections/:id/students', to: 'sections#students'
+
+  get '/sections/:section_id/students/:id', to: 'students#show'
+
+  get '/teachers/:id/students', to: 'teachers#students'
 
   resources :users do
     resources :courses
+    resources :sections
   end
   
   resources :students do 
