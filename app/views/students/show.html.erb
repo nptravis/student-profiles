@@ -2,10 +2,10 @@
 <div class="student-container">
 	<h1><%= @student.lastfirst %> - <%= @student.student_number %> - Grade <%= @student.gradelevel %> </h1>
 
-<div class="flex-container">
+<div class="student-show-container">
 
 		<!-- data visualizations -->
-		<div class="graphs-container clearfix">
+		<div class="student-graphs-container">
 			<%= link_to "Enter Grades", new_student_grade_path(@student) %>
 			<div class="graph-grid row">
 				<% @data_hash.each.with_index(1) do |course, i| %>
@@ -24,7 +24,7 @@
 		<!-- Comments form and comment stream -->
 
 
-		<div class="comments col clearfix" id="comments">
+		<div class="student-comments-container" id="comments">
 			<%= form_tag student_comments_path(@student) do %>
 				<%= label_tag "Post a comment" %> <br>
 			  	<%= text_area_tag 'comment[content]' %> <br>
@@ -43,3 +43,9 @@
 </div>
 <%= content_tag :div, class: "student_list", id: "studentshow", data: {student: @data_hash} do %>
 <%end%>
+
+<script type="text/javascript">
+$(function(){
+	
+})
+</script>
