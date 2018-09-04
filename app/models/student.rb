@@ -60,4 +60,8 @@ class Student < ActiveRecord::Base
 		temp_hash.sort.to_h
 	end
 
+	def sections_current
+		self.sections.where("termid >= ?", 2800);
+	end
+
 end

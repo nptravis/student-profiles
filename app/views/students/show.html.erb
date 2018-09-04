@@ -7,6 +7,7 @@
 		<!-- data visualizations -->
 		<div class="student-graphs-container">
 			<%= link_to "Enter Grades", new_student_grade_path(@student) %>
+			<a href='/students/<%=@student.id%>/schedule'>See Bell Schedule</a>
 			<div class="graph-grid row">
 				<% @data_hash.each.with_index(1) do |course, i| %>
 					<% if course.present? %>

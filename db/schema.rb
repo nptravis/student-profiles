@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180901050143) do
+ActiveRecord::Schema.define(version: 20180903033608) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20180901050143) do
     t.string "grade"
     t.string "semester"
     t.integer "section_id"
+    t.integer "termid"
   end
 
   create_table "schedule_data", force: :cascade do |t|
@@ -49,6 +50,9 @@ ActiveRecord::Schema.define(version: 20180901050143) do
     t.string "course_name"
     t.string "semester"
     t.string "section_number"
+    t.string "expression"
+    t.integer "dcid"
+    t.integer "termid"
   end
 
   create_table "standards", force: :cascade do |t|

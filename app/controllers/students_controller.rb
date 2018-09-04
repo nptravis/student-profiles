@@ -50,6 +50,14 @@ class StudentsController < ApplicationController
 		@student = Student.new
 	end
 
+	def schedule
+		@student = Student.find(params[:id])
+		respond_to do |format|
+			format.html
+			format.js {render json: @student.to_json(methods: :sections_current)}
+		end
+	end 
+
 
 
 	def student_params

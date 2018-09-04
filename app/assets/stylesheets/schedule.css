@@ -1,0 +1,23 @@
+th.scheduleHeader {
+	background-color: #98B9D5;
+}
+
+td.scheduleTimes {
+	background-color: #98B9D5;
+}
+
+table tr td th {
+	border: 1px black solid;
+}
+
+td.schoolDay {
+	border: 1px solid pink;
+}
+
+div.course-block {
+	background-color: blue;
+}
+
+td.section-box {
+	background-color: grey;
+}

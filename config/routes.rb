@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get '/teachers/:id/students', to: 'teachers#students'
 
+  get '/students/:id/schedule', to: 'students#schedule'
+
   resources :users do
     resources :courses
     resources :sections
