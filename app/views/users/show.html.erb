@@ -28,6 +28,7 @@ function buildChart(grades){
 		console.log("Grades are: ", grades);
 
 	  let ctx = document.getElementById("student-chart").getContext('2d');
+	  $('.student-chart').html('')
 
 	  let standard_grade_array = grades.map(function(grade){
 	  		return Object.values(grade)
