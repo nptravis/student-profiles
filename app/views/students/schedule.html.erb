@@ -1,0 +1,150 @@
+<h1 class="student-header" data-studentid="<%=@student.id%>" ><%= @student.lastfirst %> - <%= @student.student_number %> - Grade <%= @student.gradelevel %> </h1>
+
+
+
+<table>
+	<tbody>
+		<tr>
+			<th class="scheduleHeader"></th>
+			<th class="scheduleHeader"></th>
+			<th class="scheduleHeader">P1</th>
+			<th class="scheduleHeader">P2</th>
+			<th class="scheduleHeader">P3</th>
+			<th class="scheduleHeader">P4</th>
+			<th class="scheduleHeader">P5</th>
+			<th class="scheduleHeader">FB</th>
+			<th class="scheduleHeader">ADV</th>
+		</tr>
+		<tr class="rowA">
+			<th class="scheduleTimes" rowspan='2'>A</th>
+			<td class="semesterOne">S1</td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+		</tr>
+		<tr>
+			<td class="semesterTwo">S2</td>
+		</tr>
+		<tr class="rowB">
+			<th class="scheduleTimes" rowspan='2'>B</th>
+			<td class="semesterOne">S1</td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+		</tr>
+		<tr>
+			<td class="semesterTwo">S2</td>
+		</tr>
+		<tr class="rowC">
+			<th class="scheduleTimes" rowspan='2'>C</th>
+			<td class="semesterOne">S1</td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+		</tr>
+		<tr>
+			<td class="semesterTwo">S2</td>
+		</tr>
+		<tr class="rowD">
+			<th class="scheduleTimes" rowspan='2'>D</th>
+			<td class="semesterOne">S1</td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+			<td class="section-box"></td>
+		</tr>
+		<tr>
+			<td class="semesterTwo">S2</td>
+		</tr>
+		
+	</tbody>
+</table>
+
+<script type="text/javascript">
+$(function(){
+	// set student id
+	let studentId = $('h1.student-header').attr("data-studentid");
+
+	let squares = $('.section-box')
+	let possibleDays = {"A": 0, "B": 6, "C": 12, "D": 18}
+	let randomColor = "hsl(" + 360 * Math.random() + ',' +
+             (25 + 70 * Math.random()) + '%,' + 
+             (85 + 10 * Math.random()) + '%)';
+	
+
+
+	// get JSON data for all current sections for student
+	$.getJSON(`/students/${studentId}/schedule`, function(response){
+		console.log("request sent")
+	}).done(function(response){
+
+		let sections = response.sections_current;
+
+		for(let i = 0; i < sections.length;i++){
+			randomColor = "hsl(" + 360 * Math.random() + ',' +
+             (25 + 70 * Math.random()) + '%,' + 
+             (85 + 10 * Math.random()) + '%)';
+
+			let exArray = sections[i].expression.split(' ');
+
+			for(let t = 0; t < exArray.length; t++){
+
+				let period = exArray[t].match(/\d+/g)
+				let days = exArray[t].match(/[A-D]/g)
+				let multiplier = 0;
+
+				if (exArray[t].match(/[-]/g)){
+					// figure out how to deal with dashes
+				} else {
+					days.forEach(function(day){
+						multiplier = possibleDays[day]
+						squares[parseInt(period)+multiplier].innerHTML = sections[i].course_name;
+						$(squares[parseInt(period)+multiplier]).css('background-color', randomColor);
+						
+					})
+						
+				}
+			}
+		}
+			
+
+
+			// let multiplier = 0;
+
+			// switch(exArray[i]) {
+		 //    case "B":
+		 //        multiplier = 6;
+		 //        break;
+	  //       case "C":
+	  //       	multiplier = 12;
+	  //       	break;
+	  //       case "D":
+	  //       	multiplier = 18;
+	  //       	break;
+		 //    default:
+		 //        multiplier = 0;
+			// }
+			// squares[exArray[0] + multiplier].innerHTML = sections[i].course_name
+		// }
+
+	});
+
+	$('.course-block').css('background-color', randomColor);
+	
+})
+</script>

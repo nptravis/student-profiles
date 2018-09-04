@@ -1,7 +1,7 @@
 
-# ///////// Simple data
-file = File.read('data/all-final-standards.json')
-# file = File.read('data/data.json')
+# ///////// Historical Grades Data //////////////////////////////////////////////////////////////////////
+file = File.read('data/all-final-standards-17_18-to-now.json')
+
 data_hash = JSON.parse(file)
 i = 0;
 data_hash["items"].each do |set|
@@ -31,7 +31,10 @@ data_hash["items"].each do |set|
 			course_number: set["course_number"],
 			course_name: set["course_name"],
 			semester: set["storecode"],
-			section_number: set["section_number"]
+			section_number: set["section_number"],
+			expression: set["expression"],
+			dcid: set["sectionsdcid"],
+			termid: set["termid"]
 			)
 
 		section.save
@@ -45,7 +48,7 @@ data_hash["items"].each do |set|
 			course_id: course.id,
 			standard_id: standard.id
 			)
-		
+
 	else
 		puts "ERROR: something other than section didn't save"
 	end
@@ -57,8 +60,9 @@ data_hash["items"].each do |set|
 			standard_id: standard.id, 
 			student_id: student.id, 
 			section_id: section.id,
-			grade: set["standardgrade"] ,
-			semester: set["storecode"]
+			grade: set["standardgrade"],
+			semester: set["storecode"],
+			termid: set["termid"]
 			)
 
 		case grade.grade
@@ -89,3 +93,6 @@ data_hash["items"].each do |set|
 	end
 
 end
+# End Historical Grades Data /////////////////////////////////////////////////////////////////////////////
+
+# Begin Current Data /////////////////////////////////////////////////////////////////////////////////////
