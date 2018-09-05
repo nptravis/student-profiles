@@ -6,7 +6,11 @@ td.scheduleTimes {
 	background-color: #98B9D5;
 }
 
-table tr td th {
+table tr td {
+	border: 1px black solid;
+}
+
+th {
 	border: 1px black solid;
 }
 

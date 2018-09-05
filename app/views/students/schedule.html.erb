@@ -81,16 +81,14 @@ $(function(){
 	let studentId = $('h1.student-header').attr("data-studentid");
 
 	let squares = $('.section-box')
-	let possibleDays = {"A": 0, "B": 6, "C": 12, "D": 18}
+	let possibleDays = {"A": -1, "B": 6, "C": 13, "D": 20}
 	let randomColor = "hsl(" + 360 * Math.random() + ',' +
              (25 + 70 * Math.random()) + '%,' + 
              (85 + 10 * Math.random()) + '%)';
 	
-
-
 	// get JSON data for all current sections for student
 	$.getJSON(`/students/${studentId}/schedule`, function(response){
-		console.log("request sent")
+
 	}).done(function(response){
 
 		let sections = response.sections_current;
@@ -109,42 +107,42 @@ $(function(){
 				let multiplier = 0;
 
 				if (exArray[t].match(/[-]/g)){
-					// figure out how to deal with dashes
-				} else {
-					days.forEach(function(day){
-						multiplier = possibleDays[day]
-						squares[parseInt(period)+multiplier].innerHTML = sections[i].course_name;
-						$(squares[parseInt(period)+multiplier]).css('background-color', randomColor);
+					let set =["A", "B", "C", "D"]
+					let dashDays = exArray[t].match(/\w-\w/g)[0].match(/\w/g);
+					let otherDay = exArray[t].match(/\(\w,|,\w\)/g)[0].match(/\w/g);
+
+					switch (set.indexOf(dashDays[1]) - set.indexOf(dashDays[0])){
+						case 1:
+							days = [...dashDays, ...otherDay];
+							break;
+						case 2:
+							days = [...dashDays, ...otherDay, set[set.indexOf(dashDays[0]+1)]];
+							break;
+						case 3:
+							days = set;
+							break;
+					}
+				} 
+
+				days.forEach(function(day){
+					let html = 
+					"<p>" + sections[i].course_name + "</p>" +
+					"<small>Section: " + sections[i].section_number + "</small>";
+
+					multiplier = possibleDays[day];
+
+					squares[parseInt(period)+multiplier].innerHTML = html;
+
+					$(squares[parseInt(period)+multiplier]).css('background-color', randomColor);
+					
+				})
+
+				console.log(sections[i].course_name, sections[i].expression, exArray, days)
 						
-					})
-						
-				}
 			}
 		}
-			
-
-
-			// let multiplier = 0;
-
-			// switch(exArray[i]) {
-		 //    case "B":
-		 //        multiplier = 6;
-		 //        break;
-	  //       case "C":
-	  //       	multiplier = 12;
-	  //       	break;
-	  //       case "D":
-	  //       	multiplier = 18;
-	  //       	break;
-		 //    default:
-		 //        multiplier = 0;
-			// }
-			// squares[exArray[0] + multiplier].innerHTML = sections[i].course_name
-		// }
 
 	});
-
-	$('.course-block').css('background-color', randomColor);
 	
 })
 </script>
