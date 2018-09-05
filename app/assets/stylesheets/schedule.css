@@ -2,7 +2,7 @@ th.scheduleHeader {
 	background-color: #98B9D5;
 }
 
-td.scheduleTimes {
+th.scheduleTimes {
 	background-color: #98B9D5;
 }
 
@@ -24,4 +24,16 @@ div.course-block {
 
 td.section-box {
 	background-color: grey;
+}
+
+td.semester {
+	background-color: #bfbdbd;
+}
+
+td p {
+	text-align: center;
+}
+
+td small {
+	text-align: center;
 }

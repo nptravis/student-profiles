@@ -1,107 +1,108 @@
 <h1 class="student-header" data-studentid="<%=@student.id%>" ><%= @student.lastfirst %> - <%= @student.student_number %> - Grade <%= @student.gradelevel %> </h1>
 
-
-
-<table>
-	<tbody>
-		<tr>
-			<th class="scheduleHeader"></th>
-			<th class="scheduleHeader"></th>
-			<th class="scheduleHeader">P1</th>
-			<th class="scheduleHeader">P2</th>
-			<th class="scheduleHeader">P3</th>
-			<th class="scheduleHeader">P4</th>
-			<th class="scheduleHeader">P5</th>
-			<th class="scheduleHeader">FB</th>
-			<th class="scheduleHeader">ADV</th>
-		</tr>
-		<tr class="rowA">
-			<th class="scheduleTimes" rowspan='2'>A</th>
-			<td class="semesterOne">S1</td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-		</tr>
-		<tr>
-			<td class="semesterTwo">S2</td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-		</tr>
-		<tr class="rowB">
-			<th class="scheduleTimes" rowspan='2'>B</th>
-			<td class="semesterOne">S1</td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-		</tr>
-		<tr>
-			<td class="semesterTwo">S2</td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-		</tr>
-		<tr class="rowC">
-			<th class="scheduleTimes" rowspan='2'>C</th>
-			<td class="semesterOne">S1</td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-		</tr>
-		<tr>
-			<td class="semesterTwo">S2</td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-		</tr>
-		<tr class="rowD">
-			<th class="scheduleTimes" rowspan='2'>D</th>
-			<td class="semesterOne">S1</td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-			<td class="section-box"></td>
-		</tr>
-		<tr>
-			<td class="semesterTwo">S2</td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-			<td class="section-box-s2"></td>
-		</tr>
-		
-	</tbody>
-</table>
+<h2>Schedule Matrix</h2>
+<div class="schedule-container">
+	<table align="center">
+		<tbody>
+			<tr>
+				<th class="scheduleHeader"></th>
+				<th class="scheduleHeader"></th>
+				<th class="scheduleHeader">P1</th>
+				<th class="scheduleHeader">P2</th>
+				<th class="scheduleHeader">P3</th>
+				<th class="scheduleHeader">P4</th>
+				<th class="scheduleHeader">P5</th>
+				<th class="scheduleHeader">FB</th>
+				<th class="scheduleHeader">ADV</th>
+			</tr>
+			<tr class="rowA">
+				<th class="scheduleTimes" rowspan='2'>A</th>
+				<td class="semester">S1</td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+			</tr>
+			<tr>
+				<td class="semester">S2</td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+			</tr>
+			<tr class="rowB">
+				<th class="scheduleTimes" rowspan='2'>B</th>
+				<td class="semester">S1</td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+			</tr>
+			<tr>
+				<td class="semester">S2</td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+			</tr>
+			<tr class="rowC">
+				<th class="scheduleTimes" rowspan='2'>C</th>
+				<td class="semester">S1</td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+			</tr>
+			<tr>
+				<td class="semester">S2</td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+			</tr>
+			<tr class="rowD">
+				<th class="scheduleTimes" rowspan='2'>D</th>
+				<td class="semester">S1</td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+				<td class="section-box"></td>
+			</tr>
+			<tr>
+				<td class="semester">S2</td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+				<td class="section-box-s2"></td>
+			</tr>
+			
+		</tbody>
+	</table>
+</div>
 
 <script type="text/javascript">
 $(function(){
@@ -175,7 +176,7 @@ $(function(){
 					let html = 
 					"<p>" + sections[i].course_name + "</p>"+
 					"<p>" + sections[i].course_number + "." + sections[i].section_number + "</p>" +
-					"<small>" + sections[i].room + "</small>";
+					"<small>Room: " + sections[i].room + "</small>";
 
 					multiplier = possibleDays[day];
 

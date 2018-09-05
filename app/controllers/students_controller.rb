@@ -58,6 +58,10 @@ class StudentsController < ApplicationController
 		end
 	end 
 
+	def bell_schedule
+		@student = Student.find(params[:id])
+	end
+
 
 
 	def student_params
