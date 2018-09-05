@@ -31,10 +31,10 @@ class StudentsController < ApplicationController
 			course_hash = {
 				course_name: course.course_name
 			}
-			course_hash[:s1_standards] = @student.standards_per_course_per_semester(course, "S1")
-			course_hash[:s2_standards] = @student.standards_per_course_per_semester(course, "S2")
-			course_hash[:s1_homs] = @student.homs_per_course_per_semester(course, "S1")
-			course_hash[:s2_homs] = @student.homs_per_course_per_semester(course, "S2")
+			course_hash[:s1_standards] = @student.standards_per_course_per_termid(course, 2701)
+			course_hash[:s2_standards] = @student.standards_per_course_per_termid(course, 2702)
+			course_hash[:s1_homs] = @student.homs_per_course_per_termid(course, 2701)
+			course_hash[:s2_homs] = @student.homs_per_course_per_termid(course, 2702)
 			@data_hash << course_hash
 		end
 

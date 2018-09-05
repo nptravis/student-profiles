@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180903033608) do
+ActiveRecord::Schema.define(version: 20180905055235) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -26,13 +26,13 @@ ActiveRecord::Schema.define(version: 20180903033608) do
   create_table "courses", force: :cascade do |t|
     t.string "course_name"
     t.string "course_number"
+    t.integer "dcid"
   end
 
   create_table "grades", force: :cascade do |t|
     t.integer "student_id"
     t.integer "standard_id"
     t.string "grade"
-    t.string "semester"
     t.integer "section_id"
     t.integer "termid"
   end
@@ -48,16 +48,17 @@ ActiveRecord::Schema.define(version: 20180903033608) do
     t.integer "teacher_id"
     t.string "course_number"
     t.string "course_name"
-    t.string "semester"
     t.string "section_number"
     t.string "expression"
     t.integer "dcid"
     t.integer "termid"
+    t.string "room"
   end
 
   create_table "standards", force: :cascade do |t|
     t.string "standard_name"
     t.string "identifier"
+    t.integer "dcid"
   end
 
   create_table "student_sections", force: :cascade do |t|
@@ -69,11 +70,14 @@ ActiveRecord::Schema.define(version: 20180903033608) do
     t.string "lastfirst"
     t.string "student_number"
     t.string "gradelevel"
+    t.integer "dcid"
   end
 
   create_table "teachers", force: :cascade do |t|
     t.string "email"
-    t.string "username"
+    t.string "lastfirst"
+    t.integer "dcid"
+    t.string "teacher_number"
   end
 
   create_table "users", force: :cascade do |t|

@@ -28,6 +28,13 @@
 		</tr>
 		<tr>
 			<td class="semesterTwo">S2</td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
 		</tr>
 		<tr class="rowB">
 			<th class="scheduleTimes" rowspan='2'>B</th>
@@ -42,6 +49,13 @@
 		</tr>
 		<tr>
 			<td class="semesterTwo">S2</td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
 		</tr>
 		<tr class="rowC">
 			<th class="scheduleTimes" rowspan='2'>C</th>
@@ -56,6 +70,13 @@
 		</tr>
 		<tr>
 			<td class="semesterTwo">S2</td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
 		</tr>
 		<tr class="rowD">
 			<th class="scheduleTimes" rowspan='2'>D</th>
@@ -70,6 +91,13 @@
 		</tr>
 		<tr>
 			<td class="semesterTwo">S2</td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
+			<td class="section-box-s2"></td>
 		</tr>
 		
 	</tbody>
@@ -80,8 +108,10 @@ $(function(){
 	// set student id
 	let studentId = $('h1.student-header').attr("data-studentid");
 
-	let squares = $('.section-box')
+	let squares = $('.section-box');
+	let squares_s2 = $('.section-box-s2');
 	let possibleDays = {"A": -1, "B": 6, "C": 13, "D": 20}
+
 	let randomColor = "hsl(" + 360 * Math.random() + ',' +
              (25 + 70 * Math.random()) + '%,' + 
              (85 + 10 * Math.random()) + '%)';
@@ -109,9 +139,24 @@ $(function(){
 				if (exArray[t].match(/[-]/g)){
 					let set =["A", "B", "C", "D"]
 					let dashDays = exArray[t].match(/\w-\w/g)[0].match(/\w/g);
-					let otherDay = exArray[t].match(/\(\w,|,\w\)/g)[0].match(/\w/g);
+					let otherDay = exArray[t].match(/\(\w,|,\w\)/g)
+					
+					if (otherDay === null){
+						switch (set.indexOf(dashDays[1]) - set.indexOf(dashDays[0])){
+						case 1:
+							days = dashDays;
+							break;
+						case 2:
+							days = [...dashDays, set[set.indexOf(dashDays[0]+1)]];
+							break;
+						case 3:
+							days = set
+							break;
+						}
+					} else {
+						otherDay = otherDay[0].match(/\w/g);
 
-					switch (set.indexOf(dashDays[1]) - set.indexOf(dashDays[0])){
+						switch (set.indexOf(dashDays[1]) - set.indexOf(dashDays[0])){
 						case 1:
 							days = [...dashDays, ...otherDay];
 							break;
@@ -119,22 +164,38 @@ $(function(){
 							days = [...dashDays, ...otherDay, set[set.indexOf(dashDays[0]+1)]];
 							break;
 						case 3:
-							days = set;
+							days = set
 							break;
+						}
 					}
+
 				} 
 
 				days.forEach(function(day){
 					let html = 
-					"<p>" + sections[i].course_name + "</p>" +
-					"<small>Section: " + sections[i].section_number + "</small>";
+					"<p>" + sections[i].course_name + "</p>"+
+					"<p>" + sections[i].course_number + "." + sections[i].section_number + "</p>" +
+					"<small>" + sections[i].room + "</small>";
 
 					multiplier = possibleDays[day];
 
-					squares[parseInt(period)+multiplier].innerHTML = html;
+					if (sections[i].termid === 2802){
 
-					$(squares[parseInt(period)+multiplier]).css('background-color', randomColor);
-					
+						squares_s2[parseInt(period)+multiplier].innerHTML = html;
+						$(squares_s2[parseInt(period)+multiplier]).css('background-color', randomColor);
+
+					} else {
+						
+						squares[parseInt(period)+multiplier].innerHTML = html;
+						$(squares[parseInt(period)+multiplier]).css('background-color', randomColor);
+					}
+
+					if (sections[i].termid === 2800){
+						$(squares[parseInt(period)+multiplier]).attr('rowspan', "2");
+						$(squares_s2[parseInt(period)+multiplier]).remove()
+
+					}
+
 				})
 
 				console.log(sections[i].course_name, sections[i].expression, exArray, days)

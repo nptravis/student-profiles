@@ -7,7 +7,7 @@ class Student < ActiveRecord::Base
 	has_many :teachers, through: :sections
 	has_many :courses, through: :sections
 	has_many :standards, through: :grades
-	validates :lastfirst, :student_number, :gradelevel, presence: true
+	validates :lastfirst, :student_number, :gradelevel, :dcid, presence: true
 	validates_uniqueness_of :student_number
 
 	def self.search(word)
@@ -22,21 +22,21 @@ class Student < ActiveRecord::Base
 		self.grades.where("section_id = ?", section.id)
 	end
 
-	# YESSSSSS!!!!!!SSSSSSS!!!!!!!! I think this is it.
-	def grades_per_semester_per_section(semester, section)
-		self.grades.where("semester = ? AND section_id = ?", semester, section.id);
+	
+	def grades_per_termid_per_section(termid, section)
+		self.grades.where("termid = ? AND section_id = ?", termid, section.id);
 	end
 
-  def grades_per_course_per_semester(course, semester)
-  	section = self.sections.where("semester = ? AND course_id = ?", semester, course.id)[0] 
-  	if section
-  		section.grades.where("student_id = ?", self.id)
-  	end
+    def grades_per_course_per_termid(course, termid)
+	  	section = self.sections.where("termid = ? AND course_id = ?", termid, course.id)[0] 
+	  	if section
+	  		section.grades.where("student_id = ?", self.id)
+	  	end
 	end
 
-	def homs_per_course_per_semester(course, semester)
+	def homs_per_course_per_termid(course, termid)
 		temp_hash = {}
-		grades = self.grades_per_course_per_semester(course, semester)
+		grades = self.grades_per_course_per_termid(course, termid)
 		if grades
 			grades.each do |grade|
 				if grade.standard.hom?
@@ -47,9 +47,9 @@ class Student < ActiveRecord::Base
 		temp_hash.sort.to_h
 	end
 
-	def standards_per_course_per_semester(course, semester)
+	def standards_per_course_per_termid(course, termid)
 		temp_hash = {}
-		grades = self.grades_per_course_per_semester(course, semester)
+		grades = self.grades_per_course_per_termid(course, termid)
 		if grades
 			grades.each do |grade|
 				if !grade.standard.hom?
