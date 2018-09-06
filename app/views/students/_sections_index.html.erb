@@ -1,0 +1,26 @@
+<div class="column-container">
+
+	<div class="left-column">
+		<h2>Sections from Year 17-18</h2>
+		<ul>
+		<% @sections.each do |section| %>
+			<% if section.termid < 2800 %>
+					<li><%= link_to section.course_name, section_path(section) %> - <small><%=section.course_number%>.<%=section.section_number%></small></li>
+			<% end %>
+		<% end %>
+		</ul>
+	</div>
+
+	<div class="right-column">
+		<h2>Current Sections</h2>
+		<ul>
+		<% @sections.each do |section| %>
+			<% if section.termid >= 2800 %>
+					<li><%= link_to section.course_name, section_path(section) %> - <small><%=section.course_number%>.<%=section.section_number%></small></li>
+			<% end %>
+		<% end %>
+		</ul>
+	</div>
+
+</div>
+

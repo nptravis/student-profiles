@@ -20,7 +20,7 @@
 			<li><%= link_to "Enter Grades", new_student_grade_path(@student) %></li>
 			<li><a class="schedule-matrix-link" href='#'>See Schedule Matrix</a></li>
 			<li><a class="schedule-bell-link" href='#'>See Bell Schedule</a></li>
-			<li><a class="" href='#'>See Courses</a></li>
+			<li><a class="student-sections-link" href='#'>See Sections</a></li>
 			<li><a class="student-map-link" href='#'>See Map Data</a></li>
 		</ul>
 	</div>
@@ -55,6 +55,14 @@ $(function(){
 			$('.student-data-container').html(response)
 		})
 	})
+
+	$('.student-sections-link').on("click", function(event){
+		event.preventDefault();
+		$.get(`/students/${student_id}/sections`, function(response){
+			$('.student-data-container').html(response)
+		})
+	})
+
 
 });
 	

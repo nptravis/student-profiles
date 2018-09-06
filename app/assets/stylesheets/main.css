@@ -50,3 +50,9 @@ div.sidebar-container a {
 div.sidebarNav button {
 	margin: 10px;
 }
+
+div.column-container {
+	display: flex;
+	flex-direction: row;
+}
+

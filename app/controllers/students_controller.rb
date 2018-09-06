@@ -64,6 +64,12 @@ class StudentsController < ApplicationController
 		@student = Student.find(params[:id])
 	end
 
+	def sections
+		@student = Student.find(params[:id])
+		@sections = @student.sections
+		render partial: 'sections_index'
+	end
+
 
 	def student_params
    	params.require(:student).permit(:search, :lastfirst, :student_number, :gradelevel)
