@@ -12,7 +12,6 @@ class SectionsController < ApplicationController
 
 	def show
 		@section = Section.find(params[:id])
-		render json: @section.to_json(include:)
 	end
 
 	def students

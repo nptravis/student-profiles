@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get '/students/:id/bell_schedule', to: 'students#bell_schedule'
   get '/students/:id/map', to: 'students#map'
   get '/students/:id/sections', to: 'students#sections'
+  get '/students/:id/sections/:section_id', to: 'students#section'
 
   resources :users do
     resources :courses

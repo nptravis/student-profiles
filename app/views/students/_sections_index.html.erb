@@ -5,7 +5,7 @@
 		<ul>
 		<% @sections.each do |section| %>
 			<% if section.termid < 2800 %>
-					<li><%= link_to section.course_name, section_path(section) %> - <small><%=section.course_number%>.<%=section.section_number%></small></li>
+					<li><%= link_to section.course_name, section_path(section), id: "#{section.id}", class: "student-section-link"%> - <small><%=section.course_number%>.<%=section.section_number%></small></li>
 			<% end %>
 		<% end %>
 		</ul>
@@ -16,7 +16,7 @@
 		<ul>
 		<% @sections.each do |section| %>
 			<% if section.termid >= 2800 %>
-					<li><%= link_to section.course_name, section_path(section) %> - <small><%=section.course_number%>.<%=section.section_number%></small></li>
+					<li><%= link_to section.course_name, section_path(section), id: "#{section.id}", class: "student-section-link"%> - <small><%=section.course_number%>.<%=section.section_number%></small></li>
 			<% end %>
 		<% end %>
 		</ul>
