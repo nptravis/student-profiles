@@ -1,12 +1,4 @@
-<div class="student-show-container">
-
-	<div class="student-nav-container">
-		<ul>
-			<li><%= link_to "Enter Grades", new_student_grade_path(@student) %></li>
-			<li><a href='/students/<%=@student.id%>/schedule'>See Schedule Matrix</a></li>
-			<li><a href='/students/<%=@student.id%>/bell_schedule'>See Bell Schedule</a></li>
-		</ul>
-	</div>
+<div class="student-show-container" data="<%=@student.id%>">
 
 	<!-- data visualizations -->
 	<div class="student-info-container">
@@ -23,13 +15,21 @@
 		</div>
 	</div>
 
-	<div class="student-map-container">
+	<div class="student-nav-container">
+		<ul>
+			<li><%= link_to "Enter Grades", new_student_grade_path(@student) %></li>
+			<li><a class="schedule-matrix-link" href='#'>See Schedule Matrix</a></li>
+			<li><a class="schedule-bell-link" href='#'>See Bell Schedule</a></li>
+			<li><a class="" href='#'>See Courses</a></li>
+			<li><a class="student-map-link" href='#'>See Map Data</a></li>
+		</ul>
+	</div>
+
+	<div class="student-data-container">
 		<canvas id="map-chart"></canvas>
 	</div>
 
 		<!-- Comments form and comment stream -->
-
-
 <!-- 		
 </div>
 <%#= content_tag :div, class: "student_list", id: "studentshow", data: {student: @data_hash} do %>
@@ -38,6 +38,25 @@
 </div>
 
 <script type="text/javascript">
+$(function(){
+	let student_id = $('.student-show-container').attr("data");
+
+	$('.schedule-matrix-link').on("click", function(event){
+		event.preventDefault()
+		
+		$.get(`/students/${student_id}/schedule`, function(response){
+			$('.student-data-container').html(response)
+		})
+	});
+
+	$('.student-map-link').on("click", function(event){
+		event.preventDefault();
+		$.get(`/students/${student_id}/map`, function(response){
+			$('.student-data-container').html(response)
+		})
+	})
+
+});
 	
 
 

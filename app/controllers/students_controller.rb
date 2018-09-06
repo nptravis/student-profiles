@@ -50,10 +50,15 @@ class StudentsController < ApplicationController
 	def schedule
 		@student = Student.find(params[:id])
 		respond_to do |format|
-			format.html
+			format.html {render partial: 'schedule_matrix'}
 			format.js {render json: @student.to_json(methods: :sections_current)}
 		end
 	end 
+
+	def map
+		@student = Student.find(params[:id])
+		render partial: 'map'
+	end
 
 	def bell_schedule
 		@student = Student.find(params[:id])

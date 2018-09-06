@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/students/:id/schedule', to: 'students#schedule'
 
   get '/students/:id/bell_schedule', to: 'students#bell_schedule'
+  get '/students/:id/map', to: 'students#map'
 
   resources :users do
     resources :courses

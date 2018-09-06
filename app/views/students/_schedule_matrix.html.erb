@@ -1,6 +1,4 @@
-<h1 class="student-header" data-studentid="<%=@student.id%>" ><%= @student.lastfirst %> - <%= @student.student_number %> - Grade <%= @student.gradelevel %> </h1>
-
-<h2>Schedule Matrix</h2>
+<span class="student-id" data="<%=@student.id%>"></span>
 <div class="schedule-container">
 	<table align="center">
 		<tbody>
@@ -107,7 +105,7 @@
 <script type="text/javascript">
 $(function(){
 	// set student id
-	let studentId = $('h1.student-header').attr("data-studentid");
+	let studentId = $('span.student-id').attr("data");
 
 	let squares = $('.section-box');
 	let squares_s2 = $('.section-box-s2');
@@ -198,8 +196,6 @@ $(function(){
 					}
 
 				})
-
-				console.log(sections[i].course_name, sections[i].expression, exArray, days)
 						
 			}
 		}

@@ -72,3 +72,4 @@ data/
 # Secrets Files #
 ######################
 secrets.yml
+.env
