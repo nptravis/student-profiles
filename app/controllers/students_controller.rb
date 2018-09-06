@@ -3,43 +3,40 @@ class StudentsController < ApplicationController
 
 	def index
 		if params[:student]
-     @students = Student.search(student_params[:search]).sort_by &:lastfirst
-    else
-     @students = Student.all.sort_by &:lastfirst
-    end
+	     @students = Student.search(student_params[:search]).sort_by &:lastfirst
+	    else
+	     @students = Student.all.sort_by &:lastfirst
+	    end
 	end
 
 	def show
 		@student = Student.find(params[:id])
-
-		if params[:section_id]
-			@section = Section.find(params[:section_id])
-			temp_array = []
-			@section.grades.where('student_id = ?', @student.id).each do |grade|
-				standard = grade.standard.standard_name
-				temp_array << {standard => grade.grade}
-			end
-			render json: temp_array.to_json
-		end
-
-		@comment = Comment.new
-		@data_hash = [
-			{studentname: @student.lastfirst},
-		]
-
-		@student.courses.uniq.each do |course|
-			course_hash = {
-				course_name: course.course_name
-			}
-			course_hash[:s1_standards] = @student.standards_per_course_per_termid(course, 2701)
-			course_hash[:s2_standards] = @student.standards_per_course_per_termid(course, 2702)
-			course_hash[:s1_homs] = @student.homs_per_course_per_termid(course, 2701)
-			course_hash[:s2_homs] = @student.homs_per_course_per_termid(course, 2702)
-			@data_hash << course_hash
-		end
-
-		
 	end
+
+	# def section_data
+	# 	@student = Student.find(params[:id])
+	# 	@section = Section.find(params[:section_id])
+	# 	# @data_hash = [
+	# 	# 	{studentname: @student.lastfirst},
+	# 	# ]
+
+	# 	# @student.sections.each do |section|
+	# 	# 	section_hash = {
+	# 	# 		course_name: section.course_name
+	# 	# 	}
+	# 	# 	section_hash[:s2701_standards] = @student.standards_per_term(2701)
+	# 	# 	section_hash[:s2702_standards] = @student.standards_per_term(2702)
+	# 	# 	section_hash[:s2801_standards] = @student.standards_per_term(2801)
+	# 	# 	section_hash[:s2701_homs] = @student.homs_per_term(2701)
+	# 	# 	section_hash[:s2702_homs] = @student.homs_per_term(2702)
+	# 	# 	section_hash[:s2801_homs] = @student.homs_per_term(2801)
+	# 	# 	@data_hash << section_hash
+	# 	# end
+	# 	respond_to do |format|
+	# 		format.html
+	# 		format.js {render json: @section.to_json(include: :grades)}
+	# 	end
+	# end
 
 	def create
 		@student = Student.create(student_params)
@@ -61,7 +58,6 @@ class StudentsController < ApplicationController
 	def bell_schedule
 		@student = Student.find(params[:id])
 	end
-
 
 
 	def student_params

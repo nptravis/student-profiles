@@ -1,49 +1,44 @@
-
-<div class="student-container">
-	<h1><%= @student.lastfirst %> - <%= @student.student_number %> - Grade <%= @student.gradelevel %> </h1>
-
 <div class="student-show-container">
 
-		<!-- data visualizations -->
-		<div class="student-graphs-container">
-			<%= link_to "Enter Grades", new_student_grade_path(@student) %>
-			<a href='/students/<%=@student.id%>/schedule'>See Schedule Matrix</a>
-			<a href='/students/<%=@student.id%>/bell_schedule'>See Bell Schedule</a>
-			
-			<div class="graph-grid row">
-				<% @data_hash.each.with_index(1) do |course, i| %>
-					<% if course.present? %>
-						<div class="class-graph col">
-							<div class=""><canvas id="barChart<%= i %>"></canvas></div>
-							<div class=""><canvas id="radarChart<%= i %>"></canvas></div>
-						</div>
-					<% end %>
-				<% end %>
-			</div>
-		</div>
+	<div class="student-nav-container">
+		<ul>
+			<li><%= link_to "Enter Grades", new_student_grade_path(@student) %></li>
+			<li><a href='/students/<%=@student.id%>/schedule'>See Schedule Matrix</a></li>
+			<li><a href='/students/<%=@student.id%>/bell_schedule'>See Bell Schedule</a></li>
+		</ul>
+	</div>
 
-		<!-- <canvas id="map-chart"></canvas> -->
+	<!-- data visualizations -->
+	<div class="student-info-container">
+		<div class="student-photo">
+			<%= image_tag "2801ph.jpeg" %>
+		</div>
+		<div class="student-info">
+			<h2><%= @student.lastfirst %></h2>
+			 <p>Student Number: <%= @student.student_number %></p>
+			 <p>Grade: <%= @student.gradelevel %></p>
+		</div>
+		<div class="student-donut">
+			<p>Donut graph here</p>
+		</div>
+	</div>
+
+	<div class="student-map-container">
+		<canvas id="map-chart"></canvas>
+	</div>
 
 		<!-- Comments form and comment stream -->
 
 
-		<div class="student-comments-container" id="comments">
-			<%= form_tag student_comments_path(@student) do %>
-				<%= label_tag "Post a comment" %> <br>
-			  	<%= text_area_tag 'comment[content]' %> <br>
-			  	<%= submit_tag "Post" %>
-			<% end %>  
-
-			<% if @student.comments.any? %>
-				<% @student.comments.reverse.each do |comment| %>
-				<div class="comment-content row clearfix">
-					<%= render partial: 'comments', :locals => { :comment => comment } %>
-				</div>
-				<% end %>
-			<% end %>
-		</div>
-	</div>
+<!-- 		
 </div>
-<%= content_tag :div, class: "student_list", id: "studentshow", data: {student: @data_hash} do %>
-<%end%>
+<%#= content_tag :div, class: "student_list", id: "studentshow", data: {student: @data_hash} do %>
+<%#end%>
+ -->
+</div>
 
+<script type="text/javascript">
+	
+
+
+</script>

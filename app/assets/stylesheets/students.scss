@@ -2,57 +2,58 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-ul {
-	text-align: center;
-}
-
-button.new_student a {
-	text-decoration: none;
-	color: black;
-}
-
-button.new_student a:hover {
-	text-decoration: none;
-	color: black;
-}
-
 div.student-show-container {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 }
-
-div.student-comments-container {
+div.student-nav-container {
 	flex: 1 1 20%;
-	background-color: #C9CACC;
-	text-align: center;
-	margin-left: 5px;
-	height: 100%;
-}
+	border: 1px black solid;
 
-div.student-graphs-container {
-	flex: 1 1 80%;
-	margin: 0px 10px 0px 10px;
-}
-
-div#comments {
-	input:last-child {
-		width: 165px;
+	ul {
+		list-style: none;
+		display: flex;
+		justify-content: space-around;
 	}
+
+}
+div.student-info-container {
+	flex: 1 1 60%;
+	display: flex;
+	flex-direction: row;
+
+	div.student-photo {
+		img {
+			width: 100px;
+			height: 150px;
+			border-radius: 20%;
+			margin: 5px 0px 0px 5px;
+		}
+		
+		flex: 1 1 20%;
+	}
+	div.student-info {
+		flex: 1 1 60%;
+		p {
+			text-align: center;
+		}
+
+	}
+	div.student-donut {
+		flex: 1 1 20%;
+
+	}
+
+	
+}
+div.student-map-container {
+	max-height: 100px;
+	flex: 0 0 20%;
+	
 }
 
-div.comment-content {
-	border-radius: 25px;
-	margin: 5px 5px 5px 5px;
-	border: 1px red solid;
-	background-color: #FFE0E6;
 
-	a {
-		margin-left: 20px;
-	}
-	p {
-		padding: 3px;
-	}
-}
+
 
 
 

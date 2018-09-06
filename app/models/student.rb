@@ -18,25 +18,13 @@ class Student < ActiveRecord::Base
 	  	end
 	end
 
-	def grades_per_section(section)
-		self.grades.where("section_id = ?", section.id)
+	def grades_per_term(termid)
+		self.grades.where("termid = ?", termid)
 	end
 
-	
-	def grades_per_termid_per_section(termid, section)
-		self.grades.where("termid = ? AND section_id = ?", termid, section.id);
-	end
-
-    def grades_per_course_per_termid(course, termid)
-	  	section = self.sections.where("termid = ? AND course_id = ?", termid, course.id)[0] 
-	  	if section
-	  		section.grades.where("student_id = ?", self.id)
-	  	end
-	end
-
-	def homs_per_course_per_termid(course, termid)
+	def homs_per_term(termid)
 		temp_hash = {}
-		grades = self.grades_per_course_per_termid(course, termid)
+		grades = self.grades_per_term(termid)
 		if grades
 			grades.each do |grade|
 				if grade.standard.hom?
@@ -47,9 +35,9 @@ class Student < ActiveRecord::Base
 		temp_hash.sort.to_h
 	end
 
-	def standards_per_course_per_termid(course, termid)
+	def standards_per_term(termid)
 		temp_hash = {}
-		grades = self.grades_per_course_per_termid(course, termid)
+		grades = self.grades_per_term(termid)
 		if grades
 			grades.each do |grade|
 				if !grade.standard.hom?

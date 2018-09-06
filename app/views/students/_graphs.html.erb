@@ -1,0 +1,10 @@
+<div class="graph-grid row">
+			<% @data_hash.each.with_index(1) do |course, i| %>
+				<% if course.present? %>
+					<div class="class-graph col">
+						<div class=""><canvas id="barChart<%= i %>"></canvas></div>
+						<div class=""><canvas id="radarChart<%= i %>"></canvas></div>
+					</div>
+				<% end %>
+			<% end %>
+		</div>

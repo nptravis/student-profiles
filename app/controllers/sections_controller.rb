@@ -12,7 +12,7 @@ class SectionsController < ApplicationController
 
 	def show
 		@section = Section.find(params[:id])
-		render json: @section.to_json
+		render json: @section.to_json(include: :grades)
 	end
 
 	def students

@@ -5,7 +5,7 @@ class Standard < ActiveRecord::Base
 	validates :standard_name, :identifier, :dcid, presence: true
 
 	def hom?
-		!!self.standard_name.match(/\bRespect\b|\bResponsibility\b|\bEngagement\b|\bReflection\b/)
+		!!self.standard_name.match(/Respect$|Responsibility$|Engagement$|Reflection$/)
 	end
 
 end
