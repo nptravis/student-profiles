@@ -3,7 +3,7 @@ file = File.read('data/all-sections.json')
 data_hash = JSON.parse(file)
 i = 0;
 data_hash["items"].each do |set|
-	
+
 	student = Student.find_or_initialize_by(
 		lastfirst: set["lastfirst"], 
 		student_number: set["student_number"], 

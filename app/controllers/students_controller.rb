@@ -11,10 +11,7 @@ class StudentsController < ApplicationController
 
 	def show
 		@student = Student.find(params[:id])
-		respond_to do |format|
-			format.html 
-			format.json {render @student.to_json(include: :grades)};
-		end
+		@all_grades = @student.grades.where("termid >= ?", 2800);
 	end
 
 	# def section_data
@@ -77,7 +74,7 @@ class StudentsController < ApplicationController
 	def section
 		@student = Student.find(params[:id])
 		@section = Section.find(params[:section_id])
-		render partial: 'section_show'
+		render partial: 'section_show', locals: {student: @student, section: @section}
 	end
 
 

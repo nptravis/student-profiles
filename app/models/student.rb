@@ -18,6 +18,10 @@ class Student < ActiveRecord::Base
 	  	end
 	end
 
+	def sections_per_term(termid)
+		self.sections.where("termid = ?", termid);
+	end
+
 	def grades_per_term(termid)
 		self.grades.where("termid = ?", termid)
 	end

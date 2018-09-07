@@ -11,7 +11,7 @@
 			 <p>Grade: <%= @student.gradelevel %></p>
 		</div>
 		<div class="student-donut">
-			<p>Donut graph here</p>
+			<canvas id="student-doughnut"></canvas>
 		</div>
 	</div>
 
@@ -29,22 +29,54 @@
 		<canvas id="map-chart"></canvas>
 	</div>
 
-		<!-- Comments form and comment stream -->
-<!-- 		
-</div>
-<%#= content_tag :div, class: "student_list", id: "studentshow", data: {student: @data_hash} do %>
-<%#end%>
- -->
-</div>
+		
+<%= content_tag :div, class: "student_list", id: "studentshow", data: {student: @all_grades} do %>
+<%end%>
+
 
 <script type="text/javascript">
 $(function(){
+
 	let student_id = $('.student-show-container').attr("data");
 
-	$.getJSON(`/students/${student_id}`, function(e){
-		}).done(function(response){
-			console.log(response);
-		})
+	// Doughnut Chart ////////////////////////////////////////////
+	let all_grades = $('#studentshow').data('student');
+	let ND = all_grades.filter(function(grade){return grade.grade === "0"}).length
+	let B = all_grades.filter(function(grade){return grade.grade === "1"}).length
+	let P = all_grades.filter(function(grade){return grade.grade === "2"}).length
+	let M = all_grades.filter(function(grade){return grade.grade === "3"}).length
+	let E = all_grades.filter(function(grade){return grade.grade === "4"}).length
+	console.log(E)
+	let ctx = $('#student-doughnut');
+	let data = {
+		    datasets: [{
+		        data: [ND, B, P, M, E],
+		        label: "S1",
+                backgroundColor: ['#616A72','#A8271E', '#F8DA06','#007CC6', '#249D3D'], 
+                borderColor: '#FFFFFF',
+                borderWidth: 1
+		    }],
+
+		    // These labels appear in the legend and in the tooltips when hovering different arcs
+		    labels: ['ND','B','P','M','E']
+		};
+
+	let myDoughnutChart = new Chart(ctx, {
+	    type: 'doughnut',
+	    data: data,
+	    options: {
+	    	legend: {
+	    		position: 'right'
+	    	},
+	    	title: {
+	    		display: true,
+	    		text: "Standards so far 18-19",
+	    		position: 'top'
+	    	}
+
+	    }
+	});
+	// End Doughnut Chart ///////////////////////////////////////
 
 	$('.schedule-matrix-link').on("click", function(event){
 		event.preventDefault()
@@ -71,7 +103,7 @@ $(function(){
 				let section_id = $(this).attr('id')
 				$.get(`/students/${student_id}/sections/${section_id}`, function(response){
 					// still need to fix this reponse partial
-					console.log(response)
+					// $('.student-data-container').html(response)
 				})
 			});
 		})
