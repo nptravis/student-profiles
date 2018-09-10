@@ -80,6 +80,10 @@ class StudentsController < ApplicationController
 				puts "ERROR: some grade didn't have a semester...."
 			end
 		end
+		grades_hash[:s1_standards].sort_by!{|x| x[:name]}
+		grades_hash[:s2_standards].sort_by!{|x| x[:name]}
+		grades_hash[:s1_homs].sort_by!{|x| x[:name]}
+		grades_hash[:s2_homs].sort_by!{|x| x[:name]}
 
 		render json: grades_hash.to_json
 	end

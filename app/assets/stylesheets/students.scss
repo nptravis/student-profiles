@@ -7,7 +7,7 @@ div.student-show-container {
 	flex-direction: column;
 }
 div.student-nav-container {
-	flex: 1 1 20%;
+	flex: 0 0 20%;
 	border: 1px black solid;
 
 	ul {
@@ -18,29 +18,32 @@ div.student-nav-container {
 
 }
 div.student-info-container {
-	flex: 1 1 60%;
+	flex: 0 0 60%;
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 
 	div.student-photo {
 		img {
 			width: 100px;
 			height: 150px;
 			border-radius: 20%;
-			margin: 5px 0px 5px 5px;
+			margin: 15px 0 0 20px;
 		}
 		
-		flex: 1 1 20%;
+		flex: 1;
+
 	}
 	div.student-info {
-		flex: 1 1 60%;
+		flex: 2;
 		p {
 			text-align: center;
 		}
 
 	}
 	div.student-donut {
-		flex: 1 1 20%;
+		flex: 1;
+
 
 	}
 
@@ -51,7 +54,7 @@ div.student-data-container {
 	overflow: auto;
 	max-height: 620px;
 	width: 100%;
-	flex: 1 1 20%;
+	flex: 0 0 20%;
 
 	p {
 		text-align: center;
@@ -91,7 +94,8 @@ div.student-donut {
 div.student-donut-wrapper {
 	display: flex;
 	flex-direction: row;
-	justify-content: left;
+	justify-content: flex-end;
+
 	div.student-doughnut-homs {
 
 	}

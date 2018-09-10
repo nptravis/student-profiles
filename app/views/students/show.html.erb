@@ -11,7 +11,7 @@
 			 <p>Grade: <%= @student.gradelevel %></p>
 		</div>
 		<div class="student-donut">
-			<h4>All Standards for 18-19</h4>
+			<h5>All Standards for 18-19</h5>
 			<div class="student-donut-wrapper">
 				<div class="student-doughnut-homs"><canvas id="student-doughnut-homs"></canvas></div>
 				<div class="student-doughnut-homs"><canvas id="student-doughnut-standards"></canvas></div>
@@ -65,7 +65,7 @@ $(function(){
 		    datasets: [{
 		        data: [NDs, Bs, Ps, Ms, Es],
 		        label: "S1",
-                backgroundColor: ['#FBE2E62','#A8271E', '#F8DA06','#007CC6', '#249D3D'], 
+                backgroundColor: ['#FBE2E62','#A8271E', '#F8DA06', '#249D3D','#007CC6'], 
                 borderColor: '#FFFFFF',
                 borderWidth: 1
 		    }],
@@ -97,7 +97,7 @@ let homsDoughnutDiv = $('#student-doughnut-homs');
 		    datasets: [{
 		        data: [ND, B, P, M, E],
 		        label: "S1",
-                backgroundColor: ['#FBE2E62','#A8271E', '#F8DA06','#007CC6', '#249D3D'], 
+                backgroundColor: ['#FBE2E62','#A8271E', '#F8DA06', '#249D3D','#007CC6'], 
                 borderColor: '#FFFFFF',
                 borderWidth: 1
 		    }],
@@ -146,7 +146,7 @@ function renderCharts(data_hash){
 	let s2_hom_names = data_hash["s2_homs"].map(function(e){return e.name})
 	let s1_hom_grades = data_hash["s1_homs"].map(function(e){return e.grade})
 	let s2_hom_grades = data_hash["s2_homs"].map(function(e){return e.grade})
-	// debugger;
+	debugger;
 
 	let notations = {
         0:"ND",
@@ -154,6 +154,14 @@ function renderCharts(data_hash){
         2:"P",
         3:"M",
         4:"E"
+    }
+
+    let colors = {
+    	0:"#FBE2E62",
+        1:"#A8271E",
+        2:"#F8DA06",
+        3:"#249D3D",
+        4:"#007CC6"
     }
 
 	 let html = 
@@ -170,18 +178,22 @@ let barChartDiv = $('#barChartDiv');
 let barChart = new Chart(barChartDiv, {
     type: 'horizontalBar',
     data: {
-        labels: [2,3,4,1],
+        labels: s1_standard_names,
         datasets: [{
             label: "S1",
-            data: [2,3,4,1],
-            backgroundColor: 'rgba(255, 99, 132, 0.2)', 
+            data: s1_standard_grades,
+            backgroundColor: s1_standard_grades.map(function(grade){
+            	return colors[grade]
+            }), 
             borderColor: 'rgba(255,99,132,1)',
             borderWidth: 1
         },
         {
             label: "S2",
             data: s2_standard_grades,
-            backgroundColor: '#D8ECFA', 
+            backgroundColor: s2_standard_grades.map(function(grade){
+            	return colors[grade]
+            }), 
             borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1
 
@@ -225,15 +237,14 @@ let barChart = new Chart(barChartDiv, {
             datasets: [{
                 label: 'S1',
                 data: s1_hom_grades,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                backgroundColor: 'rgba(255,226,230, .4)',
                 borderColor: 'rgba(255,99,132,1)',
                 borderWidth: 1
             }
             ,{
                 label: 'S2',
                 data: s2_hom_grades,
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    
+                backgroundColor: 'rgba(225, 241, 255, .4)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1
             }
