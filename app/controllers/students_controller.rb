@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
 	before_action :authentication_required, :admin_auth_required, only: [:index]
 
+# BEGIN Rest ///////////////////////////////////////////////////////////////////
 	def index
 		if params[:student]
 	     @students = Student.search(student_params[:search]).sort_by &:lastfirst
@@ -10,34 +11,12 @@ class StudentsController < ApplicationController
 	end
 
 	def show
+		collection = CollectionService.new
 		@student = Student.find(params[:id])
-		@all_grades = @student.grades.where("termid >= ?", 2800);
+		current_grades = @student.grades.where("termid >= ?", 2800)
+		@all_standards = collection.all_standards(current_grades)
+		@all_homs = collection.all_homs(current_grades)
 	end
-
-	# def section_data
-	# 	@student = Student.find(params[:id])
-	# 	@section = Section.find(params[:section_id])
-	# 	# @data_hash = [
-	# 	# 	{studentname: @student.lastfirst},
-	# 	# ]
-
-	# 	# @student.sections.each do |section|
-	# 	# 	section_hash = {
-	# 	# 		course_name: section.course_name
-	# 	# 	}
-	# 	# 	section_hash[:s2701_standards] = @student.standards_per_term(2701)
-	# 	# 	section_hash[:s2702_standards] = @student.standards_per_term(2702)
-	# 	# 	section_hash[:s2801_standards] = @student.standards_per_term(2801)
-	# 	# 	section_hash[:s2701_homs] = @student.homs_per_term(2701)
-	# 	# 	section_hash[:s2702_homs] = @student.homs_per_term(2702)
-	# 	# 	section_hash[:s2801_homs] = @student.homs_per_term(2801)
-	# 	# 	@data_hash << section_hash
-	# 	# end
-	# 	respond_to do |format|
-	# 		format.html
-	# 		format.js {render json: @section.to_json(include: :grades)}
-	# 	end
-	# end
 
 	def create
 		@student = Student.create(student_params)
@@ -47,6 +26,7 @@ class StudentsController < ApplicationController
 	def new
 		@student = Student.new
 	end
+# END Rest /////////////////////////////////////////////////////////////////////////
 
 	def schedule
 		@student = Student.find(params[:id])
@@ -72,10 +52,40 @@ class StudentsController < ApplicationController
 	end
 
 	def section
-		@student = Student.find(params[:id])
-		@section = Section.find(params[:section_id])
-		render partial: 'section_show', locals: {student: @student, section: @section}
+		student = Student.find(params[:id])
+		section = Section.find(params[:section_id])
+		grades = student.grades.where("section_id = ?", section)
+		grades_hash = {
+			:course_name => section.course_name,
+			:course_number => section.course_number,
+			:section_number => section.section_number,
+			:expression => section.expression,
+			:teacher => {lastfirst: section.teacher.lastfirst, email: section.teacher.email},
+			:s1_standards => [],
+			:s2_standards => [],
+			:s1_homs => [],
+			:s2_homs => []
+		}
+
+		grades.each do |grade|
+			if grade.standard.hom? && grade.semester == "S1"
+				grades_hash[:s1_homs] << {:name => grade.standard.standard_name, :grade => grade.grade}
+			elsif !grade.standard.hom? && grade.semester == "S1"
+				grades_hash[:s1_standards] << {:name => grade.standard.identifier, :grade => grade.grade}
+			elsif grade.standard.hom? && grade.semester == "S2"
+				grades_hash[:s2_homs] << {:name => grade.standard.standard_name, :grade => grade.grade}
+			elsif !grade.standard.hom? && grade.semester == "S2"
+				grades_hash[:s2_standards] << {:name => grade.standard.identifier, :grade => grade.grade}
+			else
+				puts "ERROR: some grade didn't have a semester...."
+			end
+		end
+
+		render json: grades_hash.to_json
 	end
+
+# BEGIN Private /////////////////////////////////////////////////////////////////////
+	private
 
 
 	def student_params

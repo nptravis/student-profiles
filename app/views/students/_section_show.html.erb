@@ -2,12 +2,112 @@
 <canvas id="chartDiv" data-section="<%=@section.id%>"></canvas>
 
 <script type="text/javascript">
+$(function(){
+
 
 	let section = $('#chartDiv').data("section");
 
-	console.log("THISSSSS:", section);
+	    // /////// Bar Chart //////////////////////////
+        var ctx = document.getElementById("barChart" + i);
+
+        var myChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: s1_standard_names,
+                datasets: [{
+                    label: "S1",
+                    data: s1_standard_grades,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)', 
+                    borderColor: 'rgba(255,99,132,1)',
+                    borderWidth: 1
+                },
+                {
+                    label: "S2",
+                    data: s2_standard_grades,
+                    backgroundColor: '#D8ECFA', 
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: data_hash[i].course_name
+                },
+                scales: {
+                    xAxes: [{
+                        ticks:{
+                            beginAtZero: true,
+                            max: 4,
+                            callback: function(value, index, values) {
+                                switch(value) {
+                                    case 0:
+                                    return 'ND';
+                                    case 1:
+                                    return 'B';
+                                    case 2:
+                                    return 'P';
+                                    case 3:
+                                    return 'M';
+                                    case 4:
+                                    return 'E';
+                                }
+                            }
+                        }
+                    }]
+                }
+            }
+        });
+
+    // /////// Radar Chart //////////////////////////
+        var notations = {
+            0:"ND",
+            0.5:"",
+            1:"B",
+            1.5:"",
+            2:"P",
+            2.5:"",
+            3:"M",
+            3.5:"",
+            4:"E"
+        }
+        var ctx = document.getElementById("radarChart" + i).getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: s1_hom_names,
+                datasets: [{
+                    label: 'S1',
+                    data: s1_hom_grades,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255,99,132,1)',
+                    borderWidth: 1
+                },{
+                    label: 'S2',
+                    data: s2_hom_grades,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scale: {
+                    ticks: {
+                        beginAtZero:true,
+                        max: 4,
+                        userCallback: function (value, index, values) {
+                            return notations[value];
+                        }
+                    }
+                }
+
+            }
+        });
 
 
+ 
 
-
+});
 </script>t

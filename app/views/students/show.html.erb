@@ -11,7 +11,11 @@
 			 <p>Grade: <%= @student.gradelevel %></p>
 		</div>
 		<div class="student-donut">
-			<canvas id="student-doughnut"></canvas>
+			<h4>All Standards for 18-19</h4>
+			<div class="student-donut-wrapper">
+				<div class="student-doughnut-homs"><canvas id="student-doughnut-homs"></canvas></div>
+				<div class="student-doughnut-homs"><canvas id="student-doughnut-standards"></canvas></div>
+			</div>
 		</div>
 	</div>
 
@@ -30,29 +34,38 @@
 	</div>
 
 		
-<%= content_tag :div, class: "student_list", id: "studentshow", data: {student: @all_grades} do %>
+<%= content_tag :div, class: "student_list", id: "studentshow", data: {homs: @all_homs, standards: @all_standards} do %>
 <%end%>
 
 
 <script type="text/javascript">
 $(function(){
 
-	let student_id = $('.student-show-container').attr("data");
+//BEGIN Global variable declarations ///////////////////////////////////////////////
 
-	// Doughnut Chart ////////////////////////////////////////////
-	let all_grades = $('#studentshow').data('student');
-	let ND = all_grades.filter(function(grade){return grade.grade === "0"}).length
-	let B = all_grades.filter(function(grade){return grade.grade === "1"}).length
-	let P = all_grades.filter(function(grade){return grade.grade === "2"}).length
-	let M = all_grades.filter(function(grade){return grade.grade === "3"}).length
-	let E = all_grades.filter(function(grade){return grade.grade === "4"}).length
-	console.log(E)
-	let ctx = $('#student-doughnut');
-	let data = {
+	let student_id = $('.student-show-container').attr("data");
+	let all_homs = $('#studentshow').data('homs');
+	let all_standards = $('#studentshow').data('standards');
+	let ND = all_homs.filter(function(grade){return grade.grade === "0"}).length
+	let B = all_homs.filter(function(grade){return grade.grade === "1"}).length
+	let P = all_homs.filter(function(grade){return grade.grade === "2"}).length
+	let M = all_homs.filter(function(grade){return grade.grade === "3"}).length
+	let E = all_homs.filter(function(grade){return grade.grade === "4"}).length
+
+	let NDs = all_standards.filter(function(grade){return grade.grade === "0"}).length
+	let Bs = all_standards.filter(function(grade){return grade.grade === "1"}).length
+	let Ps = all_standards.filter(function(grade){return grade.grade === "2"}).length
+	let Ms = all_standards.filter(function(grade){return grade.grade === "3"}).length
+	let Es = all_standards.filter(function(grade){return grade.grade === "4"}).length
+	
+//END Global variable declarations ////////////////////////////////////////////////
+//BEGIN Doughnut Standards ////////////////////////////////////////////////////////
+	let doughnutDiv = $('#student-doughnut-standards');
+	let dataS = {
 		    datasets: [{
-		        data: [ND, B, P, M, E],
+		        data: [NDs, Bs, Ps, Ms, Es],
 		        label: "S1",
-                backgroundColor: ['#616A72','#A8271E', '#F8DA06','#007CC6', '#249D3D'], 
+                backgroundColor: ['#FBE2E62','#A8271E', '#F8DA06','#007CC6', '#249D3D'], 
                 borderColor: '#FFFFFF',
                 borderWidth: 1
 		    }],
@@ -61,7 +74,39 @@ $(function(){
 		    labels: ['ND','B','P','M','E']
 		};
 
-	let myDoughnutChart = new Chart(ctx, {
+	let doughnutChart = new Chart(doughnutDiv, {
+	    type: 'doughnut',
+	    data: dataS,
+	    options: {
+	    	legend: {
+	    		position: 'right'
+	    	},
+	    	title: {
+	    		display: true,
+	    		text: "Academic Standards",
+	    		position: 'top'
+	    	}
+
+	    }
+	});
+// END Standards Donut /////////////////////////////////////////////////////////////
+
+// BEGIN HOMs Donut //////////////////////////////////////////////////////////////// 
+let homsDoughnutDiv = $('#student-doughnut-homs');
+	let data = {
+		    datasets: [{
+		        data: [ND, B, P, M, E],
+		        label: "S1",
+                backgroundColor: ['#FBE2E62','#A8271E', '#F8DA06','#007CC6', '#249D3D'], 
+                borderColor: '#FFFFFF',
+                borderWidth: 1
+		    }],
+
+		    // These labels appear in the legend and in the tooltips when hovering different arcs
+		    labels: ['ND','B','P','M','E']
+		};
+
+	let homsDoughnutChart = new Chart(homsDoughnutDiv, {
 	    type: 'doughnut',
 	    data: data,
 	    options: {
@@ -70,14 +115,158 @@ $(function(){
 	    	},
 	    	title: {
 	    		display: true,
-	    		text: "Standards so far 18-19",
+	    		text: "Habits of Mind",
 	    		position: 'top'
 	    	}
 
 	    }
 	});
-	// End Doughnut Chart ///////////////////////////////////////
 
+
+
+// END HOMs Donut //////////////////////////////////////////////////////////////////
+
+// BEGIN Section Charts /////////////////////////////////////////////////////////
+function renderCharts(data_hash){
+// Bar Chart --------------------------------------------------------------------//
+
+	let course_name = data_hash["course_name"]
+	let course_number = data_hash["course_number"]
+	let section_number = data_hash["section_number"]
+	let expression = data_hash["expression"]
+	let teacher_name = data_hash["teacher"]["lastfirst"]
+	let teacher_email = data_hash["teacher"]["email"]
+	let s1_standard_names = data_hash["s1_standards"].map(function(e){return e.name})
+	let s2_standard_names = data_hash["s2_standards"].map(function(e){return e.name})
+	// s2_standard_names = s2_standard_names.map(function(name){return name.split(" ")})
+	// s1_standard_names = s1_standard_names.map(function(name){return name.split(" ")})
+	let s1_standard_grades = data_hash["s1_standards"].map(function(e){return e.grade})
+	let s2_standard_grades = data_hash["s2_standards"].map(function(e){return e.grade})
+	let s1_hom_names = data_hash["s1_homs"].map(function(e){return e.name})
+	let s2_hom_names = data_hash["s2_homs"].map(function(e){return e.name})
+	let s1_hom_grades = data_hash["s1_homs"].map(function(e){return e.grade})
+	let s2_hom_grades = data_hash["s2_homs"].map(function(e){return e.grade})
+	// debugger;
+
+	let notations = {
+        0:"ND",
+        1:"B",
+        2:"P",
+        3:"M",
+        4:"E"
+    }
+
+	 let html = 
+	 	`<h2>${course_name}</h2>` +
+	 	`<h4>${course_number}.${section_number} - ${expression}</h4>` +
+	 	`<p>${teacher_name}</p>` +
+	 	`<p><a href="mailto:"${teacher_email}>${teacher_email}</a></p>` +
+	 	'<div class="canvas-wrapper"><div class="canvas-1"><canvas id="barChartDiv"></div></canvas><div class="canvas-2"><canvas id="radarChartDiv"></canvas></div></div>';
+
+	$('.student-data-container').html(html)
+
+
+let barChartDiv = $('#barChartDiv');
+let barChart = new Chart(barChartDiv, {
+    type: 'horizontalBar',
+    data: {
+        labels: [2,3,4,1],
+        datasets: [{
+            label: "S1",
+            data: [2,3,4,1],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)', 
+            borderColor: 'rgba(255,99,132,1)',
+            borderWidth: 1
+        },
+        {
+            label: "S2",
+            data: s2_standard_grades,
+            backgroundColor: '#D8ECFA', 
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+
+        }
+    ]},
+    options: {
+    	responsive: true,
+    	// maintainAspectRatio: false,
+        title: {
+            display: true,
+            text: "Standards"
+        },
+        scales: {
+            xAxes: [{
+                ticks:{
+                    beginAtZero: true,
+                    max: 4,
+                    userCallback: function (value, index, values) {
+                        return notations[value];
+                    }
+                }
+            }]
+        },
+        layout: {
+            padding: {
+                left: 2,
+                right: 2,
+                top: 2,
+                bottom: 2
+            }
+        }
+    }
+});
+// Radar Chart -----------------------------------------------------------------//
+
+	let radarChartDiv = $('#radarChartDiv');
+    let radarChart = new Chart(radarChartDiv, {
+        type: 'radar',
+        data: {
+            labels: s1_hom_names,
+            datasets: [{
+                label: 'S1',
+                data: s1_hom_grades,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255,99,132,1)',
+                borderWidth: 1
+            }
+            ,{
+                label: 'S2',
+                data: s2_hom_grades,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }
+        ]},
+        options: {
+        	responsive: true,
+        	title: {
+	            display: true,
+	            text: "Habits of Mind"
+	        },
+    		// maintainAspectRatio: false,
+            scale: {
+                ticks: {
+                    beginAtZero:true,
+                    max: 4,
+                    userCallback: function (value, index, values) {
+                        return notations[value];
+                    }
+                }
+            },
+            layout: {
+	            padding: {
+	                left: 2,
+	                right: 2,
+	                top: 2,
+	                bottom: 10
+	            }
+	        }
+        }
+    });   
+}
+// END Section Charts ///////////////////////////////////////////////////////
+// BEGIN Listener Attachments //////////////////////////////////////////////////////
 	$('.schedule-matrix-link').on("click", function(event){
 		event.preventDefault()
 		
@@ -102,17 +291,13 @@ $(function(){
 				event.preventDefault();
 				let section_id = $(this).attr('id')
 				$.get(`/students/${student_id}/sections/${section_id}`, function(response){
-					// still need to fix this reponse partial
-					// $('.student-data-container').html(response)
+					renderCharts(response);
+					// console.log(response)
 				})
 			});
 		})
-
 	})
 
-
+// END Listener Attachments ///////////////////////////////////////////////
 });
-	
-
-
 </script>

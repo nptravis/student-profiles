@@ -49,6 +49,7 @@ data_hash["items"].each do |set|
 			i+=1
 		else
 			puts "ERROR: section not saved: Course: #{section.course_name} Section: #{section.section_number}"
+			break;
 		end
 	else
 		puts "ERROR: student or course or teacher not saved!"

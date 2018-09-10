@@ -30,7 +30,8 @@ data_hash["items"].each do |set|
 				student_id: student.id, 
 				section_id: section.id,
 				grade: set["standardgrade"],
-				termid: set["termid"]
+				termid: set["termid"],
+				semester: set["storecode"]
 				)
 
 			case grade.grade

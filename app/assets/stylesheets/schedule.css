@@ -1,6 +1,25 @@
-div.schedule-container {
-	
+table {
+	table-layout: fixed;
+	width: 80%;
+	height: 80%;
 }
+
+td.section-box {
+	background-color: grey;
+	width:10%;
+	height: 20%;
+}
+
+td.semester {
+	width: 1%;
+	background-color: #bfbdbd;
+}
+
+th {
+	width:1%;
+	height: 20%;
+}
+
 
 th.scheduleHeader {
 	background-color: #98B9D5;
@@ -8,8 +27,8 @@ th.scheduleHeader {
 
 th.scheduleTimes {
 	background-color: #98B9D5;
-}
 
+}
 table tr td {
 	border: 1px black solid;
 }
@@ -24,14 +43,6 @@ td.schoolDay {
 
 div.course-block {
 	background-color: blue;
-}
-
-td.section-box {
-	background-color: grey;
-}
-
-td.semester {
-	background-color: #bfbdbd;
 }
 
 td p {

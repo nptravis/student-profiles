@@ -47,9 +47,58 @@ div.student-info-container {
 	
 }
 div.student-data-container {
-	max-height: 100px;
-	flex: 0 0 20%;
-	
+	position: relative;
+	overflow: auto;
+	max-height: 620px;
+	width: 100%;
+	flex: 1 1 20%;
+
+	p {
+		text-align: center;
+	}
+	h2 {
+		text-align: center;
+	}
+
+	h4 {
+		text-align: center;
+	}
+	small {
+		text-align: center;
+	}
+}
+
+div.canvas-wrapper{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	overflow: auto;
+
+	div.canvas-1{
+		flex: 1;
+	}
+
+	div.canvas-2{
+		flex: 1;
+
+	}
+}
+
+div.student-donut {
+	text-align: center;
+}
+
+div.student-donut-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	div.student-doughnut-homs {
+
+	}
+	div.student-doughnut-standards{
+
+	}
+
 }
 
 
