@@ -55,6 +55,8 @@ class StudentsController < ApplicationController
 		student = Student.find(params[:id])
 		section = Section.find(params[:section_id])
 		grades = student.grades.where("section_id = ?", section)
+		semester_comments = student.semester_comments.where("section_id = ?", section.id)
+		
 		grades_hash = {
 			:course_name => section.course_name,
 			:course_number => section.course_number,
@@ -64,8 +66,13 @@ class StudentsController < ApplicationController
 			:s1_standards => [],
 			:s2_standards => [],
 			:s1_homs => [],
-			:s2_homs => []
+			:s2_homs => [],
+			:semester_comments => []
 		}
+
+		semester_comments.each do |comment|
+			grades_hash[:semester_comments] << {semester: comment.semester, content: comment.content}
+		end
 
 		grades.each do |grade|
 			if grade.standard.hom? && grade.semester == "S1"

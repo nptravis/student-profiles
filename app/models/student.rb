@@ -7,6 +7,7 @@ class Student < ActiveRecord::Base
 	has_many :teachers, through: :sections
 	has_many :courses, through: :sections
 	has_many :standards, through: :grades
+	has_many :semester_comments
 	validates :lastfirst, :student_number, :gradelevel, :dcid, presence: true
 	validates_uniqueness_of :student_number
 

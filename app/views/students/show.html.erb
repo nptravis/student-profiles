@@ -38,6 +38,12 @@
 <%end%>
 
 
+
+<div class="hover_bkgr_fricc">
+   
+</div>
+
+
 <script type="text/javascript">
 $(function(){
 
@@ -83,7 +89,7 @@ $(function(){
 	    	},
 	    	title: {
 	    		display: true,
-	    		text: "Academic Standards",
+	    		text: `Academic Standards (${all_standards.length})`,
 	    		position: 'top'
 	    	}
 
@@ -115,7 +121,7 @@ let homsDoughnutDiv = $('#student-doughnut-homs');
 	    	},
 	    	title: {
 	    		display: true,
-	    		text: "Habits of Mind",
+	    		text: `Habits of Mind (${all_homs.length})`,
 	    		position: 'top'
 	    	}
 
@@ -129,7 +135,8 @@ let homsDoughnutDiv = $('#student-doughnut-homs');
 // BEGIN Section Charts /////////////////////////////////////////////////////////
 function renderCharts(data_hash){
 // Bar Chart --------------------------------------------------------------------//
-
+	let s1_comment = data_hash["semester_comments"].filter(function(comment){return comment.semester === "S1"})
+	let s2_comment = data_hash["semester_comments"].filter(function(comment){return comment.semester === "S2"})
 	let course_name = data_hash["course_name"]
 	let course_number = data_hash["course_number"]
 	let section_number = data_hash["section_number"]
@@ -146,7 +153,6 @@ function renderCharts(data_hash){
 	let s2_hom_names = data_hash["s2_homs"].map(function(e){return e.name})
 	let s1_hom_grades = data_hash["s1_homs"].map(function(e){return e.grade})
 	let s2_hom_grades = data_hash["s2_homs"].map(function(e){return e.grade})
-	debugger;
 
 	let notations = {
         0:"ND",
@@ -171,7 +177,30 @@ function renderCharts(data_hash){
 	 	`<p><a href="mailto:"${teacher_email}>${teacher_email}</a></p>` +
 	 	'<div class="canvas-wrapper"><div class="canvas-1"><canvas id="barChartDiv"></div></canvas><div class="canvas-2"><canvas id="radarChartDiv"></canvas></div></div>';
 
+	 	if (s1_comment[0]){
+	 		html += `<a class="trigger_popup_fricc" data-comment="${s1_comment[0]['content']}">S1 Comment</a>`
+	 	}
+	 	if (s2_comment[0]){
+	 		html += `<a class="trigger_popup_fricc" data-comment="${s2_comment[0]['content']}">S2 Comment</a>`;
+	 	}
+	 	
+
 	$('.student-data-container').html(html)
+	$('.hover_bkgr_fricc').html(`<span class="helper"></span><div><div class="popupCloseButton">X</div><p class="comment-text"></p></div>`)
+
+ 	$(".trigger_popup_fricc").click(function(){
+ 		let text = $(this).data("comment")
+ 		$('.comment-text').html(text + `<br><small><b>- ${teacher_name}</b></small>  ` )
+   		$('.hover_bkgr_fricc').show();
+    });
+
+    $('.hover_bkgr_fricc').click(function(){
+        $('.hover_bkgr_fricc').hide();
+    });
+
+    $('.popupCloseButton').click(function(){
+        $('.hover_bkgr_fricc').hide();
+    });
 
 
 let barChartDiv = $('#barChartDiv');
@@ -253,7 +282,7 @@ let barChart = new Chart(barChartDiv, {
         	responsive: true,
         	title: {
 	            display: true,
-	            text: "Habits of Mind"
+	            text: `Habits of Mind`
 	        },
     		// maintainAspectRatio: false,
             scale: {
