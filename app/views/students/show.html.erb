@@ -23,7 +23,7 @@
 		<ul>
 			<li><a class="student-comments-link" href="#">Comments</a></li>
 			<li><a class="schedule-matrix-link" href='#'>Schedule Matrix</a></li>
-			<li><a class="schedule-bell-link" href='#'>Bell Schedule</a></li>
+			<!-- <li><a class="schedule-bell-link" href='#'>Bell Schedule</a></li> -->
 			<li><a class="student-sections-link" href='#'>Sections</a></li>
 			<li><a class="student-map-link" href='#'>Map Data</a></li>
 			<li><%=link_to "Writing Sample", asset_path("student-writing-sample.pdf"), target: "_blank"%></li>
@@ -178,7 +178,7 @@ function renderCharts(data_hash){
 	 	`<h2>${course_name}</h2>` +
 	 	`<h4>${course_number}.${section_number} - ${expression}</h4>` +
 	 	`<p>${teacher_name}</p>` +
-	 	`<p><a href="mailto:${teacher_email}">${teacher_email}</a></p>` +
+	 	`<p><a href="mailto:${teacher_email}" target="_blank">${teacher_email}</a></p>` +
 	 	'<div class="canvas-wrapper"><div class="canvas-1"><canvas id="barChartDiv"></div></canvas><div class="canvas-2"><canvas id="radarChartDiv"></canvas></div></div>';
 
 	 	if (s1_comment[0]){
