@@ -21,16 +21,18 @@
 
 	<div class="student-nav-container">
 		<ul>
-			<li><%= link_to "Enter Grades", new_student_grade_path(@student) %></li>
-			<li><a class="schedule-matrix-link" href='#'>See Schedule Matrix</a></li>
-			<li><a class="schedule-bell-link" href='#'>See Bell Schedule</a></li>
-			<li><a class="student-sections-link" href='#'>See Sections</a></li>
-			<li><a class="student-map-link" href='#'>See Map Data</a></li>
+			<li><a class="student-comments-link" href="#">Comments</a></li>
+			<li><a class="schedule-matrix-link" href='#'>Schedule Matrix</a></li>
+			<li><a class="schedule-bell-link" href='#'>Bell Schedule</a></li>
+			<li><a class="student-sections-link" href='#'>Sections</a></li>
+			<li><a class="student-map-link" href='#'>Map Data</a></li>
+			<li><%=link_to "Writing Sample", asset_path("student-writing-sample.pdf"), target: "_blank"%></li>
 		</ul>
 	</div>
 
 	<div class="student-data-container">
-		<canvas id="map-chart"></canvas>
+		<!-- <canvas id="map-chart"></canvas> -->
+		<%= render partial: 'comments' %>
 	</div>
 
 		
@@ -85,7 +87,8 @@ $(function(){
 	    data: dataS,
 	    options: {
 	    	legend: {
-	    		position: 'right'
+	    		position: 'right',
+	    		display: true
 	    	},
 	    	title: {
 	    		display: true,
@@ -117,7 +120,8 @@ let homsDoughnutDiv = $('#student-doughnut-homs');
 	    data: data,
 	    options: {
 	    	legend: {
-	    		position: 'right'
+	    		position: 'right',
+	    		display: false
 	    	},
 	    	title: {
 	    		display: true,
@@ -174,21 +178,23 @@ function renderCharts(data_hash){
 	 	`<h2>${course_name}</h2>` +
 	 	`<h4>${course_number}.${section_number} - ${expression}</h4>` +
 	 	`<p>${teacher_name}</p>` +
-	 	`<p><a href="mailto:"${teacher_email}>${teacher_email}</a></p>` +
+	 	`<p><a href="mailto:${teacher_email}">${teacher_email}</a></p>` +
 	 	'<div class="canvas-wrapper"><div class="canvas-1"><canvas id="barChartDiv"></div></canvas><div class="canvas-2"><canvas id="radarChartDiv"></canvas></div></div>';
 
 	 	if (s1_comment[0]){
-	 		html += `<a class="trigger_popup_fricc" data-comment="${s1_comment[0]['content']}">S1 Comment</a>`
+	 		html += `<a href="" class="trigger_popup_fricc" data-comment="${s1_comment[0]['content']}">S1 Comment</a>`
 	 	}
 	 	if (s2_comment[0]){
-	 		html += `<a class="trigger_popup_fricc" data-comment="${s2_comment[0]['content']}">S2 Comment</a>`;
+	 		html += `<a href="" class="trigger_popup_fricc" data-comment="${s2_comment[0]['content']}">S2 Comment</a>`;
 	 	}
 	 	
-
+// BEGIN student comment popup ////////////////////////////////////////////////////////////////////
 	$('.student-data-container').html(html)
+
 	$('.hover_bkgr_fricc').html(`<span class="helper"></span><div><div class="popupCloseButton">X</div><p class="comment-text"></p></div>`)
 
- 	$(".trigger_popup_fricc").click(function(){
+ 	$(".trigger_popup_fricc").click(function(e){
+ 		e.preventDefault();
  		let text = $(this).data("comment")
  		$('.comment-text').html(text + `<br><small><b>- ${teacher_name}</b></small>  ` )
    		$('.hover_bkgr_fricc').show();
@@ -200,8 +206,9 @@ function renderCharts(data_hash){
 
     $('.popupCloseButton').click(function(){
         $('.hover_bkgr_fricc').hide();
-    });
+    }); 
 
+// END student comment popup ////////////////////////////////////////////////////////////////////
 
 let barChartDiv = $('#barChartDiv');
 let barChart = new Chart(barChartDiv, {
@@ -230,7 +237,7 @@ let barChart = new Chart(barChartDiv, {
     ]},
     options: {
     	responsive: true,
-    	// maintainAspectRatio: false,
+    	maintainAspectRatio: true,
         title: {
             display: true,
             text: "Standards"
@@ -284,7 +291,7 @@ let barChart = new Chart(barChartDiv, {
 	            display: true,
 	            text: `Habits of Mind`
 	        },
-    		// maintainAspectRatio: false,
+    		maintainAspectRatio: true,
             scale: {
                 ticks: {
                     beginAtZero:true,
@@ -337,6 +344,14 @@ let barChart = new Chart(barChartDiv, {
 			});
 		})
 	})
+
+	$('.student-comments-link').on("click", function(event){
+		event.preventDefault();
+		$.get(`/students/${student_id}/comments`, function(response){
+			$('.student-data-container').html(response);
+		})
+	})
+
 
 // END Listener Attachments ///////////////////////////////////////////////
 });

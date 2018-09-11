@@ -3,6 +3,10 @@ class CommentsController < ApplicationController
 	before_action :set_student, only: [:index, :show, :create]
 
 	def index
+		@student = Student.find(params[:student_id])
+		@comments = @student.comments
+		# render json: @student.to_json(include: :comments)
+		render partial: 'students/comments'
 	end
 
 	def create

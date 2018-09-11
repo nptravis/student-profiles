@@ -1,22 +1,30 @@
-	<%= form_tag student_comments_path(@student) do %>
-	<%= label_tag "Post a comment" %> <br>
-  	<%= text_area_tag 'comment[content]' %> <br>
-  	<%= submit_tag "Post" %>
-<% end %>  
+
+
+ 
 
 <% if @student.comments.any? %>
+<div class="comments-container ">
 	<% @student.comments.reverse.each do |comment| %>
-	<div class="comment-content row clearfix">
+	
+		
+		<div class="comment-content">
+		<% if current_user.id == comment.user_id %>
+				<%= link_to "<i class=\"fas fa-trash-alt\"></i>".html_safe, student_comment_path(@student, comment), :method => "delete", :class => "destroy" %>
+				<%= link_to "<i class=\"fas fa-pencil-alt\"></i>".html_safe, student_comment_path(@student,comment, :class =>"") %>
+			<% end %>
+
+			<p class="commentContent"><%= comment.content %> - <small class="commentUsername"><strong><%= comment.user.username %></strong></small></p>
+		</div>
+	
 
 
-	<% if current_user.id == comment.user_id %>
-		<%= link_to "<i class=\"fas fa-trash-alt\"></i>".html_safe, student_comment_path(@student, comment), :method => "delete", :class => "destroy" %>
-		<%= link_to "<i class=\"fas fa-pencil-alt\"></i>".html_safe, student_comment_path(@student,comment, :class =>"") %>
+	
 	<% end %>
-
-	<p class="commentContent"><%= comment.content %> - <small class="commentUsername"><strong><%= comment.user.username %></strong></small></p>
-
-
-	</div>
-	<% end %>
+</div>
 <% end %>
+
+<%= form_tag student_comments_path(@student) do %>
+	<%= label_tag "Post a comment" %> <br>
+	<%= text_area_tag 'comment[content]' %> <br>
+	<%= submit_tag "Post" %>
+<% end %> 

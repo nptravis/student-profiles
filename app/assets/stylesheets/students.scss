@@ -105,6 +105,33 @@ div.student-donut-wrapper {
 
 }
 
+div.comments-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap-reverse;
+	justify-content: space-around;
+
+}
+
+div.comment-content {
+	flex: 0 1 auto;
+	border: 1px red solid;
+	border-radius: 20px;
+	background-color: #ffefef;
+	margin: 5px 5px 5px 5px;
+	/*margin-top: 5px 5px 5px 5px;*/
+
+	a {
+		padding-left: 5px;
+	}
+	p {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+
+}
+
 /* Popup box BEGIN */
 .hover_bkgr_fricc{
     background:rgba(0,0,0,.4);
