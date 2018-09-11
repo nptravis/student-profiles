@@ -1,7 +1,7 @@
 <h2>Edit Comment</h2>
 <% if @comment.user_id == current_user.id %>
 	<%= form_for @comment, url: {action: "update"} do |f| %>
-		<%=f.text_area :content %>
+		<%=f.text_area :content, class: "student-comment" %>
 		<%= f.submit %>
 	<% end %>
 <% else %>

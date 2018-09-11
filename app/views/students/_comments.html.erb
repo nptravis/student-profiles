@@ -5,7 +5,6 @@
 <% if @student.comments.any? %>
 <div class="comments-container ">
 	<% @student.comments.reverse.each do |comment| %>
-	
 		
 		<div class="comment-content">
 		<% if current_user.id == comment.user_id %>
@@ -15,9 +14,6 @@
 
 			<p class="commentContent"><%= comment.content %> - <small class="commentUsername"><strong><%= comment.user.username %></strong></small></p>
 		</div>
-	
-
-
 	
 	<% end %>
 </div>
