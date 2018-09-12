@@ -5,3 +5,41 @@
 ul.section-list {
 	list-style: none;
 }
+
+/*small stacked bar graphs*/
+.stacked-bar-graph {
+  width: 100px;
+  height: 10px;
+  color: #414042;
+  display:inline-block;
+
+  span {
+    display: inline-block;
+    height:100%;
+    box-sizing: border-box;
+    float: left;
+    font-weight: bold;
+    font-family: arial, sans-serif;
+    border-radius: 20px;
+  }
+
+  .bar-0 {
+  	background: #555555;
+  }
+
+  .bar-1 {
+    background: #A8271E;
+  }
+
+  .bar-2 {
+    background: #F8DA06;
+  }
+
+  .bar-3 {
+    background: #249D3D;
+  }
+  .bar-4 {
+    background: #007CC6;
+  }
+  
+}

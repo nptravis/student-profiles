@@ -11,4 +11,16 @@ class Section < ApplicationRecord
 		self.grades.where("student_id = ?", student)
 	end
 
+	def percentage_of_grades_per_student(student, grade)
+		grades = self.grades_per_student(student)
+		grade_total = grades.where("grade = ?", grade).count.to_f
+		if grades.count > 0
+			percentage = (grade_total / grades.count.to_f)*100
+			percentage.round
+		else
+			percetage = 0
+		end
+		percentage
+	end
+
 end

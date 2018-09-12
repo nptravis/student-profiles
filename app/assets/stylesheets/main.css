@@ -56,6 +56,14 @@ div.column-container {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
+
+	div.left-column {
+		flex: 1 1 auto;
+	}
+
+	div.right-column{
+		flex: 1 1 auto;
+	}
 }
 
 div.flex-wrapper {

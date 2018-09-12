@@ -78,11 +78,11 @@ class StudentsController < ApplicationController
 			if grade.standard.hom? && grade.semester == "S1"
 				grades_hash[:s1_homs] << {:name => grade.standard.standard_name, :grade => grade.grade}
 			elsif !grade.standard.hom? && grade.semester == "S1"
-				grades_hash[:s1_standards] << {:name => grade.standard.identifier, :grade => grade.grade}
+				grades_hash[:s1_standards] << {:name => grade.standard.standard_name, :grade => grade.grade}
 			elsif grade.standard.hom? && grade.semester == "S2"
 				grades_hash[:s2_homs] << {:name => grade.standard.standard_name, :grade => grade.grade}
 			elsif !grade.standard.hom? && grade.semester == "S2"
-				grades_hash[:s2_standards] << {:name => grade.standard.identifier, :grade => grade.grade}
+				grades_hash[:s2_standards] << {:name => grade.standard.standard_name, :grade => grade.grade}
 			else
 				puts "ERROR: some grade didn't have a semester...."
 			end

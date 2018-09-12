@@ -5,7 +5,15 @@
 		<ul class="section-list">
 		<% @sections.each do |section| %>
 			<% if section.termid < 2800 %>
-					<li><%= link_to section.course_name, section_path(section), id: "#{section.id}", class: "student-section-link"%> - <small><%=section.course_number%>.<%=section.section_number%></small></li>
+					<li><%= link_to section.course_name, section_path(section), id: "#{section.id}", class: "student-section-link"%> - <small><%=section.course_number%>.<%=section.section_number%></small>
+						<div class="stacked-bar-graph">
+						  <span style="width:<%=section.percentage_of_grades_per_student(@student,'0')%>%" class="bar-0"></span>
+						  <span style="width:<%=section.percentage_of_grades_per_student(@student,'1')%>%" class="bar-1"></span>
+						  <span style="width:<%=section.percentage_of_grades_per_student(@student,'2')%>%" class="bar-2"></span>
+						  <span style="width:<%=section.percentage_of_grades_per_student(@student,'3')%>%" class="bar-3"></span>
+						  <span style="width:<%=section.percentage_of_grades_per_student(@student,'4')%>%" class="bar-4"></span>
+						</div>
+					</li>
 			<% end %>
 		<% end %>
 		</ul>
@@ -16,11 +24,18 @@
 		<ul class="section-list">
 		<% @sections.each do |section| %>
 			<% if section.termid >= 2800 %>
-					<li><%= link_to section.course_name, section_path(section), id: "#{section.id}", class: "student-section-link"%> - <small><%=section.course_number%>.<%=section.section_number%></small></li>
+					<li><%= link_to section.course_name, section_path(section), id: "#{section.id}", class: "student-section-link"%> - <small><%=section.course_number%>.<%=section.section_number%></small>
+						<div class="stacked-bar-graph">
+						  <span style="width:<%=section.percentage_of_grades_per_student(@student,'0')%>%" class="bar-0"></span>
+						  <span style="width:<%=section.percentage_of_grades_per_student(@student,'1')%>%" class="bar-1"></span>
+						  <span style="width:<%=section.percentage_of_grades_per_student(@student,'2')%>%" class="bar-2"></span>
+						  <span style="width:<%=section.percentage_of_grades_per_student(@student,'3')%>%" class="bar-3"></span>
+						  <span style="width:<%=section.percentage_of_grades_per_student(@student,'4')%>%" class="bar-4"></span>
+						</div>
+					</li>
 			<% end %>
 		<% end %>
 		</ul>
 	</div>
 
 </div>
-
