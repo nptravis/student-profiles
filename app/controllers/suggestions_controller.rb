@@ -12,7 +12,7 @@ class SuggestionsController < ApplicationController
 		@suggestion = Suggestion.new(suggestion_params)
 		@suggestion.user = current_user
 		if @suggestion.save
-			redirect_to user_path(current_user)
+			redirect_to suggestions_path
 		else
 			redirect_to new_suggestion_path
 		end
