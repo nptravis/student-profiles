@@ -10,10 +10,6 @@ div.header-container {
 	justify-content: space-between;
 }
 
-p.welcome-text-header {
-	color: coral;
-	display: inline;
-}
 
 div.main-container {	
 	display: flex;
@@ -78,5 +74,10 @@ div.flex-wrapper {
 		flex: 3;
 	}
 
+}
+
+button.grey {
+	margin: 5px 5px 5px 20px;
+	background-color: #e3e6ea;
 }
 

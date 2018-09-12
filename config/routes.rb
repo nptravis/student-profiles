@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :suggestions
   resources :teachers
   resources :sections
   get '/login', to: 'session#new'

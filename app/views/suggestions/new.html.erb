@@ -1,0 +1,6 @@
+<h1>Submit a New Suggestion</h1>
+
+<%= form_for @suggestion do |f|%>
+	<%=f.text_area :content%>
+	<%=f.submit :submit %>
+<% end %>

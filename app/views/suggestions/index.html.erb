@@ -1,0 +1,8 @@
+<h1>All Suggestions</h1>
+<button class="new-suggestion grey"><%=link_to "+ New Suggestion", new_suggestion_path %></button>
+<ol>
+	<%@suggestions.each do |suggestion|%>
+		<li><%= suggestion.content%> - <small><b><%= suggestion.user.username%><b></small></li>
+	<% end %>
+
+</ol>

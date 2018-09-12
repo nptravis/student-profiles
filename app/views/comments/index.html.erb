@@ -13,7 +13,7 @@
 	<%= form_tag student_comments_path do %>
 
 		<%= label_tag "Post a comment" %>
-	  <%= text_area_tag 'comment[content]', nil, class: "student-comment" %>
+	  <%= text_area_tag 'comment[content]' %>
 
 	  <%= submit_tag "Post" %>
 	<% end %>
