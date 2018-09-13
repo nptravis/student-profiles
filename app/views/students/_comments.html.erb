@@ -26,20 +26,33 @@
 
 <script type="text/javascript">
 $(function(){
+	class Comment {
+	  constructor(content, author_id) {
+	    this.content = content;
+	    this.author_id = author_id;
+	  }
+
+	  sayHello() {
+	    console.log(`Hello, my content is ${this.content}, and my author_id is ${this.author_id}`);
+	  }
+	}
+
 	$('.student-comment-form').on('submit', function(event){
 		event.preventDefault();
 		let $form = $(this)
-
+		
 		$.ajax( {
 	      type: "POST",
 	      dataType: 'json',
 	      url: $form.attr( 'action' ),
 	      data: $form.serialize(),
 	      success: function( response ) {
-	        $('.test').html(response.content)
+	        let comment = new Comment(response.content, response.user_id);
+	        comment.sayHello();
 	      }
 	    } );
 		return false;
+
 	})
 })
 </script>
