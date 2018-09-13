@@ -16,8 +16,30 @@
 </div>
 <% end %>
 
-<%= form_tag student_comments_path(@student) do %>
+<p class="test"></p>
+
+<%= form_tag student_comments_path(@student), {class: "student-comment-form"} do %>
 	<%= label_tag "Post a comment" %> <br>
 	<%= text_area_tag 'comment[content]' %> <br>
 	<%= submit_tag "Post" %>
 <% end %> 
+
+<script type="text/javascript">
+$(function(){
+	$('.student-comment-form').on('submit', function(event){
+		event.preventDefault();
+		let $form = $(this)
+
+		$.ajax( {
+	      type: "POST",
+	      dataType: 'json',
+	      url: $form.attr( 'action' ),
+	      data: $form.serialize(),
+	      success: function( response ) {
+	        $('.test').html(response.content)
+	      }
+	    } );
+		return false;
+	})
+})
+</script>

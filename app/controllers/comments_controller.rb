@@ -14,7 +14,10 @@ class CommentsController < ApplicationController
 		@comment.student = @student
 		@comment.user_id = current_user.id
 		if @comment.save
-			redirect_to student_path(@student)
+			respond_to do |format|
+				format.html {redirect_to student_path(@student)}
+				format.json {render json: @comment.to_json}
+			end
 		else
 			render 'index'
 		end

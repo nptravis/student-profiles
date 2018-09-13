@@ -65,6 +65,14 @@ $(function(){
 	let Ps = all_standards.filter(function(grade){return grade.grade === "2"}).length
 	let Ms = all_standards.filter(function(grade){return grade.grade === "3"}).length
 	let Es = all_standards.filter(function(grade){return grade.grade === "4"}).length
+
+	let colors = {
+    	0:"#FBE2E62",
+        1:"#A8271E",
+        2:"#F8DA06",
+        3:"#249D3D",
+        4:"#007CC6"
+    }
 	
 //END Global variable declarations ////////////////////////////////////////////////
 //BEGIN Doughnut Standards ////////////////////////////////////////////////////////
@@ -164,14 +172,6 @@ function renderCharts(data_hash){
         2:"P",
         3:"M",
         4:"E"
-    }
-
-    let colors = {
-    	0:"#FBE2E62",
-        1:"#A8271E",
-        2:"#F8DA06",
-        3:"#249D3D",
-        4:"#007CC6"
     }
 
 	 let html = 
@@ -351,6 +351,9 @@ let barChart = new Chart(barChartDiv, {
 			$('.student-data-container').html(response);
 		})
 	})
+
+
+
 
 
 // END Listener Attachments ///////////////////////////////////////////////
