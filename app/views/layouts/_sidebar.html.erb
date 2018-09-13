@@ -2,10 +2,10 @@
 	<% if current_user.present? %>
 		<% if current_user.admin %>
 			<div class="sidebarNav">
-				<button><a href="/students">Student Index</a></button>
-				<button><a href="/users">Admin Index</a></button>
-				<button><a href="/standards">Standards Index</a></button>
-				<button><a href="/suggestions">Suggestion Box</a></button>
+				<a href="/students"><i class="fas fa-address-card"><span class="icon-text">Student Index</span></i></a>
+				<a href="/users"><i class="fas fa-unlock"><span class="icon-text">Admin Index</span></i></a>
+				<a href="/standards"><i class="fas fa-user-graduate"><span class="icon-text">Standards Index</span></i></a>
+				<a href="/suggestions"><i class="fas fa-lightbulb"><span class="icon-text">Suggestion Box</span></i></a>
 				
 			</div>
 		<% else %>

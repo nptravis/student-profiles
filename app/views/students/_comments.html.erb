@@ -49,6 +49,7 @@ $(function(){
 	      success: function( response ) {
 	        let comment = new Comment(response.content, response.user_id);
 	        comment.sayHello();
+	        $('.test').html(comment.content)
 	      }
 	    } );
 		return false;

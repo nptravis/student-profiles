@@ -46,7 +46,24 @@ div.sidebar-container a {
 	text-decoration: none;
 	margin-left: 0px;
 	color: coral;
+	text-align: center;
+	i {
+		font-size: 80px;
+		margin-left: 10px;
+		display: block;
+		margin-bottom: 20px;
+	}
+	i:hover {
+		color: #ffca51;
+	}
+	span.icon-text {
+		font-size: 14px;
+		display: block;
+		padding: 2px;
+
+	}
 }
+
 
 div.sidebarNav button {
 	margin: 10px;
