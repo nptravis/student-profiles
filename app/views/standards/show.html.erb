@@ -1,6 +1,9 @@
-<h1><%= @standard.standardname %></h1>
-<ol>
-<% @standard.students.each do |student| %>
-	<li><%= link_to student.lastfirst, student_path(student) %></li>
+<h3>Standard Name: <%= @standard.standard_name %></h3>
+
+<ul>
+<% @standard.grades.each do |grade| %>
+	<li><%= grade.standard.standard_name %> - <%= grade.grade %></li>
 <% end %>
-</ol>
+</ul>
+
+<!-- <h2>Total is <%= Mathify.sum_grades(@standard.grades) %></h2> -->

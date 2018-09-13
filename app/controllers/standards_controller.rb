@@ -1,4 +1,5 @@
 class StandardsController < ApplicationController
+
 	def index
 		@standards = Standard.all
 	end
@@ -6,4 +7,5 @@ class StandardsController < ApplicationController
 	def show
 		@standard = Standard.find(params[:id])
 	end
+
 end

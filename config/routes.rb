@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     resources :courses
     resources :sections
   end
+
+  resources :courses
   
   resources :students do 
   	resources :comments

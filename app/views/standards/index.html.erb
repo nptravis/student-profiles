@@ -1,7 +1,7 @@
 <h1>All Standards</h1>
 
-<ol>
-	<% @standards.each do |standard| %>
-	<li><%= link_to standard.standardname, standard_path(standard.id)%></li>
-	<% end %>
-</ol>
+<ul>
+<% @standards.each do |standard| %>
+	<li><%= link_to standard.standard_name, standard_path(standard) %> - <%= standard.identifier %></li>
+<% end %>
+</ul>
