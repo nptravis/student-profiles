@@ -1,12 +1,13 @@
 class Section < ApplicationRecord
 	belongs_to :course
 	belongs_to :teacher
+	belongs_to :term
 	has_many :grades
 	has_many :student_sections
 	has_many :students, through: :student_sections
 	has_many :semester_comments
 	has_many :standards, through: :course
-	validates :course_id, :teacher_id, :course_number, :course_name, :room, :section_number, :dcid, :termid, :expression, presence: true
+	validates :course_id, :teacher_id, :room, :section_number, :grade_level, :dcid, :term_id, :expression, presence: true
 
 	def grades_per_student(student)
 		self.grades.where("student_id = ?", student)
@@ -25,7 +26,40 @@ class Section < ApplicationRecord
 	end
 
 	def self.sections_per_grade_per_term(grade, term)
-		self.all.where("grade_level = ? AND termid = ?", grade, term)
+		self.all.where("grade_level = ? AND term_id = ?", grade, grade.term.id)
 	end
+
+	def all_standards
+		collection = []
+		self.standards.each do |standard|
+			if !standard.hom?
+				collection << standard
+			end
+		end
+		collection
+	end
+
+	def all_homs_by_student(student)
+		collection = []
+		self.grades.where("student_id = ?", student).each do |grade|
+			if grade.standard.hom?
+				collection << grade
+			end
+		end
+		collection
+	end
+
+	def all_standards_by_student(student)
+		collection = []
+		self.grades.where("student_id = ?", student).each do |grade|
+			if !grade.standard.hom?
+				collection << grade
+			end
+		end
+		collection
+	end
+
+	
+	
 
 end

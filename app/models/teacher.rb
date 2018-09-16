@@ -10,4 +10,8 @@ class Teacher < ApplicationRecord
 		!!Teacher.find_by(email: user.email)
 	end
 
+	def current_sections
+		self.sections.select {|section| section.term.term_code >= 2800} 
+	end
+
 end

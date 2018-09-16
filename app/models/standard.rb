@@ -1,5 +1,7 @@
 class Standard < ActiveRecord::Base
 	has_many :grades
+	has_many :standard_terms
+	has_many :terms, through: :standard_terms
 	has_many :students, through: :grades
 	has_many :course_standards
 	has_many :courses, through: :course_standards

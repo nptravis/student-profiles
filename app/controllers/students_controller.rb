@@ -13,7 +13,8 @@ class StudentsController < ApplicationController
 	def show
 		collection = CollectionService.new
 		@student = Student.find(params[:id])
-		current_grades = @student.grades.where("termid >= ?", 2800)
+		term = Term.find_by(term_code: 2800);
+		current_grades = @student.grades.where("term_id = ?", term.id)
 		@all_standards = collection.all_standards(current_grades)
 		@all_homs = collection.all_homs(current_grades)
 	end
@@ -32,7 +33,7 @@ class StudentsController < ApplicationController
 		@student = Student.find(params[:id])
 		respond_to do |format|
 			format.html {render partial: 'schedule_matrix'}
-			format.js {render json: @student.to_json(methods: :sections_current)}
+			format.json {render json: @student.to_json(methods: :sections_current)}
 		end
 	end 
 
@@ -54,45 +55,35 @@ class StudentsController < ApplicationController
 	def section
 		student = Student.find(params[:id])
 		section = Section.find(params[:section_id])
-		grades = student.grades.where("section_id = ?", section)
-		semester_comments = student.semester_comments.where("section_id = ?", section.id)
+		s1_comment = SemesterComment.find_by(section_id: section.id, student_id: student.id, semester: "S1")
+		s2_comment = SemesterComment.find_by(section_id: section.id, student_id: student.id, semester: "S2")
+		if s1_comment
+			s1_comment = s1_comment.content
+		end
+		if s2_comment
+			s2_comment = s2_comment.content
+		end
+		collection_service = CollectionService.new
 		
-		grades_hash = {
-			:course_name => section.course_name,
-			:course_number => section.course_number,
-			:section_number => section.section_number,
-			:expression => section.expression,
-			:teacher => {lastfirst: section.teacher.lastfirst, email: section.teacher.email},
-			:s1_standards => [],
-			:s2_standards => [],
-			:s1_homs => [],
-			:s2_homs => [],
-			:semester_comments => []
+		section_data = {
+			section_number: section.section_number,
+			course_name: section.course.course_name,
+			course_number: section.course.course_number,
+			teacher_name: section.teacher.lastfirst,
+			teacher_email: section.teacher.email,
+			room: section.room,
+			comments: [s1_comment, s2_comment]
 		}
 
-		semester_comments.each do |comment|
-			grades_hash[:semester_comments] << {semester: comment.semester, content: comment.content}
-		end
+		data_sets = {
+			s1: collection_service.grades_per_section_per_semester_per_student(section, "S1", student),
+			s2: collection_service.grades_per_section_per_semester_per_student(section, "S2", student)
+		}
 
-		grades.each do |grade|
-			if grade.standard.hom? && grade.semester == "S1"
-				grades_hash[:s1_homs] << {:name => grade.standard.standard_name, :grade => grade.grade}
-			elsif !grade.standard.hom? && grade.semester == "S1"
-				grades_hash[:s1_standards] << {:name => grade.standard.standard_name, :grade => grade.grade}
-			elsif grade.standard.hom? && grade.semester == "S2"
-				grades_hash[:s2_homs] << {:name => grade.standard.standard_name, :grade => grade.grade}
-			elsif !grade.standard.hom? && grade.semester == "S2"
-				grades_hash[:s2_standards] << {:name => grade.standard.standard_name, :grade => grade.grade}
-			else
-				puts "ERROR: some grade didn't have a semester...."
-			end
-		end
-		grades_hash[:s1_standards].sort_by!{|x| x[:name]}
-		grades_hash[:s2_standards].sort_by!{|x| x[:name]}
-		grades_hash[:s1_homs].sort_by!{|x| x[:name]}
-		grades_hash[:s2_homs].sort_by!{|x| x[:name]}
-
-		render json: grades_hash.to_json
+		data_hash = [section_data, data_sets]
+		
+		render partial: 'section_show', locals: {data_hash: data_hash.to_json}
+		
 	end
 
 # BEGIN Private /////////////////////////////////////////////////////////////////////

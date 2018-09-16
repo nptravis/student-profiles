@@ -16,6 +16,9 @@
 //= require bar-charts.js
 //= require map-line-chart.js
 //= require bootstrap.bundle.js
+//= require visualizations.js
+
+
 
 
 

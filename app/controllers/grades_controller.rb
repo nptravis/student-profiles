@@ -23,4 +23,5 @@ class GradesController < ApplicationController
 		params.require(:grade).permit(:course_id, :standard_id, :grade, :student_id, :semester)
 	end
 
+
 end 

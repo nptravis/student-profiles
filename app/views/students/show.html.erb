@@ -8,7 +8,7 @@
 		<div class="student-info">
 			<h2><%= @student.lastfirst %></h2>
 			 <p>Student Number: <%= @student.student_number %></p>
-			 <p>Grade: <%= @student.gradelevel %></p>
+			 <p>Grade: <%= @student.grade_level %></p>
 		</div>
 		<div class="student-donut">
 			<h5>All Standards for 18-19</h5>
@@ -142,177 +142,7 @@ let homsDoughnutDiv = $('#student-doughnut-homs');
 
 
 
-// END HOMs Donut //////////////////////////////////////////////////////////////////
-
-// BEGIN Section Charts /////////////////////////////////////////////////////////
-function renderCharts(data_hash){
-// Bar Chart --------------------------------------------------------------------//
-	let s1_comment = data_hash["semester_comments"].filter(function(comment){return comment.semester === "S1"})
-	let s2_comment = data_hash["semester_comments"].filter(function(comment){return comment.semester === "S2"})
-	let course_name = data_hash["course_name"]
-	let course_number = data_hash["course_number"]
-	let section_number = data_hash["section_number"]
-	let expression = data_hash["expression"]
-	let teacher_name = data_hash["teacher"]["lastfirst"]
-	let teacher_email = data_hash["teacher"]["email"]
-	let s1_standard_names = data_hash["s1_standards"].map(function(e){return e.name})
-	let s2_standard_names = data_hash["s2_standards"].map(function(e){return e.name})
-	// s2_standard_names = s2_standard_names.map(function(name){return name.split(" ")})
-	// s1_standard_names = s1_standard_names.map(function(name){return name.split(" ")})
-	let s1_standard_grades = data_hash["s1_standards"].map(function(e){return e.grade})
-	let s2_standard_grades = data_hash["s2_standards"].map(function(e){return e.grade})
-	let s1_hom_names = data_hash["s1_homs"].map(function(e){return e.name})
-	let s2_hom_names = data_hash["s2_homs"].map(function(e){return e.name})
-	let s1_hom_grades = data_hash["s1_homs"].map(function(e){return e.grade})
-	let s2_hom_grades = data_hash["s2_homs"].map(function(e){return e.grade})
-
-	let notations = {
-        0:"ND",
-        1:"B",
-        2:"P",
-        3:"M",
-        4:"E"
-    }
-
-	 let html = 
-	 	`<h2>${course_name}</h2>` +
-	 	`<h4>${course_number}.${section_number} - ${expression}</h4>` +
-	 	`<p>${teacher_name}</p>` +
-	 	`<p><a href="mailto:${teacher_email}" target="_blank">${teacher_email}</a></p>` +
-	 	'<div class="canvas-wrapper"><div class="canvas-1"><canvas id="barChartDiv"></div></canvas><div class="canvas-2"><canvas id="radarChartDiv"></canvas></div></div>';
-
-	 	if (s1_comment[0]){
-	 		html += `<a href="" class="trigger_popup_fricc" data-comment="${s1_comment[0]['content']}">S1 Comment</a>`
-	 	}
-	 	if (s2_comment[0]){
-	 		html += `<a href="" class="trigger_popup_fricc" data-comment="${s2_comment[0]['content']}">S2 Comment</a>`;
-	 	}
-	 	
-// BEGIN student comment popup ////////////////////////////////////////////////////////////////////
-	$('.student-data-container').html(html)
-
-	$('.hover_bkgr_fricc').html(`<span class="helper"></span><div><div class="popupCloseButton">X</div><p class="comment-text"></p></div>`)
-
- 	$(".trigger_popup_fricc").click(function(e){
- 		e.preventDefault();
- 		let text = $(this).data("comment")
- 		$('.comment-text').html(text + `<br><small><b>- ${teacher_name}</b></small>  ` )
-   		$('.hover_bkgr_fricc').show();
-    });
-
-    $('.hover_bkgr_fricc').click(function(){
-        $('.hover_bkgr_fricc').hide();
-    });
-
-    $('.popupCloseButton').click(function(){
-        $('.hover_bkgr_fricc').hide();
-    }); 
-
-// END student comment popup ////////////////////////////////////////////////////////////////////
-
-let barChartDiv = $('#barChartDiv');
-let barChart = new Chart(barChartDiv, {
-    type: 'horizontalBar',
-    data: {
-        labels: s1_standard_names,
-        datasets: [{
-            label: "S1",
-            data: s1_standard_grades,
-            backgroundColor: s1_standard_grades.map(function(grade){
-            	return colors[grade]
-            }), 
-            borderColor: 'rgba(255,99,132,1)',
-            borderWidth: 1
-        },
-        {
-            label: "S2",
-            data: s2_standard_grades,
-            backgroundColor: s2_standard_grades.map(function(grade){
-            	return colors[grade]
-            }), 
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
-
-        }
-    ]},
-    options: {
-    	responsive: true,
-    	maintainAspectRatio: true,
-        title: {
-            display: true,
-            text: "Standards"
-        },
-        scales: {
-            xAxes: [{
-                ticks:{
-                    beginAtZero: true,
-                    max: 4,
-                    userCallback: function (value, index, values) {
-                        return notations[value];
-                    }
-                }
-            }]
-        },
-        layout: {
-            padding: {
-                left: 2,
-                right: 2,
-                top: 2,
-                bottom: 2
-            }
-        }
-    }
-});
-// Radar Chart -----------------------------------------------------------------//
-
-	let radarChartDiv = $('#radarChartDiv');
-    let radarChart = new Chart(radarChartDiv, {
-        type: 'radar',
-        data: {
-            labels: s1_hom_names,
-            datasets: [{
-                label: 'S1',
-                data: s1_hom_grades,
-                backgroundColor: 'rgba(255,226,230, .4)',
-                borderColor: 'rgba(255,99,132,1)',
-                borderWidth: 1
-            }
-            ,{
-                label: 'S2',
-                data: s2_hom_grades,
-                backgroundColor: 'rgba(225, 241, 255, .4)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            }
-        ]},
-        options: {
-        	responsive: true,
-        	title: {
-	            display: true,
-	            text: `Habits of Mind`
-	        },
-    		maintainAspectRatio: true,
-            scale: {
-                ticks: {
-                    beginAtZero:true,
-                    max: 4,
-                    userCallback: function (value, index, values) {
-                        return notations[value];
-                    }
-                }
-            },
-            layout: {
-	            padding: {
-	                left: 2,
-	                right: 2,
-	                top: 2,
-	                bottom: 10
-	            }
-	        }
-        }
-    });   
-}
-// END Section Charts ///////////////////////////////////////////////////////
+// END HOMs Donut /////////////////////////////////////////////////////////////
 // BEGIN Listener Attachments //////////////////////////////////////////////////////
 	$('.schedule-matrix-link').on("click", function(event){
 		event.preventDefault()
@@ -338,8 +168,7 @@ let barChart = new Chart(barChartDiv, {
 				event.preventDefault();
 				let section_id = $(this).attr('id')
 				$.get(`/students/${student_id}/sections/${section_id}`, function(response){
-					renderCharts(response);
-					// console.log(response)
+					$('.student-data-container').html(response)
 				})
 			});
 		})

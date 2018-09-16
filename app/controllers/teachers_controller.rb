@@ -10,5 +10,19 @@ class TeachersController < ApplicationController
 		@students = @students.sort_by(&:lastfirst).uniq
 	end
 
+	def show
+		@teacher = Teacher.find(params[:id])
+		render json: @teacher, serializer: TeacherSerializer
+	end
+
+	def index
+		@teachers = Teacher.all
+	end
+
+	def current_sections
+		@teacher = Teacher.find(params[:id])
+		render json: @teacher, serializer: TeacherSerializer
+	end
+
 
 end

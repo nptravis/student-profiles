@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180913042601) do
+ActiveRecord::Schema.define(version: 20180914064801) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20180913042601) do
   create_table "course_standards", force: :cascade do |t|
     t.integer "course_id"
     t.integer "standard_id"
+  end
+
+  create_table "course_terms", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "term_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "courses", force: :cascade do |t|
@@ -34,7 +41,7 @@ ActiveRecord::Schema.define(version: 20180913042601) do
     t.integer "standard_id"
     t.string "grade"
     t.integer "section_id"
-    t.integer "termid"
+    t.integer "term_id"
     t.string "semester"
   end
 
@@ -47,12 +54,10 @@ ActiveRecord::Schema.define(version: 20180913042601) do
   create_table "sections", force: :cascade do |t|
     t.integer "course_id"
     t.integer "teacher_id"
-    t.string "course_number"
-    t.string "course_name"
     t.string "section_number"
     t.string "expression"
     t.integer "dcid"
-    t.integer "termid"
+    t.integer "term_id"
     t.string "room"
     t.integer "grade_level"
   end
@@ -63,6 +68,11 @@ ActiveRecord::Schema.define(version: 20180913042601) do
     t.integer "teacher_id"
     t.string "content"
     t.string "semester"
+  end
+
+  create_table "standard_terms", force: :cascade do |t|
+    t.integer "standard_id"
+    t.integer "term_id"
   end
 
   create_table "standards", force: :cascade do |t|
@@ -79,7 +89,7 @@ ActiveRecord::Schema.define(version: 20180913042601) do
   create_table "students", force: :cascade do |t|
     t.string "lastfirst"
     t.string "student_number"
-    t.string "gradelevel"
+    t.string "grade_level"
     t.integer "dcid"
   end
 
@@ -95,6 +105,10 @@ ActiveRecord::Schema.define(version: 20180913042601) do
     t.string "lastfirst"
     t.integer "dcid"
     t.string "teacher_number"
+  end
+
+  create_table "terms", force: :cascade do |t|
+    t.integer "term_code"
   end
 
   create_table "users", force: :cascade do |t|

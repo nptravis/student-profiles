@@ -1,0 +1,4 @@
+class TeachersSerializer < ApplicationSerializer
+	
+	
+end

@@ -2,6 +2,7 @@ class SuggestionsController < ApplicationController
 
 	def index
 		@suggestions = Suggestion.all
+		render json: @suggestions, each_serailzer: TeacherSerializer
 	end
 
 	def new
@@ -19,6 +20,11 @@ class SuggestionsController < ApplicationController
 	end
 
 	def destroy
+	end
+
+	def show
+		@suggestion = Suggestion.find(params[:id])
+		render json: @suggestion, serializer: suggestionSerializer 
 	end
 
 	private

@@ -8,9 +8,35 @@
 
 
 <h1>All Teachers</h1>
+<div class="column-container">
 
-<ul>
-	<% @teachers.each do |teacher| %>
-		<li><%=teacher.lastfirst%> - <%=link_to teacher.email, "mailto:#{teacher.email}", target: "_blank" %></li>
-	<% end %>
-</ul>
+	<div class="left-column">
+		<ul>
+			<% @teachers.each do |teacher| %>
+				<li><%= link_to teacher.lastfirst, teacher_path(teacher), class: "teacher-link", data: {:teacher => teacher.id} %> - <%=link_to teacher.email, "mailto:#{teacher.email}", target: "_blank" %></li>
+			<% end %>
+		</ul>
+	</div>
+
+
+	<div class="right-column">
+		<div class="teacher-info"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+
+
+	
+	$('.teacher-link').on("click", function(event){
+		event.preventDefault();
+		let teacher_id = $(this).data('teacher')
+		$.getJSON(`/teachers/${teacher_id}`, function(){
+			console.log("Request Sent");
+			}).done(function(response){				
+				$('.teacher-info').html(response.show + response.current_sections);
+			})
+	})
+})
+</script>

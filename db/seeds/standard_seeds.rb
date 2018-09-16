@@ -7,8 +7,9 @@ data_hash["items"].each do |set|
 	student = Student.find_by(dcid: set["student_dcid"])
 	section = Section.find_by(dcid: set["section_dcid"])
 	course = Course.find_by(dcid: set["course_dcid"])
+	term = Term.find_by(term_code: set["termid"])
 
-	if student.present? && section.present? && course.present?
+	if student.present? && section.present? && course.present? && term.present?
 
 		standard = Standard.find_or_initialize_by(
 			standard_name: set["name"], 
@@ -16,21 +17,30 @@ data_hash["items"].each do |set|
 			dcid: set["standard_dcid"]
 			)
 
-		standard.save
+		if standard.save 
 
-		standard_course = CourseStandard.find_or_initialize_by(
-			standard_id: standard.id,
-			course_id: course.id
-			)
+			standard_term = StandardTerm.find_or_initialize_by(
+				standard_id: standard.id,
+				term_id: term.id)
 
-		if standard_course.save
+			if course.standards.include?(standard)
+				puts "standard already included in course standards"
+			else
+				course.standards << standard
+			end 
+
+		else
+			puts "ERROR: term or standard not saved"
+		end
+
+		if standard_term.save
 
 			grade = Grade.find_or_initialize_by(
 				standard_id: standard.id, 
 				student_id: student.id, 
 				section_id: section.id,
 				grade: set["standardgrade"],
-				termid: set["termid"],
+				term_id: term.id,
 				semester: set["storecode"]
 				)
 
@@ -56,7 +66,7 @@ data_hash["items"].each do |set|
 			end
 
 		else
-			puts "ERROR: standard not saved"
+			puts "ERROR: standard_term not saved"
 			break;
 		end
 

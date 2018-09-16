@@ -1,113 +1,72 @@
 
-<canvas id="chartDiv" data-section="<%=@section.id%>"></canvas>
+<canvas id="barChartDiv" ></canvas>
+<canvas id="radarChartDiv" ></canvas>
+
+<div class="data-div" data-hash="<%= data_hash %>"></div>
 
 <script type="text/javascript">
 $(function(){
 
+  
 
-	let section = $('#chartDiv').data("section");
 
-	    // /////// Bar Chart //////////////////////////
-        var ctx = document.getElementById("barChart" + i);
+    let data_hash = $('.data-div').data('hash')
+    console.log(data_hash)
 
-        var myChart = new Chart(ctx, {
-            type: 'horizontalBar',
-            data: {
-                labels: s1_standard_names,
-                datasets: [{
-                    label: "S1",
-                    data: s1_standard_grades,
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)', 
-                    borderColor: 'rgba(255,99,132,1)',
-                    borderWidth: 1
-                },
-                {
-                    label: "S2",
-                    data: s2_standard_grades,
-                    backgroundColor: '#D8ECFA', 
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
+    let course_name = data_hash[0]["course_name"];
+    let course_number = data_hash[0]["course_number"];
+    let section_number = data_hash[0]["section_number"];
+    let expression = data_hash[0]["expression"];
+    let teacher_email = data_hash[0]["teacher_email"];
+    let teacher_name = data_hash[0]["teacher_name"];
+    let comments = data_hash[0]["comments"];
 
-                }]
-            },
-            options: {
-                title: {
-                    display: true,
-                    text: data_hash[i].course_name
-                },
-                scales: {
-                    xAxes: [{
-                        ticks:{
-                            beginAtZero: true,
-                            max: 4,
-                            callback: function(value, index, values) {
-                                switch(value) {
-                                    case 0:
-                                    return 'ND';
-                                    case 1:
-                                    return 'B';
-                                    case 2:
-                                    return 'P';
-                                    case 3:
-                                    return 'M';
-                                    case 4:
-                                    return 'E';
-                                }
-                            }
-                        }
-                    }]
-                }
-            }
-        });
 
-    // /////// Radar Chart //////////////////////////
-        var notations = {
-            0:"ND",
-            0.5:"",
-            1:"B",
-            1.5:"",
-            2:"P",
-            2.5:"",
-            3:"M",
-            3.5:"",
-            4:"E"
+     let html = 
+        `<h2>${course_name}</h2>` +
+        `<h4>${course_number}.${section_number} - ${expression}</h4>` +
+        `<p>${teacher_name}</p>` +
+        `<p><a href="mailto:${teacher_email}" target="_blank">${teacher_email}</a></p>` +
+        '<div class="canvas-wrapper"><div class="canvas-1"><canvas id="barChartDiv"></div></canvas><div class="canvas-2"><canvas id="radarChartDiv"></canvas></div></div>';
+
+    comments.forEach(function(comment){
+        let i = 1;
+        if (comment != null){
+         html += `<a href="" class="trigger_popup_fricc" data-comment="${comment}">S${i} Comment</a>`
+         i++;
         }
-        var ctx = document.getElementById("radarChart" + i).getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'radar',
-            data: {
-                labels: s1_hom_names,
-                datasets: [{
-                    label: 'S1',
-                    data: s1_hom_grades,
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255,99,132,1)',
-                    borderWidth: 1
-                },{
-                    label: 'S2',
-                    data: s2_hom_grades,
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scale: {
-                    ticks: {
-                        beginAtZero:true,
-                        max: 4,
-                        userCallback: function (value, index, values) {
-                            return notations[value];
-                        }
-                    }
-                }
+    })
 
-            }
-        });
-
-
+        $('.student-data-container').html(html)
+        
+// BEGIN student comment popup 
  
+
+    $('.hover_bkgr_fricc').html(`<span class="helper"></span><div><div class="popupCloseButton">X</div><p class="comment-text"></p></div>`)
+
+    $(".trigger_popup_fricc").click(function(e){
+        e.preventDefault();
+        let text = $(this).data("comment")
+        $('.comment-text').html(text + `<br><small><b>- ${teacher_name}</b></small>  ` )
+        $('.hover_bkgr_fricc').show();
+    });
+
+    $('.hover_bkgr_fricc').click(function(){
+        $('.hover_bkgr_fricc').hide();
+    });
+
+    $('.popupCloseButton').click(function(){
+        $('.hover_bkgr_fricc').hide();
+    }); 
+
+// END student comment popup 
+
+// BEGIN Create Charts
+    let barChartDiv = $('#barChartDiv');
+    let radarChartDiv = $('#radarChartDiv')
+    createBarGraph(barChartDiv, data_hash[1]["s1"]["standards"], data_hash[1]["s2"]["standards"] );
+    createRadarGraph(radarChartDiv, data_hash[1]["s1"]["homs"], data_hash[1]["s2"]["homs"] );
+ // END Create Charts
 
 });
 </script>t

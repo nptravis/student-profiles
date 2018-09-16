@@ -8,7 +8,7 @@ class Student < ActiveRecord::Base
 	has_many :courses, through: :sections
 	has_many :standards, through: :grades
 	has_many :semester_comments
-	validates :lastfirst, :student_number, :gradelevel, :dcid, presence: true
+	validates :lastfirst, :student_number, :grade_level, :dcid, presence: true
 	validates_uniqueness_of :student_number
 
 	def self.search(word)
@@ -54,7 +54,13 @@ class Student < ActiveRecord::Base
 	end
 
 	def sections_current
-		self.sections.where("termid >= ?", 2800);
+		collection = []
+		self.sections.each do |section|
+			if section.term.term_code >= 2800
+				collection << section
+			end
+		end
+		collection
 	end
 
 end
