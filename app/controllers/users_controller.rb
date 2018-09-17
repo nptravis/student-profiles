@@ -11,8 +11,8 @@ class UsersController < ApplicationController
 	end
 
 	def index
-		@users = User.all
-		@teachers = Teacher.all
+		@users = User.all.order(:username)
+		@teachers = Teacher.all.order(:lastfirst)
 	end
 
 	def create

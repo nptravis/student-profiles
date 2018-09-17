@@ -1,11 +1,13 @@
 <h1><%= @section.course.course_name %> - <%= @section.course.course_number %>.<%= @section.section_number %></h1>
-<h4>Teacher: <%= @section.teacher.lastfirst %></h4>
-<h4>Term: <%= @section.term.term_code %></h4>
-<h4>Grade: <%= @section.grade_level %></h4>
+<div class="data-container">
+	<h4>Teacher: <%= @section.teacher.lastfirst %></h4>
+	<h4>Term: <%= @section.term.term_code %></h4>
+	<h4>Grade: <%= @section.grade_level %></h4>
 
-<h4>Enrolled Students</h4>
-<ol>
-<% @section.students.each do |student| %>
-	<li><%= link_to student.lastfirst, student_path(student) %> - <%= student.student_number %></li>
-<% end %>
-</ol>
+	<h4>Enrolled Students</h4>
+	<ol>
+	<% @section.students.each do |student| %>
+		<li><%= link_to student.lastfirst, student_path(student) %> - <%= student.student_number %></li>
+	<% end %>
+	</ol>
+</div>

@@ -12,11 +12,14 @@ class TeachersController < ApplicationController
 
 	def show
 		@teacher = Teacher.find(params[:id])
-		render json: @teacher, serializer: TeacherSerializer
+		respond_to do |format|
+			format.json {render json: @teacher, serializer: TeacherSerializer}
+			format.html 
+		end
 	end
 
 	def index
-		@teachers = Teacher.all
+		@teachers = Teacher.all.order(:lastfirst)
 	end
 
 	def current_sections

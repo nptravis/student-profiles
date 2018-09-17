@@ -1,2 +1,2 @@
 <h2><%= @teacher.lastfirst %></h2>
-<p><small><%= @teacher.email %></small></p>
+<p><small><%= link_to @teacher.email, "mailto:#{@teacher.email}" %></small></p>
