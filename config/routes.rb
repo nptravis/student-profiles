@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get '/students/:id/map', to: 'students#map'
   get '/students/:id/sections', to: 'students#sections'
   get '/students/:id/sections/:section_id', to: 'students#section'
+  post '/standards/:id/grades_per_term', to: 'standards#grades_per_term'
+  get '/standards/:id/all_grades', to: 'standards#all_grades'
 
   resources :users do
     resources :courses
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
   end
 
   resources :courses
+  resources :terms
   
   resources :students do 
   	resources :comments

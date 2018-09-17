@@ -1,4 +1,13 @@
 
+let defaultColors = {
+    	0:"#FBE2E62",
+        1:"#A8271E",
+        2:"#F8DA06",
+        3:"#249D3D",
+        4:"#007CC6"
+    }
+
+
 function createBarGraph(dataDiv, s1_hash, s2_hash) {
 	console.log(arguments)
 	let notations = {
@@ -136,4 +145,82 @@ function createRadarGraph(dataDiv, s1_hash, s2_hash){
             }
         }
     });   
+}
+
+function createStackedBarGraph(){
+
+	let datasets = {
+		years: [],
+		ND: [],
+		B: [],
+		P: [],
+		M: [],
+		E: []
+	}
+	if (arguments){
+		for(let i = 1; i < arguments.length; i++){
+
+			datasets["years"].push(arguments[i]["years"]);
+			datasets["ND"].push(arguments[i]["ND"]);
+			datasets["B"].push(arguments[i]["B"]);
+			datasets["M"].push(arguments[i]["M"]);
+			datasets["P"].push(arguments[i]["P"]);
+			datasets["E"].push(arguments[i]["E"]);
+		}
+	}
+	debugger;
+	
+
+	var stackedBar = new Chart(arguments[0], {
+	    type: 'bar',
+	    data: {
+	    	labels: datasets["years"],
+	    	datasets: [{
+	            label: "ND",
+	            data: datasets["ND"],
+	            backgroundColor: defaultColors[0], 
+	            borderColor: 'rgba(255,99,132,1)',
+	            borderWidth: 1
+	        },
+	        {
+	            label: "B",
+	            data: datasets["B"],
+	            backgroundColor: defaultColors[1], 
+	            borderColor: 'rgba(255,99,132,1)',
+	            borderWidth: 1
+	        },
+	        {
+	            label: "P",
+	            data: datasets["P"],
+	            backgroundColor: defaultColors[2], 
+	            borderColor: 'rgba(255,99,132,1)',
+	            borderWidth: 1
+	        },
+	        {
+	            label: "M",
+	            data: datasets["M"],
+	            backgroundColor: defaultColors[3], 
+	            borderColor: 'rgba(255,99,132,1)',
+	            borderWidth: 1
+	        },
+	        {
+	            label: "E",
+	            data: datasets["E"],
+	            backgroundColor: defaultColors[4], 
+	            borderColor: 'rgba(255,99,132,1)',
+	            borderWidth: 1
+	        }],
+
+	    },
+	    options: {
+	        scales: {
+	            xAxes: [{
+	                stacked: true
+	            }],
+	            yAxes: [{
+	                stacked: true
+	            }]
+	        }
+	    }
+	});
 }

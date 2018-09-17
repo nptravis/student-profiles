@@ -22,5 +22,6 @@ class Standard < ActiveRecord::Base
 		collection.uniq
 	end 
 
+
 end
 
