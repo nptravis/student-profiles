@@ -15,7 +15,7 @@ class CoursesController < ApplicationController
 	def show
 		@course = Course.find(params[:id])
 		@students = @course.students.uniq
-		render json: @course.to_json(:include => :students)
+		render json: @course, serializer: CourseSerializer
 	end
 
 end

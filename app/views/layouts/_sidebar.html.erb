@@ -27,19 +27,36 @@ $(function(){
 
 	$('.suggestion-link').on("click", function(event){
 		event.preventDefault();
-		$.get("/suggestions", function(event){
-			console.log("Request Sent")
-		}).done(function(response){
-			let html = "<h1>All Suggestions</h1><ol>"
-			response.forEach(function(sugg){
-				html += "<li>" + sugg.show + "</li>"
-			})
-			html += "</ol>"
-			$('.content-container').html(html)
 
-		});
-	})
-})
+		// $.get("/suggestions", function(event){
+		// 	console.log("Request Sent")
+		// }).done(function(response){
+		// 	let html = "<h1>All Suggestions</h1><ol>"
+		// 	response.forEach(function(sugg){
+		// 		html += "<li>" + sugg.show + "</li>"
+		// 	})
+		// 	html += "</ol>"
+		// 	$('.content-container').html(html)
+
+		// });
+
+
+		fetch("/suggestions")
+		  .then(response => {
+		    if (!response.ok) { throw response }
+		    return response.json()  //we only get here if there is no error
+		  })
+		  .then(json => {
+			   let html = "<h1>All Suggestions</h1><ol>"
+				json.forEach(function(sugg){
+					html += "<li>" + sugg.show + "</li>"
+				})
+				html += "</ol>"
+				$('.content-container').html(html)
+		  });
+		  
+	});
+});
 
 
 </script>

@@ -168,7 +168,6 @@ function createStackedBarGraph(){
 			datasets["E"].push(arguments[i]["E"]);
 		}
 	}
-	debugger;
 	
 
 	var stackedBar = new Chart(arguments[0], {
