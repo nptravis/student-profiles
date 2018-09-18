@@ -26,16 +26,6 @@
 
 <script type="text/javascript">
 $(function(){
-	class Comment {
-	  constructor(content, author_id) {
-	    this.content = content;
-	    this.author_id = author_id;
-	  }
-
-	  sayHello() {
-	    console.log(`Hello, my content is ${this.content}, and my author_id is ${this.author_id}`);
-	  }
-	}
 
 	$('.student-comment-form').on('submit', function(event){
 		event.preventDefault();
@@ -46,14 +36,47 @@ $(function(){
 	      dataType: 'json',
 	      url: $form.attr( 'action' ),
 	      data: $form.serialize(),
-	      success: function( response ) {
-	        let comment = new Comment(response.content, response.user_id);
-	        comment.sayHello();
-	        $('.test').html(comment.content)
+	      success: function(response) {
+	      	let studentId = response.student.id
+	      	let username = response.user.username
+	      	let content = response.content
+	      	let commentId = response.id
+
+	        let html = 
+	        '<div class="comment-content">' +
+	        	`<a href="/students/${studentId}/comments/${commentId}" data-method="delete" class="destroy"><i class="fas fa-trash-alt"></i></a>` +
+	        	`<a href="/students/${studentId}/comments/${commentId}" ><i class="fas fa-pencil-alt"></i></a>` +
+	        	`<p class="commentContent">${content} - <small class="commentUsername"><strong>${username}</strong></small></p>` +
+	        '</div>'
+	        ;
+			
+	        $('.comments-container').append(html)
+	        attachDeleteListener();
 	      }
 	    } );
-		return false;
 
+	    
+		return false;
 	})
+
+function attachDeleteListener(){
+	$('.destroy').on("click", function(event){
+		event.preventDefault();
+		event.stopPropagation();
+		let $link = $(this)
+		$link.parent().hide();
+
+		$.ajax({
+			url: $link.attr('href'),
+			type: $link.data('method'),
+			dataType: 'js',
+			success: function(response){
+				console.log("Success", response)
+
+			}
+		})
+		return false;
+	})
+}
 })
 </script>

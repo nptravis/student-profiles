@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
 		if @comment.save
 			respond_to do |format|
 				format.html {redirect_to student_path(@student)}
-				format.json {render json: @comment.to_json}
+				format.json {render json: @comment, serializer: CommentSerializer}
 			end
 		else
 			render 'index'
@@ -37,7 +37,10 @@ class CommentsController < ApplicationController
 	def destroy
 		@comment = Comment.find(params[:id])
 		@comment.destroy
-		redirect_to student_path(params[:student_id])
+		respond_to do |format|
+			format.html {redirect_to student_path(params[:student_id])}
+			format.js {render text: "comment destroyed"}
+		end
 	end
 
 	def show
