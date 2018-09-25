@@ -12,12 +12,12 @@
 
 	<div class="left-column">
 		<ul>
+			<button class="G" id="teacher-sort-button">Only g</button>
 			<% @teachers.each do |teacher| %>
 				<li><%= link_to teacher.lastfirst, teacher_path(teacher), class: "teacher-link", data: {:teacher => teacher.id} %> - <%=link_to teacher.email, "mailto:#{teacher.email}", target: "_blank" %></li>
 			<% end %>
 		</ul>
 	</div>
-
 
 	<div class="right-column">
 		<div class="teacher-info"></div>
@@ -27,8 +27,19 @@
 <script type="text/javascript">
 $(function(){
 
+	$("#teacher-sort-button").on("click", function(){
+		let teacherNames = $('.teacher-link')
 
+		teacherNames.each((x,t) => {
+			if(t.innerText[0] !== "G"){
+				$(t).hide();
+				
+		
 	
+			}
+		})
+	})
+
 	$('.teacher-link').on("click", function(event){
 		event.preventDefault();
 		let teacher_id = $(this).data('teacher')

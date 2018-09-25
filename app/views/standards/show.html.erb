@@ -74,17 +74,27 @@ $(function(){
 		$.getJSON(`/courses/${courseId}`, function(){
 		console.log("Request Sent")
 		}).done(function(response){
-			class Course {
-				constructor(course_name, course_number, standards){
-					this.course_name = course_name;
-	    			this.course_number = course_number;
-	    			this.standards = standards;
 
-				}
-				all_standard_names(){
-					return this.standards.map(function(standard){ return standard.standard_name})
-				}
+			function Course(course_name, course_number, standards){
+				this.course_name = course_name;
+    			this.course_number = course_number;
+    			this.standards = standards;
 			}
+			Course.prototype.all_standard_names(){
+				return this.standards.map(function(standard){ return standard.standard_name})
+			}
+
+			// class Course {
+			// 	constructor(course_name, course_number, standards){
+			// 		this.course_name = course_name;
+	  //   			this.course_number = course_number;
+	  //   			this.standards = standards;
+
+			// 	}
+			// 	all_standard_names(){
+			// 		return this.standards.map(function(standard){ return standard.standard_name})
+			// 	}
+			// }
 			let course = new Course(response.course_name, response.course_number, response.standards)
 			let html = 
 				`<h1>${course.course_name}</h1>` +
