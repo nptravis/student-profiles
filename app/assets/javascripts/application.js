@@ -13,9 +13,8 @@
 //= require rails-ujs
 //= require turbolinks
 
-//= require bar-charts.js
 //= require map-line-chart.js
-//= require bootstrap.bundle.js
+//= require Chart.bundle.min.js
 //= require visualizations.js
 
 

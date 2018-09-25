@@ -4,7 +4,6 @@
     <title><%= yield :title %></title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js" integrity="sha256-JG6hsuMjFnQ2spWq0UiaDRJBaarzhFbUxiUTxQDA9Lk=" crossorigin="anonymous"></script>
     
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     
@@ -18,6 +17,7 @@
     
       
   </head>
+  <%= content_tag :body, data: {action: action_name, controller: controller_name } do %>
 
   <body>
     <%= render partial: 'layouts/header' %>
@@ -27,6 +27,6 @@
          <%= yield %>
       </div>
     </div>
-   
   </body>
+  <% end %>
 </html>
