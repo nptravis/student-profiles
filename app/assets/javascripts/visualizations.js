@@ -223,3 +223,51 @@ function createStackedBarGraph(){
 	    }
 	});
 }
+
+function createMapGraph(response){
+		$('.student-data-container').html('<canvas id="map-chart-div" ></canvas>')
+		let dataDiv = $('#map-chart-div')[0]
+        var chart = new Chart(dataDiv, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [{
+                    label: "My First dataset",
+                    backgroundColor: defaultColors[1],
+                    borderColor: defaultColors[0],
+                    data: [0, 10, 5, 15, 20, 30, 45],
+                },
+                {
+                    label: "My Second dataset",
+                    backgroundColor: defaultColors[2],
+                    borderColor: defaultColors[0],
+                    data: [5, 3, 34, 49, 87, 92, 100],
+                },
+                {
+                    label: "My Third dataset",
+                    backgroundColor: defaultColors[3],
+                    borderColor: defaultColors[0],
+                    data: [100, 98, 67, 82, 95, 104, 150]
+                },
+                {
+                    label: "My Student dataset",
+                    backgroundColor: defaultColors[4],
+                    borderColor: defaultColors[0],
+                    data: [250, 250, 250, 250, 250, 250, 250]
+                }]
+
+            },
+
+            // Configuration options go here
+            options: {
+                scales: {
+                    yAxes: [{
+                        stacked: true
+                    }]
+                }
+            }
+        });
+}

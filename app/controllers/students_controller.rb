@@ -31,15 +31,12 @@ class StudentsController < ApplicationController
 
 	def schedule
 		@student = Student.find(params[:id])
-		respond_to do |format|
-			format.html {render partial: 'schedule_matrix'}
-			format.json {render json: @student.to_json(methods: :sections_current)}
-		end
+		render json: @student, serializer: StudentScheduleSerializer
 	end 
 
 	def map
 		@student = Student.find(params[:id])
-		render partial: 'map'
+		render json: @student.to_json
 	end
 
 	def bell_schedule

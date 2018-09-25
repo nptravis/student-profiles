@@ -5,68 +5,68 @@
 <div class="data-div" data-hash="<%= data_hash %>"></div>
 
 <script type="text/javascript">
-$(function(){
+// $(function(){
 
   
 
 
-    let data_hash = $('.data-div').data('hash')
-    console.log(data_hash)
+//     let data_hash = $('.data-div').data('hash')
+//     console.log(data_hash)
 
-    let course_name = data_hash[0]["course_name"];
-    let course_number = data_hash[0]["course_number"];
-    let section_number = data_hash[0]["section_number"];
-    let expression = data_hash[0]["expression"];
-    let teacher_email = data_hash[0]["teacher_email"];
-    let teacher_name = data_hash[0]["teacher_name"];
-    let comments = data_hash[0]["comments"];
+//     let course_name = data_hash[0]["course_name"];
+//     let course_number = data_hash[0]["course_number"];
+//     let section_number = data_hash[0]["section_number"];
+//     let expression = data_hash[0]["expression"];
+//     let teacher_email = data_hash[0]["teacher_email"];
+//     let teacher_name = data_hash[0]["teacher_name"];
+//     let comments = data_hash[0]["comments"];
 
 
-     let html = 
-        `<h2>${course_name}</h2>` +
-        `<h4>${course_number}.${section_number} - ${expression}</h4>` +
-        `<p>${teacher_name}</p>` +
-        `<p><a href="mailto:${teacher_email}" target="_blank">${teacher_email}</a></p>` +
-        '<div class="canvas-wrapper"><div class="canvas-1"><canvas id="barChartDiv"></div></canvas><div class="canvas-2"><canvas id="radarChartDiv"></canvas></div></div>';
+//      let html = 
+//         `<h2>${course_name}</h2>` +
+//         `<h4>${course_number}.${section_number} - ${expression}</h4>` +
+//         `<p>${teacher_name}</p>` +
+//         `<p><a href="mailto:${teacher_email}" target="_blank">${teacher_email}</a></p>` +
+//         '<div class="canvas-wrapper"><div class="canvas-1"><canvas id="barChartDiv"></div></canvas><div class="canvas-2"><canvas id="radarChartDiv"></canvas></div></div>';
 
-    comments.forEach(function(comment){
-        let i = 1;
-        if (comment != null){
-         html += `<a href="" class="trigger_popup_fricc" data-comment="${comment}">S${i} Comment</a>`
-         i++;
-        }
-    })
+//     comments.forEach(function(comment){
+//         let i = 1;
+//         if (comment != null){
+//          html += `<a href="" class="trigger_popup_fricc" data-comment="${comment}">S${i} Comment</a>`
+//          i++;
+//         }
+//     })
 
-        $('.student-data-container').html(html)
+//         $('.student-data-container').html(html)
         
-// BEGIN student comment popup 
+// // BEGIN student comment popup 
  
 
-    $('.hover_bkgr_fricc').html(`<span class="helper"></span><div><div class="popupCloseButton">X</div><p class="comment-text"></p></div>`)
+//     $('.hover_bkgr_fricc').html(`<span class="helper"></span><div><div class="popupCloseButton">X</div><p class="comment-text"></p></div>`)
 
-    $(".trigger_popup_fricc").click(function(e){
-        e.preventDefault();
-        let text = $(this).data("comment")
-        $('.comment-text').html(text + `<br><small><b>- ${teacher_name}</b></small>  ` )
-        $('.hover_bkgr_fricc').show();
-    });
+//     $(".trigger_popup_fricc").click(function(e){
+//         e.preventDefault();
+//         let text = $(this).data("comment")
+//         $('.comment-text').html(text + `<br><small><b>- ${teacher_name}</b></small>  ` )
+//         $('.hover_bkgr_fricc').show();
+//     });
 
-    $('.hover_bkgr_fricc').click(function(){
-        $('.hover_bkgr_fricc').hide();
-    });
+//     $('.hover_bkgr_fricc').click(function(){
+//         $('.hover_bkgr_fricc').hide();
+//     });
 
-    $('.popupCloseButton').click(function(){
-        $('.hover_bkgr_fricc').hide();
-    }); 
+//     $('.popupCloseButton').click(function(){
+//         $('.hover_bkgr_fricc').hide();
+//     }); 
 
-// END student comment popup 
+// // END student comment popup 
 
-// BEGIN Create Charts
-    let barChartDiv = $('#barChartDiv');
-    let radarChartDiv = $('#radarChartDiv')
-    createBarGraph(barChartDiv, data_hash[1]["s1"]["standards"], data_hash[1]["s2"]["standards"] );
-    createRadarGraph(radarChartDiv, data_hash[1]["s1"]["homs"], data_hash[1]["s2"]["homs"] );
- // END Create Charts
+// // BEGIN Create Charts
+//     let barChartDiv = $('#barChartDiv');
+//     let radarChartDiv = $('#radarChartDiv')
+//     createBarGraph(barChartDiv, data_hash[1]["s1"]["standards"], data_hash[1]["s2"]["standards"] );
+//     createRadarGraph(radarChartDiv, data_hash[1]["s1"]["homs"], data_hash[1]["s2"]["homs"] );
+//  // END Create Charts
 
-});
-</script>t
+// });
+</script>

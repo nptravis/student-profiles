@@ -14,11 +14,11 @@
 //= require turbolinks
 //= require jquery3
 //= require jquery_ujs
-
-//= require map-line-chart.js
-//= require Chart.bundle.min.js
+//= require students
+//= require student_schedule
 //= require visualizations.js
 
+//= require Chart.bundle.min.js
 
 
 
