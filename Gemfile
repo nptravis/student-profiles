@@ -9,8 +9,14 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
 
+# Install jQuery
+gem 'jquery-rails' 
+
 # Use postgres as the database for Active Record
 gem 'pg'
+
+# Use rails_12factor to prepare app to deploy to Heroku
+gem 'rails_12factor'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
