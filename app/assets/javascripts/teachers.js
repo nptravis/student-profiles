@@ -13,7 +13,6 @@ function teacherInit(){
 	// END attach Listeners
 }
 
-
 // BEGIN AJAX functions
 function getTeacherShow(teacherId){
 	$.getJSON(`/teachers/${teacherId}`, function(response){
