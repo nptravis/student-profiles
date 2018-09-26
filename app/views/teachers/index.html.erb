@@ -1,2 +1,16 @@
 <h1>All Teachers</h1>
+<div class="column-container">
 
+	<div class="left-column">
+		<ul>
+			<!-- <button class="G" id="teacher-sort-button">Only g</button> -->
+			<% @teachers.each do |teacher| %>
+				<li><%= link_to teacher.lastfirst, teacher_path(teacher), class: "teacher-link", data: {:teacher => teacher.id} %> - <%=link_to teacher.email, "mailto:#{teacher.email}", target: "_blank" %></li>
+			<% end %>
+		</ul>
+	</div>
+
+	<div class="right-column">
+		<div class="teacher-info"></div>
+	</div>
+</div>

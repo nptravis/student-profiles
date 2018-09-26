@@ -9,7 +9,7 @@ let defaultColors = {
 
 
 function createBarGraph(dataDiv, s1_hash, s2_hash) {
-	console.log(arguments)
+	
 	let notations = {
         0:"ND",
         1:"B",

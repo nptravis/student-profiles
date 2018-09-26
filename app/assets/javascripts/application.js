@@ -14,11 +14,13 @@
 //= require turbolinks
 //= require jquery3
 //= require jquery_ujs
+//= require visualizations
 //= require students
+//= require teachers
 //= require student_schedule
-//= require visualizations.js
 
-//= require Chart.bundle.min.js
+
+//= require Chart.bundle.min
 
 
 

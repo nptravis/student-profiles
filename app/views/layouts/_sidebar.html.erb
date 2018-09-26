@@ -3,7 +3,7 @@
 		<% if current_user.admin %>
 			<div class="sidebarNav">
 				<a href="/students"><i class="students-link fas fa-address-card"><span class="icon-text">Student Index</span></i></a>
-				<a href="/users"><i class="staff-link fas fa-unlock staff-link"><span class="icon-text">Staff Index</span></i></a>
+				<a href="/teachers"><i class="staff-link fas fa-unlock staff-link"><span class="icon-text">Teachers Index</span></i></a>
 				
 				<a href="/standards"><i class="standards-link fas fa-user-graduate"><span class="icon-text">Standards Index</span></i></a>
 				<a href="/suggestions"><i class="suggestion-link fas fa-lightbulb"><span class="icon-text">Suggestion Box</span></i></a>
@@ -22,46 +22,3 @@
 	<% end %>
 </div>
 
-<script type="text/javascript">
-$(function(){
-
-// document.addEventListener("DOMContentLoaded", function(){
-	
-// })
-
-	$('.suggestion-link').on("click", function(event){
-		event.preventDefault();
-
-		// $.get("/suggestions", function(event){
-		// 	console.log("Request Sent")
-		// }).done(function(response){
-		// 	let html = "<h1>All Suggestions</h1><ol>"
-		// 	response.forEach(function(sugg){
-		// 		html += "<li>" + sugg.show + "</li>"
-		// 	})
-		// 	html += "</ol>"
-		// 	$('.content-container').html(html)
-
-		// });
-
-		fetch("/suggestions")
-		  .then(response => {
-		    if (!response.ok) { throw response }
-		    return response.json()  //we only get here if there is no error
-		  })
-		  .then(json => {
-			   let html = "<h1>All Suggestions</h1><ol>"
-				json.forEach(function(sugg){
-					html += "<li>" + sugg.show + "</li>"
-				})
-				html += "</ol>"
-				$('.content-container').html(html)
-		  });
-		  
-	});
-
-	
-});
-
-
-</script>

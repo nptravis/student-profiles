@@ -15,15 +15,11 @@
       
   </head>
   <%= content_tag :body, data: {action: action_name, controller: controller_name } do %>
-
   <main>
     <%= render partial: 'layouts/header' %>
     <div class="main-container">
-      <p></p>
       <%= render partial: 'layouts/sidebar' %>
       <div class="content-container">
-         <p>Controller: <%= controller_name %></p>
-         <p>Action: <%= action_name %></p>
          <%= yield %>
       </div>
     </div>

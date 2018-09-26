@@ -2,7 +2,6 @@ class SuggestionsController < ApplicationController
 
 	def index
 		@suggestions = Suggestion.all
-		render json: @suggestions, each_serailzer: TeacherSerializer
 	end
 
 	def new

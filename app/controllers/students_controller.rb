@@ -50,37 +50,9 @@ class StudentsController < ApplicationController
 	end
 
 	def section
-		student = Student.find(params[:id])
-		section = Section.find(params[:section_id])
-		s1_comment = SemesterComment.find_by(section_id: section.id, student_id: student.id, semester: "S1")
-		s2_comment = SemesterComment.find_by(section_id: section.id, student_id: student.id, semester: "S2")
-		if s1_comment
-			s1_comment = s1_comment.content
-		end
-		if s2_comment
-			s2_comment = s2_comment.content
-		end
-		collection_service = CollectionService.new
-		
-		section_data = {
-			section_number: section.section_number,
-			course_name: section.course.course_name,
-			course_number: section.course.course_number,
-			teacher_name: section.teacher.lastfirst,
-			teacher_email: section.teacher.email,
-			room: section.room,
-			comments: [s1_comment, s2_comment]
-		}
-
-		data_sets = {
-			s1: collection_service.grades_per_section_per_semester_per_student(section, "S1", student),
-			s2: collection_service.grades_per_section_per_semester_per_student(section, "S2", student)
-		}
-
-		data_hash = [section_data, data_sets]
-		
-		render partial: 'section_show', locals: {data_hash: data_hash.to_json}
-		
+		@student = Student.find(params[:id])
+		@section = Section.find(params[:section_id])
+		render partial: 'section_show'
 	end
 
 # BEGIN Private /////////////////////////////////////////////////////////////////////

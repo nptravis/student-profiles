@@ -6,7 +6,7 @@ class TeacherSerializer < ApplicationSerializer
 	has_many :students, through: :sections
 
 	def show
-		TeachersController.render(:show, assigns: {teacher: object}, layout: false)
+		TeachersController.render(:show, assigns: {teacher: object}, layout: false).squish
 	end
 
 	def current_sections

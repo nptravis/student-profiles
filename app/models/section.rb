@@ -59,7 +59,28 @@ class Section < ApplicationRecord
 		collection
 	end
 
-	
-	
+	def grades_per_semester_per_student(semester, student)
+		standards = {}
+		homs = {}
+		collection = [standards, homs]
+		self.grades.where("student_id = ? and semester = ?", student.id, semester).each do |grade|
+			if !grade.standard.hom?
+				standards["#{grade.standard.standard_name}"] = grade.grade
+				
+			else
+				homs["#{grade.standard.standard_name}"] = grade.grade
+			end
+		end
+		collection = {standards: standards.sort.to_h, homs: homs.sort.to_h}
+		collection
+	end
+
+	def comments_per_student(student)
+		collection = []
+		SemesterComment.where("section_id = ? AND student_id = ?", self.id, student.id).each do |comment|
+			collection << {semester: comment.semester, content: comment.content}
+		end
+		collection
+	end
 
 end

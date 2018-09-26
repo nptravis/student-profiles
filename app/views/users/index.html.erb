@@ -1,4 +1,4 @@
-<h1>All Admin</h1>
+<h1>All Users</h1>
 
 <ul>
 	<% @users.each do |user| %>
@@ -7,47 +7,3 @@
 </ul>
 
 
-<h1>All Teachers</h1>
-<div class="column-container">
-
-	<div class="left-column">
-		<ul>
-			<!-- <button class="G" id="teacher-sort-button">Only g</button> -->
-			<% @teachers.each do |teacher| %>
-				<li><%= link_to teacher.lastfirst, teacher_path(teacher), class: "teacher-link", data: {:teacher => teacher.id} %> - <%=link_to teacher.email, "mailto:#{teacher.email}", target: "_blank" %></li>
-			<% end %>
-		</ul>
-	</div>
-
-	<div class="right-column">
-		<div class="teacher-info"></div>
-	</div>
-</div>
-
-<script type="text/javascript">
-$(function(){
-
-	// $("#teacher-sort-button").on("click", function(){
-	// 	let teacherNames = $('.teacher-link')
-
-	// 	teacherNames.each((x,t) => {
-	// 		if(t.innerText[0] !== "G"){
-	// 			$(t).hide();
-				
-		
-	
-	// 		}
-	// 	})
-	// })
-
-	$('.teacher-link').on("click", function(event){
-		event.preventDefault();
-		let teacher_id = $(this).data('teacher')
-		$.getJSON(`/teachers/${teacher_id}`, function(){
-			console.log("Request Sent");
-			}).done(function(response){				
-				$('.teacher-info').html(response.show + response.current_sections);
-			})
-	})
-})
-</script>

@@ -1,9 +1,9 @@
 $(document).on("turbolinks:load", function(){
 	if ($('body').data('controller') != 'students') {return}
-	init();
+	studentInit();
 });
 
-function init(){
+function studentInit(){
 		console.log("init called")
 		let studentId = $('.student-show-container').attr("data");
 
@@ -40,7 +40,7 @@ function init(){
 
 	}
 
-
+// BEGIN Draw Donut Graphs
 function drawDonutGraphs(){
 	
 	let all_homs = $('#studentshow').data('homs');
@@ -65,7 +65,7 @@ function drawDonutGraphs(){
         4:"#007CC6"
     }
 	
-// BEGIN Doughnut Standards 
+	// BEGIN Doughnut Standards 
 	let doughnutDiv = $('#student-doughnut-standards');
 	let dataS = {
 		    datasets: [{
@@ -96,9 +96,9 @@ function drawDonutGraphs(){
 
 	    }
 	});
-// END Standards Donut 
+	// END Standards Donut 
 
-// BEGIN HOMs Donut 
+	// BEGIN HOMs Donut 
 	let homsDoughnutDiv = $('#student-doughnut-homs');
 	let data = {
 		    datasets: [{
@@ -130,8 +130,9 @@ function drawDonutGraphs(){
 	    }
 	});
 
-// END HOMs Donut 
+	// END HOMs Donut 
 }
+// END Draw Donut Graphs
 
 function drawSectionGraphs(){
 	let data_hash = $('.data-div').data('hash')
@@ -164,15 +165,16 @@ function drawSectionGraphs(){
 }
         
 // BEGIN student comment popup 
- 
 function attachCommentPopupListeners(){
-    $('.hover_bkgr_fricc').html(`<span class="helper"></span><div><div class="popupCloseButton">X</div><p class="comment-text"></p></div>`)
 
-    $(".trigger_popup_fricc").click(function(e){
+    $(".trigger_popup_fricc.S1").click(function(e){
         e.preventDefault();
-        let text = $(this).data("comment")
-        $('.comment-text').html(text + `<br><small><b>- ${teacher_name}</b></small>  ` )
-        $('.hover_bkgr_fricc').show();
+        $('.hover_bkgr_fricc.S1').show();
+    });
+
+    $(".trigger_popup_fricc.S2").click(function(e){
+        e.preventDefault();
+        $('.hover_bkgr_fricc.S2').show();
     });
 
     $('.hover_bkgr_fricc').click(function(){
@@ -181,16 +183,20 @@ function attachCommentPopupListeners(){
 
     $('.popupCloseButton').click(function(){
         $('.hover_bkgr_fricc').hide();
-    }); 
+    });
 }
-
 // END student comment popup 
 
 // BEGIN Create Charts
+function drawSectionCharts(){
     let barChartDiv = $('#barChartDiv');
-    let radarChartDiv = $('#radarChartDiv')
-    createBarGraph(barChartDiv, data_hash[1]["s1"]["standards"], data_hash[1]["s2"]["standards"] );
-    createRadarGraph(radarChartDiv, data_hash[1]["s1"]["homs"], data_hash[1]["s2"]["homs"] );
+    let radarChartDiv = $('#radarChartDiv');
+    let s1Grades = $('.student-section-grades').data("s1")
+    let s2Grades = $('.student-section-grades').data("s2")
+   	console.log(s1Grades.homs)
+    createBarGraph(barChartDiv, s1Grades.standards, s2Grades.standards );
+    createRadarGraph(radarChartDiv, s1Grades.homs, s2Grades.homs );
+}
  // END Create Charts
 
 
@@ -281,6 +287,8 @@ function attachSectionLinkListener(studentId){
 		let sectionId = $(this).attr('id')
 		$.get(`/students/${studentId}/sections/${sectionId}`, function(response){
 			$('.student-data-container').html(response)
+			attachCommentPopupListeners();
+			drawSectionCharts();
 		})
 	});
 }
