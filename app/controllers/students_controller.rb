@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-	before_action :authentication_required, :admin_auth_required, only: [:index]
+	before_action :authentication_required
 
 # BEGIN Rest ///////////////////////////////////////////////////////////////////
 	def index
