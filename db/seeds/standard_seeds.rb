@@ -3,7 +3,7 @@ file = File.read('data/all-final-standards.json')
 data_hash = JSON.parse(file)
 i = 0;
 data_hash["items"].each do |set|
-
+	
 	student = Student.find_by(dcid: set["student_dcid"])
 	section = Section.find_by(dcid: set["section_dcid"])
 	course = Course.find_by(dcid: set["course_dcid"])
