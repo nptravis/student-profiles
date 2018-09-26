@@ -1,6 +1,6 @@
 <div class="sidebar-container">
 	<% if current_user.present? %>
-		<% if current_user.admin %>
+
 			<div class="sidebarNav">
 				<a href="/students"><i class="students-link fas fa-address-card"><span class="icon-text">Student Index</span></i></a>
 				<a href="/teachers"><i class="staff-link fas fa-unlock staff-link"><span class="icon-text">Teachers Index</span></i></a>
@@ -10,15 +10,14 @@
 				
 				
 			</div>
-		<% else %>
-			<div class="sidebarNav">
-				<button><a href='/teachers/<%=current_user.id%>/students'>All Students</a></button>
-				<button id="sidebar-profile"><%= link_to "Profile", user_path(current_user) %></button>
-				<button id="sidebar-sections" data-userid=<%= current_user.id%>>Your Sections</button>
-				<button><a href="#">Your Schedule</a></button>
-			</div>
 
-		<% end %>
+			<!-- <div class="sidebarNav">
+				<button><a href='/teachers/<%#=current_user.id%>/students'>All Students</a></button>
+				<button id="sidebar-profile"><%#= link_to "Profile", user_path(current_user) %></button>
+				<button id="sidebar-sections" data-userid=<%#= current_user.id%>>Your Sections</button>
+				<button><a href="#">Your Schedule</a></button>
+			</div> -->
+
 	<% end %>
 </div>
 
