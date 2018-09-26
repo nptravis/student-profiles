@@ -10,7 +10,7 @@ ruby '2.5.1'
 gem 'rails', '~> 5.1.5'
 
 # Install jQuery
-gem 'jquery-rails' 
+gem 'jquery-rails'
 
 # Use postgres as the database for Active Record
 gem 'pg'
