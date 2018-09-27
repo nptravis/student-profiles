@@ -1,4 +1,4 @@
-file = File.read('data/all-final-standards.json')
+file = File.read('demo-data/B-all-final-standards-cj.json')
 
 data_hash = JSON.parse(file)
 i = 0;
