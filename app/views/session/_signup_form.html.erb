@@ -1,45 +1,48 @@
-<h1>Sign Up</h1>
+
+
+
+<!-- <h1>Sign Up</h1>
 <div class="singup_form">
-<%= form_for @user do |f| %>
+<#%#= form_for @user do |f| %>
 	
 	
-	<div class="<%='field_with_errors' if @user.errors.messages[:username].present? %>">
+	<div class="<#%#='field_with_errors' if @user.errors.messages[:username].present? %>">
 		<p>
-		<%= f.label :username %>
-		<%= f.text_field :username %>
+		<#%#= f.label :username %>
+		<#%#= f.text_field :username %>
 		</p>
 	</div>
 
-	<div class="<%='field_with_errors' if @user.errors.messages[:password].present? %>">
+	<div class="<#%#='field_with_errors' if @user.errors.messages[:password].present? %>">
 	<p>
-	<%= f.label :password %>
-	<%= f.password_field :password %>
+	<#%#= f.label :password %>
+	<#%#= f.password_field :password %>
 	</p>
 	</div>
 
-	<div class="<%='field_with_errors' if @user.errors.messages[:password_confirmation].present? %>">
+	<div class="<#%#='field_with_errors' if @user.errors.messages[:password_confirmation].present? %>">
 	<p>
-	<%= f.label :password_confirmation %>
-	<%= f.password_field :password_confirmation %>
+	<#%#= f.label :password_confirmation %>
+	<#%#= f.password_field :password_confirmation %>
 	</p>
 
-	<div class="<%='field_with_errors' if @user.errors.messages[:email].present? %>">
+	<div class="<#%#='field_with_errors' if @user.errors.messages[:email].present? %>">
 	<p>
-	<%= f.label :email %>
-	<%= f.text_field :email %>
+	<#%#= f.label :email %>
+	<#%#= f.text_field :email %>
 	</p>
 	
 	</div>
 
-	<%= f.submit "Sign Up"%>
-<% end %>
+	<#%#= f.submit "Sign Up"%>
+<#% end %>
 </div>
-<% if @user.errors.any? %>
+<#% if @user.errors.any? %>
 <div class="error_explanation">
 	<ul>
-		<% @user.errors.full_messages.each do |message| %>
-			<li><%= message %></li>
-		<% end %>
+		<#% @user.errors.full_messages.each do |message| %>
+			<li><#%#= message %></li>
+		<#% end %>
 	</ul>
 </div>
-<% end %>
+<#% end %> -->
