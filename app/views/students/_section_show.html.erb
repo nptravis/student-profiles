@@ -14,7 +14,7 @@
     </div>
 </div>
 
-<% @section.comments_per_student(@student).each do |comment| %>
+<% @section.comments_per_student(@student).reverse.each do |comment| %>
 
     <a class="trigger_popup_fricc <%= comment[:semester] %>"><%= comment[:semester]%> Comment</a>
     <!-- BEGIN Comment popup box -->

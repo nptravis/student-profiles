@@ -11,7 +11,7 @@
       <% if current_user.present? %>
         <li><p class="welcome-text-header">Welcome <%= current_user.username %></p> 
           <% if current_user.username == "demouser" %>
-            <%= image_tag 'demouser.jpg', height: "32", width: "32", :style => "border-radius: 75%" %>
+            <%= image_tag 'demouser.jpg', height: "32", width: "32", :style => "border-radius: 75%", alt: "User Profile Image" %>
           <% else %>
             <img src=<%= current_user.image_url %> height="32" width="32" class="profile-image">
           <% end %>
