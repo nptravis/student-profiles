@@ -12,8 +12,9 @@
 //
 
 
-//= require jquery-3.3.1.min
 //= require turbolinks
+//= require jquery3
+//= require jquery_ujs
 //= require visualizations
 //= require students
 //= require teachers

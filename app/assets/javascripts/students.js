@@ -34,8 +34,11 @@ function studentInit(){
 		$('.student-comments-link').on("click", function(event){
 			event.preventDefault();
 			getStudentComments(studentId);
-			
 		})
+
+		if ($('.destroy')){
+			attachDeleteListener()
+		}
 		// END Attach Listeners
 
 	}
@@ -132,8 +135,8 @@ function drawDonutGraphs(){
 
 	// END HOMs Donut 
 }
-// END Draw Donut Graphs
 
+// END Draw Donut Graphs
 function drawSectionGraphs(){
 	let data_hash = $('.data-div').data('hash')
 
@@ -144,7 +147,6 @@ function drawSectionGraphs(){
     let teacher_email = data_hash[0]["teacher_email"];
     let teacher_name = data_hash[0]["teacher_name"];
     let comments = data_hash[0]["comments"];
-
 
      let html = 
         `<h2>${course_name}</h2>` +
@@ -199,8 +201,6 @@ function drawSectionCharts(){
 }
  // END Create Charts
 
-
-
 // BEGIN Ajax Functions
 function postStudentComment(event){
 
@@ -237,7 +237,7 @@ function attachDeleteListener(){
 		event.stopPropagation();
 		let $link = $(this)
 		$link.parent().hide();
-
+		
 		$.ajax({
 			url: $link.attr('href'),
 			type: $link.data('method'),
