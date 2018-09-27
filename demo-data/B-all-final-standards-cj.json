@@ -1,0 +1,214 @@
+{"items":
+[
+{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31581,"termid":2800,"name":"Apply key concepts such as chronology, causality, and conflict to identify patterns of historical change","identifier":"1.8.a","standard_dcid":14729,"course_dcid":601}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S2","section_dcid":31055,"termid":2700,"name":"Christian Living","identifier":"MSREL08.1","standard_dcid":11005,"course_dcid":574}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":31055,"termid":2700,"name":"Christian Living","identifier":"MSREL08.1","standard_dcid":11005,"course_dcid":574}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S2","section_dcid":27399,"termid":2702,"name":"Connecting","identifier":"MSELBC8.14","standard_dcid":11590,"course_dcid":1607}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":27396,"termid":2701,"name":"Connecting","identifier":"MSELPH8.14","standard_dcid":11583,"course_dcid":539}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31515,"termid":2800,"name":"Construct viable arguments and critique the reasoning of others","identifier":"MP.A","standard_dcid":14833,"course_dcid":556}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S2","section_dcid":27399,"termid":2702,"name":"Creating","identifier":"MSELBC8.1","standard_dcid":10225,"course_dcid":1607}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":27396,"termid":2701,"name":"Creating","identifier":"MSELPH8.1","standard_dcid":10026,"course_dcid":539}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27202,"termid":2700,"name":"Culture","identifier":"MSTHA08.4","standard_dcid":11260,"course_dcid":604}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27202,"termid":2700,"name":"Culture","identifier":"MSTHA08.4","standard_dcid":11260,"course_dcid":604}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27342,"termid":2700,"name":"Culture (4, 5)","identifier":"MSSOC07.21","standard_dcid":10753,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":27342,"termid":2700,"name":"Culture (4, 5)","identifier":"MSSOC07.21","standard_dcid":10753,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"N","storecode":"S1","section_dcid":27260,"termid":2700,"name":"Data, Statistics and Probability","identifier":"MSMAT07.5","standard_dcid":10848,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S2","section_dcid":27260,"termid":2700,"name":"Data, Statistics and Probability","identifier":"MSMAT07.5","standard_dcid":10848,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27330,"termid":2700,"name":"Earth and Space Science","identifier":"MSSCI07.1","standard_dcid":10621,"course_dcid":583}
+,{"student_dcid":2801,"standardgrade":"N","storecode":"S2","section_dcid":27330,"termid":2700,"name":"Earth and Space Science","identifier":"MSSCI07.1","standard_dcid":10621,"course_dcid":583}
+,{"student_dcid":2801,"standardgrade":"N","storecode":"S1","section_dcid":27342,"termid":2700,"name":"Economics (7 & 8)","identifier":"MSSOC07.4","standard_dcid":11023,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27342,"termid":2700,"name":"Economics (7 & 8)","identifier":"MSSOC07.4","standard_dcid":11023,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31607,"termid":2801,"name":"Empathy in Society","identifier":"MSVAL.3","standard_dcid":14799,"course_dcid":607}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":31210,"termid":2700,"name":"Engagement","identifier":"MSELD.07","standard_dcid":11696,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":31442,"termid":2801,"name":"Engagement","identifier":"MSHOM.2","standard_dcid":14693,"course_dcid":3316}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":27396,"termid":2701,"name":"Engagement","identifier":"MSELPH8.4","standard_dcid":10260,"course_dcid":539}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31456,"termid":2801,"name":"Engagement","identifier":"MSHOM.2","standard_dcid":14693,"course_dcid":3317}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27367,"termid":2700,"name":"Engagement","identifier":"MSPE007.6","standard_dcid":10156,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27367,"termid":2700,"name":"Engagement","identifier":"MSPE007.6","standard_dcid":10156,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31549,"termid":2800,"name":"Engagement","identifier":"MSHOM.2","standard_dcid":14693,"course_dcid":571}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":31055,"termid":2700,"name":"Engagement","identifier":"MSREL08.9","standard_dcid":11002,"course_dcid":574}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31055,"termid":2700,"name":"Engagement","identifier":"MSREL08.9","standard_dcid":11002,"course_dcid":574}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27330,"termid":2700,"name":"Engagement","identifier":"MSSCI07.9","standard_dcid":10901,"course_dcid":583}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27330,"termid":2700,"name":"Engagement","identifier":"MSSCI07.9","standard_dcid":10901,"course_dcid":583}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31563,"termid":2800,"name":"Engagement","identifier":"MSHOM.2","standard_dcid":14693,"course_dcid":584}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":27342,"termid":2700,"name":"Engagement","identifier":"MSSOC07.7","standard_dcid":10743,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S2","section_dcid":27342,"termid":2700,"name":"Engagement","identifier":"MSSOC07.7","standard_dcid":10743,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":31210,"termid":2700,"name":"Engagement","identifier":"MSELD.07","standard_dcid":11696,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":27206,"termid":2700,"name":"Engagement","identifier":"MSELD.07","standard_dcid":11696,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31613,"termid":2800,"name":"Engagement","identifier":"MSHOM.2","standard_dcid":14693,"course_dcid":3329}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":31515,"termid":2800,"name":"Engagement","identifier":"MSHOM.2","standard_dcid":14693,"course_dcid":556}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31417,"termid":2801,"name":"Engagement","identifier":"MSHOM.2","standard_dcid":14693,"course_dcid":3336}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S2","section_dcid":27399,"termid":2702,"name":"Engagement","identifier":"MSELBC8.4","standard_dcid":10223,"course_dcid":1607}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27260,"termid":2700,"name":"Engagement","identifier":"MSMAT07.9","standard_dcid":10844,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S2","section_dcid":27260,"termid":2700,"name":"Engagement","identifier":"MSMAT07.9","standard_dcid":10844,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31504,"termid":2800,"name":"Engagement","identifier":"MSHOM.2","standard_dcid":14693,"course_dcid":1385}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27246,"termid":2700,"name":"Engagement","identifier":"MSLA007.8","standard_dcid":11211,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31581,"termid":2800,"name":"Engagement","identifier":"MSHOM.2","standard_dcid":14693,"course_dcid":601}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27202,"termid":2700,"name":"Engagement","identifier":"MSTHA08.7","standard_dcid":11258,"course_dcid":604}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27202,"termid":2700,"name":"Engagement","identifier":"MSTHA08.7","standard_dcid":11258,"course_dcid":604}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31607,"termid":2801,"name":"Engagement","identifier":"MSHOM.2","standard_dcid":14693,"course_dcid":607}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31403,"termid":2801,"name":"Engagement","identifier":"MSHOM.2","standard_dcid":14693,"course_dcid":3315}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27246,"termid":2700,"name":"Engagement","identifier":"MSLA007.8","standard_dcid":11211,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31442,"termid":2801,"name":"Engineering Design","identifier":"MSSCI.11","standard_dcid":14823,"course_dcid":3316}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":27330,"termid":2700,"name":"Engineering Design","identifier":"MSSCI07.6","standard_dcid":10620,"course_dcid":583}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27330,"termid":2700,"name":"Engineering Design","identifier":"MSSCI07.6","standard_dcid":10620,"course_dcid":583}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":27260,"termid":2700,"name":"Expressions and Equations","identifier":"MSMAT07.2","standard_dcid":10850,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"N","storecode":"S2","section_dcid":27260,"termid":2700,"name":"Expressions and Equations","identifier":"MSMAT07.2","standard_dcid":10850,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S2","section_dcid":27367,"termid":2700,"name":"Fitness Development","identifier":"MSPE007.21","standard_dcid":11276,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27367,"termid":2700,"name":"Fitness Development","identifier":"MSPE007.21","standard_dcid":11276,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31549,"termid":2800,"name":"Fitness Development - The physically literate individual demonstrates the knowledge and skills to achieve and maintain a health-enhancing level of physical activity and fitness.","identifier":"MSPE.3","standard_dcid":14793,"course_dcid":571}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":27342,"termid":2700,"name":"Geography (3)","identifier":"MSSOC07.2","standard_dcid":11025,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"N","storecode":"S2","section_dcid":27342,"termid":2700,"name":"Geography (3)","identifier":"MSSOC07.2","standard_dcid":11025,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"N","storecode":"S1","section_dcid":27260,"termid":2700,"name":"Geometry","identifier":"MSMAT07.4","standard_dcid":10849,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"B","storecode":"S2","section_dcid":27260,"termid":2700,"name":"Geometry","identifier":"MSMAT07.4","standard_dcid":10849,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"B","storecode":"S1","section_dcid":27342,"termid":2700,"name":"Government (6)","identifier":"MSSOC07.3","standard_dcid":11024,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"N","storecode":"S2","section_dcid":27342,"termid":2700,"name":"Government (6)","identifier":"MSSOC07.3","standard_dcid":11024,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27367,"termid":2700,"name":"Healthy Behavior","identifier":"MSPE007.3","standard_dcid":11707,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":27367,"termid":2700,"name":"Healthy Behavior","identifier":"MSPE007.3","standard_dcid":11707,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"B","storecode":"S1","section_dcid":31549,"termid":2800,"name":"Healthy Behavior - The physically literate individual exhibits responsible personal and social behavior that respects self and others.","identifier":"MSPE.4","standard_dcid":14794,"course_dcid":571}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":27342,"termid":2700,"name":"History (1 & 2)","identifier":"MSSOC07.1","standard_dcid":11026,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27342,"termid":2700,"name":"History (1 & 2)","identifier":"MSSOC07.1","standard_dcid":11026,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27246,"termid":2700,"name":"Language Foundations","identifier":"MSLA007.4","standard_dcid":11215,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":31210,"termid":2700,"name":"Language Foundations","identifier":"MSELD.04","standard_dcid":11693,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27246,"termid":2700,"name":"Language Foundations","identifier":"MSLA007.4","standard_dcid":11215,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31210,"termid":2700,"name":"Language Foundations","identifier":"MSELD.04","standard_dcid":11693,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"N","storecode":"S1","section_dcid":27330,"termid":2700,"name":"Life Science","identifier":"MSSCI07.4","standard_dcid":10900,"course_dcid":583}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27330,"termid":2700,"name":"Life Science","identifier":"MSSCI07.4","standard_dcid":10900,"course_dcid":583}
+,{"student_dcid":2801,"standardgrade":"N","storecode":"S2","section_dcid":27260,"termid":2700,"name":"Math Practices","identifier":"MSMAT07.6","standard_dcid":10847,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"N","storecode":"S1","section_dcid":27260,"termid":2700,"name":"Math Practices","identifier":"MSMAT07.6","standard_dcid":10847,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31563,"termid":2800,"name":"Motion, Waves, and Energy","identifier":"MSSCI.8","standard_dcid":14820,"course_dcid":584}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":27260,"termid":2700,"name":"Number System","identifier":"MSMAT07.1","standard_dcid":10851,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"N","storecode":"S2","section_dcid":27260,"termid":2700,"name":"Number System","identifier":"MSMAT07.1","standard_dcid":10851,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S2","section_dcid":27330,"termid":2700,"name":"Physical Science","identifier":"MSSCI07.5","standard_dcid":10905,"course_dcid":583}
+,{"student_dcid":2801,"standardgrade":"N","storecode":"S1","section_dcid":27330,"termid":2700,"name":"Physical Science","identifier":"MSSCI07.5","standard_dcid":10905,"course_dcid":583}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S2","section_dcid":27399,"termid":2702,"name":"Presenting","identifier":"MSELBC8.12","standard_dcid":11588,"course_dcid":1607}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":27396,"termid":2701,"name":"Presenting","identifier":"MSELPH8.12","standard_dcid":11595,"course_dcid":539}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S2","section_dcid":27260,"termid":2700,"name":"Ratios and Proportions","identifier":"MSMAT07.3","standard_dcid":10546,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"N","storecode":"S1","section_dcid":27260,"termid":2700,"name":"Ratios and Proportions","identifier":"MSMAT07.3","standard_dcid":10546,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31504,"termid":2800,"name":"Read closely to determine what the text says explicitly and to make logical inferences from it; cite specific textual evidence when writing or speaking to support conclusions drawn from the text.","identifier":"RL.1","standard_dcid":14761,"course_dcid":1385}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S2","section_dcid":27202,"termid":2700,"name":"Reading","identifier":"MSTHA08.1","standard_dcid":10152,"course_dcid":604}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S2","section_dcid":27246,"termid":2700,"name":"Reading","identifier":"MSLA007.1","standard_dcid":11219,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27202,"termid":2700,"name":"Reading","identifier":"MSTHA08.1","standard_dcid":10152,"course_dcid":604}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":31210,"termid":2700,"name":"Reading","identifier":"MSELD.01","standard_dcid":11690,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"B","storecode":"S1","section_dcid":31210,"termid":2700,"name":"Reading","identifier":"MSELD.01","standard_dcid":11690,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27246,"termid":2700,"name":"Reading","identifier":"MSLA007.1","standard_dcid":11219,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31417,"termid":2801,"name":"Reflection","identifier":"MSHOM.4","standard_dcid":14695,"course_dcid":3336}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27399,"termid":2702,"name":"Reflection","identifier":"MSELBC8.6","standard_dcid":10221,"course_dcid":1607}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31613,"termid":2800,"name":"Reflection","identifier":"MSHOM.4","standard_dcid":14695,"course_dcid":3329}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27206,"termid":2700,"name":"Reflection","identifier":"MSELD.09","standard_dcid":11698,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":31210,"termid":2700,"name":"Reflection","identifier":"MSELD.09","standard_dcid":11698,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S2","section_dcid":31210,"termid":2700,"name":"Reflection","identifier":"MSELD.09","standard_dcid":11698,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31442,"termid":2801,"name":"Reflection","identifier":"MSHOM.4","standard_dcid":14695,"course_dcid":3316}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27396,"termid":2701,"name":"Reflection","identifier":"MSELPH8.6","standard_dcid":10022,"course_dcid":539}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31456,"termid":2801,"name":"Reflection","identifier":"MSHOM.4","standard_dcid":14695,"course_dcid":3317}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27367,"termid":2700,"name":"Reflection","identifier":"MSPE007.8","standard_dcid":11272,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27367,"termid":2700,"name":"Reflection","identifier":"MSPE007.8","standard_dcid":11272,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31549,"termid":2800,"name":"Reflection","identifier":"MSHOM.4","standard_dcid":14695,"course_dcid":571}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":31055,"termid":2700,"name":"Reflection","identifier":"MSREL08.11","standard_dcid":11004,"course_dcid":574}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":31055,"termid":2700,"name":"Reflection","identifier":"MSREL08.11","standard_dcid":11004,"course_dcid":574}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27330,"termid":2700,"name":"Reflection","identifier":"MSSCI07.11","standard_dcid":10903,"course_dcid":583}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27330,"termid":2700,"name":"Reflection","identifier":"MSSCI07.11","standard_dcid":10903,"course_dcid":583}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":31563,"termid":2800,"name":"Reflection","identifier":"MSHOM.4","standard_dcid":14695,"course_dcid":584}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27342,"termid":2700,"name":"Reflection","identifier":"MSSOC07.9","standard_dcid":11019,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27342,"termid":2700,"name":"Reflection","identifier":"MSSOC07.9","standard_dcid":11019,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31581,"termid":2800,"name":"Reflection","identifier":"MSHOM.4","standard_dcid":14695,"course_dcid":601}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27202,"termid":2700,"name":"Reflection","identifier":"MSTHA08.9","standard_dcid":10150,"course_dcid":604}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27202,"termid":2700,"name":"Reflection","identifier":"MSTHA08.9","standard_dcid":10150,"course_dcid":604}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":31607,"termid":2801,"name":"Reflection","identifier":"MSHOM.4","standard_dcid":14695,"course_dcid":607}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31403,"termid":2801,"name":"Reflection","identifier":"MSHOM.4","standard_dcid":14695,"course_dcid":3315}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27246,"termid":2700,"name":"Reflection","identifier":"MSLA007.10","standard_dcid":11213,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27246,"termid":2700,"name":"Reflection","identifier":"MSLA007.10","standard_dcid":11213,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31504,"termid":2800,"name":"Reflection","identifier":"MSHOM.4","standard_dcid":14695,"course_dcid":1385}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27260,"termid":2700,"name":"Reflection","identifier":"MSMAT07.11","standard_dcid":10846,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27260,"termid":2700,"name":"Reflection","identifier":"MSMAT07.11","standard_dcid":10846,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31515,"termid":2800,"name":"Reflection","identifier":"MSHOM.4","standard_dcid":14695,"course_dcid":556}
+,{"student_dcid":2801,"standardgrade":"N","storecode":"S1","section_dcid":27246,"termid":2700,"name":"Research","identifier":"MSLA007.5","standard_dcid":11214,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S2","section_dcid":27246,"termid":2700,"name":"Research","identifier":"MSLA007.5","standard_dcid":11214,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S2","section_dcid":27399,"termid":2702,"name":"Respect","identifier":"MSELBC8.5","standard_dcid":10222,"course_dcid":1607}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31515,"termid":2800,"name":"Respect","identifier":"MSHOM.3","standard_dcid":14694,"course_dcid":556}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31417,"termid":2801,"name":"Respect","identifier":"MSHOM.3","standard_dcid":14694,"course_dcid":3336}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27260,"termid":2700,"name":"Respect","identifier":"MSMAT07.10","standard_dcid":10545,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S2","section_dcid":27260,"termid":2700,"name":"Respect","identifier":"MSMAT07.10","standard_dcid":10545,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31504,"termid":2800,"name":"Respect","identifier":"MSHOM.3","standard_dcid":14694,"course_dcid":1385}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S2","section_dcid":27246,"termid":2700,"name":"Respect","identifier":"MSLA007.9","standard_dcid":11210,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27246,"termid":2700,"name":"Respect","identifier":"MSLA007.9","standard_dcid":11210,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31403,"termid":2801,"name":"Respect","identifier":"MSHOM.3","standard_dcid":14694,"course_dcid":3315}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":31607,"termid":2801,"name":"Respect","identifier":"MSHOM.3","standard_dcid":14694,"course_dcid":607}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27202,"termid":2700,"name":"Respect","identifier":"MSTHA08.8","standard_dcid":11257,"course_dcid":604}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27202,"termid":2700,"name":"Respect","identifier":"MSTHA08.8","standard_dcid":11257,"course_dcid":604}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31581,"termid":2800,"name":"Respect","identifier":"MSHOM.3","standard_dcid":14694,"course_dcid":601}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S2","section_dcid":27342,"termid":2700,"name":"Respect","identifier":"MSSOC07.8","standard_dcid":11020,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27342,"termid":2700,"name":"Respect","identifier":"MSSOC07.8","standard_dcid":11020,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31563,"termid":2800,"name":"Respect","identifier":"MSHOM.3","standard_dcid":14694,"course_dcid":584}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27330,"termid":2700,"name":"Respect","identifier":"MSSCI07.10","standard_dcid":10904,"course_dcid":583}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27330,"termid":2700,"name":"Respect","identifier":"MSSCI07.10","standard_dcid":10904,"course_dcid":583}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31055,"termid":2700,"name":"Respect","identifier":"MSREL08.10","standard_dcid":10630,"course_dcid":574}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S2","section_dcid":31055,"termid":2700,"name":"Respect","identifier":"MSREL08.10","standard_dcid":10630,"course_dcid":574}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31549,"termid":2800,"name":"Respect","identifier":"MSHOM.3","standard_dcid":14694,"course_dcid":571}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27367,"termid":2700,"name":"Respect","identifier":"MSPE007.7","standard_dcid":11273,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27367,"termid":2700,"name":"Respect","identifier":"MSPE007.7","standard_dcid":11273,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31456,"termid":2801,"name":"Respect","identifier":"MSHOM.3","standard_dcid":14694,"course_dcid":3317}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":27396,"termid":2701,"name":"Respect","identifier":"MSELPH8.5","standard_dcid":10023,"course_dcid":539}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31442,"termid":2801,"name":"Respect","identifier":"MSHOM.3","standard_dcid":14694,"course_dcid":3316}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":31210,"termid":2700,"name":"Respect","identifier":"MSELD.08","standard_dcid":11697,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31210,"termid":2700,"name":"Respect","identifier":"MSELD.08","standard_dcid":11697,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":27206,"termid":2700,"name":"Respect","identifier":"MSELD.08","standard_dcid":11697,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31613,"termid":2800,"name":"Respect","identifier":"MSHOM.3","standard_dcid":14694,"course_dcid":3329}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":27396,"termid":2701,"name":"Responding","identifier":"MSELPH8.13","standard_dcid":11589,"course_dcid":539}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27399,"termid":2702,"name":"Responding","identifier":"MSELBC8.13","standard_dcid":11507,"course_dcid":1607}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31563,"termid":2800,"name":"Responsibility","identifier":"MSHOM.1","standard_dcid":14692,"course_dcid":584}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31403,"termid":2801,"name":"Responsibility","identifier":"MSHOM.1","standard_dcid":14692,"course_dcid":3315}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27330,"termid":2700,"name":"Responsibility","identifier":"MSSCI07.8","standard_dcid":10902,"course_dcid":583}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31055,"termid":2700,"name":"Responsibility","identifier":"MSREL08.8","standard_dcid":10629,"course_dcid":574}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31504,"termid":2800,"name":"Responsibility","identifier":"MSHOM.1","standard_dcid":14692,"course_dcid":1385}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":31055,"termid":2700,"name":"Responsibility","identifier":"MSREL08.8","standard_dcid":10629,"course_dcid":574}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":31607,"termid":2801,"name":"Responsibility","identifier":"MSHOM.1","standard_dcid":14692,"course_dcid":607}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27246,"termid":2700,"name":"Responsibility","identifier":"MSLA007.7","standard_dcid":11212,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"B","storecode":"S1","section_dcid":31549,"termid":2800,"name":"Responsibility","identifier":"MSHOM.1","standard_dcid":14692,"course_dcid":571}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S2","section_dcid":27202,"termid":2700,"name":"Responsibility","identifier":"MSTHA08.6","standard_dcid":11259,"course_dcid":604}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27367,"termid":2700,"name":"Responsibility","identifier":"MSPE007.5","standard_dcid":11274,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27202,"termid":2700,"name":"Responsibility","identifier":"MSTHA08.6","standard_dcid":11259,"course_dcid":604}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S2","section_dcid":27367,"termid":2700,"name":"Responsibility","identifier":"MSPE007.5","standard_dcid":11274,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31456,"termid":2801,"name":"Responsibility","identifier":"MSHOM.1","standard_dcid":14692,"course_dcid":3317}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31515,"termid":2800,"name":"Responsibility","identifier":"MSHOM.1","standard_dcid":14692,"course_dcid":556}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27396,"termid":2701,"name":"Responsibility","identifier":"MSELPH8.3","standard_dcid":10024,"course_dcid":539}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27246,"termid":2700,"name":"Responsibility","identifier":"MSLA007.7","standard_dcid":11212,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31581,"termid":2800,"name":"Responsibility","identifier":"MSHOM.1","standard_dcid":14692,"course_dcid":601}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31442,"termid":2801,"name":"Responsibility","identifier":"MSHOM.1","standard_dcid":14692,"course_dcid":3316}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27260,"termid":2700,"name":"Responsibility","identifier":"MSMAT07.8","standard_dcid":10544,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S2","section_dcid":31210,"termid":2700,"name":"Responsibility","identifier":"MSELD.06","standard_dcid":11695,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":31210,"termid":2700,"name":"Responsibility","identifier":"MSELD.06","standard_dcid":11695,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S2","section_dcid":27342,"termid":2700,"name":"Responsibility","identifier":"MSSOC07.6","standard_dcid":11021,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":27342,"termid":2700,"name":"Responsibility","identifier":"MSSOC07.6","standard_dcid":11021,"course_dcid":600}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27206,"termid":2700,"name":"Responsibility","identifier":"MSELD.06","standard_dcid":11695,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31613,"termid":2800,"name":"Responsibility","identifier":"MSHOM.1","standard_dcid":14692,"course_dcid":3329}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31417,"termid":2801,"name":"Responsibility","identifier":"MSHOM.1","standard_dcid":14692,"course_dcid":3336}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S2","section_dcid":27399,"termid":2702,"name":"Responsibility","identifier":"MSELBC8.3","standard_dcid":10282,"course_dcid":1607}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27330,"termid":2700,"name":"Responsibility","identifier":"MSSCI07.8","standard_dcid":10902,"course_dcid":583}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27260,"termid":2700,"name":"Responsibility","identifier":"MSMAT07.8","standard_dcid":10544,"course_dcid":555}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":31563,"termid":2800,"name":"Science & Engineering Practices","identifier":"MSSCI.5","standard_dcid":14817,"course_dcid":584}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27367,"termid":2700,"name":"Skills","identifier":"MSPE007.1","standard_dcid":11277,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27367,"termid":2700,"name":"Skills","identifier":"MSPE007.1","standard_dcid":11277,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31549,"termid":2800,"name":"Skills - The physically literate individual demonstrates competency in a variety of motor skills and movement patterns.","identifier":"MSPE.1","standard_dcid":14791,"course_dcid":571}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":31210,"termid":2700,"name":"Speaking & Listening","identifier":"MSELD.03","standard_dcid":11692,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27246,"termid":2700,"name":"Speaking & Listening","identifier":"MSLA007.3","standard_dcid":11216,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27206,"termid":2700,"name":"Speaking & Listening","identifier":"MSELD.03","standard_dcid":11692,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":27246,"termid":2700,"name":"Speaking & Listening","identifier":"MSLA007.3","standard_dcid":11216,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S2","section_dcid":31210,"termid":2700,"name":"Speaking & Listening","identifier":"MSELD.03","standard_dcid":11692,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":27202,"termid":2700,"name":"Speaking and Listening","identifier":"MSTHA08.3","standard_dcid":11261,"course_dcid":604}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S2","section_dcid":27202,"termid":2700,"name":"Speaking and Listening","identifier":"MSTHA08.3","standard_dcid":11261,"course_dcid":604}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31549,"termid":2800,"name":"The physically literate individual demonstrates competency in a variety of motor skills and movement patterns.","identifier":"1.1","standard_dcid":14842,"course_dcid":571}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27367,"termid":2700,"name":"Understanding","identifier":"MSPE007.2","standard_dcid":10157,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27367,"termid":2700,"name":"Understanding","identifier":"MSPE007.2","standard_dcid":10157,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31549,"termid":2800,"name":"Understanding - The physically literate individual applies knowledge of concepts, principles, strategies and tactics related to movement and performance.","identifier":"MSPE.2","standard_dcid":14792,"course_dcid":571}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S2","section_dcid":27367,"termid":2700,"name":"Value","identifier":"MSPE007.31","standard_dcid":10155,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27367,"termid":2700,"name":"Value","identifier":"MSPE007.31","standard_dcid":10155,"course_dcid":570}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":31549,"termid":2800,"name":"Value - The physically literate individual recognizes the value of physical activity for health, enjoyment, challenge, self expression and\/or social interaction.","identifier":"MSPE.5","standard_dcid":14795,"course_dcid":571}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S1","section_dcid":31607,"termid":2801,"name":"Values in Society","identifier":"MSVAL.1","standard_dcid":14797,"course_dcid":607}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S2","section_dcid":31210,"termid":2700,"name":"Writing","identifier":"MSELD.02","standard_dcid":11691,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S1","section_dcid":31210,"termid":2700,"name":"Writing","identifier":"MSELD.02","standard_dcid":11691,"course_dcid":1770}
+,{"student_dcid":2801,"standardgrade":"P","storecode":"S2","section_dcid":27246,"termid":2700,"name":"Writing","identifier":"MSLA007.2","standard_dcid":11217,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27202,"termid":2700,"name":"Writing","identifier":"MSTHA08.2","standard_dcid":11262,"course_dcid":604}
+,{"student_dcid":2801,"standardgrade":"M","storecode":"S1","section_dcid":27246,"termid":2700,"name":"Writing","identifier":"MSLA007.2","standard_dcid":11217,"course_dcid":1384}
+,{"student_dcid":2801,"standardgrade":"E","storecode":"S2","section_dcid":27202,"termid":2700,"name":"Writing","identifier":"MSTHA08.2","standard_dcid":11262,"course_dcid":604}
+]}
