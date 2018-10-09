@@ -19,6 +19,7 @@
 //= require students
 //= require teachers
 //= require student_schedule
+//= require pdf
 
 
 //= require Chart.bundle.min

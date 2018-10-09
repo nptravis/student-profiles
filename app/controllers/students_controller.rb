@@ -55,6 +55,18 @@ class StudentsController < ApplicationController
 		render partial: 'section_show'
 	end
 
+	def reportcard
+		@student = Student.find(params[:id])
+		respond_to do |format|
+	      format.html
+	      format.pdf do
+        	render pdf: "reportcard-#{@student.student_number}", 
+        	layout: 'pdf',
+        	template: 'students/reportcard.pdf.erb'
+        end
+      end
+	end
+
 # BEGIN Private /////////////////////////////////////////////////////////////////////
 	private
 

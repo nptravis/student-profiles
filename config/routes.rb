@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get '/students/:id/sections/:section_id', to: 'students#section'
   post '/standards/:id/grades_per_term', to: 'standards#grades_per_term'
   get '/standards/:id/all_grades', to: 'standards#all_grades'
+  get '/students/:id/reportcard', to: 'students#reportcard'
 
   resources :users do
     resources :courses
