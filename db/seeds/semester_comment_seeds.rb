@@ -1,4 +1,4 @@
-file = File.read('demo-data/C-all-semester-comments-cj.json')
+file = File.read('data/all-semester-comments.json')
 
 data_hash = JSON.parse(file)
 i = 0;

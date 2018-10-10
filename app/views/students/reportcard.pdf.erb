@@ -27,24 +27,40 @@
 	<p><strong>Comments: </strong>Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse YOLO lumbersexual. wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard,</p>
 </div>
 <div class="student-sections">
-	<h2>Course Comments: </h2>
-<% @student.sections_current.each do |section| %>
-	
-	<div class="section">
-		<span class="course-name"><%= section.course.course_name %></span> - 
-		<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
-		<span><strong>Comments:</strong> Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse</span>
+	<div class="section-group">
+		<h3>Core Courses</h3>
+		<% @student.sections_per_semester(2801).each do |section| %>
+			<% if section.core? %>
+				<div class="section">
+					<span class="course-name"><%= section.course.course_name %></span> - 
+					<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+					<span><strong>Comments:</strong> Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse</span>
+				</div>
+			<% end %>
+		<% end %>
 	</div>
-
-<% end %>
+	<div class="section-group">
+		<h3>Required Courses</h3>
+		<% @student.sections_per_semester(2801).each do |section| %>
+			<% if section.required? %>
+				<div class="section">
+					<span class="course-name"><%= section.course.course_name %></span> - 
+					<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+					<span><strong>Comments:</strong> Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse</span>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="section-group">
+		<h3>Electives</h3>
+		<% @student.sections_per_semester(2801).each do |section| %>
+			<% if !section.required? && !section.core? %>
+				<div class="section">
+					<span class="course-name"><%= section.course.course_name %></span> - 
+					<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+					<span><strong>Comments:</strong> Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse</span>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
 </div>
-
-<!-- create_table "sections", force: :cascade do |t|
-    t.integer "course_id"
-    t.integer "teacher_id"
-    t.string "section_number"
-    t.string "expression"
-    t.integer "dcid"
-    t.integer "term_id"
-    t.string "room"
-    t.integer "grade_level" -->

@@ -20,11 +20,23 @@ class Student < ActiveRecord::Base
 	end
 
 	def sections_per_term(termid)
-		self.sections.where("termid = ?", termid);
+		self.sections.select{|section| section.term.term_code == termid}
+	end
+
+	def sections_per_semester(termid)
+		collection = []
+		if termid.digits.first == 1
+			collection << self.sections_per_term(termid)
+			collection << self.sections_per_term(termid-1)
+		elsif termid.digits.first == 2
+			collection << self.sections_per_term(termid)
+			collection << self.sections_per_term(termid-2)
+		end
+		collection.flatten
 	end
 
 	def grades_per_term(termid)
-		self.grades.where("termid = ?", termid)
+		self.grades.select{|grade| grade.term.term_code == termid}
 	end
 
 	def homs_per_term(termid)
@@ -56,7 +68,7 @@ class Student < ActiveRecord::Base
 	def sections_current
 		collection = []
 		self.sections.each do |section|
-			if section.term.term_code >= 2800
+			if section.term.term_code >= 2800 
 				collection << section
 			end
 		end
@@ -68,5 +80,6 @@ class Student < ActiveRecord::Base
 			section.course.course_name.start_with?("Advisory")
 		}[0]
 	end
+
 
 end
