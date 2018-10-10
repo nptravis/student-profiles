@@ -1,4 +1,4 @@
-file = File.read('demo-data/A-all-sections-cj.json')
+file = File.read('data/all-sections.json')
 
 data_hash = JSON.parse(file)
 i = 0;

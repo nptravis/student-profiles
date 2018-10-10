@@ -63,4 +63,10 @@ class Student < ActiveRecord::Base
 		collection
 	end
 
+	def homeroom
+		self.sections_current.select {|section|
+			section.course.course_name.start_with?("Advisory")
+		}[0]
+	end
+
 end

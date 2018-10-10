@@ -62,7 +62,9 @@ class StudentsController < ApplicationController
 	      format.pdf do
         	render pdf: "reportcard-#{@student.student_number}", 
         	layout: 'pdf',
-        	template: 'students/reportcard.pdf.erb'
+        	template: 'students/reportcard.pdf.erb',
+        	window_status: "FLAG_FOR_PDF",
+        	dpi: '300'
         end
       end
 	end

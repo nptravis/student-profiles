@@ -2,17 +2,21 @@
 <html>
   <head>
     <meta charset='utf-8' />
-    <%= stylesheet_link_tag wicked_pdf_asset_base64("pdf.js") %>
-    <%= javascript_include_tag wicked_pdf_asset_base64("pdf.css") %>
-
+    <%= csrf_meta_tags %>
+    <%#= stylesheet_link_tag wicked_pdf_asset_base64("pdf") %>
+    <%= wicked_pdf_stylesheet_link_tag "pdf" %>
+    <%#= wicked_pdf_javascript_include_tag "pdf" %>
+    <%= javascript_include_tag wicked_pdf_asset_base64("pdf") %>
+    
   </head>
-  <!-- <body onload='number_pages'> -->
-  <body>
+  <body onload='number_pages'>
+  <!-- <body> -->
     <div id="header">
       <%= image_tag wicked_pdf_asset_base64('reportcard-header.png'), class: 'reportcard-header-image' %>
     </div>
     <div id="content">
       <%= yield %>
     </div>
+
   </body>
 </html>
