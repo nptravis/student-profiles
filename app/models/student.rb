@@ -8,6 +8,7 @@ class Student < ActiveRecord::Base
 	has_many :courses, through: :sections
 	has_many :standards, through: :grades
 	has_many :semester_comments
+	has_many :quarter_comments
 	validates :lastfirst, :student_number, :grade_level, :dcid, presence: true
 	validates_uniqueness_of :student_number
 
@@ -79,6 +80,10 @@ class Student < ActiveRecord::Base
 		self.sections_current.select {|section|
 			section.course.course_name.start_with?("Advisory")
 		}[0]
+	end
+
+	def homeroom_quarter_comment
+		self.homeroom.quarter_comments.select{|comment| comment.student_id == self.id}[0].content
 	end
 
 

@@ -26,6 +26,7 @@ function createSchedule(response, studentId){
 			let period = exArray[t].match(/\d+/g)
 			let days = exArray[t].match(/[A-D]/g)
 			let multiplier = 0;
+	
 
 			if (exArray[t].match(/[-]/g)){
 				let set =["A", "B", "C", "D"]
@@ -59,8 +60,8 @@ function createSchedule(response, studentId){
 						break;
 					}
 				}
+			}
 
-			 
 
 			days.forEach(function(day){
 				let html = 
@@ -86,9 +87,7 @@ function createSchedule(response, studentId){
 					$(squares_s2[parseInt(period)+multiplier]).remove()
 
 				}
-
 			})
 		}			
 	}
-}
 }

@@ -4,6 +4,7 @@ class Teacher < ApplicationRecord
 	has_many :grades, through: :sections
 	has_many :courses, through: :sections
 	has_many :semester_comments
+	has_many :quarter_comments
 	validates :email, :lastfirst, :dcid, :teacher_number, presence: true
 
 	def self.teacher?(user)

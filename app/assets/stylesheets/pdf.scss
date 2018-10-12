@@ -4,18 +4,30 @@ div.student-sections {
 	height: 100%;
 }
 
+div#header {
+	width: 100%;
+	height: 70px;
+	img {
+		height: auto;
+		width: auto;
+	}
+}
+
+
 div.section {
 	display: inline-block;
 	box-sizing: border-box;
 	border: 1px black solid;
-	background-color: #f7f7f7;
 	width: 90%;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	background-color: #fff;
 	padding: 5px;
+	text-align: left;
+
 	span.course-name {
 		font-size: 16pt;
-		text-decoration: underline;
+		/*text-decoration: underline;*/
 	}
 	span.instructor-name {
 		font-style: italic;
@@ -23,8 +35,20 @@ div.section {
 }
 
 div.section-group {
-	border: 1px red solid;
-	width: 95%;
+	border: 1px black solid;
+	width: 100%;
+	border-radius: 20px;
+	background-color: #f7f7f7;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	padding-bottom: 20px;
+	h2 {
+		text-align: left;
+		margin-left: 5%;
+		margin-bottom: 5px;
+		margin-top: 5PX;
+	}
 }
 
 img.student-reportcard-image {

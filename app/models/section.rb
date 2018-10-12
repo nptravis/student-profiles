@@ -6,6 +6,7 @@ class Section < ApplicationRecord
 	has_many :student_sections
 	has_many :students, through: :student_sections
 	has_many :semester_comments
+	has_many :quarter_comments
 	has_many :standards, through: :course
 	validates :course_id, :teacher_id, :room, :section_number, :grade_level, :dcid, :term_id, :expression, presence: true
 
@@ -91,8 +92,12 @@ class Section < ApplicationRecord
 
 	def required?
 		self.course.course_number.start_with?(
-			"PE", "THA" 
+			"PE", "THA", "VAL", "REL", "HE"
 			)
+	end
+
+	def quarter_comment_per_student(student)
+		self.quarter_comments.select{|comment| comment.student_id == student.id}[0].content
 	end
 
 end

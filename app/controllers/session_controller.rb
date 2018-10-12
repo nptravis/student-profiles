@@ -22,7 +22,6 @@ class SessionController < ApplicationController
     		redirect_to user_path(@user)
     	else
     		flash[:message] = "Can not find and/or authenticate user"
-    		# redirect_to signup_path
         redirect_to login_path
     	end
     end
