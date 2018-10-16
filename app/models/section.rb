@@ -86,13 +86,13 @@ class Section < ApplicationRecord
 
 	def core?
 		self.course.course_number.start_with?(
-			"LA", "SCI", "MA", "SOC"
+			"LA", "SCI", "MA", "SOC", "ADC"
 			)
 	end
 
 	def required?
 		self.course.course_number.start_with?(
-			"PE", "THA", "VAL", "REL", "HE"
+			"PE", "THA", "VAL", "HE", "SNSK", "ESL"
 			)
 	end
 

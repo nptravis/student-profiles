@@ -65,8 +65,8 @@ function createSchedule(response, studentId){
 
 			days.forEach(function(day){
 				let html = 
-				"<p><small>" + sections[i].course_name + "</small></p>"+
-				"<p><small>" + sections[i].course_number + "." + sections[i].section_number + "</small></p>" +
+				"<span><small>" + sections[i].course_name + "</small></span><br>"+
+				"<span><small>" + sections[i].course_number + "." + sections[i].section_number + "</small></span><br>" +
 				"<small>Room: " + sections[i].room + "</small>";
 
 				multiplier = possibleDays[day];
