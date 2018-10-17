@@ -1,7 +1,12 @@
 <h1>All Standards</h1>
 
+<%= form_tag standards_path, :method => 'get' do %>
+Search: <%= text_field_tag 'standard[search]' %>
+<%= submit_tag "Search", :name => nil %>
+<% end %>
+
 <ul>
 <% @standards.each do |standard| %>
-	<li><%= link_to standard.standard_name, standard_path(standard) %> - <%= standard.identifier %></li>
+	<li><%= link_to standard.identifier, standard_path(standard) %> - <%= standard.standard_name %></li>
 <% end %>
 </ul>

@@ -22,6 +22,18 @@ class Standard < ActiveRecord::Base
 		collection.uniq
 	end 
 
+	def grades_per_term_per_grade_level(termId, grade_level)
+		self.grades.where("term_id = ?", termId).select{|grade|
+			grade.student.grade_level == grade_level}
+	end
+
+	def grade_hash
+		grade_json = []
+		self.grades.each do |grade|
+			grade_json << {grade: grade.grade, term: grade.term.term_code, grade_level: grade.student.grade_level}
+		end
+		grade_json
+	end
 
 end
 

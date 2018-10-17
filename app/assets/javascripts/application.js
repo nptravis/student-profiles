@@ -19,6 +19,7 @@
 //= require students
 //= require teachers
 //= require student_schedule
+//= require standards
 
 
 

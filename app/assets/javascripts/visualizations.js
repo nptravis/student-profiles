@@ -1,6 +1,6 @@
 
 let defaultColors = {
-    	0:"#FBE2E62",
+    	0:"#000000",
         1:"#A8271E",
         2:"#F8DA06",
         3:"#249D3D",
@@ -270,4 +270,45 @@ function createMapGraph(response){
                 }
             }
         });
+}
+
+function createStandardRainbow(){
+
+
+	let colors = [defaultColors["0"], defaultColors["1"], defaultColors["2"], defaultColors["3"], defaultColors["4"]]
+
+	let datasets = []
+
+	for(let i = 0; i < arguments.length; i++){
+		datasets.push({
+			backgroundColor: colors,
+			data: [
+				arguments[i]["N"].length, 
+				arguments[i]["B"].length, 
+				arguments[i]["P"].length, 
+				arguments[i]["M"].length, 
+				arguments[i]["E"].length
+			] 
+		})
+	}
+
+
+	let data = {
+		labels: ['N', 'B', 'P', 'M', 'E'],
+	    datasets: datasets
+	}
+
+	let options = {
+		rotation: 1 * Math.PI,
+        circumference: 1 * Math.PI
+    }
+	
+	let ctx = $('#standard-data-container')
+
+	new Chart(ctx, {
+    type: 'doughnut',
+    data: data,
+    options: options
+});
+
 }

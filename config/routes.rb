@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get '/students/:id/reportcard', to: 'students#reportcard'
   get '/reports', to: 'reports#index'
   get '/report-cards', to: 'reports#report_cards'
+  get '/standards/:id/filtered_grades', to: 'standards#filtered_grades'
 
   resources :users do
     resources :courses
