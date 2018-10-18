@@ -15,7 +15,10 @@ class CoursesController < ApplicationController
 	def show
 		@course = Course.find(params[:id])
 		@students = @course.students.uniq
-		render json: @course, serializer: CourseSerializer
+		respond_to do |format| 
+			format.html
+			format.json {render json: @course, serializer: CourseSerializer}
+		end
 	end
 
 end

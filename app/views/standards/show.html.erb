@@ -3,7 +3,7 @@
 <div class="data-container">
 <h4>Courses associated with this standard</h4>
 <% @standard.courses.each do |course| %>
-	<p><%= course.course_name %></p>
+	<span><%= link_to course.course_name, course_path(course) %></span>, 
 	<%#= link_to course.course_name, course_path(course), class: "course-link", data: {courseid: course.id} %>
 <% end %>
 	
