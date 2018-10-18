@@ -1,7 +1,11 @@
 class StandardsController < ApplicationController
 
 	def index
-		@standards = Standard.order(:identifier)
+		if params[:standard]
+			@standards = Standard.search(standard_params[:search])
+		else
+			@standards = Standard.order(:identifier)
+		end
 	end
 
 	def show
@@ -33,7 +37,7 @@ class StandardsController < ApplicationController
 	private
 
 	def standard_params
-		params.require(:standard).permit(:id)
+		params.require(:standard).permit(:id, :search)
 	end
 
 end

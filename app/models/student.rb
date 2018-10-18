@@ -14,7 +14,7 @@ class Student < ActiveRecord::Base
 
 	def self.search(word)
 	  	if word.present?
-	  		self.all.where('lower(lastfirst) LIKE ?', "%#{word.downcase}%")
+	  		self.where('lower(lastfirst) LIKE ?', "%#{word.downcase}%")
 	  	else
 	  		self.all
 	  	end

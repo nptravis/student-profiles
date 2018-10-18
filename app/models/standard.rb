@@ -35,5 +35,12 @@ class Standard < ActiveRecord::Base
 		grade_json
 	end
 
+	def self.search(word)
+	  	if word.present?
+	  		self.where('lower(identifier) LIKE ?', "%#{word.downcase}%").or(self.where('lower(standard_name) LIKE ?', "%#{word.downcase}%"))
+	  	else
+	  		self.all
+	  	end
+	end
 end
 

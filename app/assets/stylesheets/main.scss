@@ -1,26 +1,29 @@
-html, body {
-	width: 100%;
-	height: 100%;
+html, body, main {
+	width: 100vw;
+	height: 100vh;
 	margin: 0px;
 	padding: 0px;
+	font-size: 100%
 }
 
 div.header-container {
 	display: flex;
 	justify-content: space-between;
+	height: 10vh
 }
-
 
 div.main-container {	
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	height: 100%;
+	height: 90vh;
+	
 }
-
 
 div.content-container {
 	flex: 0 0 90%;
+	overflow: auto;
+	
 }
 
 div.data-container {
@@ -30,21 +33,18 @@ div.data-container {
 
 div.sidebar-container {
 	flex: 0 0 10%;
-	height: 100%;
-	min-width: 100px;
+	width: 10%;
 	z-index: 1;
-	overflow-x: hidden;
 	background-color: #555;
-
 }
 
 div.sidebarNav {
-	margin-top: 150px;
+	height: 100%;
 	background-color: #555;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-
+	
 }
 
 div.sidebar-container a {
@@ -53,7 +53,7 @@ div.sidebar-container a {
 	color: coral;
 	text-align: center;
 	i {
-		font-size: 70px;
+		font-size: 4rem;
 		margin-left: 10px;
 		display: block;
 		margin-bottom: 20px;
@@ -62,7 +62,7 @@ div.sidebar-container a {
 		color: #ffca51;
 	}
 	span.icon-text {
-		font-size: 14px;
+		font-size: .85rem;
 		display: block;
 		padding: 2px;
 	}
