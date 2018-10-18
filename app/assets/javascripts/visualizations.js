@@ -147,69 +147,58 @@ function createRadarGraph(dataDiv, s1_hash, s2_hash){
     });   
 }
 
-function createStackedBarGraph(){
+function createStackedBarGraph(chartCanvas, grade_hash, gradeLevels){
+	let labels = [...gradeLevels];
+	let dataForN = [];
+	let dataForB = [];
+	let dataForP = [];
+	let dataForM = [];
+	let dataForE = [];
+	console.log(grade_hash)
 
-	let datasets = {
-		years: [],
-		ND: [],
-		B: [],
-		P: [],
-		M: [],
-		E: []
-	}
-	if (arguments){
-		for(let i = 1; i < arguments.length; i++){
-
-			datasets["years"].push(arguments[i]["years"]);
-			datasets["ND"].push(arguments[i]["ND"]);
-			datasets["B"].push(arguments[i]["B"]);
-			datasets["M"].push(arguments[i]["M"]);
-			datasets["P"].push(arguments[i]["P"]);
-			datasets["E"].push(arguments[i]["E"]);
-		}
+	for(let i = 0; i < gradeLevels.length; i++){
+		dataForN.push(grade_hash["N"].filter(grade => grade.grade_level === gradeLevels[i]).length)
+		dataForB.push(grade_hash["B"].filter(grade => grade.grade_level === gradeLevels[i]).length)
+		dataForP.push(grade_hash["P"].filter(grade => grade.grade_level === gradeLevels[i]).length)
+		dataForM.push(grade_hash["M"].filter(grade => grade.grade_level === gradeLevels[i]).length)
+		dataForE.push(grade_hash["E"].filter(grade => grade.grade_level === gradeLevels[i]).length)
 	}
 	
 
-	var stackedBar = new Chart(arguments[0], {
+	new Chart(chartCanvas, {
 	    type: 'bar',
 	    data: {
-	    	labels: datasets["years"],
+	    	labels: labels,
 	    	datasets: [{
-	            label: "ND",
-	            data: datasets["ND"],
-	            backgroundColor: defaultColors[0], 
-	            borderColor: 'rgba(255,99,132,1)',
-	            borderWidth: 1
-	        },
+               	label: "N",
+                backgroundColor: defaultColors[0],
+                borderColor: defaultColors[0],
+                data: dataForN
+            },
+            {
+               	label: "B",
+                backgroundColor: defaultColors[1],
+                borderColor: defaultColors[0],
+                data: dataForB
+            },
+            {
+               	label: "P",
+                backgroundColor: defaultColors[2],
+                borderColor: defaultColors[0],
+                data: dataForP
+            },
+            {
+               	label: "M",
+                backgroundColor: defaultColors[3],
+                borderColor: defaultColors[0],
+                data: dataForM
+            },
 	        {
-	            label: "B",
-	            data: datasets["B"],
-	            backgroundColor: defaultColors[1], 
-	            borderColor: 'rgba(255,99,132,1)',
-	            borderWidth: 1
-	        },
-	        {
-	            label: "P",
-	            data: datasets["P"],
-	            backgroundColor: defaultColors[2], 
-	            borderColor: 'rgba(255,99,132,1)',
-	            borderWidth: 1
-	        },
-	        {
-	            label: "M",
-	            data: datasets["M"],
-	            backgroundColor: defaultColors[3], 
-	            borderColor: 'rgba(255,99,132,1)',
-	            borderWidth: 1
-	        },
-	        {
-	            label: "E",
-	            data: datasets["E"],
-	            backgroundColor: defaultColors[4], 
-	            borderColor: 'rgba(255,99,132,1)',
-	            borderWidth: 1
-	        }],
-
+	           	label: "E",
+	            backgroundColor: defaultColors[4],
+	            borderColor: defaultColors[0],
+	            data: dataForE
+            }]
 	    },
 	    options: {
 	        scales: {

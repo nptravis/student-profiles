@@ -11,14 +11,5 @@
 <canvas id="standard-data-container">
 	
 </canvas>
-<!-- <form class="standard-show-filter">
-	<%#= select_tag "Year", options_from_collection_for_select(@terms, "id", "term_code"), :include_blank => 'All Years', class: "standard-show-filter" %>
-	<%#= select_tag "Grade Level", options_for_select(@grade_levels, 'id'), :include_blank => 'All Grade Levels', class: "standard-show-filter" %>
-	<%#= submit_tag "Submit" %>
-</form> -->
 
-<% @grade_levels.each do |grade_level| %>
-	<button class="gradelevel-button" value="<%= grade_level %>">Only <%= grade_level %> grade</button>
-<% end %>
-
-<%= content_tag :div, id: 'standard-data', data: {grades: @grades_hash, standardid: @standard.id} do -%><% end %>
+<%= content_tag :div, id: 'standard-data', data: {grades: @grades_hash, standardid: @standard.id, gradelevels: @grade_levels} do -%><% end %>
