@@ -1,4 +1,4 @@
-<h1><%= @section.course.course_name %> - <%= @section.course.course_number %>.<%= @section.section_number %></h1>
+<h1><%= link_to @section.course.course_name, course_path(@section.course) %> - <%= @section.course.course_number %>.<%= @section.section_number %></h1>
 <div class="data-container">
 	<h4>Teacher: <%= @section.teacher.lastfirst %></h4>
 	<h4>Term: <%= @section.term.term_code %></h4>

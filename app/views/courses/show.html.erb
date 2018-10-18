@@ -1,9 +1,19 @@
 <h1><%=@course.course_name%></h1>
 
-<h2>Students</h2>
-<ol>
-<% @course.students.uniq.each do |student|%>
-	<li><%= link_to student.lastfirst, student_path(student)%></li>
+<h2>Sections</h2>
+<ul>
+<% @course.sections.each do |section| %>
+	<li><%= link_to @course.course_number + "." + section.section_number, section_path(section) %> - <%= section.students.count %></li>
 <% end %>
-</ol>
+</ul>
+
+
+<h4>Standards Associated with this Course</h4>
+<ul>
+<% @course.standards.each do |standard| %>
+	<li><%= link_to standard.identifier, standard_path(standard) %> - <%= standard.standard_name %></li>
+<% end %>
+</ul>
+
+
 

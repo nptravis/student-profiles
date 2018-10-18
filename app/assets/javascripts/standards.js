@@ -12,7 +12,6 @@ function standardInit(){
 	const chartCanvas = $('#standard-data-container')
 	const gradeLevels = $('#standard-data').data('gradelevels')
 	createStackedBarGraph(chartCanvas, grade_hash, gradeLevels)
-
 	
 }
 
