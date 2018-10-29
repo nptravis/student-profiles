@@ -1,6 +1,6 @@
 <h1><%= link_to @section.course.course_name, course_path(@section.course) %> - <%= @section.course.course_number %>.<%= @section.section_number %></h1>
 <div class="data-container">
-	<h4>Teacher: <%= @section.teacher.lastfirst %></h4>
+	<h4>Teacher: <%= link_to @section.teacher.lastfirst, teacher_path(@section.teacher) %></h4>
 	<h4>Term: <%= @section.term.term_code %></h4>
 	<h4>Grade: <%= @section.grade_level %></h4>
 

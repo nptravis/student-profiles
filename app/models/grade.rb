@@ -8,5 +8,6 @@ class Grade < ActiveRecord::Base
 	def self.grades_per_standard(standard)
 		standard.grades
 	end
+
 end
 

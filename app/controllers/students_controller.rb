@@ -17,6 +17,7 @@ class StudentsController < ApplicationController
 		current_grades = @student.grades.where("term_id = ?", term.id)
 		@all_standards = collection.all_standards(current_grades)
 		@all_homs = collection.all_homs(current_grades)
+		@sections = @student.sections
 	end
 
 	def create
@@ -55,21 +56,41 @@ class StudentsController < ApplicationController
 		render partial: 'section_show'
 	end
 
-	def reportcard
+	def report_card_links
+		@student = Student.find(params[:id])
+		render json: @student, serializer: ReportCardLinksSerializer
+	end
+
+	def q1_reportcard
 		@student = Student.find(params[:id])
 		respond_to do |format|
 	      format.html
 	      format.pdf do
-        	render pdf: "reportcard-#{@student.student_number}", 
+        	render pdf: "q1-reportcard-#{@student.student_number}", 
         	layout: 'pdf.html.erb',
-        	template: 'students/reportcard.html.erb',
+        	template: 'students/q1_reportcard.html.erb',
         	window_status: "FLAG_FOR_PDF",
         	dpi: '300'
         end
       end
 	end
 
-# BEGIN Private /////////////////////////////////////////////////////////////////////
+	def sem1_reportcard
+		@student = Student.find(params[:id])
+		respond_to do |format|
+	      format.html
+	      format.pdf do
+        	render pdf: "sem1-reportcard-#{@student.student_number}", 
+        	layout: 'sem1_report_card.html.erb',
+        	template: 'students/sem1_reportcard.html.erb',
+        	window_status: "FLAG_FOR_PDF",
+        	orientation: 'Landscape',
+        	page_size: 'A3',
+        	dpi: '300'
+        end
+      end
+	end
+
 	private
 
 

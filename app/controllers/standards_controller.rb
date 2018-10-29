@@ -13,7 +13,7 @@ class StandardsController < ApplicationController
 		hasher = CollectionService.new
 		@terms = @standard.terms
 		@grades_hash = hasher.create_grades_hash(@standard.grades)
-		@grade_levels = @standard.sections.pluck(:grade_level).uniq
+		@grade_levels = @standard.students.pluck(:grade_level).uniq.sort
 	end
 
 	def grades_per_term 

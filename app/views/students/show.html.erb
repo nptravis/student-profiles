@@ -23,9 +23,7 @@
 		<ul>
 			<li><a class="student-comments-link" href="#">Comments</a></li>
 			<li><a class="schedule-matrix-link" href='#'>Schedule Matrix</a></li>
-
-			<!-- <li><a class="student-reportcard-link" href='/students/<%= @student.id %>/reportcard'>Report Card</a></li> -->
-			<li><%= link_to "Report Card", "/students/#{@student.id}/reportcard.pdf"  %></li>
+			<li><a class="student-report-cards-link" href="#">Report Cards</a></li>
 			<li><a class="student-sections-link" href='#'>Sections</a></li>
 			<li><a class="student-map-link" href='#'>Map Data</a></li>
 			<li><%=link_to "Writing Sample", asset_path("student-writing-sample.pdf"), target: "_blank"%></li>
@@ -34,7 +32,7 @@
 
 	<div class="student-data-container">
 		<!-- <canvas id="map-chart"></canvas> -->
-		<%= render partial: 'comments' %>
+		<p>Loading Sections...</p>
 	</div>
 
 		

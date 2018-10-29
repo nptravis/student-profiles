@@ -6,7 +6,7 @@ class Standard < ActiveRecord::Base
 	has_many :course_standards
 	has_many :courses, through: :course_standards
 	has_many :sections, through: :courses
-	validates :standard_name, :identifier, :dcid, presence: true
+	validates :standard_name, :description, :identifier, :dcid, presence: true
 
 	def hom?
 		!!self.standard_name.match(/Respect$|Responsibility$|Engagement$|Reflection$/)

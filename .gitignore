@@ -78,3 +78,6 @@ secrets.yml
 # Pictures for now
 ####################
 .jpg
+
+# Ignore application configuration
+/config/application.yml

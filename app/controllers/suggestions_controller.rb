@@ -18,12 +18,33 @@ class SuggestionsController < ApplicationController
 		end
 	end
 
+	def update
+		@suggestion = Suggestion.find(params[:id])
+		if @suggestion.user_id == current_user.id
+			@suggestion.content = suggestion_params[:content]
+			@suggestion.save
+			redirect_to suggestions_path
+		else
+			redirect_to suggestions_path
+		end
+	end
+
 	def destroy
+		@suggestion = Suggestion.find(params[:id])
+		@suggestion.destroy
+		respond_to do |format|
+			format.html {redirect_to suggestions_path}
+			format.js {render text: "suggestion destroyed"}
+		end
 	end
 
 	def show
-		@suggestion = Suggestion.find(params[:id])
-		render json: @suggestion, serializer: suggestionSerializer 
+		if params[:user_id]
+			@suggestion = Suggestion.find(params[:id])
+		else
+			@suggestion = Suggestion.find(params[:id])
+			render json: @suggestion, serializer: suggestionSerializer 
+		end
 	end
 
 	private

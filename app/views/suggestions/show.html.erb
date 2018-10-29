@@ -1,1 +1,9 @@
-<p><%= @suggestion.content %> - <small><b><%= @suggestion.user.username %></b></small></p>
+<h2>Edit Suggestion</h2>
+<% if @suggestion.user_id == current_user.id %>
+	<%= form_for @suggestion, url: {action: "update"} do |f| %>
+		<%= f.text_area :content, class: "student-comment" %>
+		<%= f.submit %>
+	<% end %>
+<% else %>
+	<p>This is not your suggestion to edit.</p>
+<% end %>

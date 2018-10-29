@@ -1,8 +1,6 @@
-<h2><%= @section.course.course_name %></h2>
-<h4><%= @section.course.course_number %>.<%= @section.section_number %></h4>
-<h4><%= @section.room %></h4>
-<p><%= link_to @section.teacher.lastfirst, teacher_path(@section.teacher) %></p>
-<p><a href="mailto:<%= @section.teacher.email %>" target="_blank"><%= @section.teacher.email %></a></p>
+<h4><%= link_to @section.course.course_name, course_path(@section.course) %></h4>
+<p><%= link_to @section.course.course_number + "." + @section.section_number, section_path(@section) %> - <%= link_to @section.teacher.lastfirst, teacher_path(@section.teacher) %> - <a href="mailto:<%= @section.teacher.email %>" target="_blank"><%= @section.teacher.email %></a></p>
+
 
 <div class="canvas-wrapper">
     <div class="canvas-1">

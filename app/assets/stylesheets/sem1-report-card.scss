@@ -1,0 +1,144 @@
+div.student-sections {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+div#header {
+	margin: auto;
+	width: 100%;
+	height: 62px;
+	img {
+		height: auto;
+		width: auto;
+	}
+}
+
+div.section {
+	display: inline-block;
+	box-sizing: border-box;
+	border: 1px black solid;
+	width: 90%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: #fff;
+	padding: 5px;
+	text-align: left;
+
+	span.course-name {
+		font-size: 16pt;
+		/*text-decoration: underline;*/
+	}
+	span.instructor-name {
+		font-style: italic;
+	}
+}
+
+div.section-group {
+	border: 1px black solid;
+	width: 100%;
+	border-radius: 20px;
+	background-color: #f7f7f7;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	padding-bottom: 20px;
+	h2 {
+		text-align: left;
+		margin-left: 5%;
+		margin-bottom: 5px;
+		margin-top: 5PX;
+	}
+}
+
+img.student-reportcard-image {
+	height: 100%;
+	border-radius: 10px;
+	display: inline-block;
+}
+
+div.ms-header {
+	text-align: center;
+	h2 {
+		margin: 0;
+	}
+	h3 {
+		margin: 0;
+	}
+	margin-bottom: 20px;
+}
+
+div.div-container {
+	display: block;
+	text-align: justify;
+	height: 100px;
+}
+
+div.div-container:after {
+	content: '';
+	display: inline-block;
+	width: 100%;
+}
+
+div.left-div {
+	height: 100%;
+	display: inline-block;
+	vertical-align: top;
+	
+}
+
+div.student-photo-container{
+	margin-right: 50px;
+}
+
+div.page{
+	text-align: justify;
+
+	div.left-page {
+		display: inline-block;
+		margin-right: 50%;
+	}
+	div.right-page {
+		display: inline-block;
+		margin-left: 50%;
+	}
+	
+}
+
+div.middle-div {
+	vertical-align: top;
+	height: 100%;
+	display: inline-block;
+}
+
+div.right-div {
+	vertical-align: top;
+	height: 100%;
+	display: inline-block;
+}
+
+div.student-text-info {
+	text-align: center;
+	.student-name {
+		font-size: 22pt;
+		text-decoration: underline;
+	}
+}
+
+div.student-text-right {
+	text-align: right;
+}
+
+div.pop {
+	border: 1px black solid;
+	border-radius: 20px;
+	text-align:center;
+	margin-top: 10px;
+	p {
+		margin-left: 10px;
+		text-align: left;
+	}
+	h4 {
+		margin: 0px;
+	}
+}

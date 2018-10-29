@@ -14,7 +14,9 @@ data_hash["items"].each do |set|
 		standard = Standard.find_or_initialize_by(
 			standard_name: set["name"], 
 			identifier: set["identifier"],
-			dcid: set["standard_dcid"]
+			dcid: set["standard_dcid"],
+			parent_standard_id: set["parent_standard_dcid"],
+			description: set["description"]
 			)
 
 		if standard.save 

@@ -6,12 +6,6 @@
   <%= flash[:message] %>
 <% end %>
 
-
-<% if Teacher.teacher?(@current_user)%>
-	<h1>Welcome Teacher <%= @current_user.username %></h1>
- 	<p>You are a teacher!!!!</p>
-<% else %>
- 	<h1>Welcome <%= @current_user.username %></h1>
-<% end %>
+<h1>Welcome <%= @current_user.username %></h1>
 
 

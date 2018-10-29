@@ -1,2 +1,9 @@
 <h2><%= @teacher.lastfirst %></h2>
 <p><small><%= link_to @teacher.email, "mailto:#{@teacher.email}" %></small></p>
+
+<h4>Current Sections</h4>
+<ul>
+<% @teacher.current_sections.each do |section| %>
+	<li><%= link_to section.course.course_name, course_path(section.course) %> - <%= link_to section.course.course_number + "." + section.section_number, section_path(section) %></li>
+<% end %>
+</ul>

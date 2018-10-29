@@ -8,6 +8,7 @@ function studentInit(){
 		let studentId = $('.student-show-container').attr("data");
 
 		drawDonutGraphs();
+		getStudentSections(studentId);
 
 		// BEGIN Attach Listeners
 		$('.student-comment-form').on('submit', function(event){
@@ -28,12 +29,17 @@ function studentInit(){
 
 		$('.student-sections-link').on("click", function(event){
 			event.preventDefault();
+			$('.student-data-container').html("<p>Loading Sections...</p>");
 			getStudentSections(studentId);
 		});
 
 		$('.student-comments-link').on("click", function(event){
 			event.preventDefault();
 			getStudentComments(studentId);
+		});
+		$('.student-report-cards-link').on("click", function(event){
+			event.preventDefault();
+			getStudentReportCards(studentId);
 		})
 
 		if ($('.destroy')){
@@ -291,5 +297,12 @@ function attachSectionLinkListener(studentId){
 			drawSectionCharts();
 		})
 	});
+}
+
+function getStudentReportCards(studentId){
+	$.get(`/students/${studentId}/report-cards`, function(response){
+		console.log("request sent", response)
+		$('.student-data-container').html(response.links);
+	})
 }
 // END Ajax Functions

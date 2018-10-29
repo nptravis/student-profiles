@@ -28,3 +28,7 @@ test:
 production:
   <<: *default
   database: db/pg_production
+  username: student-profiles
+  password: <%= ENV['STUDENT_PROFILES_DATABASE_PASSWORD'] %>
+  host: <%= ENV['STUDENT_PROFILES_DATABASE_HOST'] %>
+  port: <%= ENV['STUDENT_PROFILES_DATABASE_PORT'] %>

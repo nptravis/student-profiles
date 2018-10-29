@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
 	def index
 	end
 
-	def report_cards
+	def q1_report_cards
 		pdfs = CombinePDF.new
 		students = Student.order(:grade_level, :lastfirst)
 		
@@ -14,8 +14,8 @@ class ReportsController < ApplicationController
 			pdfs << CombinePDF.parse(pdf)
 		end
 
-		pdfs.save 'report-cards.pdf'
-		send_data pdfs.to_pdf, filename: "report-cards.pdf", type: "application/pdf", disposition: 'inline'
+		pdfs.save 'q1-report-cards.pdf'
+		send_data pdfs.to_pdf, filename: "q1-report-cards.pdf", type: "application/pdf", disposition: 'inline'
 	end
 end
 

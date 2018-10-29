@@ -19,7 +19,7 @@ data_hash["items"].each do |set|
 
 	teacher = Teacher.find_or_initialize_by(
 		email: set["email_addr"],
-		lastfirst: set["lastfirst_1"],
+		lastfirst: set["teacher_lastfirst"],
 		dcid: set["teacher_dcid"],
 		teacher_number: set["teachernumber"]
 		)
