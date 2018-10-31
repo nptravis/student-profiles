@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require jquery3
 //= require jquery_ujs
+//= require Chart.bundle.min
 //= require visualizations
 //= require students
 //= require teachers
@@ -23,7 +24,8 @@
 
 
 
-//= require Chart.bundle.min
+
+
 
 
 

@@ -1,47 +1,34 @@
 <div class="page">
-	<div class="right-page">
-		<div class="ms-header">
-			<h2>RIS MIDDLE SCHOOL</h2>
-			<h3>Quarter 1 Feedback Report 2018-19</h3>
-		</div>
-		<hr>
-		<div class="div-container">
-			<div class="left-div student-photo-container">
-			<%= image_tag wicked_pdf_asset_base64("#{@student.student_number}ph.jpg"), class: 'student-reportcard-image' %>
-			</div>
-			<div class="middle-div student-text-info">
-				<span class="student-name"><%= @student.lastfirst %></span><br>
-				<span>ID: <%= @student.student_number %></span><br>
-				<span>Advisory Teacher: <%= @student.homeroom.teacher.lastfirst %></span>
-			</div>
-			<div class="right-div student-text-right">
-				<span>Grade <%= @student.grade_level %></span><br>
-				<br></br>
-				<span>October 17th, 2018</span>
-			</div>
-		</div>
-
-		<div class="pop">
-			<h4>Principles of the Phoenix</h4>
-			<span>Head, Hands, and Heart</span>
-			<p>RIS students are creative, open minded and critical thinkers. They are effective communicators and are collaborative and resourceful individuals; they embrace diversity. They are committed to leading happy and healthy lives and help others to do the same.</p>
-			<!-- <hr> -->
-			<!-- <p><strong>Comments: </strong> -->
-				<%= @student.homeroom_quarter_comment %>
-				 <!-- Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse -->
-			<!-- </p> -->
-		</div>
+	<div class="left-page">
 		<div class="student-sections">
 			<div class="section-group">
-				<h2>Core Courses</h2>
+				<h2>Electives</h2>
 				<% @student.sections_per_semester(2801).each do |section| %>
-					<% if section.core? && !section.course.course_number.start_with?("ADC1", "ADC2")%>
+					<% if !section.required? && !section.core? && !section.course.course_number.start_with?("MSFB", "HR")%>
 						<div class="section">
-							<span class="course-name"><%= section.course.course_name %></span> - 
-							<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+							<div class="section-header">
+								<span class="course-name"><%= section.course.course_name %></span> - 
+								<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+							</div>
+							<span><strong>Academic Standards</strong></span>
+							<ul>
+								<% @student.grades_per_section(section).each do |grade| %>
+									<% if grade.standard.description === "Reporting Standard" && !grade.standard.hom? %>
+										<li><span class="standard-name"><%= grade.standard.standard_name %></span><div class="grade-meter-<%= grade.letter_grade %>"></div><%= grade.letter_grade %></li>
+									<% end %>
+								<% end %>
+							</ul>
+							<span><strong>Habits of Mind</strong></span>
+							<ul>
+								<% @student.grades_per_section(section).each do |grade| %>
+									<% if grade.standard.description === "Reporting Standard" && grade.standard.hom? %>
+										<li><span class="standard-name"><%= grade.standard.standard_name %></span><div class="grade-meter-<%= grade.letter_grade %>"></div><%= grade.letter_grade %></li>
+									<% end %>
+								<% end %>
+							</ul>
 							<span><strong>Comments:</strong> 
-							<%= section.quarter_comment_per_student(@student) %>
-							<!-- Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse -->
+							<%#= section.semester_comment_per_student(@student) %>
+							Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse
 							</span>
 						</div>
 					<% end %>
@@ -49,34 +36,164 @@
 			</div>
 		</div>
 	</div>
+	<div class="right-page">
+		<div class="ms-header">
+			<div id="header">
+	    	<%= image_tag wicked_pdf_asset_base64('ris-header.svg'), class: 'reportcard-header-image' %>
+	    	</div>
+			<h2>RIS MIDDLE SCHOOL</h2>
+			<h3>Semester 1 Report Card 2018-19</h3>
+		</div>
+		<hr>
+		<div class="div-container">
+			<div class="left-div student-photo-container">
+				<%= image_tag wicked_pdf_asset_base64("#{@student.student_number}ph.jpg"), class: 'student-reportcard-image' %>
+			</div>
+			<div class="middle-div student-text-info">
+				<span class="student-name"><%= @student.lastfirst %></span><br></br>
+				<span>ID: <%= @student.student_number %></span><br></br>
+				<span>Advisory Teacher: <%= @student.homeroom.teacher.lastfirst %></span>
+			</div>
+			<div class="right-div student-text-right">
+				<span>Grade <%= @student.grade_level %></span><br></br>
+				<span>December 24th, 2018</span>
+			</div>
+		</div>
+
+		<div class="pop">
+			<h4>Principles of the Phoenix</h4>
+			<span>Head, Hands, and Heart</span>
+			<p class="pop-motto">RIS students are creative, open minded and critical thinkers. They are effective communicators and are collaborative and resourceful individuals; they embrace diversity. They are committed to leading happy and healthy lives and help others to do the same.</p>
+			<hr>
+			<p><strong>Comments: </strong>
+				<%#= @student.homeroom_quarter_comment %>
+				 Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse
+			</p>
+		</div>
+		<table align="center">
+			<tr>
+				<th>Course Name</th>
+				<th>Section</th>
+				<th>Term</th>
+				<th>Teacher</th>
+				<th>Email</th>
+			</tr>
+			<% @student.sections_current.sort.each do |section| %>
+			<tr>
+				<td><%= section.course.course_name %></td>
+				<td><%= section.section_number %></td>
+				<td><%= section.semester %></td>
+				<td><%= section.teacher.lastfirst %></td>
+				<td><%= section.teacher.email %></td>
+			</tr>
+			<% end %>
+		</table>
+		<div class="staff-info-container">
+			<div class="admin-info">
+				<h4>Administration</h4>
+				<ul>
+					<li><strong>MS Principal</strong> - Ms. Gretchen DePoint</li>
+					<li><strong>MS Vice Principal</strong> - Mr. Mathias Sanders</li>
+					<li><strong>MS Counselor</strong> - Ms. Caroline Scott</li>
+				</ul>
+			</div>
+			<div class="secretary-info">
+				<h4>Secretaries</h4>
+				<ul>
+					<li><strong>MS Principal Secretary</strong> M203 - Ms. Kanpirom (Nok) Sarikabhuti</li></li>
+					<li><strong>MS Vice Principal Secretary</strong> M204 - Ms. Thanupat (Pui) Fletcher</li></li>
+					<li><strong>MS Counseling Secretary</strong> M209 - Ms. Kwanta (Nong) Horthiwong</li></li>
+				</ul>
+			</div>
+		</div>
+		<div class="eval-key">
+			<h4>Evaluation Key</h4>
+			<ul>
+				<li><strong>E:</strong> Exemplary – The student exhibits in-depth inferences and applications that go beyond what was taught.</li>
+				<li><strong>M:</strong> Meeting Standard – The student exhibits no major errors or omissions.</li>
+				<li><strong>P:</strong> Progressing – The student exhibits no major errors or omissions regarding the simpler details and processes
+   				but exhibits errors regarding the more complex ideas and processes.</li>
+				<li><strong>B:</strong> Below Standard – With assistance, a partial understanding of some of both the simpler and more complex
+				details and processes.</li>
+				<li><strong>N:</strong> Insufficient Evidence – This standard has not yet been assessed or evaluated to a level which gives the
+				teacher an accurate measure of the student's achievement.</li>
+				
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="page">
 	<div class="left-page">
 		<div class="student-sections">
-			
 			<div class="section-group">
-				<h2>Required Courses</h2>
+				<h2>Core Courses</h2>
 				<% @student.sections_per_semester(2801).each do |section| %>
-					<% if section.required? %>
+					<% if section.core? && !section.course.course_number.start_with?("ADC1", "ADC2")%>
 						<div class="section">
-							<span class="course-name"><%= section.course.course_name %></span> - 
-							<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+							<div class="section-header">
+								<span class="course-name"><%= section.course.course_name %></span> - 
+								<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+							</div>
+							<span><strong>Academic Standards</strong></span>
+							<ul>
+								<% @student.grades_per_section(section).each do |grade| %>
+									<% if grade.standard.description === "Reporting Standard" && !grade.standard.hom? %>
+										<li><span class="standard-name"><%= grade.standard.standard_name %></span><div class="grade-meter-<%= grade.letter_grade %>"></div><%= grade.letter_grade %></li>
+									<% end %>
+								<% end %>
+							</ul>
+							<span><strong>Habits of Mind</strong></span>
+							<ul>
+								<% @student.grades_per_section(section).each do |grade| %>
+									<% if grade.standard.description === "Reporting Standard" && grade.standard.hom? %>
+										<li><span class="standard-name"><%= grade.standard.standard_name %></span><div class="grade-meter-<%= grade.letter_grade %>"></div><%= grade.letter_grade %></li>
+									<% end %>
+								<% end %>
+							</ul>
 							<span><strong>Comments:</strong> 
-							<%= section.quarter_comment_per_student(@student) %>
-							<!-- Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse -->
+							<%#= section.semester_comment_per_student(@student) %>
+							Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse
 							</span>
 						</div>
 					<% end %>
 				<% end %>
 			</div>
+		</div>
+	</div>
+	<div class="right-page">
+		<div class="student-sections">
 			<div class="section-group">
-				<h2>Electives</h2>
+				<h2>Required Courses</h2>
 				<% @student.sections_per_semester(2801).each do |section| %>
-					<% if !section.required? && !section.core? && !section.course.course_number.start_with?("MSFB", "HR")%>
+					<% if section.required? %>
 						<div class="section">
-							<span class="course-name"><%= section.course.course_name %></span> - 
-							<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+							<div class="section-header">
+								<span class="course-name"><%= section.course.course_name %></span> - 
+								<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+							</div>
+							<span><strong>Academic Standards</strong></span>
+							<ul>
+								<% @student.grades_per_section(section).each do |grade| %>
+									<% if grade.standard.description === "Reporting Standard" && !grade.standard.hom? %>
+										<% if grade.pe? %>
+											<li><span class="standard-name"><%= grade.pe_standard_name %></span><div class="grade-meter-<%= grade.letter_grade %>"></div><%= grade.letter_grade %></li>
+										<% else %>
+											<li><span class="standard-name"><%= grade.standard.standard_name %></span><div class="grade-meter-<%= grade.letter_grade %>"></div><%= grade.letter_grade %></li>
+										<% end %>
+									<% end %>
+								<% end %>
+							</ul>
+							<span><strong>Habits of Mind</strong></span>
+							<ul>
+								<% @student.grades_per_section(section).each do |grade| %>
+									<% if grade.standard.description === "Reporting Standard" && grade.standard.hom? %>
+										<li><span class="standard-name"><%= grade.standard.standard_name %></span><div class="grade-meter-<%= grade.letter_grade %>"></div><%= grade.letter_grade %></li>
+									<% end %>
+								<% end %>
+							</ul>
 							<span><strong>Comments:</strong> 
-							<%= section.quarter_comment_per_student(@student) %>
-							<!-- Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse -->
+							<%#= section.semester_comment_per_student(@student) %>
+							Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse
 							</span>
 						</div>
 					<% end %>

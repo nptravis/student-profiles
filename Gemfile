@@ -49,7 +49,7 @@ gem 'active_model_serializers', '~> 0.10.2'
 
 # for creating report card PDFs
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-binary-edge'
 gem 'combine_pdf'
 
 

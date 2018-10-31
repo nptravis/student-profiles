@@ -2,22 +2,24 @@ file = File.read('data/all-final-standards.json')
 
 data_hash = JSON.parse(file)
 i = 0;
-data_hash["items"].each do |set|
+data_hash.each do |set|
 	
 	student = Student.find_by(dcid: set["student_dcid"])
 	section = Section.find_by(dcid: set["section_dcid"])
 	course = Course.find_by(dcid: set["course_dcid"])
 	term = Term.find_by(term_code: set["termid"])
+	teacher = Teacher.find_by(dcid: set["teacher_dcid"])
 
 	if student.present? && section.present? && course.present? && term.present?
 
 		standard = Standard.find_or_initialize_by(
 			standard_name: set["name"], 
 			identifier: set["identifier"],
-			dcid: set["standard_dcid"],
-			parent_standard_id: set["parent_standard_dcid"],
-			description: set["description"]
+			dcid: set["standard_dcid"]
 			)
+
+		standard.parent_standard_dcid = set["parent_standard_dcid"]
+		standard.description = set["description"]
 
 		if standard.save 
 
@@ -33,6 +35,7 @@ data_hash["items"].each do |set|
 
 		else
 			puts "ERROR: term or standard not saved"
+			break;
 		end
 
 		if standard_term.save
@@ -59,11 +62,19 @@ data_hash["items"].each do |set|
 					grade.grade = 0
 			end
 
-			if grade.save
+			semester_comment = SemesterComment.find_or_initialize_by(
+				:semester => set["storecode"],
+				:teacher_id => teacher.id,
+				:section_id => section.id,
+				:student_id => student.id
+				)
+			semester_comment.content = set["commentvalue"]
+
+			if grade.save && semester_comment.save
 				puts "Record saved #{i}"
 				i+=1
 			else
-				puts "ERROR: Grade not saved."
+				puts "ERROR: Grade OR Semester Comment not saved."
 				break;
 			end
 

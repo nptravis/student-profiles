@@ -86,5 +86,9 @@ class Student < ActiveRecord::Base
 		self.homeroom.quarter_comments.select{|comment| comment.student_id == self.id}[0].content
 	end
 
+	def grades_per_section(section)
+		self.grades.where("section_id = ?", section.id)
+	end
+
 
 end

@@ -4,17 +4,13 @@
     <meta charset='utf-8' />
     <%= csrf_meta_tags %>
     <%= wicked_pdf_stylesheet_link_tag "sem1-report-card" %>
-    <%= javascript_include_tag wicked_pdf_asset_base64("pdf") %>
-    
+    <%= javascript_include_tag wicked_pdf_asset_base64("sem1_report_card") %>
   </head>
-  <body onload='number_pages'>
-    <div id="header">
-     <%= image_tag wicked_pdf_asset_base64('ris-header.svg'), class: 'reportcard-header-image' %>
-     
-    </div>
+  <body>
+    
     <div id="content">
       <%= yield %>
     </div>
-
+    
   </body>
 </html>

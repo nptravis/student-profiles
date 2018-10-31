@@ -1,3 +1,10 @@
+html, body {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+}
+
 div.student-sections {
 	display: block;
 	width: 100%;
@@ -18,12 +25,14 @@ div.section {
 	display: inline-block;
 	box-sizing: border-box;
 	border: 1px black solid;
-	width: 90%;
+	width: 49%;
+	height: 410px;
+	overflow: hidden;
 	margin-top: 10px;
-	margin-bottom: 10px;
 	background-color: #fff;
 	padding: 5px;
 	text-align: left;
+	vertical-align: top;
 
 	span.course-name {
 		font-size: 16pt;
@@ -32,17 +41,29 @@ div.section {
 	span.instructor-name {
 		font-style: italic;
 	}
+	span.standard-name {
+		float: left;
+		width: 200px;
+	}
+	ul {
+		margin-top: 1px;
+		margin-bottom: 10px;
+		list-style: none;
+	}
 }
 
 div.section-group {
 	border: 1px black solid;
-	width: 100%;
+	width: 99.5%;
 	border-radius: 20px;
 	background-color: #f7f7f7;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	text-align: center;
-	padding-bottom: 20px;
+	height: 98%;
+	display: table-cell;
+	padding-bottom: 10px;
+	
 	h2 {
 		text-align: left;
 		margin-left: 5%;
@@ -84,25 +105,6 @@ div.left-div {
 	height: 100%;
 	display: inline-block;
 	vertical-align: top;
-	
-}
-
-div.student-photo-container{
-	margin-right: 50px;
-}
-
-div.page{
-	text-align: justify;
-
-	div.left-page {
-		display: inline-block;
-		margin-right: 50%;
-	}
-	div.right-page {
-		display: inline-block;
-		margin-left: 50%;
-	}
-	
 }
 
 div.middle-div {
@@ -115,6 +117,39 @@ div.right-div {
 	vertical-align: top;
 	height: 100%;
 	display: inline-block;
+}
+
+div.student-photo-container{
+	margin-right: 50px;
+}
+
+div.page{
+	text-align: justify;
+	width: 100%;
+	height: 100%;
+
+	div.left-page {
+		display: inline-block;
+		vertical-align: top;
+		width: 48%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	div.right-page {
+		display: inline-block;
+		vertical-align: top;
+		height: 100%;
+		width: 48%;
+		overflow: hidden;
+	}
+	
+}
+
+div.page:after {
+	content: '';
+	display: inline-block;
+	width: 100%;
 }
 
 div.student-text-info {
@@ -141,4 +176,94 @@ div.pop {
 	h4 {
 		margin: 0px;
 	}
+}
+
+div.placeholder {
+	height: 950px;
+}
+
+
+div.section-header {
+	padding-bottom: 10px;
+	span.course-name {
+		text-decoration: underline;
+		
+	}
+}
+
+div.grade-meter-B {
+	display: inline-block;
+	background-color: #A8271E;
+	border: 1px black solid;
+	width: 30px;
+	height: 10px;
+	margin-right: 5px;
+}
+div.grade-meter-P {
+	display: inline-block;
+	background-color: #F8DA06;
+	border: 1px black solid;
+	width: 60px;
+	height: 10px;
+	margin-right: 5px;
+
+}
+div.grade-meter-M {
+	display: inline-block;
+	background-color: #249D3D;
+	border: 1px black solid;
+	width: 90px;
+	height: 10px;
+	margin-right: 5px;
+
+}
+div.grade-meter-E {
+	display: inline-block;
+	background-color: #007CC6;
+	border: 1px black solid;
+	width: 120px;
+	height: 10px;
+	margin-right: 5px;
+
+}
+div.eval-key {
+	border: 1px black solid;
+	border-radius: 20px;
+	background-color: #f7f7f7;
+	ul {
+		list-style: none;
+	}
+	ul li {
+		margin: 5px;
+	}
+	h4 {
+		text-align: center;
+	}
+}
+
+table {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 1px solid black;
+	width: 100%;
+	th {
+		background-color: #999999;
+		height: 10px;
+	}
+}
+
+div.staff-info-container {
+	text-align: justify;
+
+	div.admin-info {
+		display: inline-block;
+	}
+	div.secretary-info{
+		display: inline-block;
+	}
+}
+div.staff-info-container:after {
+	content: '';
+	display: inline-block;
+	width: 100%;
 }

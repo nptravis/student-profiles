@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
 	def show
 		collection = CollectionService.new
 		@student = Student.find(params[:id])
-		term = Term.find_by(term_code: 2800);
+		term = Term.find_by(term_code: 2801);
 		current_grades = @student.grades.where("term_id = ?", term.id)
 		@all_standards = collection.all_standards(current_grades)
 		@all_homs = collection.all_homs(current_grades)
@@ -78,15 +78,24 @@ class StudentsController < ApplicationController
 	def sem1_reportcard
 		@student = Student.find(params[:id])
 		respond_to do |format|
-	      format.html
+	      format.html do
+	      	render partial: 'sem1_reportcard',
+	      	layout: "sem1_report_card"
+	      end
 	      format.pdf do
         	render pdf: "sem1-reportcard-#{@student.student_number}", 
         	layout: 'sem1_report_card.html.erb',
         	template: 'students/sem1_reportcard.html.erb',
-        	window_status: "FLAG_FOR_PDF",
         	orientation: 'Landscape',
         	page_size: 'A3',
-        	dpi: '300'
+        	window_status: "FLAG_FOR_PDF",
+        	dpi: '300',
+        	show_as_html: params.key?('debug'),
+        	margin:  { 
+        		top:               5,                     #
+                bottom:            5,
+                left:              5,
+                right:             5}
         end
       end
 	end

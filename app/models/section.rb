@@ -100,4 +100,19 @@ class Section < ApplicationRecord
 		self.quarter_comments.select{|comment| comment.student_id == student.id}[0].content
 	end
 
+	def semester_comment_per_student(student)
+		self.semester_comments.select{|comment| comment.student_id === student.id}[0].content
+	end
+
+	def semester
+		case self.term.term_code
+		when 2800
+			"18-19"
+		when 2801
+			"S1"
+		when 2802
+			"S2"
+		end
+	end
+
 end

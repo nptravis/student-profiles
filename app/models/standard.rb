@@ -42,5 +42,6 @@ class Standard < ActiveRecord::Base
 	  		self.all
 	  	end
 	end
+
 end
 
