@@ -77,27 +77,44 @@ class StudentsController < ApplicationController
 
 	def sem1_reportcard
 		@student = Student.find(params[:id])
-		respond_to do |format|
-	      format.html do
-	      	render partial: 'sem1_reportcard',
-	      	layout: "sem1_report_card"
+		@sections = @student.sections_per_semester(2801).reject{|section| section.course.course_name.include?("Extended Advisory")}
+		if @student.school.number === 102
+			respond_to do |format|
+		      format.pdf do
+	        	render pdf: "sem1-reportcard-#{@student.student_number}", 
+	        	layout: 'sem1_report_card.html.erb',
+	        	template: 'students/sem1_reportcard.html.erb',
+	        	orientation: 'Landscape',
+	        	page_size: 'A3',
+	        	window_status: "FLAG_FOR_PDF",
+	        	dpi: '300',
+	        	show_as_html: params.key?('debug'),
+	        	margin:  { 
+	        		top:               5,                     #
+	                bottom:            5,
+	                left:              5,
+	                right:             5}
+	        end
 	      end
-	      format.pdf do
-        	render pdf: "sem1-reportcard-#{@student.student_number}", 
-        	layout: 'sem1_report_card.html.erb',
-        	template: 'students/sem1_reportcard.html.erb',
-        	orientation: 'Landscape',
-        	page_size: 'A3',
-        	window_status: "FLAG_FOR_PDF",
-        	dpi: '300',
-        	show_as_html: params.key?('debug'),
-        	margin:  { 
-        		top:               5,                     #
-                bottom:            5,
-                left:              5,
-                right:             5}
-        end
-      end
+	    elsif @student.school.number = 101
+	    	respond_to do |format|
+		      format.pdf do
+	        	render pdf: "sem1-reportcard-#{@student.student_number}", 
+	        	layout: 'sem1_report_card.html.erb',
+	        	template: 'students/hs_sem1_reportcard.html.erb',
+	        	orientation: 'Landscape',
+	        	page_size: 'A3',
+	        	window_status: "FLAG_FOR_PDF",
+	        	dpi: '300',
+	        	show_as_html: params.key?('debug'),
+	        	margin:  { 
+	        		top:               5,                     #
+	                bottom:            5,
+	                left:              5,
+	                right:             5}
+		      end
+			end
+		end
 	end
 
 	private

@@ -14,6 +14,11 @@ gem 'jquery-rails'
 # Use postgres as the database for Active Record
 gem 'pg'
 
+# Performance Profiler
+gem 'rack-mini-profiler'
+gem 'flamegraph'
+gem 'stackprof', '~> 0.2.7'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

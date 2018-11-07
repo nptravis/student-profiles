@@ -3,12 +3,18 @@
 	<!-- data visualizations -->
 	<div class="student-info-container">
 		<div class="student-photo">
-			<%= image_tag "#{@student.student_number}ph.jpg", alt: "Student Image" %><a href="#" class="search-icon"><i class="fas fa-search-plus"></i></a>
+			<% if @student.school.number === 102 %>
+				<%= image_tag "#{@student.student_number}ph.jpg", alt: "Student Image" %><a href="#" class="search-icon"><i class="fas fa-search-plus"></i></a>
+			<% else %>
+				<%= image_tag "#{@student.dcid}ph.jpeg", alt: "Student Image" %><a href="#" class="search-icon"><i class="fas fa-search-plus"></i></a>
+			<% end %>
+			
 		</div>
 		<div class="student-info">
 			<h2><%= @student.lastfirst %></h2>
 			 <p>Student Number: <%= @student.student_number %></p>
 			 <p>Grade: <%= @student.grade_level %></p>
+			 <p>School: <%= @student.school.name %></p>
 		</div>
 		<div class="student-donut">
 			<h5>All Standards for 18-19</h5>

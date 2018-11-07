@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181030032006) do
+ActiveRecord::Schema.define(version: 20181107054247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20181030032006) do
     t.string "course_name"
     t.string "course_number"
     t.integer "dcid"
+    t.integer "school_id"
   end
 
   create_table "grades", force: :cascade do |t|
@@ -61,6 +62,14 @@ ActiveRecord::Schema.define(version: 20181030032006) do
     t.integer "student_id"
   end
 
+  create_table "schools", force: :cascade do |t|
+    t.string "name"
+    t.integer "number"
+    t.string "abbreviation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sections", force: :cascade do |t|
     t.integer "course_id"
     t.integer "teacher_id"
@@ -70,6 +79,7 @@ ActiveRecord::Schema.define(version: 20181030032006) do
     t.integer "term_id"
     t.string "room"
     t.integer "grade_level"
+    t.integer "absences"
   end
 
   create_table "semester_comments", force: :cascade do |t|
@@ -103,6 +113,14 @@ ActiveRecord::Schema.define(version: 20181030032006) do
     t.string "student_number"
     t.string "grade_level"
     t.integer "dcid"
+    t.integer "school_id"
+    t.string "email"
+    t.string "mailing_city"
+    t.string "mailing_zip"
+    t.string "mailing_street_1"
+    t.string "mailing_street_2"
+    t.string "guardian_names"
+    t.string "mailing_state"
   end
 
   create_table "suggestions", force: :cascade do |t|
@@ -121,6 +139,17 @@ ActiveRecord::Schema.define(version: 20181030032006) do
 
   create_table "terms", force: :cascade do |t|
     t.integer "term_code"
+  end
+
+  create_table "trad_grades", force: :cascade do |t|
+    t.integer "student_id"
+    t.string "grade"
+    t.integer "section_id"
+    t.integer "term_id"
+    t.string "semester"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "percent"
   end
 
   create_table "users", force: :cascade do |t|

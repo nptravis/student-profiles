@@ -3,6 +3,6 @@ class SemesterComment < ApplicationRecord
 	belongs_to :section
 	belongs_to :teacher
 
-	validates :student_id, :teacher_id, :section_id, :content, :semester, presence: true
+	validates :student_id, :teacher_id, :section_id, :semester, presence: true
 
 end

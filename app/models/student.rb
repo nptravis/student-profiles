@@ -1,9 +1,11 @@
 class Student < ActiveRecord::Base
+	belongs_to :school
 	has_many :comments
 	has_many :users, through: :comments
 	has_many :student_sections
 	has_many :sections, through: :student_sections
 	has_many :grades
+	has_many :trad_grades
 	has_many :teachers, through: :sections
 	has_many :courses, through: :sections
 	has_many :standards, through: :grades
@@ -20,20 +22,20 @@ class Student < ActiveRecord::Base
 	  	end
 	end
 
-	def sections_per_term(termid)
-		self.sections.select{|section| section.term.term_code == termid}
+	def sections_per_term(term_code)
+		self.sections.select{|section| section.term.term_code == term_code}
 	end
 
-	def sections_per_semester(termid)
+	def sections_per_semester(term_code)
 		collection = []
-		if termid.digits.first == 1
-			collection << self.sections_per_term(termid)
-			collection << self.sections_per_term(termid-1)
-		elsif termid.digits.first == 2
-			collection << self.sections_per_term(termid)
-			collection << self.sections_per_term(termid-2)
+		if term_code.digits.first == 1
+			collection << self.sections_per_term(term_code)
+			collection << self.sections_per_term(term_code-1)
+		elsif term_code.digits.first == 2
+			collection << self.sections_per_term(term_code)
+			collection << self.sections_per_term(term_code-2)
 		end
-		collection.flatten
+		collection.flatten.sort { |a, b|  a.course.course_name <=> b.course.course_name }
 	end
 
 	def grades_per_term(termid)
@@ -67,13 +69,7 @@ class Student < ActiveRecord::Base
 	end
 
 	def sections_current
-		collection = []
-		self.sections.each do |section|
-			if section.term.term_code >= 2800 
-				collection << section
-			end
-		end
-		collection
+		self.sections.select{|section| section.term.term_code != 2802}
 	end
 
 	def homeroom
@@ -88,6 +84,14 @@ class Student < ActiveRecord::Base
 
 	def grades_per_section(section)
 		self.grades.where("section_id = ?", section.id)
+	end
+
+	def trad_grade_per_section(section)
+		self.trad_grades.where("section_id = ?", section.id)[0].grade
+	end
+
+	def homs_per_section(section)
+		self.standards.where("section_id = ?", section.id).select{ |standard| standard.hom? }
 	end
 
 

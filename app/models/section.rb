@@ -3,6 +3,7 @@ class Section < ApplicationRecord
 	belongs_to :teacher
 	belongs_to :term
 	has_many :grades
+	has_many :trad_grades
 	has_many :student_sections
 	has_many :students, through: :student_sections
 	has_many :semester_comments
@@ -85,6 +86,12 @@ class Section < ApplicationRecord
 	end
 
 	def core?
+		self.course.course_number.start_with?(
+			"LA", "SCI", "MA", "SOC", "ADC"
+			)
+	end
+
+	def hs_core?
 		self.course.course_number.start_with?(
 			"LA", "SCI", "MA", "SOC", "ADC"
 			)

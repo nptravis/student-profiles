@@ -52,6 +52,7 @@ div.section {
 	}
 }
 
+
 div.section-group {
 	border: 1px black solid;
 	width: 99.5%;
@@ -126,7 +127,7 @@ div.student-photo-container{
 div.page{
 	text-align: justify;
 	width: 100%;
-	height: 100%;
+	height: 1330px;
 
 	div.left-page {
 		display: inline-block;
@@ -258,7 +259,10 @@ div.staff-info-container {
 	div.admin-info {
 		display: inline-block;
 	}
-	div.secretary-info{
+	div.secretary-info {
+		display: inline-block;
+	}
+	div.hom-key {
 		display: inline-block;
 	}
 }
@@ -267,3 +271,93 @@ div.staff-info-container:after {
 	display: inline-block;
 	width: 100%;
 }
+/*BEGIN HS Section -------------------------------------*/
+div.hs-section {
+	display: inline-block;
+	box-sizing: border-box;
+	border: 1px black solid;
+	width: 49%;
+	height: 300px;
+	overflow: hidden;
+	margin-top: 10px;
+	background-color: #fff;
+	padding: 10px;
+	margin: 10px 2px;
+	text-align: left;
+	vertical-align: top;
+
+	span.course-name {
+		font-size: 16pt;
+		/*text-decoration: underline;*/
+	}
+	span.instructor-name {
+		font-style: italic;
+	}
+	span.standard-name {
+		float: left;
+		width: 200px;
+	}
+	ul {
+		margin-top: 1px;
+		margin-bottom: 10px;
+		list-style: none;
+	}
+}
+
+div.hs-section-grades {
+
+	div.hs-table {
+		
+		table {
+			border: none;
+			th {
+				background-color: #fff;
+
+			}
+			th.semester-heading-cell {
+				background-color: #999999;
+			}
+			td {
+				
+			}
+			tr.academic-row {
+				height: 50px;
+			}
+			span.hom-label {
+				text-decoration: underline;
+			}
+			span.academic-label {
+				text-decoration: underline;
+			}
+		}
+	}
+
+}
+
+div.signature {
+	text-align: center;
+
+	p.signature-line {
+		margin-top: 90px;
+		display: inline-block;
+		width: 70%;
+		border-bottom: 1px solid black;
+	}
+	p.signature-label {
+		margin: 0px;
+		display: block;
+		font-style: bold;
+	}
+}
+
+div.address-container {
+	margin-top: 130px;
+	margin-left: 100px;
+	span.g-name {
+		font-size: 14pt;
+		text-decoration: underline;
+	}
+}
+
+
+

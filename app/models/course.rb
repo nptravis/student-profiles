@@ -1,4 +1,5 @@
 class Course < ActiveRecord::Base
+	belongs_to :school
 	has_many :sections
 	has_many :course_terms
 	has_many :terms, through: :course_terms

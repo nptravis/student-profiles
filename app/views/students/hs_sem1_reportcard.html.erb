@@ -1,0 +1,187 @@
+<div class="page">
+	<div class="left-page">
+		<div class="address-container">
+			<p>
+				<span class="g-name"><strong><%= @student.guardian_names %></strong></span></br>
+				<span><%= @student.mailing_street_1 %></span></br>
+				<span><%= @student.mailing_street_2 %></span></br>
+				<span><%= @student.mailing_city %></span>
+				<span><%= @student.mailing_zip %></span>
+			</p>
+		</div>
+	</div>
+	<div class="right-page">
+		<div class="ms-header">
+			<div id="header">
+	    	<%= image_tag wicked_pdf_asset_base64('ris-header.svg'), class: 'reportcard-header-image' %>
+	    	</div>
+			<h2><%= @student.school.name %></h2>
+			<h3>Semester 1 Report Card 2018-19</h3>
+		</div>
+		<hr>
+		<div class="div-container">
+			<div class="left-div student-photo-container">
+				<%= image_tag wicked_pdf_asset_base64("#{@student.dcid}ph.jpeg"), class: 'student-reportcard-image' %>
+			</div>
+			<div class="middle-div student-text-info">
+				<span class="student-name"><%= @student.lastfirst %></span><br></br>
+				<span>ID: <%= @student.student_number %></span><br></br>
+				<span>Advisory Teacher: <%= @student.homeroom.teacher.lastfirst %></span>
+			</div>
+			<div class="right-div student-text-right">
+				<span>Grade <%= @student.grade_level %></span><br></br>
+				<span>December 18th, 2018</span>
+			</div>
+		</div>
+
+		<div class="pop">
+			<h4>Principles of the Phoenix</h4>
+			<span>Head, Hands, and Heart</span>
+			<p class="pop-motto">RIS students are creative, open minded and critical thinkers. They are effective communicators and are collaborative and resourceful individuals; they embrace diversity. They are committed to leading happy and healthy lives and help others to do the same.</p>
+			<hr>
+			<p><strong>Comments: </strong>
+				<%#= @student.homeroom_quarter_comment %>
+				 Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse
+			</p>
+		</div>
+		<table align="center">
+			<tr>
+				<th>Course Name</th>
+				<th>Absences</th>
+				<th>Teacher</th>
+				<th>Email</th>
+			</tr>
+			<% @student.sections_current.sort.each do |section| %>
+
+			<tr>
+				<td><%= section.course.course_name %></td>
+				<td><%= section.absences %></td>
+				<td><%= section.teacher.lastfirst %></td>
+				<td><%= section.teacher.email %></td>
+			</tr>
+			<% end %>
+		</table>
+		<div class="staff-info-container">
+			<div class="admin-info">
+				<h4>Administration</h4>
+				<ul>
+					<li><strong>MS Principal</strong> - Ms. Gretchen DePoint</li>
+					<li><strong>MS Vice Principal</strong> - Mr. Mathias Sanders</li>
+					<li><strong>MS Counselor</strong> - Ms. Caroline Scott</li>
+				</ul>
+			</div>
+			<div class="hom-key">
+				<h4>Habits of Mind</h4>
+				<ul>
+					<li><strong>E: </strong>Exceeding expectations</li>
+					<li><strong>M: </strong>Meeting expectations</li>
+					<li>Not meeting expectations</li>
+				</ul>
+			</div>
+		</div>
+		<div class="eval-key">
+			<h4>Evaluation Key</h4>
+			<ul>
+				<li><strong>E:</strong> Exemplary – The student exhibits in-depth inferences and applications that go beyond what was taught.</li>
+				<li><strong>M:</strong> Meeting Standard – The student exhibits no major errors or omissions.</li>
+				<li><strong>P:</strong> Progressing – The student exhibits no major errors or omissions regarding the simpler details and processes
+   				but exhibits errors regarding the more complex ideas and processes.</li>
+				<li><strong>B:</strong> Below Standard – With assistance, a partial understanding of some of both the simpler and more complex
+				details and processes.</li>
+				<li><strong>N:</strong> Insufficient Evidence – This standard has not yet been assessed or evaluated to a level which gives the
+				teacher an accurate measure of the student's achievement.</li>
+				
+			</ul>
+		</div>
+		<div class="signature">
+			<p class="signature-line"></p>
+			<p class="signature-label">Principal's Signature</p>
+		</div>
+	</div>
+</div>
+<div class="page">
+	<div class="left-page">
+		<div class="section-group">
+			<div class="student-sections">
+				<% @sections[0..(@sections.length/2-1)].each do |section| %>
+						<div class="hs-section">
+							<div class="section-header">
+								<span class="course-name"><%= section.course.course_name %></span> - 
+								<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+							</div>
+							<div class="hs-section-grades">
+								<div class="hs-table">
+									<table>
+										<tr>
+											<th></th>
+											<th align="center" class="semester-heading-cell">S1</th>
+											<th align="center" class="semester-heading-cell">S2</th>
+										</tr>
+										<tr class="academic-row">
+											<td class="academic-cell"><span class="academic-label">Academic Achievement</span></td>
+											<td align="center"><%= @student.trad_grade_per_section(section) %></td>
+											<td align="center"></td>
+										</tr>
+										<tr>
+											<td><span class="hom-label">Habits of Mind</span></td>
+										</tr>
+										<% @student.grades_per_section(section).each do |grade| %>
+											<% if grade.standard.hom? %>
+												<tr>
+													<td style="padding-left:10px;"><%= grade.standard.standard_name %></td>
+													<td align="center" ><%= grade.grade %></td>
+												</tr>
+											<% end %>
+										<% end %>
+									</table>
+								</div>
+							</div>
+						</div>
+					
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="right-page">
+		<div class="student-sections">
+			<div class="section-group">
+				<% @sections[(@sections.length/2)..-1].each do |section| %>
+						<div class="hs-section">
+							<div class="section-header">
+								<span class="course-name"><%= section.course.course_name %></span> - 
+								<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+							</div>
+							<div class="hs-section-grades">
+								<div class="hs-table">
+									<table>
+										<tr>
+											<th></th>
+											<th align="center" class="semester-heading-cell">S1</th>
+											<th align="center" class="semester-heading-cell">S2</th>
+										</tr>
+										<tr class="academic-row">
+											<td class="academic-cell"><span>Academic Achievement</span></td>
+											<td align="center"><%= @student.trad_grade_per_section(section) %></td>
+											<td align="center"></td>
+										</tr>
+										<tr>
+											<td><span class="hom-label">Habits of Mind</span></td>
+										</tr>
+										<% @student.grades_per_section(section).each do |grade| %>
+											<% if grade.standard.hom? %>
+												<tr>
+													<td style="padding-left:10px;"><%= grade.standard.standard_name %></td>
+													<td align="center" ><%= grade.grade %></td>
+												</tr>
+											<% end %>
+										<% end %>
+									</table>
+								</div>
+							</div>
+						</div>
+				<% end %>
+			</div>
+		</div>
+		
+	</div>
+</div>
