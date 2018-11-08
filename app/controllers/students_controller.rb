@@ -90,7 +90,7 @@ class StudentsController < ApplicationController
 	        	dpi: '300',
 	        	show_as_html: params.key?('debug'),
 	        	margin:  { 
-	        		top:               5,                     #
+	        		top:               10,                     
 	                bottom:            5,
 	                left:              5,
 	                right:             5}
@@ -108,7 +108,7 @@ class StudentsController < ApplicationController
 	        	dpi: '300',
 	        	show_as_html: params.key?('debug'),
 	        	margin:  { 
-	        		top:               5,                     #
+	        		top:               10,                     
 	                bottom:            5,
 	                left:              5,
 	                right:             5}

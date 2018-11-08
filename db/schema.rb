@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181107054247) do
+ActiveRecord::Schema.define(version: 20181108035844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,6 +150,30 @@ ActiveRecord::Schema.define(version: 20181107054247) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "percent"
+  end
+
+  create_table "transcripts", force: :cascade do |t|
+    t.integer "student_id"
+    t.float "cumulative_gpa"
+    t.float "g9_sem1_gpa"
+    t.float "g9_sem2_gpa"
+    t.float "g10_sem1_gpa"
+    t.float "g10_sem2_gpa"
+    t.float "g11_sem1_gpa"
+    t.float "g11_sem2_gpa"
+    t.float "g12_sem1_gpa"
+    t.float "g12_sem2_gpa"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "eng_credit"
+    t.float "mat_credit"
+    t.float "sci_credit"
+    t.float "soc_credit"
+    t.float "arts_credit"
+    t.float "pe_credit"
+    t.float "rel_credit"
+    t.float "mod_credit"
+    t.float "health_credit"
   end
 
   create_table "users", force: :cascade do |t|

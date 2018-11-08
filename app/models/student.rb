@@ -1,5 +1,6 @@
 class Student < ActiveRecord::Base
 	belongs_to :school
+	has_one :transcript
 	has_many :comments
 	has_many :users, through: :comments
 	has_many :student_sections
@@ -87,7 +88,12 @@ class Student < ActiveRecord::Base
 	end
 
 	def trad_grade_per_section(section)
-		self.trad_grades.where("section_id = ?", section.id)[0].grade
+		sec = self.trad_grades.where("section_id = ?", section.id)[0]
+		if sec 
+			sec.grade
+		else
+			"null"
+		end
 	end
 
 	def homs_per_section(section)

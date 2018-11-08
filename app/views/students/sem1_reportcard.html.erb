@@ -14,7 +14,7 @@
 							<ul>
 								<% @student.grades_per_section(section).each do |grade| %>
 									<% if grade.standard.description === "Reporting Standard" && !grade.standard.hom? %>
-										<li><span class="standard-name"><%= grade.standard.standard_name %></span><div class="grade-meter-<%= grade.letter_grade %>"></div><%= grade.letter_grade %></li>
+										<li><span class="standard-name"><%= grade.standard.standard_name %></span><%= grade.letter_grade %></li>
 									<% end %>
 								<% end %>
 							</ul>
@@ -22,7 +22,7 @@
 							<ul>
 								<% @student.grades_per_section(section).each do |grade| %>
 									<% if grade.standard.description === "Reporting Standard" && grade.standard.hom? %>
-										<li><span class="standard-name"><%= grade.standard.standard_name %></span><div class="grade-meter-<%= grade.letter_grade %>"></div><%= grade.letter_grade %></li>
+										<li><span class="standard-name"><%= grade.standard.standard_name %></span><%= grade.letter_grade %></li>
 									<% end %>
 								<% end %>
 							</ul>
@@ -129,7 +129,7 @@
 				<h2>Core Courses</h2>
 				<% @student.sections_per_semester(2801).each do |section| %>
 					<% if section.core? && !section.course.course_number.start_with?("ADC1", "ADC2")%>
-						<div class="section">
+						<div class="section core">
 							<div class="section-header">
 								<span class="course-name"><%= section.course.course_name %></span> - 
 								<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
@@ -138,7 +138,7 @@
 							<ul>
 								<% @student.grades_per_section(section).each do |grade| %>
 									<% if grade.standard.description === "Reporting Standard" && !grade.standard.hom? %>
-										<li><span class="standard-name"><%= grade.standard.standard_name %></span><div class="grade-meter-<%= grade.letter_grade %>"></div><%= grade.letter_grade %></li>
+										<li><span class="standard-name"><%= grade.standard.standard_name %></span><%= grade.letter_grade %></li>
 									<% end %>
 								<% end %>
 							</ul>
@@ -146,7 +146,7 @@
 							<ul>
 								<% @student.grades_per_section(section).each do |grade| %>
 									<% if grade.standard.description === "Reporting Standard" && grade.standard.hom? %>
-										<li><span class="standard-name"><%= grade.standard.standard_name %></span><div class="grade-meter-<%= grade.letter_grade %>"></div><%= grade.letter_grade %></li>
+										<li><span class="standard-name"><%= grade.standard.standard_name %></span><%= grade.letter_grade %></li>
 									<% end %>
 								<% end %>
 							</ul>
@@ -176,9 +176,9 @@
 								<% @student.grades_per_section(section).each do |grade| %>
 									<% if grade.standard.description === "Reporting Standard" && !grade.standard.hom? %>
 										<% if grade.pe? %>
-											<li><span class="standard-name"><%= grade.pe_standard_name %></span><div class="grade-meter-<%= grade.letter_grade %>"></div><%= grade.letter_grade %></li>
+											<li><span class="standard-name"><%= grade.pe_standard_name %></span><%= grade.letter_grade %></li>
 										<% else %>
-											<li><span class="standard-name"><%= grade.standard.standard_name %></span><div class="grade-meter-<%= grade.letter_grade %>"></div><%= grade.letter_grade %></li>
+											<li><span class="standard-name"><%= grade.standard.standard_name %></span><%= grade.letter_grade %></li>
 										<% end %>
 									<% end %>
 								<% end %>
@@ -187,7 +187,7 @@
 							<ul>
 								<% @student.grades_per_section(section).each do |grade| %>
 									<% if grade.standard.description === "Reporting Standard" && grade.standard.hom? %>
-										<li><span class="standard-name"><%= grade.standard.standard_name %></span><div class="grade-meter-<%= grade.letter_grade %>"></div><%= grade.letter_grade %></li>
+										<li><span class="standard-name"><%= grade.standard.standard_name %></span><%= grade.letter_grade %></li>
 									<% end %>
 								<% end %>
 							</ul>
@@ -199,6 +199,9 @@
 					<% end %>
 				<% end %>
 			</div>
+		</div>
+		<div class="big-logo">
+			<%= image_tag wicked_pdf_asset_base64('ris-big-logo.svg') %>
 		</div>
 	</div>
 </div>
