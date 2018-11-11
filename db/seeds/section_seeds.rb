@@ -1,4 +1,4 @@
-file = File.read('data/one-student-data.json')
+file = File.read('data/all-sections.json')
 
 data_hash = JSON.parse(file)
 i = 0;
@@ -10,16 +10,26 @@ data_hash.each do |set|
 		lastfirst: set["lastfirst"], 
 		student_number: set["student_number"], 
 		grade_level: set["grade_level"],
-		dcid: set["student_dcid"],
-		school_id: school.id
+		dcid: set["student_dcid"]
 		)
+
+	student.school = school
+
+	student.email = set["ris_stu_email"]
+	student.mailing_city = set["mailing_city"]
+	student.mailing_street_1 = set["mailing_street"]
+	student.mailing_street_2 = set["ris_street_2"]
+	student.guardian_names = set["ris_parent_guardian"]
+	student.mailing_state = set["mailing_state"]
+	student.mailing_zip = set["mailing_zip"]
 
 	course = Course.find_or_initialize_by(
 		course_name: set["course_name"], 
 		course_number: set["course_number"],
-		dcid: set["course_dcid"],
-		school_id: school.id
+		dcid: set["course_dcid"]
 		)
+	
+	course.school = school
 
 	teacher = Teacher.find_or_initialize_by(
 		email: set["email_addr"],

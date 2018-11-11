@@ -9,7 +9,7 @@ class Section < ApplicationRecord
 	has_many :semester_comments
 	has_many :quarter_comments
 	has_many :standards, through: :course
-	validates :course_id, :teacher_id, :room, :section_number, :grade_level, :dcid, :term_id, :expression, presence: true
+	validates :course_id, :room, :teacher_id, :section_number, :grade_level, :dcid, :term_id, :expression, presence: true
 
 	def grades_per_student(student)
 		self.grades.where("student_id = ?", student)

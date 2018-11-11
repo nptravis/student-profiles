@@ -77,7 +77,7 @@ class StudentsController < ApplicationController
 
 	def sem1_reportcard
 		@student = Student.find(params[:id])
-		@sections = @student.sections_per_semester(2801).reject{|section| section.course.course_name.include?("Extended Advisory")}
+		@sections = @student.hs_reporting_sections(2801)
 		if @student.school.number === 102
 			respond_to do |format|
 		      format.pdf do

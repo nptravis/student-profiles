@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181108035844) do
+ActiveRecord::Schema.define(version: 20181109074717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 20181108035844) do
     t.string "mailing_street_2"
     t.string "guardian_names"
     t.string "mailing_state"
+    t.integer "ps_id"
   end
 
   create_table "suggestions", force: :cascade do |t|
@@ -154,26 +155,31 @@ ActiveRecord::Schema.define(version: 20181108035844) do
 
   create_table "transcripts", force: :cascade do |t|
     t.integer "student_id"
-    t.float "cumulative_gpa"
-    t.float "g9_sem1_gpa"
-    t.float "g9_sem2_gpa"
-    t.float "g10_sem1_gpa"
-    t.float "g10_sem2_gpa"
-    t.float "g11_sem1_gpa"
-    t.float "g11_sem2_gpa"
-    t.float "g12_sem1_gpa"
-    t.float "g12_sem2_gpa"
+    t.decimal "cumulative_gpa"
+    t.decimal "g9_sem1_gpa"
+    t.decimal "g9_sem2_gpa"
+    t.decimal "g9_cumulative_gpa"
+    t.decimal "g10_sem1_gpa"
+    t.decimal "g10_sem2_gpa"
+    t.decimal "g10_cumulative_gpa"
+    t.decimal "g11_sem1_gpa"
+    t.decimal "g11_sem2_gpa"
+    t.decimal "g11_cumulative_gpa"
+    t.decimal "g12_sem1_gpa"
+    t.decimal "g12_sem2_gpa"
+    t.decimal "g12_cumulative_gpa"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "eng_credit"
-    t.float "mat_credit"
-    t.float "sci_credit"
-    t.float "soc_credit"
-    t.float "arts_credit"
-    t.float "pe_credit"
-    t.float "rel_credit"
-    t.float "mod_credit"
-    t.float "health_credit"
+    t.decimal "eng_credit"
+    t.decimal "mat_credit"
+    t.decimal "sci_credit"
+    t.decimal "soc_credit"
+    t.decimal "arts_credit"
+    t.decimal "pe_credit"
+    t.decimal "rel_credit"
+    t.decimal "mod_credit"
+    t.decimal "health_credit"
+    t.decimal "total_credit"
   end
 
   create_table "users", force: :cascade do |t|

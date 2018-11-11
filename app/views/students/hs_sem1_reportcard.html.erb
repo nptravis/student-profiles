@@ -9,6 +9,50 @@
 				<span><%= @student.mailing_zip %></span>
 			</p>
 		</div>
+		<% if @student.hs_summer_school(2801).count > 0 %>
+			<div class="section-group">
+				<h2>Summer School</h2>
+				<div class="student-sections">
+					<% @student.hs_summer_school(2801).each do |section| %>
+						
+							<div class="hs-section">
+								<div class="section-header">
+									<span class="course-name"><%= section.course.course_name %></span> - 
+									<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+								</div>
+								<div class="hs-section-grades">
+									<div class="hs-table">
+										<table>
+											<tr>
+												<th></th>
+												<th align="center" class="semester-heading-cell">S1</th>
+												<th align="center" class="semester-heading-cell">S2</th>
+											</tr>
+											<tr class="academic-row">
+												<td class="academic-cell"><span class="academic-label">Academic Achievement</span></td>
+												<td align="center"><%= @student.trad_grade_per_section(section) %></td>
+												<td align="center"></td>
+											</tr>
+											<tr>
+												<td><span class="hom-label">Habits of Mind</span></td>
+											</tr>
+											<% @student.grades_per_section(section).each do |grade| %>
+												<% if grade.standard.hom? %>
+													<tr>
+														<td style="padding-left:10px;"><%= grade.standard.standard_name %></td>
+														<td align="center" ><%= grade.grade %></td>
+													</tr>
+												<% end %>
+											<% end %>
+										</table>
+									</div>
+								</div>
+							</div>
+
+					<% end %>
+				</div>
+			</div>
+		<% end %>
 	</div>
 	<div class="right-page">
 		<div class="ms-header">
@@ -21,7 +65,7 @@
 		<hr>
 		<div class="div-container">
 			<div class="left-div student-photo-container">
-				<%= image_tag wicked_pdf_asset_base64("#{@student.dcid}ph.jpeg"), class: 'student-reportcard-image' %>
+				<%= image_tag wicked_pdf_asset_base64("#{@student.ps_id}ph.jpeg"), class: 'student-reportcard-image' %>
 			</div>
 			<div class="middle-div student-text-info">
 				<span class="student-name"><%= @student.lastfirst %></span><br></br>
@@ -51,8 +95,7 @@
 				<th>Teacher</th>
 				<th>Email</th>
 			</tr>
-			<% @student.sections_current.sort.each do |section| %>
-
+			<% @sections.each do |section| %>
 			<tr>
 				<td><%= section.course.course_name %></td>
 				<td><%= section.absences %></td>
@@ -200,14 +243,14 @@
 							<td>Grade 9</td>
 							<td><%= @student.transcript.g9_sem1_gpa %></td>
 							<td><%= @student.transcript.g9_sem2_gpa %></td>
-							<td><%= @student.transcript.calculate_year(@student.transcript.g9_sem1_gpa, @student.transcript.g9_sem2_gpa) %></td>
+							<td><%= @student.transcript.g9_cumulative_gpa %></td>
 						</tr>
 						<% if @student.grade_level.to_i >= 10 %>
 							<tr>
 								<td>Grade 10</td>
 								<td><%= @student.transcript.g10_sem1_gpa %></td>
 								<td><%= @student.transcript.g10_sem2_gpa %></td>
-								<td><%= @student.transcript.calculate_year(@student.transcript.g10_sem1_gpa, @student.transcript.g10_sem2_gpa) %></td>
+								<td><%= @student.transcript.g10_cumulative_gpa %></td>
 							</tr>
 						<% end %>
 						<% if @student.grade_level.to_i >= 11 %>
@@ -215,7 +258,7 @@
 								<td>Grade 11</td>
 								<td><%= @student.transcript.g11_sem1_gpa %></td>
 								<td><%= @student.transcript.g11_sem2_gpa %></td>
-								<td><%= @student.transcript.calculate_year(@student.transcript.g11_sem1_gpa, @student.transcript.g11_sem2_gpa) %></td>
+								<td><%= @student.transcript.g11_cumulative_gpa %></td>
 							</tr>
 						<% end %>
 						<% if @student.grade_level.to_i >= 12 %>
@@ -223,7 +266,7 @@
 								<td>Grade 12</td>
 								<td><%= @student.transcript.g12_sem1_gpa %></td>
 								<td><%= @student.transcript.g12_sem2_gpa %></td>
-								<td><%= @student.transcript.calculate_year(@student.transcript.g12_sem1_gpa, @student.transcript.g12_sem2_gpa) %></td>
+								<td><%= @student.transcript.g12_cumulative_gpa %></td>
 							</tr>
 						<% end %>
 						<tr>
@@ -277,6 +320,11 @@
 							<td>Health</td>
 							<td><%= @student.transcript.health_credit %></td>
 						</tr>
+						<tr></tr>
+						<tr>
+							<td><strong>Total Credits</strong></td>
+							<td><strong><%= @student.transcript.total_credit %></strong></td>
+						</tr>
 					</table>
 				</div>
 			</div>
@@ -284,6 +332,7 @@
 		<div class="section-group">
 			<div class="student-sections">
 				<% @sections[0..3].each do |section| %>
+					<% if section.section_number != "SS" %>
 						<div class="hs-section">
 							<div class="section-header">
 								<span class="course-name"><%= section.course.course_name %></span> - 
@@ -317,15 +366,16 @@
 								</div>
 							</div>
 						</div>
-					
+					<% end %>
 				<% end %>
 			</div>
 		</div>
 	</div>
 	<div class="right-page">
-		<div class="student-sections">
-			<div class="section-group">
+		<div class="section-group">
+			<div class="student-sections">
 				<% @sections[4..-1].each do |section| %>
+					<% if section.section_number != "SS" %>
 						<div class="hs-section">
 							<div class="section-header">
 								<span class="course-name"><%= section.course.course_name %></span> - 
@@ -359,10 +409,10 @@
 								</div>
 							</div>
 						</div>
+					<% end %>
 				<% end %>
 			</div>
 		</div>
-		
 	</div>
 </div>
 

@@ -5,8 +5,4 @@ class TradGrade < ApplicationRecord
 
 	validates :section_id, :term_id, :semester, presence: true 
 
-
-	def self.trade_grade_per_section(section)
-		
-	end
 end

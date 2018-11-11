@@ -12,12 +12,16 @@ data_hash.each do |set|
 		transcript.cumulative_gpa = set["gpa_cumulative"]
 		transcript.g9_sem1_gpa = set["g9_sem1"]
 		transcript.g9_sem2_gpa = set["g9_sem2"]
+		transcript.g9_cumulative_gpa = set["g9_cum"]
 		transcript.g10_sem1_gpa = set["g10_sem1"]
 		transcript.g10_sem2_gpa = set["g10_sem2"]
+		transcript.g10_cumulative_gpa = set["g10_cum"]
 		transcript.g11_sem1_gpa = set["g11_sem1"]
 		transcript.g11_sem2_gpa = set["g11_sem2"]
+		transcript.g11_cumulative_gpa = set["g11_cum"]
 		transcript.g12_sem1_gpa = set["g12_sem1"]
 		transcript.g12_sem2_gpa = set["g12_sem2"]
+		transcript.g12_cumulative_gpa = set["g12_cum"]
 		transcript.eng_credit = set["eng_credit"]
 		transcript.mat_credit = set["mat_credit"]
 		transcript.sci_credit = set["sci_credit"]
@@ -27,6 +31,7 @@ data_hash.each do |set|
 		transcript.arts_credit = set["arts_credit"]
 		transcript.health_credit = set["health_credit"]
 		transcript.rel_credit = set["rel_credit"]
+		transcript.total_credit = set["total_credit"]
 		
 		student.transcript = transcript
 		

@@ -12,7 +12,7 @@ class Student < ActiveRecord::Base
 	has_many :standards, through: :grades
 	has_many :semester_comments
 	has_many :quarter_comments
-	validates :lastfirst, :student_number, :grade_level, :dcid, presence: true
+	validates :lastfirst, :student_number, :grade_level, :ps_id, :dcid, presence: true
 	validates_uniqueness_of :student_number
 
 	def self.search(word)
@@ -98,6 +98,16 @@ class Student < ActiveRecord::Base
 
 	def homs_per_section(section)
 		self.standards.where("section_id = ?", section.id).select{ |standard| standard.hom? }
+	end
+
+	def hs_reporting_sections(term_code)
+		rejected_courses = ["ZHOM9", "ZHOM10", "ZHOM11", "ZHOM12", "MISC17", "MISC37", "RIS102", "RIS100", "RIS103", "RIS104", "RIS105", "RIS106", "RIS107", "RIS108", "ELEC325", "ZAD9", "ZAD10", "ZAD11", "ZAD12", "MISC200", "RIS101", "MISC15", "MISC36", "MIS001", "PE300", "PE401", "PE402", "ELEC749", "MISC100", "MAT106", "MAT104", "MAT105", "THA100", "THA220", "THA224", "THA359", "THA200", "THA222", "THA444", "MISC18", "MISC35", "REVA406", "MISC14"]
+
+		self.sections_per_semester(term_code).reject{|section| rejected_courses.include?(section.course.course_number)}
+	end
+
+	def hs_summer_school(term_code)
+		self.sections_per_semester(term_code).select{|section| section.section_number === "SS"}
 	end
 
 

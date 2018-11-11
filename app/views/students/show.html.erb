@@ -6,7 +6,7 @@
 			<% if @student.school.number === 102 %>
 				<%= image_tag "#{@student.student_number}ph.jpg", alt: "Student Image" %><a href="#" class="search-icon"><i class="fas fa-search-plus"></i></a>
 			<% else %>
-				<%= image_tag "#{@student.dcid}ph.jpeg", alt: "Student Image" %><a href="#" class="search-icon"><i class="fas fa-search-plus"></i></a>
+				<%= image_tag "#{@student.ps_id}ph.jpeg", alt: "Student Image" %><a href="#" class="search-icon"><i class="fas fa-search-plus"></i></a>
 			<% end %>
 			
 		</div>
