@@ -9,18 +9,18 @@ class Grade < ActiveRecord::Base
 		standard.grades
 	end
 
-	def letter_grade
+	def number_grade
 		case self.grade
-		when "4"
-			"E"
-		when "3"
-			"M"
-		when "2"
-			"P"
-		when "1"
-			"B"
+		when "E"
+			4
+		when "M"
+			3
+		when "P"
+			2
+		when "B"
+			1
 		else
-			"N"
+			0
 		end
 	end
 

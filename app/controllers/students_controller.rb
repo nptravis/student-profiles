@@ -77,8 +77,9 @@ class StudentsController < ApplicationController
 
 	def sem1_reportcard
 		@student = Student.find(params[:id])
-		@sections = @student.hs_reporting_sections(2801)
+		
 		if @student.school.number === 102
+			@sections = @student.ms_reporting_sections(2801)
 			respond_to do |format|
 		      format.pdf do
 	        	render pdf: "sem1-reportcard-#{@student.student_number}", 
@@ -96,12 +97,33 @@ class StudentsController < ApplicationController
 	                right:             5}
 	        end
 	      end
-	    elsif @student.school.number = 101
+	    elsif @student.school.number === 101
+	    	@sections = @student.hs_reporting_sections(2801)
 	    	respond_to do |format|
 		      format.pdf do
 	        	render pdf: "sem1-reportcard-#{@student.student_number}", 
 	        	layout: 'sem1_report_card.html.erb',
-	        	template: 'students/hs_sem1_reportcard.html.erb',
+	        	# template: 'students/hs_sem1_reportcard.html.erb',
+	        	template: 'students/test_hs_reportcard.html.erb',
+	        	orientation: 'Landscape',
+	        	page_size: 'A3',
+	        	window_status: "FLAG_FOR_PDF",
+	        	dpi: '300',
+	        	show_as_html: params.key?('debug'),
+	        	margin:  { 
+	        		top:               10,                     
+	                bottom:            5,
+	                left:              5,
+	                right:             5}
+		      end
+			end
+		else
+			@sections = @student.es_reporting_sections(2801)
+			respond_to do |format|
+		      format.pdf do
+	        	render pdf: "sem1-reportcard-#{@student.student_number}", 
+	        	layout: 'sem1_report_card.html.erb',
+	        	template: 'students/es_sem1_reportcard.html.erb',
 	        	orientation: 'Landscape',
 	        	page_size: 'A3',
 	        	window_status: "FLAG_FOR_PDF",

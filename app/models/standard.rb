@@ -1,7 +1,5 @@
 class Standard < ActiveRecord::Base
 	has_many :grades
-	has_many :standard_terms
-	has_many :terms, through: :standard_terms
 	has_many :students, through: :grades
 	has_many :course_standards
 	has_many :courses, through: :course_standards
@@ -41,6 +39,23 @@ class Standard < ActiveRecord::Base
 	  	else
 	  		self.all
 	  	end
+	end
+
+	def grade_per_student(student)
+		grade = student.grades.where("standard_id = ?", self.id)[0]
+		if grade.present?
+			grade.grade
+		else
+			""
+		end
+	end
+
+	def terms
+		collection = []
+		self.grades.each do |grade|
+			 (collection.include?(grade.term) || collection << grade.term)
+		end
+		collection
 	end
 
 end

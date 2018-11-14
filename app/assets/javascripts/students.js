@@ -45,6 +45,7 @@ function studentInit(){
 		if ($('.destroy')){
 			attachDeleteListener()
 		}
+		
 		// END Attach Listeners
 
 	}
@@ -54,17 +55,17 @@ function drawDonutGraphs(){
 	
 	let all_homs = $('#studentshow').data('homs');
 	let all_standards = $('#studentshow').data('standards');
-	let ND = all_homs.filter(function(grade){return grade.grade === "0"}).length
-	let B = all_homs.filter(function(grade){return grade.grade === "1"}).length
-	let P = all_homs.filter(function(grade){return grade.grade === "2"}).length
-	let M = all_homs.filter(function(grade){return grade.grade === "3"}).length
-	let E = all_homs.filter(function(grade){return grade.grade === "4"}).length
+	let ND = all_homs.filter(function(grade){return grade.grade === "N"}).length
+	let B = all_homs.filter(function(grade){return grade.grade === "B"}).length
+	let P = all_homs.filter(function(grade){return grade.grade === "P"}).length
+	let M = all_homs.filter(function(grade){return grade.grade === "M"}).length
+	let E = all_homs.filter(function(grade){return grade.grade === "E"}).length
 
-	let NDs = all_standards.filter(function(grade){return grade.grade === "0"}).length
-	let Bs = all_standards.filter(function(grade){return grade.grade === "1"}).length
-	let Ps = all_standards.filter(function(grade){return grade.grade === "2"}).length
-	let Ms = all_standards.filter(function(grade){return grade.grade === "3"}).length
-	let Es = all_standards.filter(function(grade){return grade.grade === "4"}).length
+	let NDs = all_standards.filter(function(grade){return grade.grade === "N"}).length
+	let Bs = all_standards.filter(function(grade){return grade.grade === "B"}).length
+	let Ps = all_standards.filter(function(grade){return grade.grade === "P"}).length
+	let Ms = all_standards.filter(function(grade){return grade.grade === "M"}).length
+	let Es = all_standards.filter(function(grade){return grade.grade === "E"}).length
 
 	let colors = {
     	0:"#FBE2E62",

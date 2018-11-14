@@ -5,7 +5,12 @@
 <%= form_tag students_path, :method => 'get' do %>
 Search: <%= text_field_tag 'student[search]' %>
 <%= submit_tag "Search", :name => nil %>
+<a href="#" class="es-button">ES</a>
+<a href="#" class="ms-button">MS</a>
+<a href="#" class="hs-button">HS</a>
 <% end %>
+
+
 
 
 <ol>

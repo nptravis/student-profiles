@@ -2,6 +2,7 @@ class Section < ApplicationRecord
 	belongs_to :course
 	belongs_to :teacher
 	belongs_to :term
+	has_many :attendances
 	has_many :grades
 	has_many :trad_grades
 	has_many :student_sections
@@ -120,6 +121,13 @@ class Section < ApplicationRecord
 		when 2802
 			"S2"
 		end
+	end
+
+	def es_reporting_standards
+		rejected_standards = ["Comment", "Language Foundations 1", 
+			"Math 1", "Art", "Music", "Physical Education", "Science 1", 
+			"Values/Religion", "Thai Language & Culture", "Social Studies 1"]
+		self.standards.reject{|standard| rejected_standards.include?(standard.standard_name)}
 	end
 
 end

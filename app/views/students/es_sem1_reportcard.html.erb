@@ -1,0 +1,197 @@
+<div class="page">
+	<div class="left-page">
+		<% if @student.sections_per_semester(2801).count > 12 %>
+			<div class="student-sections">
+				<div class="section-group six_50">
+					<% @sections[8..-1].each do |section| %>
+						<div class="section core">
+							<div class="section-header">
+								<span class="course-name"><%= section.course.course_name %></span> - 
+								<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+							</div>
+
+							<table class="es-grades-table">
+								<tr>
+									<th><strong>Standards</strong></th>
+									<th>S1</th>
+									<th>S2</th>
+								</tr>
+								<% section.es_reporting_standards.each do |standard| %>
+									
+									<tr>
+										<td valign="top">&#8226;	<div class="standard-name-in-cell"><%=standard.standard_name %></div></td>
+										<td valign="top"><%= standard.grade_per_student(@student) %></td>
+									</tr>
+								
+								<% end %>
+							</table>
+							<span><strong>Comments:</strong> 
+							<%#= section.semester_comment_per_student(@student) %>
+							Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuseLorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vega authentic keytar next level. Mr
+							</span>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		<% end %>
+		<!-- <div class="big-logo">
+			<%#= image_tag wicked_pdf_asset_base64('ris-big-logo.svg') %>
+		</div> -->
+	</div>
+	<div class="right-page">
+		<div class="ms-header">
+			<div id="header">
+	    	<%= image_tag wicked_pdf_asset_base64('ris-header.svg'), class: 'reportcard-header-image' %>
+	    	</div>
+			<h2><%= @student.school.name %></h2>
+			<h3>Semester 1 Report Card 2018-19</h3>
+		</div>
+		<hr>
+		<div class="div-container">
+			<div class="left-div student-photo-container">
+				<%= image_tag wicked_pdf_asset_base64("#{@student.ps_id}ph.jpg"), class: 'student-reportcard-image' %>
+			</div>
+			<div class="middle-div student-text-info">
+				<span class="student-name"><%= @student.lastfirst %></span><br></br>
+				<span>ID: <%= @student.student_number %></span><br></br>
+				<span>Advisory Teacher: <%= @student.es_homeroom.teacher.lastfirst %></span>
+			</div>
+			<div class="right-div student-text-right">
+				<span>Grade <%= @student.grade_level %></span><br></br>
+				<span>December 24th, 2018</span>
+			</div>
+		</div>
+
+		<div class="pop">
+			<h4>Principles of the Phoenix</h4>
+			<span>Head, Hands, and Heart</span>
+			<p class="pop-motto">RIS students are creative, open minded and critical thinkers. They are effective communicators and are collaborative and resourceful individuals; they embrace diversity. They are committed to leading happy and healthy lives and help others to do the same.</p>
+			<hr>
+			<p><strong>Comments: </strong>
+				<%#= @student.homeroom_quarter_comment %>
+				 Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuseLorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vega authentic keytar next level. Mr
+			</p>
+		</div>
+		<table align="center">
+			<tr>
+				<th>Course Name</th>
+				<th>Teacher</th>
+				<th>Email</th>
+			</tr>
+			<% @sections.each do |section| %>
+			<tr>
+				<td><%= section.course.course_name %></td>
+				<td><%= section.teacher.lastfirst %></td>
+				<td><%= section.teacher.email %></td>
+			</tr>
+			<% end %>
+		</table>
+		<div class="staff-info-container">
+			<div class="es-attendance box">
+				<h4>Attendance Record</h4>
+				<hr>
+				<span>Tardies:  <%= @student.es_attendance.tardies %></span>
+				<span>Absences:  <%= @student.es_attendance.absences %></span>
+			</div>
+			<div class="es-student-services box">
+				<h4>Student Services</h4>
+				<hr>
+				<span><%= @student.alert %></span>
+			</div>
+		</div>
+		<div class="eval-key">
+			<h4>Evaluation Key</h4>
+			<ul>
+				<li><strong>E:</strong> Exceeding – The student demonstrates and exceeds understanding of the grade-level standard. The student grasps, applies, and extends the key concepts, processes, and skills beyond grade level expectations.</li>
+				<li><strong>M:</strong> Meeting – The student meets and demonstrates proficiency in the grade level standard. The student grasps and applies the key concepts, processes, and skills.</li>
+				<li><strong>P:</strong> Progressing – The student occasionally meets the grade level standard. The student is beginning to grasp and apply the key concepts, processes, and skills.</li>
+				<li><strong>B:</strong> Below – The student does not meet the grade level standard. The student is experiencing difficulty in grasping and applying the key concepts, processes, and skills.</li>
+			</ul>
+		</div>
+		<div class="es-signature space-right">
+			<p class="signature-line"></p>
+			<p class="signature-label">Advisory Teacher's Signature</p>
+		</div>
+		<div class="es-signature">
+			<p class="signature-line"></p>
+			<p class="signature-label">Principal's Signature</p>
+		</div>
+	</div>
+</div>
+<div class="page">
+	<div class="left-page">
+		<div class="student-sections">
+			<div class="section-group">
+				
+				<% @sections[0..3].each do |section| %>
+					
+					<div class="section core">
+						<div class="section-header">
+							<span class="course-name"><%= section.course.course_name %></span> - 
+							<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+						</div>
+					
+						<table class="es-grades-table">
+							<tr>
+								<th><strong>Standards</strong></th>
+								<th>S1</th>
+								<th>S2</th>
+							</tr>
+							<% section.es_reporting_standards.each do |standard| %>
+								
+								<tr>
+									<td valign="top">&#8226;	<div class="standard-name-in-cell"><%=standard.standard_name %></div></td>
+									<td valign="top"><%= standard.grade_per_student(@student) %></td>
+								</tr>
+							
+							<% end %>
+						</table>
+					
+						<span><strong>Comments:</strong> 
+						<%#= section.semester_comment_per_student(@student) %>
+						Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuseLorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vega authentic keytar next level. Mr
+						</span>
+					</div>
+					
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="right-page">
+		<div class="student-sections">
+			<div class="section-group">
+				
+				<% @sections[4..7].each do |section| %>
+					
+					<div class="section core">
+						<div class="section-header">
+							<span class="course-name"><%= section.course.course_name %></span> - 
+							<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+						</div>
+						<table class="es-grades-table">
+							<tr>
+								<th><strong>Standards</strong></th>
+								<th>S1</th>
+								<th>S2</th>
+							</tr>
+							<% section.es_reporting_standards.each do |standard| %>
+								
+								<tr>
+									<td valign="top">&#8226;	<div class="standard-name-in-cell"><%=standard.standard_name %></div></td>
+									<td valign="top"><%= standard.grade_per_student(@student) %></td>
+								</tr>
+							
+							<% end %>
+						</table>
+						<span><strong>Comments:</strong> 
+						<%#= section.semester_comment_per_student(@student) %>
+						Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuseLorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vega authentic keytar next level. Mr
+						</span>
+					</div>
+				
+				<% end %>
+			</div>
+		</div>
+		
+	</div>
+</div>

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181109074717) do
+ActiveRecord::Schema.define(version: 20181114030904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendances", force: :cascade do |t|
+    t.integer "absences"
+    t.integer "tardies"
+    t.integer "student_id"
+    t.integer "section_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -79,7 +88,6 @@ ActiveRecord::Schema.define(version: 20181109074717) do
     t.integer "term_id"
     t.string "room"
     t.integer "grade_level"
-    t.integer "absences"
   end
 
   create_table "semester_comments", force: :cascade do |t|
@@ -122,6 +130,7 @@ ActiveRecord::Schema.define(version: 20181109074717) do
     t.string "guardian_names"
     t.string "mailing_state"
     t.integer "ps_id"
+    t.string "alert"
   end
 
   create_table "suggestions", force: :cascade do |t|
@@ -136,6 +145,7 @@ ActiveRecord::Schema.define(version: 20181109074717) do
     t.string "lastfirst"
     t.integer "dcid"
     t.string "teacher_number"
+    t.integer "ps_id"
   end
 
   create_table "terms", force: :cascade do |t|

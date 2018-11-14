@@ -1,6 +1,7 @@
 class Student < ActiveRecord::Base
 	belongs_to :school
 	has_one :transcript
+	has_many :attendances
 	has_many :comments
 	has_many :users, through: :comments
 	has_many :student_sections
@@ -79,6 +80,12 @@ class Student < ActiveRecord::Base
 		}[0]
 	end
 
+	def es_homeroom
+		self.sections_current.select {|section|
+			section.course.course_name.start_with?("Homeroom")
+		}[0]
+	end
+
 	def homeroom_quarter_comment
 		self.homeroom.quarter_comments.select{|comment| comment.student_id == self.id}[0].content
 	end
@@ -108,6 +115,23 @@ class Student < ActiveRecord::Base
 
 	def hs_summer_school(term_code)
 		self.sections_per_semester(term_code).select{|section| section.section_number === "SS"}
+	end
+
+	def es_attendance
+		self.attendances.find_by(section_id: self.es_homeroom.id)
+	end
+
+	def es_reporting_sections(term_code)
+		self.sections_per_semester(term_code).reject{|section| section.course.course_name.include?("Library")}
+	end
+
+	def ms_reporting_sections(term_code)
+		rejected_courses = ["MSFB", "HRA", "ADC1", "ADC2"]
+		self.sections_per_semester(term_code).reject{|section| section.course.course_number.starts_with?(*rejected_courses)}
+	end
+
+	def non_core_sections(term_code)
+		self.ms_reporting_sections(term_code).reject{|section| section.core?}
 	end
 
 

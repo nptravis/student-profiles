@@ -85,7 +85,7 @@
 			<hr>
 			<p><strong>Comments: </strong>
 				<%#= @student.homeroom_quarter_comment %>
-				 Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse
+				 Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuseLorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, n. Migas paleo auth
 			</p>
 		</div>
 		<table align="center">
@@ -98,7 +98,11 @@
 			<% @sections.each do |section| %>
 			<tr>
 				<td><%= section.course.course_name %></td>
-				<td><%= section.absences %></td>
+				<% if @student.attendances.find_by(section_id: section.id) %>
+				<td><%= @student.attendances.find_by(section_id: section.id).absences %></td>
+				<% else %>
+				<td>!!!</td>
+				<% end %>
 				<td><%= section.teacher.lastfirst %></td>
 				<td><%= section.teacher.email %></td>
 			</tr>
@@ -230,7 +234,7 @@
 				</table>
 			</div>
 			<div class="right-tables">
-				<!-- <h4>Progress Summaries</h4> -->
+				<h3>Progress Summaries</h3>
 				<div class="gpa-summary-table">
 					<table>
 						<tr>
@@ -340,7 +344,7 @@
 							</div>
 							<div class="hs-section-grades">
 								<div class="hs-table">
-									<table>
+									<table class="es-grades-table">
 										<tr>
 											<th></th>
 											<th align="center" class="semester-heading-cell">S1</th>

@@ -53,8 +53,7 @@ div.section {
 		font-style: italic;
 	}
 	span.standard-name {
-		float: left;
-		width: 200px;
+		margin-left: 30px;
 	}
 	ul {
 		margin-top: 1px;
@@ -84,8 +83,7 @@ div.section.core {
 		font-style: italic;
 	}
 	span.standard-name {
-		float: left;
-		width: 200px;
+		
 	}
 	ul {
 		margin-top: 1px;
@@ -94,9 +92,14 @@ div.section.core {
 	}
 }
 
+div.section.six_50 {
+	height: 450px;
+	width: 49%;
+}
+
 div.section-group {
 	border: 1px black solid;
-	width: 99.5%;
+	width: auto;
 	border-radius: 20px;
 	background-color: #f7f7f7;
 	margin-top: 10px;
@@ -168,7 +171,7 @@ div.student-photo-container{
 div.page{
 	text-align: justify;
 	width: 100%;
-	height: 1300px;
+	height: 1310px;
 
 	div.left-page {
 		display: inline-block;
@@ -285,6 +288,10 @@ div.eval-key {
 	}
 }
 
+div.eval-key.test {
+	margin-top: 20px;
+}
+
 table {
 	margin-top: 20px;
 	margin-bottom: 10px;
@@ -298,21 +305,50 @@ table {
 
 div.staff-info-container {
 	text-align: justify;
+	margin-bottom: 10px;
+	
+	height: auto;
 
 	div.admin-info {
 		display: inline-block;
 	}
 	div.secretary-info {
 		display: inline-block;
+		margin-left: 130px;
+	}
+
+	div.es-attendance {
+		text-align: center;
+		display: inline-block;
+		vertical-align: top;
+		height: 100px;
+		width: 250px;
+	}
+
+	div.es-student-services {
+		text-align: center;
+		display: inline-block;
+		margin-left: 420px;
+		vertical-align: top;
+		height: 100px;
+		width: 250px;
+	}
+	span {
+		line-height: 40px;
+	}
+	h4 {
+		padding: 5px;
+		margin: 5px;
+
 	}
 	
 }
-div.staff-info-container:after {
+/*div.staff-info-container:after {
 	content: '';
 	display: inline-block;
 	width: 100%;
-}
-/*BEGIN HS Section -------------------------------------*/
+}*/
+/*BEGIN HS Section ------------------------------------------------------------*/
 div.hs-section {
 	display: inline-block;
 	box-sizing: border-box;
@@ -356,7 +392,7 @@ div.hs-section-grades {
 
 			}
 			th.semester-heading-cell {
-				background-color: #BBBBBB;
+				background-color: #fff;
 			}
 			td {
 				
@@ -368,7 +404,7 @@ div.hs-section-grades {
 				text-decoration: underline;
 			}
 			span.academic-label {
-				text-decoration: underline;
+				/*text-decoration: underline;*/
 			}
 		}
 	}
@@ -379,7 +415,7 @@ div.signature {
 	text-align: center;
 
 	p.signature-line {
-		margin-top: 90px;
+		margin-top: 66px;
 		display: inline-block;
 		width: 70%;
 		border-bottom: 1px solid black;
@@ -416,7 +452,7 @@ div.grade-key-info-container {
 		}
 	}
 	
-	div.hom-key {
+	/*div.hom-key {
 		display: inline-block;
 		padding: 8px;
 		text-align: center;
@@ -431,6 +467,24 @@ div.grade-key-info-container {
 		ul {
 			list-style: none;
 			text-align: left;
+			padding: 5px;
+		}
+	}*/
+
+	div.hom-key.test {
+		display: block;
+		padding: 8px;
+		text-align: center;
+		margin-top: 20px;
+		
+
+		h4 {
+			padding: 0px;
+			margin: 0px;
+		}
+
+		ul {
+			list-style: none;
 			padding: 5px;
 		}
 	}
@@ -494,6 +548,43 @@ div.hs-tables {
 	}
 }
 
+/*BEGIN ES Section--------------------------------------------------------------*/
+table.es-grades-table {
+	margin-top: 0px;
+	padding-top: 0px;
+	border: none;
+	th {
+		background-color: #fff;
+	}
 
+	td {
+		min-width: 30px;
+	}
+}
 
+div.es-signature {
+	text-align: center;
+	display: inline-block;
+
+	p.signature-line {
+		margin-top: 66px;
+		display: inline-block;
+		width: 400px;
+		border-bottom: 1px solid black;
+	}
+	p.signature-label {
+		margin: 0px;
+		display: block;
+		font-style: bold;
+	}
+	
+}
+.space-right {
+	margin-right: 120px;
+}
+
+div.standard-name-in-cell {
+	display: inline-block;
+	max-width: 330px;
+}
 

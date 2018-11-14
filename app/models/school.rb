@@ -2,5 +2,5 @@ class School < ApplicationRecord
 	has_many :students
 	has_many :courses
 
-	validates :number, :name, :abbreviation, :address, presence: true
+	validates :number, :name, :abbreviation, presence: true
 end
