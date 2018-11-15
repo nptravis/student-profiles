@@ -104,7 +104,7 @@ class StudentsController < ApplicationController
 	        	render pdf: "sem1-reportcard-#{@student.student_number}", 
 	        	layout: 'sem1_report_card.html.erb',
 	        	# template: 'students/hs_sem1_reportcard.html.erb',
-	        	template: 'students/test_hs_reportcard.html.erb',
+	        	template: 'students/hs_sem1_reportcard.html.erb',
 	        	orientation: 'Landscape',
 	        	page_size: 'A3',
 	        	window_status: "FLAG_FOR_PDF",

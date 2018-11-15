@@ -83,9 +83,12 @@
 			<span>Head, Hands, and Heart</span>
 			<p class="pop-motto">RIS students are creative, open minded and critical thinkers. They are effective communicators and are collaborative and resourceful individuals; they embrace diversity. They are committed to leading happy and healthy lives and help others to do the same.</p>
 			<hr>
-			<p><strong>Comments: </strong>
-				<%#= @student.homeroom_quarter_comment %>
-				 Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuseLorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, n. Migas paleo auth
+			<p><strong>Self-Reflection: </strong>
+				<%= @student.ms_homeroom_semester_comment %>
+				<!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum feugiat, mauris et aliquam pellentesque, nisi mauris imperdiet elit, et ultricies augue magna id neque. Aliquam nec nunc hendrerit, aliquam mi vel, blandit nisi. Nam nec finibus arcu. Nulla a neque non eros vehicula commodo non sit amet enim. Curabitur volutpat placerat dapibus. Praesent accumsan condimentum purus, in facilisis nisl feugiat at. In ut mollis erat, vitae vestibulum tellus. Integer id imperdiet arcu. In hac habitasse platea dictumst. Maecenas pellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies ante ac mauris tincidunt, sed feugiat est lacinia.
+				Morbi volutpat consectetur libero, ut molestie velit pharetra vitae. Integer non tellus nec nisl malesuada vulputate ac placerat lectus. Curabitur eget tellus scelerisque metus placerat vehicula non ac tellus. Proin ut suscipit est. Vivamus ac accumsan ante, ac aliquam magna. Nunc commodo erat at facilisis rutrum. Suspendisse quis facilisis augue. Praesent ultricies ultrices arcu id iaculis. Quisque faucibus, nibh sed sagittis tincidunt, urna lacus fringilla velit, sed ultricies mi augue sed purus. Donec libero nulla, venenatis at eleifend semper, pulvinar quis arcu. Nullam vel nunc ultricies est auctor dapibus. Phasellus rhoncus ligula in diam pellentesque, vel luctus libero auctor. Etiam vel nisi eget ipsum blandit ultricies in vehicula ligula. Ut quis ultrices dolor. Nunc scelerisque, augue quis mattis rhoncus, risus nisl facilisis erat, in eleifend ante mi ac felis.
+				Mauris rhoncus nulla et tellus sollicitudin dictum. Aliquam ac enim viverra, facilisis urna at, imperdiet tellus. Sed ultrices dignissim nibh, convallis rhoncus diam dapibus id. Nam lobortis sodales tortor id mattis. Maecenas justo metus, porttitor non lacus nec, feugiat volutpat sapien. Etiam vehicula in leo vitae ornare. Fusce ultrices sapien vitae risus sagittis, cursus cursus dolor sollicitudin.
+				Morbi pretium faucibus ex, eu hendrerit dolor feugiat et. Ut iaculis at urna non pretium. Cras vitae mollis ligula. Cras gravida orci velit, vitae ornare dolor viverra quis. Duis tristique ligula facilisis neque iaculis, non faucibus quam bibendum. Suspendisse eget porta elit, vel laoreet leo. Nullam rutrum in sem et bibendum. -->
 			</p>
 		</div>
 		<table align="center">
@@ -101,29 +104,16 @@
 				<% if @student.attendances.find_by(section_id: section.id) %>
 				<td><%= @student.attendances.find_by(section_id: section.id).absences %></td>
 				<% else %>
-				<td>!!!</td>
+				<td>0</td>
 				<% end %>
 				<td><%= section.teacher.lastfirst %></td>
 				<td><%= section.teacher.email %></td>
 			</tr>
 			<% end %>
 		</table>
-		<div class="grade-key-info-container">
-			<div class="cumulative-gpa box">
-				<h4>Cumulative GPA</h4>
-				<h1><%= @student.transcript.cumulative_gpa %></h1>
-			</div>
-			<div class="hom-key box">
-				<h4>Habits of Mind</h4>
-				<ul>
-					<li><strong>E: </strong>Exceeding expectations</li>
-					<li><strong>M: </strong>Meeting expectations</li>
-					<li><strong>N: </strong>Not meeting expectations</li>
-				</ul>
-			</div>
-		</div>
+		
 
-		<div class="eval-key">
+		<div class="eval-key test">
 			<h4>Academic Evaluation Key</h4>
 			<ul>
 				<li><strong>A:</strong> a consistent and thorough understanding of knowledge and skills, and the ability to apply them accurately in a wide variety of situations.</li>
@@ -274,10 +264,10 @@
 							</tr>
 						<% end %>
 						<tr>
-							<td>Cumulative Weighted GPA</td>
+							<td><strong>Cumulative Weighted GPA</strong></td>
 							<td></td>
 							<td></td>
-							<td><%= @student.transcript.cumulative_gpa %></td>
+							<td><strong><%= @student.transcript.cumulative_gpa %></strong></td>
 						</tr>
 						
 					</table>
@@ -333,6 +323,16 @@
 				</div>
 			</div>
 		</div>
+		<div class="grade-key-info-container">
+			<div class="hom-key box test">
+				<h4>Habits of Mind</h4>
+				<ul>
+					<li><strong>E: </strong>Exceeding expectations</li>
+					<li><strong>M: </strong>Meeting expectations</li>
+					<li><strong>N: </strong>Not meeting expectations</li>
+				</ul>
+			</div>
+		</div>
 		<div class="section-group">
 			<div class="student-sections">
 				<% @sections[0..3].each do |section| %>
@@ -344,7 +344,7 @@
 							</div>
 							<div class="hs-section-grades">
 								<div class="hs-table">
-									<table class="es-grades-table">
+									<table>
 										<tr>
 											<th></th>
 											<th align="center" class="semester-heading-cell">S1</th>
@@ -419,6 +419,3 @@
 		</div>
 	</div>
 </div>
-
-
-

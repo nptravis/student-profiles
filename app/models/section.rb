@@ -109,7 +109,7 @@ class Section < ApplicationRecord
 	end
 
 	def semester_comment_per_student(student)
-		self.semester_comments.select{|comment| comment.student_id === student.id}[0].content
+		self.semester_comments.find_by(student_id: student.id)
 	end
 
 	def semester
@@ -128,6 +128,10 @@ class Section < ApplicationRecord
 			"Math 1", "Art", "Music", "Physical Education", "Science 1", 
 			"Values/Religion", "Thai Language & Culture", "Social Studies 1"]
 		self.standards.reject{|standard| rejected_standards.include?(standard.standard_name)}
+	end
+	
+	def es_semester_comment_per_student(student)
+		self.semester_comments.find_by(student_id: student.id)
 	end
 
 end

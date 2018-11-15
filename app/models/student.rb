@@ -130,9 +130,12 @@ class Student < ActiveRecord::Base
 		self.sections_per_semester(term_code).reject{|section| section.course.course_number.starts_with?(*rejected_courses)}
 	end
 
-	def non_core_sections(term_code)
-		self.ms_reporting_sections(term_code).reject{|section| section.core?}
+	def es_homeroom_semester_comment
+		self.es_homeroom.semester_comments.find_by(student_id: self.id)
 	end
 
+	def ms_homeroom_semester_comment
+		self.homeroom.semester_comments.find_by(student_id: self.id)
+	end
 
 end

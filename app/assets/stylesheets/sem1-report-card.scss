@@ -60,6 +60,9 @@ div.section {
 		margin-bottom: 10px;
 		list-style: none;
 	}
+	td.standard-name {
+		width: 350px;
+	}
 }
 
 div.section.core {
@@ -236,41 +239,6 @@ div.section-header {
 	}
 }
 
-div.grade-meter-B {
-	display: inline-block;
-	background-color: #A8271E;
-	border: 1px black solid;
-	width: 30px;
-	height: 10px;
-	margin-right: 5px;
-}
-div.grade-meter-P {
-	display: inline-block;
-	background-color: #F8DA06;
-	border: 1px black solid;
-	width: 60px;
-	height: 10px;
-	margin-right: 5px;
-
-}
-div.grade-meter-M {
-	display: inline-block;
-	background-color: #249D3D;
-	border: 1px black solid;
-	width: 90px;
-	height: 10px;
-	margin-right: 5px;
-
-}
-div.grade-meter-E {
-	display: inline-block;
-	background-color: #007CC6;
-	border: 1px black solid;
-	width: 120px;
-	height: 10px;
-	margin-right: 5px;
-
-}
 div.eval-key {
 	border: 1px black solid;
 	border-radius: 20px;

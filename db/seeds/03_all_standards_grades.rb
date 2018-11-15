@@ -12,7 +12,7 @@ data_hash.each_with_index do |set, index|
 
 	if student.present? && section.present? && standard.present? && term.present? && teacher.present?
 
-		if standard.standard_name === "Semester Comment"
+		if standard.identifier === "MSSEMCOM" || standard.identifier === "ESPOPs"
 
 			semester_comment = SemesterComment.find_or_initialize_by(
 			:semester => set["storecode"],
