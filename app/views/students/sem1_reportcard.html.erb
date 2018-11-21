@@ -42,7 +42,9 @@
 						</table>
 						
 						<span><strong>Comments:</strong> 
-						<%= section.semester_comment_per_student(@student) %>
+						<% if section.semester_comment_per_student(@student).present? %>
+							<%= section.semester_comment_per_student(@student).content %>
+							<% end %>
 						<!-- Lorem ipsum dolor amet ugh tofu portland, shabby chic
 							craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape
 							knausgaard, humblebrag sustainable activated charcoal chartreuse
@@ -91,7 +93,9 @@
 			<p class="pop-motto">RIS students are creative, open minded and critical thinkers. They are effective communicators and are collaborative and resourceful individuals; they embrace diversity. They are committed to leading happy and healthy lives and help others to do the same.</p>
 			<hr>
 			<p><strong>Comments: </strong>
-				<%= @student.ms_homeroom_semester_comment %>
+				<% if @student.ms_homeroom_semester_comment.present? %>
+					<%= @student.ms_homeroom_semester_comment.content %>
+				<% end %>
 				<!--  Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse -->
 			</p>
 		</div>
@@ -189,7 +193,9 @@
 								
 							</table>
 							<span><strong>Comments:</strong> 
-							<%= section.semester_comment_per_student(@student) %>
+							<% if section.semester_comment_per_student(@student).present? %>
+							<%= section.semester_comment_per_student(@student).content %>
+							<% end %>
 							<!-- Lorem ipsum dolor amet ugh tofu portland, shabby chic
 							craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape
 							knausgaard, humblebrag sustainable activated charcoal chartreuse
@@ -251,7 +257,9 @@
 						</table>
 						
 						<span><strong>Comments:</strong> 
-						<%= section.semester_comment_per_student(@student) %>
+							<% if section.semester_comment_per_student(@student).present? %>
+							<%= section.semester_comment_per_student(@student).content %>
+							<% end %>
 						<!-- Lorem ipsum dolor amet ugh tofu portland, shabby chic
 							craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape
 							knausgaard, humblebrag sustainable activated charcoal chartreuse

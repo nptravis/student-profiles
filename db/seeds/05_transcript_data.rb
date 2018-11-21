@@ -1,8 +1,8 @@
 file = File.read('data/transcript-data.json')
 
 data_hash = JSON.parse(file)
-i = 0;
-data_hash.each do |set|
+
+data_hash.each_with_index do |set, index|
 
 	student = Student.find_by(dcid: set["DCID"])
 	transcript = Transcript.find_or_initialize_by(student_id: student.id)
@@ -36,8 +36,7 @@ data_hash.each do |set|
 		student.transcript = transcript
 		
 		if transcript.save
-			puts "Record saved #{i}"
-			i+=1
+			puts "Transcript Record saved #{index} out of {data_hash.length-1}"
 		else
 			puts "ERROR: Transcript not saved"
 			puts "Student Number: #{set['Student_Number']}"

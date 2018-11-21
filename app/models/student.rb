@@ -122,7 +122,8 @@ class Student < ActiveRecord::Base
 	end
 
 	def es_reporting_sections(term_code)
-		self.sections_per_semester(term_code).reject{|section| section.course.course_name.include?("Library")}
+		rejected_courses = ["Library", "Homeroom"]
+		self.sections_per_semester(term_code).reject{|section| section.course.course_name.starts_with?(*rejected_courses)}
 	end
 
 	def ms_reporting_sections(term_code)

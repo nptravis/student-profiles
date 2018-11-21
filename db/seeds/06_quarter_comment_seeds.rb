@@ -26,7 +26,7 @@ data_hash.each_with_index do |set, index|
 	else
 		puts "ERROR: something not found"
 		binding.pry
-		break
+		# break
 	end
 
 

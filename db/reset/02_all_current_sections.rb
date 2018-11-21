@@ -6,8 +6,17 @@ data_hash.each_with_index do |set, index|
 	school = School.find_or_initialize_by(
 		number: set["schoolid"]
 		)
+	
+	case school.number
+	when 101
+		school.name = "RIS High School"
+	when 102
+		school.name = "RIS Middle School"
+	when 103
+		school.name = "RIS Elementary School"
+	end
 
-	school.name = set["school_name"]
+
 	school.abbreviation = set["abbreviation"]
 
 	if !school.save

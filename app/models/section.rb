@@ -98,6 +98,11 @@ class Section < ApplicationRecord
 			)
 	end
 
+	def es_core?
+		core_course_names = ["Science", "Reading", "Writing", "Language Foundations", "Math ", "Social Studies"]
+		self.course.course_name.start_with?(*core_course_names)
+	end
+
 	def required?
 		self.course.course_number.start_with?(
 			"PE", "THA", "VAL", "HE", "SNSK", "ESL"

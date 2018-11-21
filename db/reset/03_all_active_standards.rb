@@ -27,6 +27,6 @@ data_hash.each_with_index do |set, index|
 		puts "Course dcid: #{set['course_dcid']}"
 	end
 
-	puts "Standard Record Saved #{index} out of 4508"
+	puts "Standard Record Saved #{index} out of {data_hash.length-1}"
 
 end
