@@ -139,4 +139,16 @@ class Student < ActiveRecord::Base
 		self.homeroom.semester_comments.find_by(student_id: self.id)
 	end
 
+	def self.ms_students
+		where("school_id = ?", School.ms.id)
+	end
+
+	def self.es_students
+		where("school_id = ?", School.es.id)
+	end
+
+	def self.hs_students
+		where("school_id = ?", School.hs.id)
+	end
+
 end

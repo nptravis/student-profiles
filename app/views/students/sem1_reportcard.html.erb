@@ -45,7 +45,7 @@
 						<% if section.semester_comment_per_student(@student).present? %>
 							<%= section.semester_comment_per_student(@student).content %>
 							<% end %>
-						<!-- Lorem ipsum dolor amet ugh tofu portland, shabby chic
+						Lorem ipsum dolor amet ugh tofu portland, shabby chic
 							craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape
 							knausgaard, humblebrag sustainable activated charcoal chartreuse
 							Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronuLo-fi kitsch vape knausgaard, humblebrag sustainable
@@ -55,13 +55,18 @@
 							activated charcoal chartreuse Lorem ipsum dolor amet ugh tofu
 							portland, shabby chic craft beer cronuLorem ipsum dolor amet ugh
 							tofu portland,Lorem ipsum dolor amet ugh tofu portland, shabby chic craft
-							tofu portland, END!! END!! END!! -->
+							tofu portland, END!! END!! END!!
 						</span>
 					</div>
 				
 				<% end %>
 			</div>
 		</div>
+		<% if @sections.count < 11 %>
+			<div class="ms-big-logo" >
+				<%= image_tag wicked_pdf_asset_base64('ris-big-logo.svg') %>
+			</div>
+		<% end %>
 	</div>
 	<div class="right-page">
 		<div class="ms-header">
@@ -79,7 +84,7 @@
 			<div class="middle-div student-text-info">
 				<span class="student-name"><%= @student.lastfirst %></span><br></br>
 				<span>ID: <%= @student.student_number %></span><br></br>
-				<span>Advisory Teacher: <%= @student.homeroom.teacher.lastfirst %></span>
+				<!-- <span>Advisory Teacher: <%= @student.homeroom.teacher.lastfirst %></span> -->
 			</div>
 			<div class="right-div student-text-right">
 				<span>Grade <%= @student.grade_level %></span><br></br>
@@ -92,11 +97,22 @@
 			<span>Head, Hands, and Heart</span>
 			<p class="pop-motto">RIS students are creative, open minded and critical thinkers. They are effective communicators and are collaborative and resourceful individuals; they embrace diversity. They are committed to leading happy and healthy lives and help others to do the same.</p>
 			<hr>
-			<p><strong>Comments: </strong>
+			<h4><strong>Advisory Comments</strong></h4><span class="instructor-name"><%= @student.homeroom.teacher.lastfirst %></span>
+			<p>
 				<% if @student.ms_homeroom_semester_comment.present? %>
 					<%= @student.ms_homeroom_semester_comment.content %>
 				<% end %>
-				<!--  Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuse -->
+	 			Lorem ipsum dolor amet ugh tofu portland, shabby chic
+				craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape
+				knausgaard, humblebrag sustainable activated charcoal chartreuse
+				Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronuLo-fi kitsch vape knausgaard, humblebrag sustainable
+				activated charcoal chartreuse Lorem ipsum dolor amet ugh tofu
+				portland, shabby chic craft beer cronuLorem ipsum dolor amet ugh
+				tofu portland,Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronuLo-fi kitsch vape knausgaard, humblebrag sustainable
+				activated charcoal chartreuse Lorem ipsum dolor amet ugh tofu
+				portland, shabby chic craft beer cronuLorem ipsum dolor amet ugh
+				tofu portland,Lorem ipsum dolor amet ugh tofu portland, shabby chic craft
+				tofu portland, END!! END!! END!!
 			</p>
 		</div>
 		<table align="center">
@@ -113,7 +129,6 @@
 				<td><%= section.course.course_name %></td>
 				<td><%= section.section_number %></td>
 				<td><%= section.semester %></td>
-				
 				<td><%= section.teacher.lastfirst %></td>
 				<td><%= section.teacher.email %></td>
 			</tr>
@@ -131,9 +146,9 @@
 			<div class="secretary-info">
 				<h4>Secretaries</h4>
 				<ul>
-					<li><strong>MS Principal Secretary</strong> M203 - Ms. Kanpirom (Nok) Sarikabhuti</li></li>
-					<li><strong>MS Vice Principal Secretary</strong> M204 - Ms. Thanupat (Pui) Fletcher</li></li>
-					<li><strong>MS Counseling Secretary</strong> M209 - Ms. Kwanta (Nong) Horthiwong</li></li>
+					<li><strong>MS Principal Secretary</strong> - Ms. Kanpirom (Nok) Sarikabhuti</li></li>
+					<li><strong>MS Vice Principal Secretary</strong> - Ms. Thanupat (Pui) Fletcher</li></li>
+					<li><strong>MS Counseling Secretary</strong> - Ms. Kwanta (Nong) Horthiwong</li></li>
 				</ul>
 			</div>
 		</div>
@@ -196,7 +211,7 @@
 							<% if section.semester_comment_per_student(@student).present? %>
 							<%= section.semester_comment_per_student(@student).content %>
 							<% end %>
-							<!-- Lorem ipsum dolor amet ugh tofu portland, shabby chic
+							Lorem ipsum dolor amet ugh tofu portland, shabby chic
 							craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape
 							knausgaard, humblebrag sustainable activated charcoal chartreuse
 							Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronuLo-fi kitsch vape knausgaard, humblebrag sustainable
@@ -206,7 +221,7 @@
 							activated charcoal chartreuse Lorem ipsum dolor amet ugh tofu
 							portland, shabby chic craft beer cronuLorem ipsum dolor amet ugh
 							tofu portland,Lorem ipsum dolor amet ugh tofu portland, shabby chic craft
-							tofu portland, END!! END!! END!! -->
+							tofu portland, END!! END!! END!!
 							</span>
 						</div>
 					<% end %>
@@ -260,7 +275,7 @@
 							<% if section.semester_comment_per_student(@student).present? %>
 							<%= section.semester_comment_per_student(@student).content %>
 							<% end %>
-						<!-- Lorem ipsum dolor amet ugh tofu portland, shabby chic
+						Lorem ipsum dolor amet ugh tofu portland, shabby chic
 							craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape
 							knausgaard, humblebrag sustainable activated charcoal chartreuse
 							Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronuLo-fi kitsch vape knausgaard, humblebrag sustainable
@@ -270,7 +285,7 @@
 							activated charcoal chartreuse Lorem ipsum dolor amet ugh tofu
 							portland, shabby chic craft beer cronuLorem ipsum dolor amet ugh
 							tofu portland,Lorem ipsum dolor amet ugh tofu portland, shabby chic craft
-							tofu portland, END!! END!! END!! -->
+							tofu portland, END!! END!! END!!
 						</span>
 					</div>
 				

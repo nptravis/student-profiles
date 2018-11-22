@@ -21,6 +21,18 @@ div#header {
 	}
 }
 
+div.ms-big-logo{
+	margin-top: 120px;
+	width: 100%;
+	height: 500px;
+	img {
+		padding: 20px 0px;
+		height: auto;
+		width: auto;
+	}
+
+}
+
 div.big-logo {
 	margin: auto;
 	width: 100%;
@@ -31,6 +43,10 @@ div.big-logo {
 		width: auto;
 	}
 }
+
+span.instructor-name {
+		font-style: italic;
+	}
 
 div.section {
 	display: inline-block;
