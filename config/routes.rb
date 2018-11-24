@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get '/reports', to: 'reports#index'
   get '/q1-report-cards', to: 'reports#q1_report_cards'
   get '/standards/:id/filtered_grades', to: 'standards#filtered_grades'
+  get '/api/sections', to: 'sections#api_index'
 
   resources :users do
     resources :courses

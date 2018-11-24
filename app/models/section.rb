@@ -129,14 +129,69 @@ class Section < ApplicationRecord
 	end
 
 	def es_reporting_standards
-		rejected_standards = ["Comment", "Language Foundations 1", 
-			"Math 1", "Art", "Music", "Physical Education", "Science 1", 
-			"Values/Religion", "Thai Language & Culture", "Social Studies 1"]
-		self.standards.reject{|standard| rejected_standards.include?(standard.standard_name)}
+		rejected_standards = ["Comment", "Language Foundations", 
+			"Math", "Art", "Music", "Physical Education", "Science", 
+			"Values/Religion", "Thai Language & Culture", "Social Studies", "Exploring"]
+		self.standards.reject{|standard| standard.standard_name.start_with?(*rejected_standards)}
 	end
 	
 	def es_semester_comment_per_student(student)
 		self.semester_comments.find_by(student_id: student.id)
+	end
+
+	def self.by_school(school)
+		select{|section| section.course.school_id === school.id}
+	end
+
+	def matrix_positions
+		collection = []
+		number_of_periods = 7
+		rows = ["A", "B", "C", "D"]
+		exp_arr = self.expression.split(" ")
+		
+		exp_arr.each do |x|
+			period = x.match(/\d/)[0].to_i - 1
+			days = x.match(/[(](.+)[)]/)[1]
+			if days.length === 1
+				collection << period + rows.index(days)*number_of_periods
+			else
+				days_arr = days.split("")
+				if days_arr.include?("-") && days_arr.include?(",")
+					collection << period + rows.index(days[0])*number_of_periods
+					collection << period + rows.index(days[2])*number_of_periods
+					collection << period + rows.index(days[4])*number_of_periods
+				else
+					rows[rows.index(days_arr[0])..rows.index(days_arr[2])].each_with_index do |d, i|
+						
+						collection << period + i*number_of_periods
+					end
+				end
+			end	
+		end
+		collection
+	end
+
+	def in_matrix_position?(period_string, day_string)
+
+		days = {
+			A: 0,
+			B: 7,
+			C: 14,
+			D: 21
+			}
+
+		periods = {
+			ADV: 6,
+			P1: 0,
+			P2: 1,
+			P3: 2,
+			FB: 5,
+			P4: 3,
+			P5: 4 
+		 }
+
+		position = days[day_string.to_sym] + periods[period_string.to_sym]
+		self.matrix_positions.include?(position)
 	end
 
 end

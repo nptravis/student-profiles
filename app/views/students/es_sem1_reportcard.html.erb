@@ -6,7 +6,12 @@
 					<div class="section core">
 						<div class="section-header">
 							<span class="course-name"><%= section.course.course_name %></span> - 
-							<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+							<span class="instructor-name">
+								<% if !section.course.course_name === "Exploratory" %>
+								<%= section.teacher.lastfirst %>
+								<% end %>
+									
+								</span><br>
 						</div>
 
 						<table class="es-grades-table">
@@ -106,6 +111,7 @@
 				<li><strong>M:</strong> Meeting – The student meets and demonstrates proficiency in the grade level standard. The student grasps and applies the key concepts, processes, and skills.</li>
 				<li><strong>P:</strong> Progressing – The student occasionally meets the grade level standard. The student is beginning to grasp and apply the key concepts, processes, and skills.</li>
 				<li><strong>B:</strong> Below – The student does not meet the grade level standard. The student is experiencing difficulty in grasping and applying the key concepts, processes, and skills.</li>
+				<li><strong>N:</strong> Not Assessed – This standard is not assessed during the semester.</li>
 			</ul>
 		</div>
 		<div class="es-signature space-right">
@@ -128,7 +134,12 @@
 					<div class="section core">
 						<div class="section-header">
 							<span class="course-name"><%= section.course.course_name %></span> - 
-							<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+							<span class="instructor-name">
+								<% if !section.course.course_name === "Exploratory" %>
+								<%= section.teacher.lastfirst %>
+								<% end %>
+									
+								</span><br>
 						</div>
 					
 						<table class="es-grades-table">
@@ -166,7 +177,13 @@
 					<div class="section core">
 						<div class="section-header">
 							<span class="course-name"><%= section.course.course_name %></span> - 
-							<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+							<span class="instructor-name">
+								<% if !section.course.course_name === "Exploratory" %>
+								<%= section.teacher.lastfirst %>
+								<% end %>
+									
+								</span><br>
+									
 						</div>
 						<table class="es-grades-table">
 							<tr>
@@ -195,7 +212,12 @@
 					<div class="section core">
 						<div class="section-header">
 							<span class="course-name"><%= section.course.course_name %></span> - 
-							<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+							<span class="instructor-name">
+								<% if !section.course.course_name === "Exploratory" %>
+								<%= section.teacher.lastfirst %>
+								<% end %>
+									
+								</span><br>
 						</div>
 						<table class="es-grades-table">
 							<tr>
@@ -214,7 +236,10 @@
 						</table>
 						<span><strong>Comments:</strong> 
 						<%#= section.es_semester_comment_per_student(@student) %>
-						Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuseLorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vega authentic keytar next level. Mr
+						Lorem ipsum dolor amet ugh tofu portland, shabby chic
+						craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape
+						knausgaard, humblebrag sustainable activated charcoal
+						chartreuseLorem ipsum dol1111ii
 						</span>
 					</div>
 				

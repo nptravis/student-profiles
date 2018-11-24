@@ -16,6 +16,4 @@ class School < ApplicationRecord
 		select{|school| school.number === 103}[0]
 	end
 
-
-
 end
