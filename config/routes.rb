@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :suggestions, only: [:index, :new, :create]
   resources :teachers
+  get 'sections/cores', to: 'sections#cores'
   resources :sections
   get '/login', to: 'session#new'
 
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'session#destroy'
 
   get '/auth/google_oauth2/callback', to: 'session#create'
+
 
   get '/sections/:id/students', to: 'sections#students'
 
@@ -34,6 +36,7 @@ Rails.application.routes.draw do
   get '/q1-report-cards', to: 'reports#q1_report_cards'
   get '/standards/:id/filtered_grades', to: 'standards#filtered_grades'
   get '/api/sections', to: 'sections#api_index'
+
 
   resources :users do
     resources :courses

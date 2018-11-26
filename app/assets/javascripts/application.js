@@ -21,7 +21,7 @@
 //= require teachers
 //= require student_schedule
 //= require standards
-//= require master_schedule
+//= require sections
 
 
 

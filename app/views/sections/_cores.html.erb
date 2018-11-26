@@ -1,0 +1,37 @@
+<h1>All Cores</h1>
+<h2><%= School.ms.name %> - 18/19</h2>
+<div class="master-schedule-key">
+	<ul class="master-schedule-key">
+		<% @subjects.each do |subject| %>
+			<li><%= subject[:name] %><span class="dot subject-<%= subject[:abbr] %>"></span></li>
+		<% end %>
+	</ul>
+</div>
+<%= link_to "Export as PDF", sections_cores_path(format: 'pdf') %>
+<table border="1">
+	
+	
+	<tr>
+		<th></th>
+		<% @periods.each do |period| %>
+			<th><%= period %></th>
+		<% end %>
+	</tr>
+	<% @days.each_with_index do |day, index| %>
+	<tr>
+		<td><%= day %></td>
+		<% @periods.each do |period|%>
+			<td class="matrix-cell" >
+				<% @sections.select{|s| s.in_matrix_position?(period, day) && s.core?}.each do |section| %>
+					
+					<div class="section-master-schedule subject-<%= section.course.course_number[0..1].downcase %>"><%= section.course.course_name %> - <%= section.course.course_number %>.<%= section.section_number %> - <small><%= section.teacher.lastfirst %></small></div>
+					
+				<% end %>
+			</td>
+		<% end %>
+		</tr>
+	<% end %>
+
+</table>
+
+

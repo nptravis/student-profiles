@@ -160,11 +160,14 @@ class Section < ApplicationRecord
 					collection << period + rows.index(days[0])*number_of_periods
 					collection << period + rows.index(days[2])*number_of_periods
 					collection << period + rows.index(days[4])*number_of_periods
-				else
+				elsif days_arr.include?("-")
 					rows[rows.index(days_arr[0])..rows.index(days_arr[2])].each_with_index do |d, i|
 						
 						collection << period + i*number_of_periods
 					end
+				else
+					collection << period + number_of_periods * rows.index(days_arr[0])
+					collection << period + number_of_periods * rows.index(days_arr[2])
 				end
 			end	
 		end
