@@ -14,28 +14,26 @@
 				<h2>Summer School</h2>
 				<div class="student-sections">
 					<% @student.hs_summer_school(2801).each do |section| %>
-						
-							<div class="hs-section">
-								<div class="section-header">
-									<span class="course-name"><%= section.course.course_name %></span> - 
-									<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
-								</div>
-								<div class="hs-section-grades">
-									<div class="hs-table">
-										<table>
-											<tr>
-												<th></th>
-												<th align="center" class="semester-heading-cell">S1</th>
-											</tr>
-											<tr class="academic-row">
-												<td class="academic-cell"><span class="academic-label">Academic Achievement</span></td>
-												<td align="center"><%= @student.trad_grade_per_section(section) %></td>
-											</tr>
-										</table>
-									</div>
+						<div class="hs-section">
+							<div class="section-header">
+								<span class="course-name"><%= section.course.course_name %></span> - 
+								<span class="instructor-name"><%= section.teacher.lastfirst %></span><br>
+							</div>
+							<div class="hs-section-grades">
+								<div class="hs-table">
+									<table>
+										<tr>
+											<th></th>
+											<th align="center" class="semester-heading-cell">S1</th>
+										</tr>
+										<tr class="academic-row">
+											<td class="academic-cell"><span class="academic-label">Academic Achievement</span></td>
+											<td align="center"><%= @student.trad_grade_per_section(section) %></td>
+										</tr>
+									</table>
 								</div>
 							</div>
-
+						</div>
 					<% end %>
 				</div>
 			</div>
