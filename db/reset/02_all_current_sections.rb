@@ -56,10 +56,12 @@ data_hash.each_with_index do |set, index|
 	student.guardian_names = set["ris_parent_guardian"]
 	student.mailing_state = set["mailing_state"]
 	student.mailing_zip = set["mailing_zip"]
+	student.home_room = set["home_room"]
 
 	if !student.save
 		puts "ERROR: student not saved"
 		puts "student dcid #{set['student_dcid']}"
+		binding.pry
 		break
 	end
 
@@ -69,6 +71,7 @@ data_hash.each_with_index do |set, index|
 	if !term.save
 		puts "ERROR: term not saved"
 		puts "term code #{set['termid']}"
+		binding.pry
 		break
 	end
 
@@ -82,6 +85,7 @@ data_hash.each_with_index do |set, index|
 	if !course.save
 		puts "ERROR: course not saved"
 		puts "course dcid #{set['course_dcid']}"
+		binding.pry
 		break
 	else
 		if !course.terms.include?(term)
@@ -104,6 +108,7 @@ data_hash.each_with_index do |set, index|
 	if !section.save
 		puts "ERROR: section not saved"
 		puts "section dcid #{set['section_dcid']}"
+		binding.pry
 		break
 	else
 		if !student.sections.include?(section)
@@ -111,6 +116,6 @@ data_hash.each_with_index do |set, index|
 		end
 	end
 
-	puts "Section Record Saved #{index} out of ~16130"
+	puts "Section Record Saved #{index} out of #{data_hash.length - 1}"
 
 end

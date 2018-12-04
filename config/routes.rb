@@ -34,6 +34,9 @@ Rails.application.routes.draw do
 
   get '/reports', to: 'reports#index'
   get '/q1-report-cards', to: 'reports#q1_report_cards'
+  get '/ms-report-cards', to: 'reports#ms_report_cards'
+  get '/hs-report-cards', to: 'reports#hs_report_cards'
+  get '/es-report-cards', to: 'reports#es_report_cards'
   get '/standards/:id/filtered_grades', to: 'standards#filtered_grades'
   get '/api/sections', to: 'sections#api_index'
 

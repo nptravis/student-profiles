@@ -21,12 +21,14 @@ data_hash.each_with_index do |set, index|
 		if !attendance.save
 			puts "ERROR: attendance not saved"
 			binding.pry
+			break
 		end
 
 		puts "Attedance Record Saved #{index} out of #{data_hash.length-1}"
 	else 
 		puts "section or student not found"
 		binding.pry
+		break
 	end
 
 

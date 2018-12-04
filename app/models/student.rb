@@ -147,8 +147,16 @@ class Student < ActiveRecord::Base
 		where("school_id = ?", School.es.id)
 	end
 
+	def self.k_and_up
+		where("grade_level != ? AND grade_level !=  ? AND grade_level != ?", "-3", "-2", "-1")
+	end
+
 	def self.hs_students
 		where("school_id = ?", School.hs.id)
+	end
+
+	def self.by_home_room(section)
+		select{|student| student.es_homeroom === section}.sort_by(&:lastfirst)
 	end
 
 end

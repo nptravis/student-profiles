@@ -30,8 +30,10 @@
 							<% end %>
 						</table>
 						<span><strong>Comments:</strong> 
-						<%#= section.es_semester_comment_per_student(@student) %>
-						Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuseLorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vega authentic keytar next level. Mr
+							<% if section.es_semester_comment_per_student(@student) %>
+								<%= section.es_semester_comment_per_student(@student).content %>
+								<% end %>
+						<!-- Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuseLorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vega authentic keytar next level. Mr -->
 						</span>
 					</div>
 				<% end %>
@@ -63,7 +65,7 @@
 			</div>
 			<div class="right-div student-text-right">
 				<span>Grade <%= @student.grade_level === '0' ? "K" : @student.grade_level %></span><br></br>
-				<span>December 24th, 2018</span>
+				<span>December 18th, 2018</span>
 			</div>
 		</div>
 
@@ -73,8 +75,10 @@
 			<p class="pop-motto">RIS students are creative, open minded and critical thinkers. They are effective communicators and are collaborative and resourceful individuals; they embrace diversity. They are committed to leading happy and healthy lives and help others to do the same.</p>
 			<hr>
 			<p><strong>Comments: </strong>
-				<%#= @student.es_homeroom_semester_comment %>
-				 Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuseLorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vega authentic keytar next level. Mr
+				<% if @student.es_homeroom_semester_comment %>
+				<%= @student.es_homeroom_semester_comment.content %>
+				<% end %>
+				<!--  Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuseLorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vega authentic keytar next level. Mr -->
 			</p>
 		</div>
 		<table align="center">
@@ -159,8 +163,10 @@
 						</table>
 					
 						<span><strong>Comments:</strong> 
-						<%#= section.es_semester_comment_per_student(@student) %>
-						Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuseLorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vega authentic keytar next level. Mr
+							<% if section.es_semester_comment_per_student(@student) %>
+								<%= section.es_semester_comment_per_student(@student).content %>
+							<% end %>
+						<!-- Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuseLorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vega authentic keytar next level. Mr -->
 						</span>
 					</div>
 					
@@ -201,8 +207,10 @@
 							<% end %>
 						</table>
 						<span><strong>Comments:</strong> 
-						<%#= section.es_semester_comment_per_student(@student) %>
-						Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuseLorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vega authentic keytar next level. Mr
+							<% if section.es_semester_comment_per_student(@student) %>
+								<%= section.es_semester_comment_per_student(@student).content %>
+							<% end %>
+						<!-- Lorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape knausgaard, humblebrag sustainable activated charcoal chartreuseLorem ipsum dolor amet ugh tofu portland, shabby chic craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vega authentic keytar next level. Mr -->
 						</span>
 					</div>
 				
@@ -235,11 +243,13 @@
 							<% end %>
 						</table>
 						<span><strong>Comments:</strong> 
-						<%#= section.es_semester_comment_per_student(@student) %>
-						Lorem ipsum dolor amet ugh tofu portland, shabby chic
+							<% if section.es_semester_comment_per_student(@student) %>
+								<%= section.es_semester_comment_per_student(@student).content %>
+							<% end %>
+						<!-- Lorem ipsum dolor amet ugh tofu portland, shabby chic
 						craft beer cronut flexitarian vexillologist edison bulb green juice. Cronut chambray coloring book, vaporware vape narwhal man bun. Migas paleo authentic keytar next level. Mixtape vegan chambray, pork belly taiyaki wayfarers kinfolk tousled. Lo-fi kitsch vape
 						knausgaard, humblebrag sustainable activated charcoal
-						chartreuseLorem ipsum dol1111ii
+						chartreuseLorem ipsum dol1111ii -->
 						</span>
 					</div>
 				

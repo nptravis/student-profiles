@@ -18,19 +18,86 @@ class ReportsController < ApplicationController
 		send_data pdfs.to_pdf, filename: "q1-report-cards.pdf", type: "application/pdf", disposition: 'inline'
 	end
 
-	def sem1_report_cards
+	def ms_report_cards
 		pdfs = CombinePDF.new
-		students = Student.order(:grade_level, :lastfirst)
+		students = Student.ms_students.order(:grade_level, :lastfirst).limit(2)
 
 		students.each do |student| 
 			@student = student
-			html_string = render_to_string('students/reportcard.html.erb', layout: 'pdf.html.erb')
-			pdf = WickedPdf.new.pdf_from_string(html_string, dpi: '300')
+			@sections = @student.ms_reporting_sections(2801)
+			html_string = render_to_string('students/sem1_reportcard.html.erb',
+				 layout: 'sem1_report_card.html.erb')
+			pdf = WickedPdf.new.pdf_from_string(html_string, 
+				dpi: '300',
+				orientation: 'Landscape',
+				page_size: 'A3',
+				margin:  { 
+	        		top:               10,                     
+	                bottom:            5,
+	                left:              5,
+	                right:             5}
+				)
 			pdfs << CombinePDF.parse(pdf)
 		end
 
-		pdfs.save 'q1-report-cards.pdf'
-		send_data pdfs.to_pdf, filename: "q1-report-cards.pdf", type: "application/pdf", disposition: 'inline'
+		pdfs.save 'ms-sem1-report-cards.pdf'
+		send_data pdfs.to_pdf, filename: "ms-sem1-report-cards.pdf", type: "application/pdf", disposition: 'inline'
+
+	end
+
+	def hs_report_cards
+		pdfs = CombinePDF.new
+		students = Student.hs_students.order(:grade_level, :lastfirst).limit(2)
+
+		students.each do |student| 
+			@student = student
+			@sections = @student.hs_reporting_sections(2801)
+			html_string = render_to_string('students/hs_sem1_reportcard.html.erb',
+				 layout: 'sem1_report_card.html.erb')
+			pdf = WickedPdf.new.pdf_from_string(html_string, 
+				dpi: '300',
+				orientation: 'Landscape',
+				page_size: 'A3',
+				margin:  { 
+	        		top:               10,                     
+	                bottom:            5,
+	                left:              5,
+	                right:             5}
+				)
+			pdfs << CombinePDF.parse(pdf)
+		end
+
+		pdfs.save 'hs-sem1-report-cards.pdf'
+		send_data pdfs.to_pdf, filename: "hs-sem1-report-cards.pdf", type: "application/pdf", disposition: 'inline'
+
+	end
+
+	def es_report_cards
+		pdfs = CombinePDF.new
+		# students = Student.es_students.k_and_up.order(:grade_level, :lastfirst).limit(2)
+		# students = Student.es_students.k_and_up.order(:home_room).limit(2)
+		section = Section.find(367)
+		students = Student.es_students.by_home_room(section)
+		students.each do |student| 
+			@student = student
+			@sections = @student.es_reporting_sections(2801)
+			html_string = render_to_string('students/es_sem1_reportcard.html.erb',
+				 layout: 'sem1_report_card.html.erb')
+			pdf = WickedPdf.new.pdf_from_string(html_string, 
+				dpi: '300',
+				orientation: 'Landscape',
+				page_size: 'A3',
+				margin:  { 
+	        		top:               10,                     
+	                bottom:            5,
+	                left:              5,
+	                right:             5}
+				)
+			pdfs << CombinePDF.parse(pdf)
+		end
+
+		pdfs.save 'es-sem1-report-cards.pdf'
+		send_data pdfs.to_pdf, filename: "es-sem1-report-cards.pdf", type: "application/pdf", disposition: 'inline'
 
 	end
 end

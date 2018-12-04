@@ -40,11 +40,13 @@ data_hash.each_with_index do |set, index|
 		else
 			puts "ERROR: Transcript not saved"
 			puts "Student Number: #{set['Student_Number']}"
+			binding.pry
 			break;
 		end
 	else
 		puts "ERROR: Student not found or Transcript not found or created"
 		puts "Student Number: #{set['Student_Number']}"
+		binding.pry
 		break;
 	end
 

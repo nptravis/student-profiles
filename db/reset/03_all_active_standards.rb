@@ -23,10 +23,12 @@ data_hash.each_with_index do |set, index|
 
 		(course.standards.find_by(id: standard.id) || course.standards << standard)
 	else
-		puts "ERROR: Course not found"
+		puts "ERROR: Course not found, keep calm, maybe course didn't end up running"
 		puts "Course dcid: #{set['course_dcid']}"
+		# binding.pry
+		# break
 	end
 
-	puts "Standard Record Saved #{index} out of {data_hash.length-1}"
+	puts "Standard Record Saved #{index} out of #{data_hash.length-1}"
 
 end

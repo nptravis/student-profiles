@@ -88,7 +88,7 @@
 			</div>
 			<div class="right-div student-text-right">
 				<span>Grade <%= @student.grade_level %></span><br></br>
-				<span>December 24th, 2018</span>
+				<span>December 18th, 2018</span>
 			</div>
 		</div>
 
@@ -97,7 +97,7 @@
 			<span>Head, Hands, and Heart</span>
 			<p class="pop-motto">RIS students are creative, open minded and critical thinkers. They are effective communicators and are collaborative and resourceful individuals; they embrace diversity. They are committed to leading happy and healthy lives and help others to do the same.</p>
 			<hr>
-			<h4><strong>Advisory Comments</strong></h4><span class="instructor-name"><%= @student.homeroom.teacher.lastfirst %></span>
+			<h4><strong>Advisory Comments</strong> - <small><span class="instructor-name"><%= @student.homeroom.teacher.lastfirst %></span></small></h4>
 			<p>
 				<% if @student.ms_homeroom_semester_comment.present? %>
 					<%= @student.ms_homeroom_semester_comment.content %>
@@ -228,6 +228,7 @@
 				<% end %>
 			</div>
 		</div>
+		<span><%= @student.lastfirst %> - <%= @student.student_number %></span>
 	</div>
 	<div class="right-page">
 		<div class="student-sections">
