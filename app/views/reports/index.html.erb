@@ -6,4 +6,15 @@
 <li><%= link_to "All MS Sem 1 Report Cards", '/ms-report-cards.pdf' %></li>
 <li><%= link_to "All HS Sem 1 Report Cards", '/hs-report-cards.pdf' %></li>
 <li><%= link_to "All ES Sem 1 Report Cards", '/es-report-cards.pdf' %></li>
+<li>
+	<span>By Homeroom: </span>
+	<%= form_tag("/es-report-cards", method: "post") do %>
+		<select name="homeroom">
+			<% Section.es_homerooms.each do |section| %>
+				<option value=<%= section.id %> ><%= section.course.course_name %> - <%= section.course.course_number %>.<%= section.section_number %> - <%= section.teacher.lastfirst %></option>
+			<% end %>
+		</select>
+		<%= submit_tag "Submit" %>
+	<% end %>
+</li>
 </ul>

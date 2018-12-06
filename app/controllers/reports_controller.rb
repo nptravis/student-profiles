@@ -74,10 +74,14 @@ class ReportsController < ApplicationController
 
 	def es_report_cards
 		pdfs = CombinePDF.new
-		# students = Student.es_students.k_and_up.order(:grade_level, :lastfirst).limit(2)
-		# students = Student.es_students.k_and_up.order(:home_room).limit(2)
-		section = Section.find(367)
-		students = Student.es_students.by_home_room(section)
+		
+		if params[:homeroom]
+			section = Section.find(params[:homeroom])
+			students = Student.es_students.by_home_room(section)
+		else
+			students = Student.es_students.k_and_up.order(:grade_level, :lastfirst).limit(2)
+		end
+
 		students.each do |student| 
 			@student = student
 			@sections = @student.es_reporting_sections(2801)
@@ -97,10 +101,8 @@ class ReportsController < ApplicationController
 		end
 
 		pdfs.save 'es-sem1-report-cards.pdf'
-		send_data pdfs.to_pdf, filename: "es-sem1-report-cards.pdf", type: "application/pdf", disposition: 'inline'
+		send_data pdfs.to_pdf, filename: "es-sem1-report-cards.pdf", type: "application/pdf", disposition: 'attachment'
 
 	end
 end
 
-
-# Sort ES students by homeroom teacher, also ability to group by class

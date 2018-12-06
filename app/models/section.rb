@@ -140,7 +140,7 @@ class Section < ApplicationRecord
 	end
 
 	def self.by_school(school)
-		select{|section| section.course.school_id === school.id}
+		select{|section| section.course.school === school}
 	end
 
 	def matrix_positions
@@ -195,6 +195,12 @@ class Section < ApplicationRecord
 
 		position = days[day_string.to_sym] + periods[period_string.to_sym]
 		self.matrix_positions.include?(position)
+	end
+
+	def self.es_homerooms
+		by_school(School.es).select{|section| section.course.course_name.start_with?("Homeroom")}
+
+		# 
 	end
 
 end

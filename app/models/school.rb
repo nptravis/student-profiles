@@ -5,15 +5,15 @@ class School < ApplicationRecord
 	validates :number, :name, :abbreviation, presence: true
 
 	def self.hs 
-		select{|school| school.number === 101}[0]
+		where(number: 101)
 	end
 
 	def self.ms 
-		select{|school| school.number === 102}[0]
+		where(number: 102)
 	end
 
 	def self.es 
-		select{|school| school.number === 103}[0]
+		where(number: 103)[0]
 	end
 
 end
