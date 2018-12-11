@@ -92,7 +92,7 @@ class StudentsController < ApplicationController
 	        	show_as_html: params.key?('debug'),
 	        	margin:  { 
 	        		top:               10,                     
-	                bottom:            5,
+	                bottom:            0,
 	                left:              5,
 	                right:             5}
 	        end

@@ -1,18 +1,13 @@
 <div class="student-nav-container">
-	<ul>
-		<li><a class="sections-master-schedule-link" href="#">Master Schedule</a></li>
-		<li><a class="sections-all-cores-link" href='#'>All Cores</a></li>
-		<li><a class="sections-non-cores-link" href="#">All Non-Cores</a></li>
-		<li><a class="sections-departments-link" href='#'>All Departments</a></li>
+	<%= form_tag sections_path do %>
+		<%= select_tag 'courses', options_from_collection_for_select(@courses, 'id', 'course_name') %>
+		<%#= select_tag 'groupings', options_for_select() %>
 		
-	</ul>
+		<%= submit_tag "Search" %>
+	<% end %>
 </div>
 
 <div class="sections-content-container">
-	<%#= render 'master_schedule' %>
-	<%= render 'cores' %>
-	<%#= render 'non_cores' %>
-	<%#= render 'departments' %>
-
+	<%= render 'sections/master_schedule' %>
 
 </div>

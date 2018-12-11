@@ -127,7 +127,7 @@ class Student < ActiveRecord::Base
 	end
 
 	def ms_reporting_sections(term_code)
-		rejected_courses = ["MSFB", "HRA", "ADC1", "ADC2"]
+		rejected_courses = ["MSFB", "HRA", "ADC1", "ADC2", "ADC3"]
 		self.sections_per_semester(term_code).reject{|section| section.course.course_number.starts_with?(*rejected_courses)}
 	end
 

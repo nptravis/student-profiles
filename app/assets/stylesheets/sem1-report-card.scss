@@ -5,6 +5,11 @@ html, body {
 	height: 100%;
 }
 
+div#content {
+	height: 100%;
+	/*overflow: hidden;*/
+}
+
 div.student-sections {
 	display: block;
 	width: 100%;
@@ -85,8 +90,8 @@ div.section.core {
 	display: inline-block;
 	box-sizing: border-box;
 	border: 1px black solid;
-	width: 49%;
-	height: 610px;
+	width: 49.7%;
+	height: 640px;
 	overflow: hidden;
 	margin-top: 10px;
 	background-color: #fff;
@@ -118,13 +123,13 @@ div.section.six_50 {
 
 div.section-group {
 	border: 1px black solid;
-	width: 1000px;
+	/*width: 50%;*/
 	border-radius: 20px;
 	background-color: #f7f7f7;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	text-align: center;
-	height: 98%;
+	height: 100%;
 	display: table-cell;
 	padding-bottom: 10px;
 	
@@ -136,6 +141,9 @@ div.section-group {
 	}
 }
 
+p.advisory-comment-text {
+	padding-right: 4px;
+}
 img.student-reportcard-image {
 	height: 100%;
 	border-radius: 10px;
@@ -190,7 +198,7 @@ div.student-photo-container{
 div.page{
 	text-align: justify;
 	width: 100%;
-	height: 1310px;
+	height: 1330px;
 
 	div.left-page {
 		display: inline-block;
@@ -346,6 +354,11 @@ div.staff-info-container {
 	}
 	
 }
+
+span.student-footer-details {
+	margin-top: 20px;
+}
+
 /*div.staff-info-container:after {
 	content: '';
 	display: inline-block;

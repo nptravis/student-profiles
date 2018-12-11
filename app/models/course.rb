@@ -30,4 +30,8 @@ class Course < ActiveRecord::Base
 		collection
 	end
 
+	def self.by_school(school)
+		where(school_id: school.id)
+	end
+
 end

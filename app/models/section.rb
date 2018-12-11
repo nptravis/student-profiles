@@ -88,7 +88,7 @@ class Section < ApplicationRecord
 
 	def core?
 		self.course.course_number.start_with?(
-			"LA", "SCI", "MA", "SOC", "ADC"
+			"LA", "SCI", "MA", "SOC", "ADCLA", "ADCSOC", "ADCMAT", "ADCSCI"
 			)
 	end
 
@@ -105,7 +105,7 @@ class Section < ApplicationRecord
 
 	def required?
 		self.course.course_number.start_with?(
-			"PE", "THA", "VAL", "HE", "SNSK", "ESL"
+			"PE", "THA", "VAL", "HE", "SNSK", "ESL", "ADCTHAI"
 			)
 	end
 
@@ -140,7 +140,7 @@ class Section < ApplicationRecord
 	end
 
 	def self.by_school(school)
-		select{|section| section.course.school === school}
+		includes(:course).select{|section| section.course.school === school}
 	end
 
 	def matrix_positions
@@ -202,5 +202,10 @@ class Section < ApplicationRecord
 
 		# 
 	end
+
+	def academic_standards?
+		self.standards.select{|s| !s.hom? && s.standard_name != "Semester Comment" && s.description != "Parent Standard" }[0].present?
+	end
+
 
 end

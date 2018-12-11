@@ -5,15 +5,15 @@ class School < ApplicationRecord
 	validates :number, :name, :abbreviation, presence: true
 
 	def self.hs 
-		where(number: 101)
+		find_by(number: 101)
 	end
 
 	def self.ms 
-		where(number: 102)
+		find_by(number: 102)
 	end
 
 	def self.es 
-		where(number: 103)[0]
+		find_by(number: 103)
 	end
 
 end

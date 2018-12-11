@@ -3,7 +3,7 @@
 <h2>Sections</h2>
 <ul>
 <% @course.sections.each do |section| %>
-	<li><%= link_to @course.course_number + "." + section.section_number, section_path(section) %> - <%= section.students.count %></li>
+	<li><%= link_to @course.course_number + "." + section.section_number, section_path(section) %> - <%= link_to section.teacher.lastfirst, teacher_path(section.teacher) %> - <%= section.students.count %></li>
 <% end %>
 </ul>
 

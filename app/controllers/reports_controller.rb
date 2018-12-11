@@ -20,7 +20,7 @@ class ReportsController < ApplicationController
 
 	def ms_report_cards
 		pdfs = CombinePDF.new
-		students = Student.ms_students.order(:grade_level, :lastfirst).limit(2)
+		students = Student.ms_students.order(:grade_level, :lastfirst)[211..-1]
 
 		students.each do |student| 
 			@student = student
@@ -41,7 +41,7 @@ class ReportsController < ApplicationController
 		end
 
 		pdfs.save 'ms-sem1-report-cards.pdf'
-		send_data pdfs.to_pdf, filename: "ms-sem1-report-cards.pdf", type: "application/pdf", disposition: 'inline'
+		send_data pdfs.to_pdf, filename: "ms-sem1-report-cards-211-end.pdf", type: "application/pdf", disposition: 'attachment'
 
 	end
 
@@ -101,7 +101,10 @@ class ReportsController < ApplicationController
 		end
 
 		pdfs.save 'es-sem1-report-cards.pdf'
-		send_data pdfs.to_pdf, filename: "es-sem1-report-cards.pdf", type: "application/pdf", disposition: 'attachment'
+		send_data pdfs.to_pdf, 
+		filename: section.present? ? "es-sem1-report-cards-#{section.teacher.lastfirst}.pdf" : "all-es-sem1-report-cards.pdf", 
+		type: "application/pdf", 
+		disposition: 'attachment'
 
 	end
 end

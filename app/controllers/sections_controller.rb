@@ -4,6 +4,7 @@ class SectionsController < ApplicationController
 		@days = ["A", "B", "C", "D"]
 		@periods = ["ADV", "P1", "P2", "P3", "FB", "P4", "P5"]
 		@sections = Section.by_school(School.ms)
+		@courses = Course.by_school(School.ms)
 		@subjects = [
 			{name: "Language Arts", abbr: "la"},
 			{name: "Social Studies", abbr: "so"},
@@ -33,6 +34,8 @@ class SectionsController < ApplicationController
 		@days = ["A", "B", "C", "D"]
 		@periods = ["ADV", "P1", "P2", "P3", "FB", "P4", "P5"]
 		@sections = Section.by_school(School.ms).select{|section| section.core?}
+
+		@grade_levels = ["All", 6, 7, 8]
 		@subjects = [
 			{name: "Language Arts", abbr: "la"},
 			{name: "Social Studies", abbr: "so"},
@@ -71,6 +74,41 @@ class SectionsController < ApplicationController
 	def api_index
 		@sections = Section.by_school(School.ms)
 		render json: @sections, each_serializer: SectionSerializer
+	end
+
+	def create
+		@days = ["A", "B", "C", "D"]
+		@periods = ["ADV", "P1", "P2", "P3", "FB", "P4", "P5"]
+		@subjects = [
+			{name: "Language Arts", abbr: "la"},
+			{name: "Social Studies", abbr: "so"},
+			{name: "Science", abbr: "sc"},
+			{name: "Math", abbr: "ma"},
+		]
+		@courses = Course.by_school(School.ms)
+		if params[:courses]
+			@sections = Section.where(course_id: params[:courses])
+		else
+			@sections = Section.by_school(School.ms)
+		end
+		# binding.pry
+		respond_to do |format|
+			format.html  { render 'index' }
+		    format.pdf do
+	        	render pdf: "MS-master-schedule-2018-19", 
+	        	layout: 'master_schedule_layout.html.erb',
+	        	template: 'sections/_master_schedule.html.erb',
+	        	orientation: 'Landscape',
+	        	page_size: 'A3',
+	        	dpi: '300',
+	        	show_as_html: params.key?('debug'),
+	        	margin:  { 
+	        		top:               5,                     
+	                bottom:            5,
+	                left:              5,
+	                right:             5}
+	        end
+	    end
 	end
 
 end
