@@ -131,7 +131,7 @@ class Section < ApplicationRecord
 	def es_reporting_standards
 		rejected_standards = ["Comment", "Language Foundations", 
 			"Math", "Art", "Music", "Physical Education", "Science", 
-			"Values/Religion", "Thai Language & Culture", "Social Studies", "Exploring"]
+			"Values/Religion", "Thai Language & Culture", "Social Studies", "Exploring", "Writing", "Reading"]
 		self.standards.reject{|standard| standard.standard_name.start_with?(*rejected_standards)}
 	end
 	
@@ -198,7 +198,7 @@ class Section < ApplicationRecord
 	end
 
 	def self.es_homerooms
-		by_school(School.es).select{|section| section.course.course_name.start_with?("Homeroom")}
+		by_school(School.es).select{|section| section.course.course_name.start_with?("Homeroom")}.sort_by{|section| section.teacher.lastfirst}
 
 		# 
 	end

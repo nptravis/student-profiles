@@ -26,7 +26,7 @@ data_hash.each_with_index do |set, index|
 			if !semester_comment.save
 				puts "ERROR: Semester Comment not saved."
 				binding.pry
-				
+				break
 			end
 			
 		else
@@ -45,7 +45,7 @@ data_hash.each_with_index do |set, index|
 				puts "ERROR: grade not saved"
 				puts set
 				binding.pry
-				
+				break
 			end
 
 		end
@@ -56,7 +56,7 @@ data_hash.each_with_index do |set, index|
 		puts "ERROR: student or section or standard or term or teacher not found."
 		puts set
 		binding.pry
-		
+		break
 	end
 
 end

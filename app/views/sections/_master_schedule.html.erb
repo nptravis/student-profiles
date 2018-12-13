@@ -24,7 +24,7 @@
 			<td class="matrix-cell" >
 				<% @sections.select{|s| s.in_matrix_position?(period, day)}.each do |section| %>
 					
-					<div class="section-master-schedule subject-<%= section.course.course_number[0..1].downcase %>"><%= section.course.course_name %> - <%= section.course.course_number %>.<%= section.section_number %> - <small><%= section.teacher.lastfirst %></small></div>
+					<div class="section-master-schedule subject-<%= section.course.course_number[0..1].downcase %>"><%= link_to section.course.course_name, course_path(section.course.course_name) %> - <%= link_to section.course.course_number + '.' + section.section_number, section_path(section)%> - <small><%= link_to section.teacher.lastfirst, teacher_path(section.teacher) %></small></div>
 					
 				<% end %>
 			</td>

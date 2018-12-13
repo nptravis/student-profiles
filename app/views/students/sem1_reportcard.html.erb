@@ -10,7 +10,11 @@
 						</div>
 						<table class="es-grades-table">
 							<tr>
-								<th><strong>Academic Standards</strong></th>
+								<% if section.academic_standards? %>
+									<th><strong>Academic Standards</strong></th>
+								<% else %>
+									<th></th>
+								<% end %>
 								<th>S1</th>
 								<th>S2</th>
 							</tr>
