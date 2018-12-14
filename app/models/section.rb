@@ -131,7 +131,20 @@ class Section < ApplicationRecord
 	def es_reporting_standards
 		rejected_standards = ["Comment", "Language Foundations", 
 			"Math", "Art", "Music", "Physical Education", "Science", 
-			"Values/Religion", "Thai Language & Culture", "Social Studies", "Exploring", "Writing", "Reading"]
+			"Values/Religion", "Thai Language & Culture", "Social Studies", "Exploring", 
+			"Writing 5", 
+			"Reading 5",
+			"Writing 4", 
+			"Reading 4",
+			"Writing 3", 
+			"Reading 3",
+			"Writing 2", 
+			"Reading 2",
+			"Writing 1", 
+			"Reading 1",
+			"Writing K", 
+			"Reading K"
+		]
 		self.standards.reject{|standard| standard.standard_name.start_with?(*rejected_standards)}
 	end
 	

@@ -4,7 +4,7 @@ class SectionsController < ApplicationController
 		@days = ["A", "B", "C", "D"]
 		@periods = ["ADV", "P1", "P2", "P3", "FB", "P4", "P5"]
 		@sections = Section.by_school(School.ms)
-		@courses = Course.by_school(School.ms)
+		@courses = Course.by_school(School.ms).sort_by(&:course_name)
 		@subjects = [
 			{name: "Language Arts", abbr: "la"},
 			{name: "Social Studies", abbr: "so"},
