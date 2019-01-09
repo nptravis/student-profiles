@@ -27,6 +27,7 @@ data_hash.each_with_index do |set, index|
 				binding.pry
 				break           
 			end
+			# binding.pry
 		else
 			grade = TradGrade.find_or_initialize_by(
 				student_id: student.id, 

@@ -1,4 +1,5 @@
-file = File.read('data/all-standards-grades.json')
+file = File.read('data/one_students_standards.json')
+# file = File.read('data/all-standards-grades.json')
 
 data_hash = JSON.parse(file)
 data_hash.each_with_index do |set, index|

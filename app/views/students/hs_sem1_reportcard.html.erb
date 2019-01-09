@@ -26,10 +26,12 @@
 											<th></th>
 											<th align="center" class="semester-heading-cell">S1</th>
 										</tr>
-										<tr class="academic-row">
-											<td class="academic-cell"><span class="academic-label">Academic Achievement</span></td>
-											<td align="center"><%= @student.trad_grade_per_section(section) %></td>
-										</tr>
+										<% if @student.trad_grade_per_section(section) %>
+											<tr class="academic-row">
+												<td class="academic-cell"><span class="academic-label">Academic Achievement</span></td>
+												<td align="center"><%= @student.trad_grade_per_section(section) %></td>
+											</tr>
+										<% end %>
 									</table>
 								</div>
 							</div>
@@ -72,8 +74,10 @@
 			<p class="pop-motto">RIS students are creative, open minded and critical thinkers. They are effective communicators and are collaborative and resourceful individuals; they embrace diversity. They are committed to leading happy and healthy lives and help others to do the same.</p>
 			<hr>
 			<p><strong>Self-Reflection: </strong>
-				<%#= @student.ms_homeroom_semester_comment %>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum feugiat, mauris et aliquam pellentesque, nisi mauris imperdiet elit, et ultricies augue magna id neque. Aliquam nec nunc hendrerit, aliquam mi vel, blandit nisi. Nam nec finibus arcu. Nulla a neque non eros vehicula commodo non sit amet enim. Curabitur volutpat placerat dapibus. Praesent accumsan condimentum purus, in facilisis nisl feugiat at. In ut mollis erat, vitae vestibulum tellus. Integer id imperdiet arcu. In hac habitasse platea dictumst. Maecenas pellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies ante ac mauris tincidunt, sed feugiat est lacinia. imperdiet arcu. In hac habitasse platea dictumst. Maecenas pellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies ante ac mauris tincidunt, sed feugiat est lacinia. imperdiet arcu. In hac habitasse platea dictumst. Maecenas pellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies ante ac ltriciesIn ut mollis erat, vitae vestibulum tellus. Integer id imperdiet arcu. In hac habitasse platea dictumst. Maecenas pellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies ante ac mauris tincidunt, sed feugiat est lacinia. imperdiet arcu. In hac habitasse platea dictumst. Maecenas pellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies ante ac mauris tincidunt, sed feugiat est lacinia. imperdiet arcu. In hac habitasse platea dictumst. Maecenas pellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies ante ac ltriciespellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies at auctor ante rutrum sed. Suspendisse ultricies ltriciespellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies at auctor ante rutr
+				<% if @student.ms_homeroom_semester_comment %>
+					<%= @student.ms_homeroom_semester_comment.content %>
+				<% end %>
+				<!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum feugiat, mauris et aliquam pellentesque, nisi mauris imperdiet elit, et ultricies augue magna id neque. Aliquam nec nunc hendrerit, aliquam mi vel, blandit nisi. Nam nec finibus arcu. Nulla a neque non eros vehicula commodo non sit amet enim. Curabitur volutpat placerat dapibus. Praesent accumsan condimentum purus, in facilisis nisl feugiat at. In ut mollis erat, vitae vestibulum tellus. Integer id imperdiet arcu. In hac habitasse platea dictumst. Maecenas pellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies ante ac mauris tincidunt, sed feugiat est lacinia. imperdiet arcu. In hac habitasse platea dictumst. Maecenas pellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies ante ac mauris tincidunt, sed feugiat est lacinia. imperdiet arcu. In hac habitasse platea dictumst. Maecenas pellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies ante ac ltriciesIn ut mollis erat, vitae vestibulum tellus. Integer id imperdiet arcu. In hac habitasse platea dictumst. Maecenas pellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies ante ac mauris tincidunt, sed feugiat est lacinia. imperdiet arcu. In hac habitasse platea dictumst. Maecenas pellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies ante ac mauris tincidunt, sed feugiat est lacinia. imperdiet arcu. In hac habitasse platea dictumst. Maecenas pellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies ante ac ltriciespellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies at auctor ante rutrum sed. Suspendisse ultricies ltriciespellentesque iaculis quam, at auctor ante rutrum sed. Suspendisse ultricies at auctor ante rutr -->
 
 			</p>
 		</div>
@@ -139,11 +143,12 @@
 											<th align="center" class="semester-heading-cell">S1</th>
 											<th align="center" class="semester-heading-cell">S2</th>
 										</tr>
-										<tr class="academic-row">
-											<td class="academic-cell"><span class="academic-label">Academic Achievement</span></td>
-											<td align="center"><%= @student.trad_grade_per_section(section) %></td>
-											<td align="center"></td>
-										</tr>
+										<% if @student.trad_grade_per_section(section) %>
+											<tr class="academic-row">
+												<td class="academic-cell"><span class="academic-label">Academic Achievement</span></td>
+												<td align="center"><%= @student.trad_grade_per_section(section) %></td>
+											</tr>
+										<% end %>
 										<tr>
 											<td><span class="hom-label">Habits of Mind</span></td>
 										</tr>
@@ -185,11 +190,12 @@
 											<th align="center" class="semester-heading-cell">S1</th>
 											<th align="center" class="semester-heading-cell">S2</th>
 										</tr>
-										<tr class="academic-row">
-											<td class="academic-cell"><span class="academic-label">Academic Achievement</span></td>
-											<td align="center"><%= @student.trad_grade_per_section(section) %></td>
-											<td align="center"></td>
-										</tr>
+										<% if @student.trad_grade_per_section(section) %>
+											<tr class="academic-row">
+												<td class="academic-cell"><span class="academic-label">Academic Achievement</span></td>
+												<td align="center"><%= @student.trad_grade_per_section(section) %></td>
+											</tr>
+										<% end %>
 										<tr>
 											<td><span class="hom-label">Habits of Mind</span></td>
 										</tr>
