@@ -11,6 +11,7 @@ class SectionsController < ApplicationController
 			{name: "Science", abbr: "sc"},
 			{name: "Math", abbr: "ma"},
 		]
+		@departments = Department.where(school_id: School.ms.id)
 		respond_to do |format|
 			format.html  { render 'index' }
 		    format.pdf do
@@ -86,8 +87,17 @@ class SectionsController < ApplicationController
 			{name: "Math", abbr: "ma"},
 		]
 		@courses = Course.by_school(School.ms)
+		@departments = Department.where(school_id: School.ms.id)
 		if params[:courses]
 			@sections = Section.where(course_id: params[:courses])
+		elsif params[:departments] 
+			@sections = Section.select{|section| 
+				if section.course.department
+					section.course.department.id === params[:departments].to_i
+				else
+					false
+				end
+			}
 		else
 			@sections = Section.by_school(School.ms)
 		end

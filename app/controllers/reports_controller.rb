@@ -52,6 +52,9 @@ class ReportsController < ApplicationController
 		students.each do |student| 
 			@student = student
 			@sections = @student.hs_reporting_sections(2801)
+			if @student.student_number === '16488'
+	    		@sections << Section.find_by(dcid: 33855)
+	    	end 
 			html_string = render_to_string('students/hs_sem1_reportcard.html.erb',
 				 layout: 'sem1_report_card.html.erb')
 			pdf = WickedPdf.new.pdf_from_string(html_string, 

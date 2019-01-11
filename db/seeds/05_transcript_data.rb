@@ -35,7 +35,7 @@ data_hash.each_with_index do |set, index|
 		
 		student.transcript = transcript
 		
-		if transcript.save
+		if transcript.save && student.save
 			puts "Transcript Record saved #{index} out of #{data_hash.length-1}"
 		else
 			puts "ERROR: Transcript not saved"

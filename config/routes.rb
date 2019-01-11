@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :departments
   resources :suggestions, only: [:index, :new, :create]
   resources :teachers
   get 'sections/cores', to: 'sections#cores'

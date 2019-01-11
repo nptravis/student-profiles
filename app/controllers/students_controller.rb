@@ -99,6 +99,11 @@ class StudentsController < ApplicationController
 	      end
 	    elsif @student.school.number === 101
 	    	@sections = @student.hs_reporting_sections(2801)
+	    	
+	    	if @student.student_number === '16488'
+	    		@sections << Section.find_by(dcid: 33855)
+	    	end
+	    	
 	    	respond_to do |format|
 		      format.pdf do
 	        	render pdf: "sem1-reportcard-#{@student.student_number}", 
