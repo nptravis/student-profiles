@@ -52,7 +52,7 @@ data_hash.each_with_index do |set, index|
 	student.email = set["ris_stu_email"]
 	student.mailing_city = set["mailing_city"]
 	student.mailing_street_1 = set["mailing_street"]
-	student.mailing_street_2 = set["ris_street_2"]
+	student.mailing_street_2 = set["ris_mailing_street_2"]
 	student.guardian_names = set["ris_parent_guardian"]
 	student.mailing_state = set["mailing_state"]
 	student.mailing_zip = set["mailing_zip"]

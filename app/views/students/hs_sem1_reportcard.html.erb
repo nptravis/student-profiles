@@ -2,9 +2,13 @@
 	<div class="left-page">
 		<div class="address-container">
 			<p>
+				<% if @student.guardian_names != 'null' %>
 				<span class="g-name"><strong><%= @student.guardian_names %></strong></span></br>
+				<% end %>
 				<span><%= @student.mailing_street_1 %></span></br>
-				<span><%= @student.mailing_street_2 %></span></br>
+				<% if @student.mailing_street_2 != 'null' %>
+					<span><%= @student.mailing_street_2 %></span></br>
+				<% end %>
 				<span><%= @student.mailing_city %></span>
 				<span><%= @student.mailing_zip %></span>
 			</p>
