@@ -5,6 +5,12 @@ $(document).on("turbolinks:load", function(){
 
 
 function sectionInit(){
+	// GET sections
+	let sections = []
+	$.getJSON('/sections').done(response => {
+		// sections = response
+		console.log(response)
+	})
 	// BEGIN Attach listeners
 	$(".sections-all-cores-link").click((event) => {
 		event.preventDefault();

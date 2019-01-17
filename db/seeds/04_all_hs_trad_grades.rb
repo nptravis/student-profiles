@@ -1,4 +1,5 @@
-file = File.read('data/all-hs-trad-grades.json')
+file = File.read('data/one-student-trad-grades.json')
+# file = File.read('data/all-hs-trad-grades.json')
 
 data_hash = JSON.parse(file)
 

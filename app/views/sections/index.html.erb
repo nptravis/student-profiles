@@ -1,15 +1,16 @@
 <div class="student-nav-container">
 	<%= form_tag sections_path do %>
+	<span>Sort by Class</span>
 		<%= select_tag 'courses', options_from_collection_for_select(@courses, 'id', 'course_name', :include_blank => true) %>
 		
 		<%= submit_tag "Search" %>
 	<% end %>
 	<%= form_tag sections_path do %>
+	<span>Sort by Department</span>
 		<%= select_tag 'departments', options_from_collection_for_select(@departments, 'id', 'name') %>
 		
 		<%= submit_tag "Search" %>
 	<% end %>
-	
 </div>
 
 <div class="sections-content-container">

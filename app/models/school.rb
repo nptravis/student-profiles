@@ -1,6 +1,7 @@
 class School < ApplicationRecord
 	has_many :students
 	has_many :courses
+	has_many :departments
 
 	validates :number, :name, :abbreviation, presence: true
 

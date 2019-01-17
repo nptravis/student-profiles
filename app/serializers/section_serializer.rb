@@ -1,5 +1,5 @@
 class SectionSerializer < ApplicationSerializer
-  attributes :id, :section_number, :course_name, :course_number, :teacher_name, :matrix_positions, :expression
+  attributes :id, :section_number, :course_name, :course_number, :teacher_name, :matrix_positions, :expression, :grade_level, :department
 
   def course_name
   	object.course.course_name
@@ -15,6 +15,10 @@ class SectionSerializer < ApplicationSerializer
 
   def matrix_positions
   	object.matrix_positions
+  end
+
+  def department
+    object.course.department
   end
 
 end
