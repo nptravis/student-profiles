@@ -22,10 +22,7 @@
 //= require student_schedule
 //= require standards
 //= require sections
-
-
-
-
+//= require sidebar
 
 
 

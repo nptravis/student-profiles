@@ -9,19 +9,19 @@ html, body, main {
 div.header-container {
 	display: flex;
 	justify-content: space-between;
-	height: 10vh
+	height: 5vh
 }
 
 div.main-container {	
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	height: 90vh;
+	height: 95vh;
 	
 }
 
 div.content-container {
-	flex: 0 0 90%;
+	flex: 1 0 90%;
 	overflow: auto;
 	
 }

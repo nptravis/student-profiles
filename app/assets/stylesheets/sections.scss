@@ -6,6 +6,10 @@ ul.section-list {
 	list-style: none;
 }
 
+div.sections-content-container {
+  padding: 10px;
+}
+
 /*small stacked bar graphs*/
 .stacked-bar-graph {
   width: 100px;
@@ -42,4 +46,8 @@ ul.section-list {
     background: #007CC6;
   }
   
+}
+
+.student-nav-container {
+  text-align: center;
 }

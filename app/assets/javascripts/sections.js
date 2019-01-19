@@ -7,10 +7,17 @@ $(document).on("turbolinks:load", function(){
 function sectionInit(){
 	// GET sections
 	let sections = []
-	$.getJSON('/sections').done(response => {
-		// sections = response
-		console.log(response)
-	})
+	console.log(window.location.pathname)
+	// start with sidebar hidden
+	if (window.location.pathname == '/sections') {
+		$('.sidebar-container').hide()
+	}
+	
+
+	// $.getJSON('/sections').done(response => {
+	// 	// sections = response
+	// 	console.log(response)
+	// })
 	// BEGIN Attach listeners
 	$(".sections-all-cores-link").click((event) => {
 		event.preventDefault();

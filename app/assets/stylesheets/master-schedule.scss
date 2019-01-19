@@ -3,9 +3,6 @@ div.section-master-schedule {
 	margin: 5px;
 }
 
-.subject-la {
-	background-color: #F7C9AD;
-}
 
 div.master-schedule-key {
 	text-align: center;
@@ -25,12 +22,37 @@ ul.master-schedule-key li {
 	margin-left: 10px;
 }
 
-.subject-ma {
+.department-SCI {
+	background-color: #F7C9AD;
+}
+.department-LA {
 	background-color: #C0DFDE;
 }
-.subject-sc {
+.department-HR\/ADV {
 	background-color: #D9ECC4;
 }
-.subject-so {
+.department-MATH {
 	background-color: #D9B1BE;
+}
+.department-PE {
+	background-color: #CEF7A0;
+}
+.department-SOC {
+	background-color: #D4F2DB;
+}
+.department-ELECTIVE {
+	background-color: #A0CA92;
+}
+.department-ELD {
+	background-color: #FF82A9;
+}
+.department-MOD\/THAI {
+	background-color: #D4AA7D;
+}
+.department-none {
+	background-color: #8BBF9F;
+}
+
+.table-day {
+	background-color: lightgrey;
 }

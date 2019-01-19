@@ -3,11 +3,12 @@
 	<h4>Teacher: <%= link_to @section.teacher.lastfirst, teacher_path(@section.teacher) %></h4>
 	<h4>Term: <%= @section.term.term_code %></h4>
 	<h4>Grade: <%= @section.grade_level %></h4>
+	<h4>Department: <%= @section.course.department ? @section.course.department.name : "No Assigned Department" %></h4>
 
 	<h4>Enrolled Students</h4>
 	<ol>
-	<% @section.students.each do |student| %>
-		<li><%= link_to student.lastfirst, student_path(student) %> - <%= student.student_number %></li>
+	<% @section.students.order(:grade_level, :lastfirst).each do |student| %>
+		<li><%= student.grade_level %> - <%= student.student_number %> - <%= link_to student.lastfirst, student_path(student) %></li>
 	<% end %>
 	</ol>
 </div>

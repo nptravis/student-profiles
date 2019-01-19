@@ -5,7 +5,6 @@ class SectionsController < ApplicationController
 		@periods = ["ADV", "P1", "P2", "P3", "FB", "P4", "P5"]
 		@sections = Section.by_school(School.ms)
 		@courses = Course.by_school(School.ms).sort_by(&:course_name)
-		@grade_levels = [{id: 6, name: '6'}, {id: 7, name: '7'}, {id: 8, name: '8'}]
 		@subjects = [
 			{name: "Language Arts", abbr: "la"},
 			{name: "Social Studies", abbr: "so"},
@@ -37,8 +36,6 @@ class SectionsController < ApplicationController
 		@days = ["A", "B", "C", "D"]
 		@periods = ["ADV", "P1", "P2", "P3", "FB", "P4", "P5"]
 		@sections = Section.by_school(School.ms).select{|section| section.core?}
-
-		@grade_levels = [{id: 6, name: '6'}, {id: 7, name: '7'}, {id: 8, name: '8'}]
 		@subjects = [
 			{name: "Language Arts", abbr: "la"},
 			{name: "Social Studies", abbr: "so"},
@@ -70,7 +67,7 @@ class SectionsController < ApplicationController
 
 	def students
 		section = Section.find(params[:id])
-		@students = section.students
+		@students = section.students.order(:grade_level, :lastfirst)
 		render json: @students.to_json
 	end
 
@@ -80,6 +77,7 @@ class SectionsController < ApplicationController
 	end
 
 	def create
+		# binding.pry
 		@days = ["A", "B", "C", "D"]
 		@periods = ["ADV", "P1", "P2", "P3", "FB", "P4", "P5"]
 		@subjects = [
@@ -88,26 +86,25 @@ class SectionsController < ApplicationController
 			{name: "Science", abbr: "sc"},
 			{name: "Math", abbr: "ma"},
 		]
-		@grade_levels = [{id: 6, name: '6'}, {id: 7, name: '7'}, {id: 8, name: '8'}]
-		@courses = Course.by_school(School.ms)
+		@courses = Course.by_school(School.ms).order(:course_name)
 		@departments = Department.where(school_id: School.ms.id)
 		
 		if params[:courses]
 			@sections = Section.where(course_id: params[:courses])
-		elsif params[:departments] 
+		elsif params[:department] != "" && params[:department]
 			@sections = Section.select{|section| 
 				if section.course.department
-					section.course.department.id === params[:departments].to_i
+					section.course.department.id === params[:department].to_i
 				else
 					false
 				end
 			}
-		elsif params[:grade_level]
-			binding.pry
+			if params[:grade_level] != ""
+				@sections.select!{|section| section.grade_level.to_s.split("").include?(params[:grade_level]) }
+			end
 		else
 			@sections = Section.by_school(School.ms)
 		end
-		# binding.pry
 		respond_to do |format|
 			format.html  { render 'index' }
 		    format.pdf do
